@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useReveal } from "@/hooks/use-reveal";
 
 const brands = [
@@ -126,7 +127,7 @@ export function Brands() {
                       aria-hidden
                       className="absolute inset-0 -translate-y-full bg-[color:var(--lime)]/40 transition-transform duration-500 group-hover:translate-y-0"
                     />
-                    <img
+                    <Image
                       src={b.logo}
                       alt={b.name}
                       width={b.width}

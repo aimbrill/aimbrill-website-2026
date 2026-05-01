@@ -58,8 +58,8 @@ export function Contact() {
                 </div>
                 <h3 className="mt-5 font-display text-2xl font-semibold">Opening WhatsApp...</h3>
                 <p className="mt-2 max-w-sm text-sm text-muted-foreground">
-                  Your message is ready in a WhatsApp chat with our team. Hit send and we'll reply
-                  within 24 hours.
+                  Your message is ready in a WhatsApp chat with our team. Hit send and we{"'"}ll
+                  reply within 24 hours.
                 </p>
                 <a
                   href={`https://wa.me/${WHATSAPP_NUMBER}`}

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Aimbrill Brand Assets",
@@ -40,7 +41,13 @@ export default function HiddenBrandAssetsPage() {
                 Main Logo
               </p>
               <div className="mt-3 flex h-24 items-center justify-center rounded-xl border border-border bg-background">
-                <img src="/images/aimbrill-logo.png" alt="Aimbrill logo" className="h-14 w-auto object-contain" />
+                <Image
+                  src="/images/aimbrill-logo.png"
+                  alt="Aimbrill logo"
+                  width={320}
+                  height={120}
+                  className="h-14 w-auto object-contain"
+                />
               </div>
             </article>
             <article className="rounded-2xl border border-border bg-surface p-4">
@@ -48,9 +55,11 @@ export default function HiddenBrandAssetsPage() {
                 Wordmark
               </p>
               <div className="mt-3 flex h-24 items-center justify-center rounded-xl border border-border bg-background">
-                <img
+                <Image
                   src="/images/aimbrill-wordmark-transparent.png"
                   alt="Aimbrill wordmark"
+                  width={400}
+                  height={100}
                   className="h-12 w-auto object-contain"
                 />
               </div>

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { SectionHeader } from "./Services";
 import mealImg from "@/assets/case-study-meal.jpg";
 import { useReveal } from "@/hooks/use-reveal";
@@ -27,10 +28,11 @@ export function CaseStudy() {
           <div className="grid lg:grid-cols-12">
             {/* Image side */}
             <div className="relative lg:col-span-5 border-b border-border lg:border-b-0 lg:border-r">
-              <img
-                src={mealImg.src}
+              <Image
+                src={mealImg}
                 alt="Funky Food meal subscription"
-                loading="lazy"
+                placeholder="blur"
+                sizes="(max-width: 1024px) 100vw, 42vw"
                 width={1280}
                 height={960}
                 className="h-full w-full object-cover"
@@ -90,7 +92,7 @@ export function CaseStudy() {
                 rel="noreferrer"
                 className="mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-semibold text-background hover:scale-[1.03] transition"
               >
-                Have a similar challenge? Let's talk. <span>→</span>
+                Have a similar challenge? Let{"'"}s talk. <span>→</span>
               </a>
             </div>
           </div>

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useState } from "react";
 import { SectionHeader } from "./Services";
 import { useReveal } from "@/hooks/use-reveal";
@@ -62,10 +63,12 @@ export function Testimonials() {
                 onClick={() => setActive(t.video)}
                 className="relative block w-full overflow-hidden rounded-2xl border border-border bg-surface-2"
               >
-                <img
+                <Image
                   src={t.image}
                   alt={`${t.name} — video testimonial`}
-                  loading="lazy"
+                  width={1280}
+                  height={800}
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                 />
                 <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent" />
@@ -80,7 +83,9 @@ export function Testimonials() {
               </button>
 
               <div className="mt-5 px-1">
-                <p className="font-display text-lg leading-snug text-ink">"{t.quote}"</p>
+                <p className="font-display text-lg leading-snug text-ink">
+                  &ldquo;{t.quote}&rdquo;
+                </p>
                 <div className="mt-4 flex items-center justify-between">
                   <div>
                     <div className="font-display font-semibold">{t.name}</div>

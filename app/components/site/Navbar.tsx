@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const CALENDLY_URL = "https://calendly.com/weupsell-experts/ai-campaign-popup";
@@ -38,9 +39,12 @@ export function Navbar() {
             data-cursor="home"
             className="group flex items-center rounded-xl px-0 py-2 text-ink transition-transform hover:scale-[1.02]"
           >
-            <img
+            <Image
               src="/images/aimbrill-wordmark-transparent.png"
               alt="Aimbrill"
+              width={480}
+              height={120}
+              priority
               className="h-10 w-auto object-contain md:h-12"
             />
           </a>

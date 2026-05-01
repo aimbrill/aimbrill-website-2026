@@ -33,8 +33,7 @@ const sections = [
   },
   {
     title: "Client Responsibility",
-    content:
-      "Clients must provide accurate information and use our services lawfully.",
+    content: "Clients must provide accurate information and use our services lawfully.",
   },
   {
     title: "Our Rights",

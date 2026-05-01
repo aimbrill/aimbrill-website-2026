@@ -56,13 +56,7 @@ const cookieUsage = [
   "Optimize user experience",
 ];
 
-const securityMeasures = [
-  "Unauthorized access",
-  "Data loss",
-  "Misuse",
-  "Alteration",
-  "Disclosure",
-];
+const securityMeasures = ["Unauthorized access", "Data loss", "Misuse", "Alteration", "Disclosure"];
 
 const thirdPartyServices = ["Shopify", "Calendly", "WhatsApp", "Payment providers"];
 
@@ -93,13 +87,7 @@ function PolicyList({ items }: { items: string[] }) {
   );
 }
 
-function Section({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
+function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section className="rounded-3xl border border-border bg-card p-6 shadow-soft md:p-8">
       <h2 className="font-display text-2xl font-semibold tracking-tight md:text-3xl">{title}</h2>
@@ -220,9 +208,7 @@ export default function PrivacyPolicyPage() {
             </Section>
 
             <Section title="Your Rights">
-              <p className="mt-4 text-sm text-muted-foreground md:text-base">
-                You may request to:
-              </p>
+              <p className="mt-4 text-sm text-muted-foreground md:text-base">You may request to:</p>
               <PolicyList items={yourRights} />
               <p className="mt-4 text-sm text-muted-foreground md:text-base">
                 To exercise these rights, please contact us directly.
@@ -266,7 +252,6 @@ export default function PrivacyPolicyPage() {
                 </p>
               </div>
             </Section>
-
           </div>
         </div>
       </main>

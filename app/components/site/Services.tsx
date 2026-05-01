@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Image from "next/image";
 import aiImg from "@/assets/ai-automation.jpg";
 import shopifyAppImg from "@/assets/service-shopify-app.jpg";
 import storeImg from "@/assets/service-store.jpg";
@@ -96,12 +97,12 @@ export function Services() {
 
               {s.image && (
                 <div className="relative mt-5 overflow-hidden rounded-2xl border border-border">
-                  <img
+                  <Image
                     src={s.image}
                     alt=""
-                    loading="lazy"
                     width={1024}
                     height={1024}
+                    sizes="(max-width: 768px) 100vw, 33vw"
                     className="h-32 w-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                 </div>

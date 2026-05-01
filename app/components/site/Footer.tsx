@@ -1,14 +1,18 @@
+import Image from "next/image";
+
 export function Footer() {
   return (
     <footer className="relative border-t border-border bg-surface py-16">
       <div className="mx-auto max-w-7xl pl-0 pr-4">
         <div className="grid gap-10 md:grid-cols-12">
           <div className="md:col-span-4">
-            <div className="h-16 w-[170px] overflow-hidden md:h-20 md:w-[210px]">
-              <img
+            <div className="relative h-16 w-[170px] overflow-hidden md:h-20 md:w-[210px]">
+              <Image
                 src="/images/aimbrill-wordmark-transparent.png"
                 alt="Aimbrill"
-                className="h-full w-auto max-w-none -translate-x-5 object-contain md:-translate-x-6"
+                fill
+                sizes="(max-width: 768px) 170px, 210px"
+                className="max-w-none -translate-x-5 object-contain object-left md:-translate-x-6"
               />
             </div>
             <p className="mt-3 max-w-sm text-sm text-muted-foreground">
@@ -81,7 +85,15 @@ export function Footer() {
                 className="hover-lift inline-flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-card text-ink transition-all duration-300 hover:border-[color:var(--lime)] hover:bg-[color:var(--lime)]/15 hover:shadow-[0_0_18px_var(--lime)]"
               >
                 <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" aria-hidden>
-                  <rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" strokeWidth="1.8" />
+                  <rect
+                    x="3.5"
+                    y="3.5"
+                    width="17"
+                    height="17"
+                    rx="5"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                  />
                   <circle cx="12" cy="12" r="3.8" stroke="currentColor" strokeWidth="1.8" />
                   <circle cx="17.3" cy="6.8" r="1.1" fill="currentColor" />
                 </svg>
@@ -94,7 +106,12 @@ export function Footer() {
                 className="hover-lift inline-flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-card text-ink transition-all duration-300 hover:border-[color:var(--lime)] hover:bg-[color:var(--lime)]/15 hover:shadow-[0_0_18px_var(--lime)]"
               >
                 <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" aria-hidden>
-                  <path d="M7.2 9.2V17" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                  <path
+                    d="M7.2 9.2V17"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                  />
                   <circle cx="7.2" cy="6.7" r="1.1" fill="currentColor" />
                   <path
                     d="M11.2 17v-4.4c0-1.9 1.1-3.4 3-3.4s2.8 1.2 2.8 3.3V17"
@@ -103,7 +120,15 @@ export function Footer() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   />
-                  <rect x="3.5" y="3.5" width="17" height="17" rx="3.5" stroke="currentColor" strokeWidth="1.2" />
+                  <rect
+                    x="3.5"
+                    y="3.5"
+                    width="17"
+                    height="17"
+                    rx="3.5"
+                    stroke="currentColor"
+                    strokeWidth="1.2"
+                  />
                 </svg>
               </a>
               <a
@@ -133,13 +158,23 @@ export function Footer() {
         <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-border pt-6 text-xs text-muted-foreground md:flex-row md:items-center">
           <div>© 2025 Aimbrill. All rights reserved.</div>
           <div className="flex flex-wrap items-center gap-4">
-            <a href="/privacy" target="_blank" rel="noreferrer" className="underline-grow hover:text-ink">
+            <a
+              href="/privacy"
+              target="_blank"
+              rel="noreferrer"
+              className="underline-grow hover:text-ink"
+            >
               Privacy Policy
             </a>
             <span aria-hidden className="opacity-40">
               ·
             </span>
-            <a href="/terms" target="_blank" rel="noreferrer" className="underline-grow hover:text-ink">
+            <a
+              href="/terms"
+              target="_blank"
+              rel="noreferrer"
+              className="underline-grow hover:text-ink"
+            >
               Terms and Conditions
             </a>
             <span aria-hidden className="opacity-40">
