@@ -37,7 +37,7 @@ export function Testimonials() {
   const [active, setActive] = useState<string | null>(null);
 
   return (
-    <section ref={ref} className="relative py-12 md:py-20">
+    <section ref={ref} className="relative py-12 md:py-10">
       <div className="mx-auto max-w-7xl px-4">
         <div className="reveal">
           <SectionHeader

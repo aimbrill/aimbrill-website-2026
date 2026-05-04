@@ -35,7 +35,7 @@ const apps = [
 export function Apps() {
   const ref = useReveal<HTMLElement>();
   return (
-    <section id="apps" ref={ref} className="relative py-12 md:py-20">
+    <section id="apps" ref={ref} className="relative py-12 md:py-10">
       <div className="mx-auto max-w-7xl px-4">
         <div className="reveal">
           <SectionHeader

@@ -10,7 +10,7 @@ export function FounderNote() {
   const ref = useReveal<HTMLElement>();
 
   return (
-    <section ref={ref} className="relative py-12 md:py-20">
+    <section ref={ref} className="relative py-12 md:py-10">
       <div className="mx-auto max-w-7xl pl-0 pr-4">
         <div className="reveal flex items-center gap-5">
           <span className="h-px w-16 bg-ink/70" />

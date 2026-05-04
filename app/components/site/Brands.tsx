@@ -77,7 +77,7 @@ const brands = [
 export function Brands() {
   const ref = useReveal<HTMLElement>();
   return (
-    <section ref={ref} className="relative py-14 md:py-20">
+    <section ref={ref} className="relative py-14 md:py-10">
       <div className="mx-auto max-w-7xl px-4">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
           {/* Heading */}

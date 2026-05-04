@@ -125,7 +125,7 @@ export function Contact() {
                   Send message via WhatsApp <span>→</span>
                 </button>
                 <p className="text-xs text-muted-foreground">
-                  Your message will open directly in WhatsApp with our team (+91 79904 88965).
+                  Your message will open directly in WhatsApp with our team.
                 </p>
               </div>
             )}

@@ -60,7 +60,7 @@ const services = [
 export function Services() {
   const ref = useReveal<HTMLElement>();
   return (
-    <section ref={ref} className="relative py-12 md:py-20">
+    <section ref={ref} className="relative py-12 md:py-10">
       <div className="mx-auto max-w-7xl px-4">
         <div className="reveal">
           <SectionHeader
