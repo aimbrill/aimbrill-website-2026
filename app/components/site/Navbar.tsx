@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -5,13 +7,14 @@ import { useEffect, useState } from "react";
 const CALENDLY_URL = "https://calendly.com/weupsell-experts/ai-campaign-popup";
 
 const links = [
-  { href: "#work", label: "Work" },
-  { href: "#apps", label: "Apps" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#work", label: "Work" },
+  { href: "/#apps", label: "Apps" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 function navLinkActive(currentHash: string, href: string) {
-  return currentHash === href;
+  const hashFromHref = href.includes("#") ? href.slice(href.indexOf("#")) : "";
+  return currentHash === hashFromHref;
 }
 
 export function Navbar() {
