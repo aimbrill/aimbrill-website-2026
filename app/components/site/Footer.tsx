@@ -2,9 +2,9 @@ import Image from "next/image";
 
 export function Footer() {
   return (
-    <footer className="relative border-t border-border bg-surface py-16">
-      <div className="mx-auto max-w-7xl pl-0 pr-4">
-        <div className="grid gap-10 md:grid-cols-12">
+    <footer className="relative border-t border-border bg-surface py-8">
+      <div className="mx-auto max-w-7xl px-8 md:px-0">
+        <div className="grid gap-6 md:gap-10 md:grid-cols-12">
           <div className="md:col-span-4">
             <div className="relative h-16 w-[170px] overflow-hidden md:h-20 md:w-[210px]">
               <Image
