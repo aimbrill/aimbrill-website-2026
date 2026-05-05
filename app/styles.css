@@ -395,6 +395,69 @@
   padding: 1.125rem;
 }
 
+.blog-hero {
+  background-image:
+    radial-gradient(60% 80% at 100% -10%, color-mix(in oklab, var(--lime) 22%, transparent), transparent 60%),
+    radial-gradient(50% 50% at 0% 120%, color-mix(in oklab, var(--lime) 15%, transparent), transparent 70%);
+}
+
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 1.125rem;
+  border: 1px solid var(--border);
+  background: var(--card);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-pop), 0 0 18px -10px color-mix(in oklab, var(--lime) 45%, transparent);
+  border-color: var(--lime);
+}
+
+.blog-card-cover {
+  position: relative;
+  overflow: hidden;
+  height: 11rem;
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem;
+  background:
+    linear-gradient(145deg, color-mix(in oklab, var(--ink) 96%, transparent), color-mix(in oklab, var(--ink) 70%, transparent)),
+    radial-gradient(65% 75% at 82% 24%, color-mix(in oklab, var(--lime) 55%, transparent), transparent 75%);
+}
+
+.blog-card-cover--image {
+  background: var(--ink);
+}
+
+.blog-card-cover-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.42));
+}
+
+.blog-card-cover > .blog-chip {
+  position: relative;
+  z-index: 1;
+}
+
+.blog-chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  padding: 0.2rem 0.7rem;
+  border: 1px solid color-mix(in oklab, var(--lime) 42%, transparent);
+  background: color-mix(in oklab, var(--lime) 12%, transparent);
+  color: color-mix(in oklab, var(--lime) 55%, var(--ink));
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
 .toc-title {
   margin-bottom: 0.75rem;
 }

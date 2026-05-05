@@ -37,6 +37,11 @@ export function Footer() {
                 </a>
               </li>
               <li>
+                <a href="/blog" className="underline-grow">
+                  Blog
+                </a>
+              </li>
+              <li>
                 <a href="#contact" className="underline-grow">
                   Contact
                 </a>

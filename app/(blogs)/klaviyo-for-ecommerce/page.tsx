@@ -18,7 +18,6 @@ const CANONICAL = "/klaviyo-for-ecommerce";
 const PUBLISHED_ISO = "2026-05-04";
 const PUBLISHED_DISPLAY = "May 4, 2026";
 const CALENDLY_URL = "https://calendly.com/weupsell-experts/ai-campaign-popup";
-
 const OG_TITLE =
   "Klaviyo for E-commerce: How It Works, Why Brands Use It, and How It Drives Revenue";
 const OG_DESC =
@@ -104,12 +103,6 @@ export default function KlaviyoForEcommercePage() {
           publishedAt={PUBLISHED_DISPLAY}
           publishedAtIso={PUBLISHED_ISO}
           toc={KLAVIYO_GUIDE_TOC}
-          sidebarCta={{
-            body: "Need help setting up Klaviyo for your store? We build flows, segments, and revenue reporting you can trust.",
-            href: CALENDLY_URL,
-            label: "Get a free audit →",
-            external: true,
-          }}
           articleClassName="guide-prose-editorial"
         >
           <h2 id="introduction">Introduction</h2>
