@@ -89,6 +89,10 @@ function GuideFigure({
 }
 
 export default function KlaviyoForEcommercePage() {
+  const introSummary =
+    "Everything you need to know about Klaviyo for e-commerce — from flows and segmentation to A/B testing — " +
+    "and how to turn email into a consistent revenue channel for your store.";
+
   return (
     <>
       <script
@@ -114,14 +118,7 @@ export default function KlaviyoForEcommercePage() {
               for.
             </p>
           </div>
-          <p>
-            Everything you need to know about Klaviyo for e-commerce, from flows and segmentation to
-            pricing, and how to turn email into a consistent revenue channel for your store.
-          </p>
-          <p>
-            This guide explains how Klaviyo works, what to prioritize first, and how teams use it to
-            make revenue from email and SMS more predictable.
-          </p>
+          <p>{introSummary}</p>
 
           <h2 id="what-is-klaviyo">What is Klaviyo?</h2>
           <p>
