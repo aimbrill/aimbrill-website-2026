@@ -26,7 +26,7 @@ export function Hero() {
               className="absolute inset-x-0 bottom-1 -z-0 h-3 bg-[color:var(--lime)] md:h-4"
             />
           </span>
-          , <span className="italic">AI tools</span> & custom storefronts for serious brands
+          , <span className="italic">AI tools</span> & custom storefronts for fast-growing brands
         </h1>
 
         <p className="reveal mt-6 max-w-2xl text-lg text-muted-foreground md:text-xl">

@@ -66,6 +66,13 @@ export const metadata: Metadata = {
       "Custom Shopify apps, AI automation, and conversion-optimised stores for growing e-commerce brands.",
     images: ["/images/aimbrill-logo.png"],
   },
+  icons: {
+    icon: [
+      { url: "/images/Icon.png", type: "image/png" },
+      { url: "/favicon.ico", type: "image/x-icon" },
+    ],
+    apple: [{ url: "/images/Icon.png", sizes: "180x180", type: "image/png" }],
+  },
 };
 
 const structuredData = {

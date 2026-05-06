@@ -115,17 +115,16 @@ const apiVersion = "2025-01";`}
                   className="h-14 w-auto object-contain"
                 />
               </div>
-            </article>
-            <article className="rounded-2xl border border-border bg-surface p-4">
-              <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+              <p className="font-display mt-2 text-sm font-medium text-muted-foreground">
+                We build Shopify apps &amp; AI tools for fast-growing brands.
+              </p>
+              <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground mt-4">
                 Wordmark
               </p>
               <div className="mt-3 flex h-24 items-center justify-center rounded-xl border border-border bg-background">
                 <Image
                   src="/images/aimbrill-wordmark-transparent.png"
                   alt="Aimbrill wordmark"
-                  width={400}
-                  height={100}
                   className="h-12 w-auto object-contain"
                 />
               </div>

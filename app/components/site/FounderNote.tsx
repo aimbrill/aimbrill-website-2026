@@ -81,10 +81,10 @@ export function FounderNote() {
 
             <div>
               <span className="mb-6 inline-block h-1 w-12 rounded-full bg-[color:var(--lime)]" />
-              <blockquote className="max-w-4xl font-display text-lg font-semibold leading-tight tracking-tight text-ink md:text-[2rem] md:leading-[1.22]">
-                {`"I started Aimbrill because I was frustrated watching Shopify brands overpay for
-                generic agencies that didn't understand e-commerce. We're a small team that ships
-                real work - for brands that want a partner, not just a vendor."`}
+              <blockquote className="max-w-4xl font-display text-lg font-semibold leading-tight tracking-tight text-ink md:text-3xl md:leading-[1.22]">
+                {`"I started Aimbrill with a simple belief — every brand deserves brilliant execution, not just 'good enough.'
+The name says it all: aim higher, deliver brilliance.
+Over the last 3 years, we've grown from an idea into a team that ships real work, focused on one thing — becoming the partner your brand actually deserves."`}
               </blockquote>
 
               <div className="mt-7 border-t border-border pt-5">
