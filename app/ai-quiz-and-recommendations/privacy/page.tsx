@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { Footer } from "@/components/site/Footer";
 
 export const metadata: Metadata = {
-  title: "AI Quiz by WeUpsell Privacy Policy | Aimbrill",
+  title: "AI Quiz by Aimbrill Privacy Policy | Aimbrill",
   description:
-    "Privacy Policy for AI Quiz by WeUpsell by Aimbrill, including data collection, usage, retention, and merchant responsibilities.",
+    "Privacy Policy for AI Quiz by Aimbrill, including data collection, usage, retention, and merchant responsibilities.",
   alternates: {
     canonical: "/ai-quiz-and-recommendations/privacy",
   },
@@ -93,9 +93,8 @@ const PrivacyPolicy = () => {
               Privacy Policy
             </h1>
             <p className="mx-auto mt-6 max-w-3xl text-center text-sm text-muted-foreground md:text-base">
-              This policy explains how AI Quiz by WeUpsell, operated by Aimbrill, collects, uses,
-              and protects information when merchants install and use the App in their Shopify
-              store.
+              This policy explains how AI Quiz by Aimbrill collects, uses, and protects information
+              when merchants install and use the App in their Shopify store.
             </p>
             <p className="mx-auto mt-3 max-w-3xl text-center text-sm text-muted-foreground md:text-base">
               The App uses AI to generate quiz questions and product recommendations based on
@@ -122,7 +121,7 @@ const PrivacyPolicy = () => {
 
             <Section title="Data Privacy Commitment">
               <p className="mt-4 rounded-2xl border border-border bg-surface-2 p-4 text-sm font-medium text-ink md:text-base">
-                AI Quiz by WeUpsell does not sell, rent, or trade merchant or customer data.
+                AI Quiz by Aimbrill does not sell, rent, or trade merchant or customer data.
               </p>
               <p className="mt-4 text-sm text-muted-foreground md:text-base">
                 Accessed data is used only to provide the App&apos;s core functionality and improve

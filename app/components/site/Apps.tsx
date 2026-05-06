@@ -19,7 +19,7 @@ const apps = [
     statusLabel: "Coming Soon",
     desc: "Help shoppers find exactly what they need with an AI-powered quiz that recommends the perfect product. Built for fashion, beauty, food, and supplement brands.",
     cta: "Join the waitlist",
-    href: "#contact",
+    href: "/ai-quiz-and-recommendations",
   },
   {
     name: "Meal Flow",
@@ -176,7 +176,9 @@ function SmallApp({ app }: { app: (typeof apps)[number] }) {
       </div>
       <div className="mt-6">
         <h3 className="font-display text-3xl font-semibold leading-tight sm:text-2xl">
-          {app.full}
+          <a href={app.href} className="underline-grow">
+            {app.full}
+          </a>
         </h3>
         <p className="mt-3 text-base text-muted-foreground sm:text-sm">{app.desc}</p>
       </div>

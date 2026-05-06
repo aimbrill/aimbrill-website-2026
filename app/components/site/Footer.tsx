@@ -1,6 +1,10 @@
 import Image from "next/image";
 
-export function Footer() {
+type FooterProps = {
+  privacyHref?: string;
+};
+
+export function Footer({ privacyHref = "/privacy" }: FooterProps) {
   return (
     <footer className="relative border-t border-border bg-surface py-8">
       <div className="mx-auto max-w-7xl px-8 md:px-0">
@@ -140,7 +144,7 @@ export function Footer() {
           <div>© 2025 Aimbrill. All rights reserved.</div>
           <div className="flex flex-wrap items-center gap-4">
             <a
-              href="/privacy"
+              href={privacyHref}
               target="_blank"
               rel="noreferrer"
               className="underline-grow hover:text-ink"
