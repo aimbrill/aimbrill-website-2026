@@ -1,0 +1,61 @@
+.banner {
+  background-image: url("/images/banner/bnr1.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 96px 0 72px;
+}
+
+.bannerTitle {
+  color: #ffffff;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  margin: 0;
+  text-align: center;
+}
+
+.containerContent {
+  max-width: 980px;
+  padding-bottom: 56px;
+  padding-top: 56px;
+}
+
+.privacyContent {
+  color: #1f2937;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.privacyContent h2,
+.privacyContent h3,
+.privacyContent h4 {
+  color: #111827;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-top: 1.75rem;
+}
+
+.privacyContent h2 {
+  font-size: 1.85rem;
+}
+
+.privacyContent h3 {
+  font-size: 1.35rem;
+}
+
+.privacyContent h4 {
+  font-size: 1.1rem;
+}
+
+.privacyContent p {
+  margin-top: 0.85rem;
+}
+
+.privacyContent ul {
+  margin: 0.75rem 0 0.75rem 1.2rem;
+  padding: 0;
+}
+
+.privacyContent li {
+  margin-bottom: 0.35rem;
+}
