@@ -7,7 +7,31 @@ const CALENDLY_URL = "https://calendly.com/weupsell-experts/ai-campaign-popup";
 
 export function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const [waPopupOpen, setWaPopupOpen] = useState(false);
+  const [waTopic, setWaTopic] = useState("custom apps");
+  const [waCustomTopic, setWaCustomTopic] = useState("");
+  const [waMessageOverride, setWaMessageOverride] = useState<string | null>(null);
   const ref = useReveal<HTMLElement>();
+
+  const waSelectedTopic =
+    waTopic === "other" ? waCustomTopic.trim() || "something personal" : waTopic;
+  const waDefaultMessage = `Hey Dharmik - I was checking out Aimbrill and had a question about ${waSelectedTopic}.`;
+  const waMessage = waMessageOverride ?? waDefaultMessage;
+
+  const openWaPopup = (topic = "custom apps") => {
+    setWaTopic(topic);
+    setWaCustomTopic("");
+    setWaMessageOverride(null);
+    setWaPopupOpen(true);
+  };
+
+  const openWhatsApp = () => {
+    window.open(
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waMessage)}`,
+      "_blank",
+      "noopener,noreferrer",
+    );
+  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -20,14 +44,22 @@ export function Contact() {
     const message = String(data.get("message") || "").trim();
 
     const text =
-      `Hi Aimbrill, I'd like to get in touch.%0A%0A` +
-      `*Name:* ${encodeURIComponent(name)}%0A` +
-      `*Email:* ${encodeURIComponent(email)}%0A` +
-      (url ? `*Website:* ${encodeURIComponent(url)}%0A` : "") +
-      `*Need:* ${encodeURIComponent(need)}%0A` +
-      (message ? `*Details:* ${encodeURIComponent(message)}` : "");
+      `Hi Aimbrill, I'd like to get in touch.\n\n` +
+      `*Name:* ${name}\n` +
+      `*Email:* ${email}\n` +
+      (url ? `*Website:* ${url}\n` : "") +
+      `*Need:* ${need}\n` +
+      (message ? `*Details:* ${message}` : "");
 
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`, "_blank", "noopener,noreferrer");
+    const topicFromNeed = need.toLowerCase().includes("weupsell")
+      ? "WeUpsell"
+      : need.toLowerCase().includes("store")
+        ? "store development"
+        : "custom apps";
+
+    setWaTopic(topicFromNeed);
+    setWaMessageOverride(text);
+    setWaPopupOpen(true);
     setSubmitted(true);
   };
 
@@ -65,6 +97,10 @@ export function Contact() {
                   href={`https://wa.me/${WHATSAPP_NUMBER}`}
                   target="_blank"
                   rel="noreferrer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    openWaPopup("custom apps");
+                  }}
                   className="mt-5 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-semibold text-background hover:scale-[1.03] transition"
                 >
                   Open WhatsApp again <span>↗</span>
@@ -160,6 +196,10 @@ export function Contact() {
                   href={`https://wa.me/${WHATSAPP_NUMBER}`}
                   target="_blank"
                   rel="noreferrer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    openWaPopup("custom apps");
+                  }}
                   className="flex items-center justify-between rounded-2xl border border-white/15 bg-white/5 px-4 py-3 text-sm font-medium transition hover:bg-white/10"
                 >
                   <span>💬 WhatsApp</span>
@@ -179,6 +219,71 @@ export function Contact() {
           </aside>
         </div>
       </div>
+
+      {waPopupOpen ? (
+        <div className="fixed bottom-6 right-6 z-[9998] w-[290px] rounded-2xl border border-border bg-card p-4 shadow-pop">
+          <div className="mb-3 flex items-center gap-2.5">
+            <div className="grid h-10 w-10 place-items-center rounded-full bg-lime text-sm font-semibold text-lime-foreground">
+              D
+            </div>
+            <div>
+              <div className="text-sm font-semibold text-ink">Dharmik</div>
+              <div className="text-xs text-lime">typically replies instantly</div>
+            </div>
+            <button
+              type="button"
+              onClick={() => setWaPopupOpen(false)}
+              className="ml-auto text-lg leading-none text-muted-foreground"
+              aria-label="Close WhatsApp popup"
+            >
+              x
+            </button>
+          </div>
+
+          <div className="mb-3 rounded-lg border-l-3 border-lime bg-[color:var(--lime)]/12 px-3 py-2 text-sm text-foreground">
+            {waMessage}
+          </div>
+
+          <label htmlFor="wa-topic" className="sr-only">
+            WhatsApp topic
+          </label>
+          <select
+            id="wa-topic"
+            value={waTopic}
+            onChange={(e) => {
+              setWaTopic(e.target.value);
+              if (e.target.value !== "other") {
+                setWaCustomTopic("");
+              }
+              setWaMessageOverride(null);
+            }}
+            className="mb-3 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm text-foreground"
+          >
+            <option value="custom apps">Custom apps</option>
+            <option value="WeUpsell">WeUpsell</option>
+            <option value="store development">Store development</option>
+            <option value="other">Other</option>
+          </select>
+
+          {waTopic === "other" ? (
+            <input
+              type="text"
+              value={waCustomTopic}
+              onChange={(e) => setWaCustomTopic(e.target.value)}
+              placeholder="Type your topic..."
+              className="mb-3 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground"
+            />
+          ) : null}
+
+          <button
+            type="button"
+            onClick={openWhatsApp}
+            className="w-full rounded-lg bg-lime px-3 py-2.5 text-sm font-semibold text-lime-foreground"
+          >
+            Chat on WhatsApp
+          </button>
+        </div>
+      ) : null}
     </section>
   );
 }

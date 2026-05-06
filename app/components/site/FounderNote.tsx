@@ -28,6 +28,8 @@ export function FounderNote() {
                   alt="Dharmik profile"
                   fill
                   sizes="(max-width: 768px) 128px, 176px"
+                  quality={85}
+                  loading="lazy"
                   className="scale-110 object-cover object-center"
                 />
               </div>

@@ -69,6 +69,8 @@ export function Testimonials() {
                   width={1280}
                   height={800}
                   sizes="(max-width: 768px) 100vw, 50vw"
+                  quality={80}
+                  loading="lazy"
                   className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                 />
                 <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent" />

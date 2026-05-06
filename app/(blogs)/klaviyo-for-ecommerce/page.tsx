@@ -82,6 +82,8 @@ function GuideFigure({
         width={width}
         height={height}
         sizes="(max-width: 768px) 100vw, 720px"
+        quality={85}
+        loading="lazy"
         className="h-auto w-full rounded-lg border border-border"
       />
     </figure>

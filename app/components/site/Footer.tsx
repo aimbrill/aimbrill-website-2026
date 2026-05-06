@@ -12,6 +12,8 @@ export function Footer() {
                 alt="Aimbrill"
                 fill
                 sizes="(max-width: 768px) 170px, 210px"
+                quality={85}
+                loading="lazy"
                 className="max-w-none -translate-x-5 object-contain object-left md:-translate-x-6"
               />
             </div>
