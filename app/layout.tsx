@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { DM_Sans, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import "./styles.css";
 
@@ -115,6 +116,17 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+        <Script
+          id="chatbot-key"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `CHATBOT_KEY = "2a9b6dd53b5d0fd1f37afb847c2ee920eca0b340d1f291edf3c2fb1cc57b70fc";`,
+          }}
+        />
+        <Script
+          src="https://ai-chatbot-preview.s3.ap-south-1.amazonaws.com/destinova-aibot.js"
+          strategy="afterInteractive"
         />
       </head>
       <body>{children}</body>
