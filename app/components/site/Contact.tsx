@@ -6,93 +6,83 @@ const WHATSAPP_NUMBER = "917990488965"; // +91 79904 88965
 const CALENDLY_URL = "https://calendly.com/weupsell-experts/ai-campaign-popup";
 
 export function Contact() {
-  const [submitted, setSubmitted] = useState(false);
   const [waPopupOpen, setWaPopupOpen] = useState(false);
   const [waTopic, setWaTopic] = useState("custom apps");
   const [waCustomTopic, setWaCustomTopic] = useState("");
-  const [waMessageOverride, setWaMessageOverride] = useState<string | null>(null);
   const ref = useReveal<HTMLElement>();
 
   const waSelectedTopic =
     waTopic === "other" ? waCustomTopic.trim() || "something personal" : waTopic;
   const waDefaultMessage = `Hey Dharmik - I was checking out Aimbrill and had a question about ${waSelectedTopic}.`;
-  const waMessage = waMessageOverride ?? waDefaultMessage;
 
   const openWaPopup = (topic = "custom apps") => {
     setWaTopic(topic);
     setWaCustomTopic("");
-    setWaMessageOverride(null);
     setWaPopupOpen(true);
   };
 
   const openWhatsApp = () => {
     window.open(
-      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waMessage)}`,
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waDefaultMessage)}`,
       "_blank",
       "noopener,noreferrer",
     );
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const data = new FormData(form);
-    const name = String(data.get("name") || "").trim();
-    const email = String(data.get("email") || "").trim();
-    const url = String(data.get("url") || "").trim();
-    const need = String(data.get("need") || "").trim();
-    const message = String(data.get("message") || "").trim();
-
-    const text =
-      `Hi Aimbrill, I'd like to get in touch.\n\n` +
-      `*Name:* ${name}\n` +
-      `*Email:* ${email}\n` +
-      (url ? `*Website:* ${url}\n` : "") +
-      `*Need:* ${need}\n` +
-      (message ? `*Details:* ${message}` : "");
-
-    const topicFromNeed = need.toLowerCase().includes("weupsell")
-      ? "WeUpsell"
-      : need.toLowerCase().includes("store")
-        ? "store development"
-        : "custom apps";
-
-    setWaTopic(topicFromNeed);
-    setWaMessageOverride(text);
-    setWaPopupOpen(true);
-    setSubmitted(true);
+  const openChatbot = () => {
+    window.dispatchEvent(
+      new CustomEvent("desti-chatbot-query", {
+        detail: {
+          query: "Hi",
+          hideUI: true,
+        },
+      }),
+    );
   };
 
   return (
     <section id="contact" ref={ref} className="relative py-12 md:py-20">
       <div className="mx-auto max-w-7xl px-4">
-        <div className="reveal">
-          <SectionHeader
-            label="Get in touch"
-            title={
-              <>
-                Ready to build <span className="italic">something great?</span>
-              </>
-            }
-            sub="Whether you need a custom Shopify app, AI automation, or a store built from scratch — let's talk. First call is free."
-          />
+        <div className="grid gap-8 lg:grid-cols-12 lg:items-start">
+          <div className="reveal lg:col-span-5">
+            <SectionHeader
+              label="Get in touch"
+              title={
+                <span className="md:whitespace-nowrap">
+                  Ready to build <span className="italic">something great?</span>
+                </span>
+              }
+              sub="Whether you need a custom Shopify app, AI automation, or a store built from scratch — let's talk. First call is free."
+            />
+
+            <div className="mt-6">
+              <button
+                type="button"
+                onClick={openChatbot}
+                className="inline-flex items-center rounded-lg border border-white/10 bg-foreground px-4 py-2 text-sm font-semibold text-background transition hover:opacity-95"
+              >
+                💬 Chat with us now
+              </button>
+            </div>
+          </div>
+
+          {/* AI preview removed per request */}
         </div>
 
-        <div className="mt-10 grid gap-5 lg:grid-cols-12">
-          <form
-            onSubmit={handleSubmit}
-            className="reveal relative overflow-hidden rounded-3xl border border-border bg-card p-7 md:p-10 lg:col-span-7 grain shadow-soft"
-          >
-            {submitted ? (
-              <div className="flex min-h-[420px] flex-col items-center justify-center text-center">
-                <div className="grid h-16 w-16 place-items-center rounded-full bg-[color:var(--lime)] text-2xl text-ink">
-                  ✓
+        <div className="mt-10 grid gap-8 lg:grid-cols-12 lg:items-start">
+          {/* Left: Prefer a direct chat */}
+          <div className="lg:col-span-5">
+            <div className="w-full overflow-hidden rounded-2xl border border-border bg-ink p-4 text-background grain">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 shrink-0" aria-hidden />
+                <div>
+                  <div className="font-mono text-xs uppercase tracking-widest text-lime">
+                    Prefer a direct chat?
+                  </div>
+                  <h4 className="mt-2 font-display text-xl font-semibold">Skip the form.</h4>
                 </div>
-                <h3 className="mt-5 font-display text-2xl font-semibold">Opening WhatsApp...</h3>
-                <p className="mt-2 max-w-sm text-sm text-muted-foreground">
-                  Your message is ready in a WhatsApp chat with our team. Hit send and we{"'"}ll
-                  reply within 24 hours.
-                </p>
+              </div>
+              <div className="mt-3 grid gap-2">
                 <a
                   href={`https://wa.me/${WHATSAPP_NUMBER}`}
                   target="_blank"
@@ -101,74 +91,46 @@ export function Contact() {
                     e.preventDefault();
                     openWaPopup("custom apps");
                   }}
-                  className="mt-5 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-semibold text-background hover:scale-[1.03] transition"
+                  className="w-full flex items-center justify-between rounded-full border border-white/10 bg-[rgba(255,255,255,0.03)] px-4 py-3 text-sm font-medium transition hover:bg-[rgba(255,255,255,0.06)]"
                 >
-                  Open WhatsApp again <span>↗</span>
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 shrink-0 inline-grid place-items-center rounded-lg bg-[rgba(0,0,0,0.04)]">
+                      💬
+                    </div>
+                    <div>
+                      <div className="font-display font-semibold">WhatsApp</div>
+                      <div className="text-sm text-muted-foreground">Message us on WhatsApp</div>
+                    </div>
+                  </div>
+                  <span className="text-muted-foreground">↗</span>
+                </a>
+
+                <a
+                  href={CALENDLY_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-full flex items-center justify-between rounded-full border border-white/10 bg-[rgba(255,255,255,0.03)] px-4 py-3 text-sm font-medium transition hover:bg-[rgba(255,255,255,0.06)]"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 shrink-0 inline-grid place-items-center rounded-lg bg-[rgba(0,0,0,0.04)]">
+                      📅
+                    </div>
+                    <div>
+                      <div className="font-display font-semibold">
+                        Book a 30-min call on Calendly
+                      </div>
+                      <div className="text-sm text-muted-foreground">Schedule a meeting</div>
+                    </div>
+                  </div>
+                  <span className="text-muted-foreground">↗</span>
                 </a>
               </div>
-            ) : (
-              <div className="grid gap-5">
-                <div className="grid gap-5 md:grid-cols-2">
-                  <Field label="Your name *" name="name" required placeholder="Jane Doe" />
-                  <Field
-                    label="Your email *"
-                    name="email"
-                    type="email"
-                    required
-                    placeholder="jane@brand.com"
-                  />
-                </div>
-                <Field
-                  label="Your website or Shopify store URL"
-                  name="url"
-                  placeholder="https://yourstore.com"
-                />
+            </div>
+          </div>
 
-                <div>
-                  <label className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-                    What do you need help with?
-                  </label>
-                  <select
-                    name="need"
-                    defaultValue="Custom Shopify app development"
-                    className="mt-2 w-full appearance-none rounded-2xl border border-input bg-background px-4 py-3.5 text-sm text-foreground outline-none focus:border-ink focus:ring-2 focus:ring-[color:var(--lime)]/40"
-                  >
-                    <option>Custom Shopify app development</option>
-                    <option>AI automation or integration</option>
-                    <option>Shopify store development</option>
-                    <option>WeUpsell app setup or customisation</option>
-                    <option>Something else</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-                    Tell us more
-                  </label>
-                  <textarea
-                    name="message"
-                    rows={4}
-                    placeholder="Describe your project or challenge in a few sentences..."
-                    className="mt-2 w-full resize-none rounded-2xl border border-input bg-background px-4 py-3.5 text-sm outline-none placeholder:text-muted-foreground/60 focus:border-ink focus:ring-2 focus:ring-[color:var(--lime)]/40"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  data-cursor="send"
-                  className="mt-2 inline-flex w-fit items-center gap-2 rounded-full bg-ink px-6 py-3.5 text-sm font-semibold text-background transition hover:scale-[1.03]"
-                >
-                  Send message via WhatsApp <span>→</span>
-                </button>
-                <p className="text-xs text-muted-foreground">
-                  Your message will open directly in WhatsApp with our team.
-                </p>
-              </div>
-            )}
-          </form>
-
-          <aside className="lg:col-span-5">
-            <div className="reveal grid gap-4">
+          {/* Right: Info cards */}
+          <div className="lg:col-span-7">
+            <div className="flex flex-col gap-6">
               <Info
                 icon="📍"
                 title="Small team. Big results."
@@ -185,43 +147,12 @@ export function Contact() {
                 text="Your info is never shared or sold."
               />
             </div>
-
-            <div className="reveal mt-5 overflow-hidden rounded-3xl border border-border bg-ink p-6 text-background grain">
-              <div className="font-mono text-xs uppercase tracking-widest text-[color:var(--lime)]">
-                Prefer a direct chat?
-              </div>
-              <h4 className="mt-3 font-display text-2xl font-semibold">Skip the form.</h4>
-              <div className="mt-5 grid gap-2.5">
-                <a
-                  href={`https://wa.me/${WHATSAPP_NUMBER}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    openWaPopup("custom apps");
-                  }}
-                  className="flex items-center justify-between rounded-2xl border border-white/15 bg-white/5 px-4 py-3 text-sm font-medium transition hover:bg-white/10"
-                >
-                  <span>💬 WhatsApp</span>
-                  <span>↗</span>
-                </a>
-                <a
-                  href={CALENDLY_URL}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center justify-between rounded-2xl border border-white/15 bg-white/5 px-4 py-3 text-sm font-medium transition hover:bg-white/10"
-                >
-                  <span>📅 Book a 30-min call on Calendly</span>
-                  <span>↗</span>
-                </a>
-              </div>
-            </div>
-          </aside>
+          </div>
         </div>
       </div>
 
       {waPopupOpen ? (
-        <div className="fixed bottom-6 right-6 z-[9998] w-[290px] rounded-2xl border border-border bg-card p-4 shadow-pop">
+        <div className="fixed bottom-6 right-6 z-9998 w-72.5 rounded-2xl border border-border bg-card p-4 shadow-pop">
           <div className="mb-3 flex items-center gap-2.5">
             <div className="grid h-10 w-10 place-items-center rounded-full bg-lime text-sm font-semibold text-lime-foreground">
               D
@@ -240,8 +171,8 @@ export function Contact() {
             </button>
           </div>
 
-          <div className="mb-3 rounded-lg border-l-3 border-lime bg-[color:var(--lime)]/12 px-3 py-2 text-sm text-foreground">
-            {waMessage}
+          <div className="mb-3 rounded-lg border-l-3 border-lime bg-(--lime)/12 px-3 py-2 text-sm text-foreground">
+            {waDefaultMessage}
           </div>
 
           <label htmlFor="wa-topic" className="sr-only">
@@ -255,7 +186,6 @@ export function Contact() {
               if (e.target.value !== "other") {
                 setWaCustomTopic("");
               }
-              setWaMessageOverride(null);
             }}
             className="mb-3 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm text-foreground"
           >
@@ -288,46 +218,17 @@ export function Contact() {
   );
 }
 
-function Field({
-  label,
-  name,
-  type = "text",
-  required,
-  placeholder,
-}: {
-  label: string;
-  name: string;
-  type?: string;
-  required?: boolean;
-  placeholder?: string;
-}) {
-  return (
-    <div>
-      <label
-        htmlFor={name}
-        className="font-mono text-xs uppercase tracking-widest text-muted-foreground"
-      >
-        {label}
-      </label>
-      <input
-        id={name}
-        name={name}
-        type={type}
-        required={required}
-        placeholder={placeholder}
-        className="mt-2 w-full rounded-2xl border border-input bg-background px-4 py-3.5 text-sm outline-none placeholder:text-muted-foreground/60 focus:border-ink focus:ring-2 focus:ring-[color:var(--lime)]/40"
-      />
-    </div>
-  );
-}
-
 function Info({ icon, title, text }: { icon: string; title: string; text: string }) {
   return (
-    <div className="flex items-start gap-4 rounded-2xl border border-border bg-card p-5 hover-lift">
-      <span className="text-xl">{icon}</span>
-      <div>
-        <div className="font-display font-semibold">{title}</div>
-        <div className="text-sm text-muted-foreground">{text}</div>
+    <div className="w-full rounded-3xl bg-white border border-gray-100 shadow-sm p-6">
+      <div className="flex items-start gap-4">
+        <div className="shrink-0 inline-grid place-items-center w-12 h-12 rounded-lg bg-[rgba(0,0,0,0.03)] text-2xl">
+          {icon}
+        </div>
+        <div>
+          <div className="text-lg font-semibold text-ink mb-1">{title}</div>
+          <div className="text-sm text-muted-foreground">{text}</div>
+        </div>
       </div>
     </div>
   );

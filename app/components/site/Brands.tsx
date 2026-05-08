@@ -132,8 +132,6 @@ export function Brands() {
                       alt={b.name}
                       width={b.width}
                       height={b.height}
-                      quality={85}
-                      loading="lazy"
                       className={`relative z-10 object-contain ${b.logoClass}`}
                     />
                   </div>

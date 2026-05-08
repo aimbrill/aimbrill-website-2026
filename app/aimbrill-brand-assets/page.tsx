@@ -125,6 +125,8 @@ const apiVersion = "2025-01";`}
                 <Image
                   src="/images/aimbrill-wordmark-transparent.png"
                   alt="Aimbrill wordmark"
+                  width={320}
+                  height={120}
                   className="h-12 w-auto object-contain"
                 />
               </div>

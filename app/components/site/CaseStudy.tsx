@@ -20,7 +20,12 @@ export function CaseStudy() {
         <div className="reveal">
           <SectionHeader
             label="Featured Work"
-            title={<>How we helped a meal subscription brand automate their entire Shopify flow</>}
+            title={
+              <>
+                How we helped a meal subscription brand
+                <span className="block">automate their entire Shopify flow</span>
+              </>
+            }
           />
         </div>
 
@@ -35,7 +40,6 @@ export function CaseStudy() {
                 sizes="(max-width: 1024px) 100vw, 42vw"
                 width={1280}
                 height={960}
-                quality={85}
                 className="h-full w-full object-cover"
               />
               <div className="absolute inset-x-6 bottom-6 flex items-center gap-3 rounded-2xl border border-border bg-background/95 p-4 backdrop-blur shadow-soft">
