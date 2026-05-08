@@ -48,6 +48,11 @@ export function Footer({ privacyHref = "/privacy" }: FooterProps) {
                 </a>
               </li>
               <li>
+                <a href="/aimbrill-brand-assets" className="underline-grow">
+                  Brand Assets
+                </a>
+              </li>
+              <li>
                 <a href="#contact" className="underline-grow">
                   Contact
                 </a>
