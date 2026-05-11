@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { BrandAssetGenerator } from "@/components/site/BrandAssetGenerator";
 
 export const metadata: Metadata = {
   title: "Aimbrill Brand Assets",
@@ -33,6 +34,19 @@ export default function HiddenBrandAssetsPage() {
           Internal brand reference page for typography, colors, and logos (not linked in site
           navigation).
         </p>
+
+        {/* AI Brand Asset Generator */}
+        <div className="mt-12">
+          <BrandAssetGenerator />
+        </div>
+
+        {/* Static Brand Reference Sections */}
+        <div className="mt-12">
+          <h2 className="font-display text-2xl font-semibold md:text-3xl">Brand Reference</h2>
+          <p className="mt-2 text-sm text-muted-foreground md:text-base">
+            Below are Aimbrill&apos;s official brand guidelines and assets.
+          </p>
+        </div>
 
         <section className="mt-8 rounded-2xl border border-border bg-card p-5 shadow-soft md:p-6">
           <h2 className="font-display text-xl font-semibold md:text-2xl">Typography</h2>
