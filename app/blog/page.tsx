@@ -46,6 +46,8 @@ async function getBlogCards(): Promise<BlogCard[]> {
         const coverImage =
           slug === "klaviyo-for-ecommerce"
             ? "/images/shopify/brand-logos/blogs/main%20image/Klaviyo.png"
+            : slug === "what-is-shopify-agentic-storefronts"
+            ? "/images/shopify/brand-logos/blogs/main%20image/storefront.png"
             : undefined;
 
         return {
