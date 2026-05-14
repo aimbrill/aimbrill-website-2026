@@ -117,32 +117,30 @@ export default function ShopifyAgenticStorefrontsPage() {
 
           <h2 id="the-moment-everything-changed">The Moment Everything Changed: March 24, 2026</h2>
           <p>
-            On March 24, 2026, Shopify flipped a single switch — and overnight, the products of
-            over 5.6 million merchants became discoverable inside ChatGPT conversations. No app
-            install. No integration. No ad spend.
+            On March 24, 2026, Shopify flipped a single switch — and overnight, the products of over
+            5.6 million merchants became discoverable inside ChatGPT conversations. No app install.
+            No integration. No ad spend.
           </p>
           <p>
-            That same week, OpenAI upgraded ChatGPT's shopping experience for all users — free,
+            That same week, OpenAI upgraded ChatGPT&apos;s shopping experience for all users — free,
             Plus, and Pro — with faster results, visual browsing, and side-by-side product
             comparisons. The supply side (merchants) and the demand side (shoppers) both scaled at
             the exact same moment.
           </p>
           <p>
             Shopify President Harley Finkelstein called it{" "}
-            <em>"the transformation of a lifetime."</em>
+            <em>&quot;the transformation of a lifetime.&quot;</em>
           </p>
           <p>
             This is not a future prediction. This is what is live, right now, inside your Shopify
             admin.
           </p>
 
-          <h2 id="what-is-shopify-agentic-storefronts">
-            What Is Shopify Agentic Storefronts?
-          </h2>
+          <h2 id="what-is-shopify-agentic-storefronts">What Is Shopify Agentic Storefronts?</h2>
           <p>
             Agentic Storefronts is a native Shopify sales channel — sitting inside your admin under
-            Sales Channels — that connects your product catalog to the world's biggest AI platforms
-            simultaneously:
+            Sales Channels — that connects your product catalog to the world&apos;s biggest AI
+            platforms simultaneously:
           </p>
           <ul>
             <li>
@@ -163,50 +161,45 @@ export default function ShopifyAgenticStorefrontsPage() {
             </li>
           </ul>
           <p>
-            When someone asks any of these AI assistants for a product recommendation, Shopify's
-            Catalog feeds your listings directly into the response — your product title, price,
-            images, and a purchase link. One setup in your admin. All channels covered. No custom
-            integrations. No extra transaction fees beyond your standard Shopify processing rates.
+            When someone asks any of these AI assistants for a product recommendation,
+            Shopify&apos;s Catalog feeds your listings directly into the response — your product
+            title, price, images, and a purchase link. One setup in your admin. All channels
+            covered. No custom integrations. No extra transaction fees beyond your standard Shopify
+            processing rates.
           </p>
           <div className="guide-callout guide-callout-highlight">
             <p>
-              <em>"We're making every Shopify store agent-ready by default."</em>
+              <em>&quot;We&apos;re making every Shopify store agent-ready by default.&quot;</em>
             </p>
-            <p className="text-sm text-muted-foreground">
-              — Tobi Lütke, CEO, Shopify
-            </p>
+            <p className="text-sm text-muted-foreground">— Tobi Lütke, CEO, Shopify</p>
           </div>
 
-          <h2 id="brands-already-selling">
-            The Brands Already Selling Inside AI Conversations
-          </h2>
+          <h2 id="brands-already-selling">The Brands Already Selling Inside AI Conversations</h2>
           <p>
-            This isn't theoretical. Some of the biggest DTC names on Shopify were already live
+            This isn&apos;t theoretical. Some of the biggest DTC names on Shopify were already live
             before the full rollout:
           </p>
           <p>
-            <strong>
-              Glossier, SKIMS, Spanx, Vuori, Away, Stanley 1913, and Steve Madden
-            </strong>{" "}
+            <strong>Glossier, SKIMS, Spanx, Vuori, Away, Stanley 1913, and Steve Madden</strong>{" "}
             were among the initial brand partners when OpenAI and Shopify announced their
             partnership in September 2025.
           </p>
           <p>
             <strong>KEEN Footwear</strong> was one of the first brands to go live with Copilot
-            Checkout — Microsoft's in-conversation purchase experience. Sam Buckingham, Director of
-            Global Digital Product at KEEN, said:
+            Checkout — Microsoft&apos;s in-conversation purchase experience. Sam Buckingham,
+            Director of Global Digital Product at KEEN, said:
           </p>
           <div className="guide-callout guide-callout-quote">
             <p>
-              "We're excited to partner with Shopify as innovators in AI-driven commerce, which we
-              believe represents the future of how people shop. As one of the first Shopify brands
-              to use Copilot Checkout, we're proud to help lead the industry in defining this new
-              sales channel."
+              &quot;We&apos;re excited to partner with Shopify as innovators in AI-driven commerce,
+              which we believe represents the future of how people shop. As one of the first Shopify
+              brands to use Copilot Checkout, we&apos;re proud to help lead the industry in defining
+              this new sales channel.&quot;
             </p>
           </div>
           <p>
-            <strong>Pura Vida</strong> is also live on Copilot Checkout, reaching customers
-            directly inside Microsoft's AI ecosystem.
+            <strong>Pura Vida</strong> is also live on Copilot Checkout, reaching customers directly
+            inside Microsoft&apos;s AI ecosystem.
           </p>
           <p>
             <strong>Monos, Gymshark, and Everlane</strong> are preparing to sell inside Google AI
@@ -215,10 +208,10 @@ export default function ShopifyAgenticStorefrontsPage() {
           </p>
           <div className="guide-callout guide-callout-quote">
             <p>
-              "At Monos, we're excited about agentic shopping because it enables us to meet
-              customers where they already are. It's a new way for our story and product details to
-              show up at the exact moment someone is asking real questions with real intent, in a
-              format that feels helpful, not intrusive."
+              &quot;At Monos, we&apos;re excited about agentic shopping because it enables us to
+              meet customers where they already are. It&apos;s a new way for our story and product
+              details to show up at the exact moment someone is asking real questions with real
+              intent, in a format that feels helpful, not intrusive.&quot;
             </p>
           </div>
           <p>
@@ -243,16 +236,16 @@ export default function ShopifyAgenticStorefrontsPage() {
           <p>
             ACP, co-developed by OpenAI and Stripe, powers the ChatGPT integration. A customer asks
             ChatGPT for a product, your listing surfaces, they click through, and complete the
-            purchase on your Shopify store via an in-app browser. Payment processes via Stripe —
-            the AI agent never sees the customer's card details.
+            purchase on your Shopify store via an in-app browser. Payment processes via Stripe — the
+            AI agent never sees the customer&apos;s card details.
           </p>
 
           <h3 id="ucp-protocol">UCP — Universal Commerce Protocol</h3>
           <p>
-            UCP, co-developed by Google and Shopify and backed by Visa, Mastercard, Stripe,
-            Walmart, Target, and 20+ other partners, powers the Copilot and Google AI Mode
-            integrations. Unlike ACP, UCP supports direct checkout inside the AI conversation —
-            customers complete the full purchase without ever leaving the chat.
+            UCP, co-developed by Google and Shopify and backed by Visa, Mastercard, Stripe, Walmart,
+            Target, and 20+ other partners, powers the Copilot and Google AI Mode integrations.
+            Unlike ACP, UCP supports direct checkout inside the AI conversation — customers complete
+            the full purchase without ever leaving the chat.
           </p>
           <p>
             You toggle channels on or off in your Shopify Admin. Shopify handles both protocols
@@ -304,13 +297,13 @@ export default function ShopifyAgenticStorefrontsPage() {
 
           <h2 id="agentic-dashboard">What the Agentic Dashboard Shows You</h2>
           <p>
-            If you open Shopify Admin and go to Sales Channels → Agentic, here is what each
-            section means:
+            If you open Shopify Admin and go to Sales Channels → Agentic, here is what each section
+            means:
           </p>
           <ul>
             <li>
-              <strong>"Agentic Storefronts are active"</strong> — Your products are live and being
-              syndicated. The green dot matters.
+              <strong>&quot;Agentic Storefronts are active&quot;</strong> — Your products are live
+              and being syndicated. The green dot matters.
             </li>
             <li>
               <strong>Traffic counter</strong> — How many customers AI agents sent your way in the
@@ -322,17 +315,17 @@ export default function ShopifyAgenticStorefrontsPage() {
               channel is working.
             </li>
             <li>
-              <strong>"Your products are synced"</strong> — Confirms how many of your SKUs are live
-              inside Shopify Catalog and available to AI channels.
+              <strong>&quot;Your products are synced&quot;</strong> — Confirms how many of your SKUs
+              are live inside Shopify Catalog and available to AI channels.
             </li>
             <li>
-              <strong>"Your policies are up-to-date"</strong> — AI channels check your return,
-              shipping, and privacy policies. Incomplete or non-compliant policies mean your
+              <strong>&quot;Your policies are up-to-date&quot;</strong> — AI channels check your
+              return, shipping, and privacy policies. Incomplete or non-compliant policies mean your
               products get deprioritised or excluded entirely.
             </li>
             <li>
-              <strong>"Allow Shopify to manage for me" toggle</strong> — One switch. Shopify
-              auto-optimises your presence across all current and future AI channels as they
+              <strong>&quot;Allow Shopify to manage for me&quot; toggle</strong> — One switch.
+              Shopify auto-optimises your presence across all current and future AI channels as they
               launch.
             </li>
             <li>
@@ -341,10 +334,10 @@ export default function ShopifyAgenticStorefrontsPage() {
               during the conversation — not just show a product card.
             </li>
             <li>
-              <strong>"Recent searches where your products appeared"</strong> — The most underrated
-              section in the entire dashboard. Shows the exact natural language queries real AI
-              users typed that surfaced your products. Free keyword intelligence for your entire
-              catalog.
+              <strong>&quot;Recent searches where your products appeared&quot;</strong> — The most
+              underrated section in the entire dashboard. Shows the exact natural language queries
+              real AI users typed that surfaced your products. Free keyword intelligence for your
+              entire catalog.
             </li>
           </ul>
 
@@ -381,8 +374,8 @@ export default function ShopifyAgenticStorefrontsPage() {
             Why Most Shopify Stores Are Still Invisible (And How to Fix That)
           </h2>
           <p>
-            Most stores that are live on Agentic Storefronts still don't show up in AI searches —
-            because their product data is not good enough for AI to confidently recommend them.
+            Most stores that are live on Agentic Storefronts still don&apos;t show up in AI searches
+            — because their product data is not good enough for AI to confidently recommend them.
             Here is why and what to do about it.
           </p>
 
@@ -393,11 +386,14 @@ export default function ShopifyAgenticStorefrontsPage() {
           </p>
           <ul>
             <li>
-              ❌ <em>"Premium Foot Trainer"</em>
+              ❌ <em>&quot;Premium Foot Trainer&quot;</em>
             </li>
             <li>
-              ✅ <em>"PT Pro Ultra Foot Trainer 5-in-1 — Plantar Fasciitis, Arch Support & Ankle
-                Stability"</em>
+              ✅{" "}
+              <em>
+                &quot;PT Pro Ultra Foot Trainer 5-in-1 — Plantar Fasciitis, Arch Support &amp; Ankle
+                Stability&quot;
+              </em>
             </li>
           </ul>
 
@@ -410,17 +406,18 @@ export default function ShopifyAgenticStorefrontsPage() {
           </p>
           <ul>
             <li>
-              ❌ <em>"Luxuriously soft premium cotton"</em>
+              ❌ <em>&quot;Luxuriously soft premium cotton&quot;</em>
             </li>
             <li>
-              ✅ <em>"100% GOTS certified organic cotton, 200 GSM, pre-washed for softness, machine
-                washable"</em>
+              ✅{" "}
+              <em>
+                &quot;100% GOTS certified organic cotton, 200 GSM, pre-washed for softness, machine
+                washable&quot;
+              </em>
             </li>
           </ul>
 
-          <h3 id="problem-3-variants">
-            Problem 3 — Variants listed as separate products
-          </h3>
+          <h3 id="problem-3-variants">Problem 3 — Variants listed as separate products</h3>
           <p>
             If the same shirt in five colours appears as five separate SKUs, an AI may not realise
             they are variants of one product. This creates duplicate noise and reduces
@@ -450,16 +447,16 @@ export default function ShopifyAgenticStorefrontsPage() {
           <h2 id="how-to-activate">How to Activate Agentic Storefronts: Step by Step</h2>
           <ol className="list-decimal pl-5 space-y-3">
             <li>
-              <strong>Step 1</strong> — Shopify Admin → Sales Channels → Agentic (left sidebar).
-              If it's not there yet: Settings → Sales Channels → Add Agentic Storefronts.
+              <strong>Step 1</strong> — Shopify Admin → Sales Channels → Agentic (left sidebar). If
+              it&apos;s not there yet: Settings → Sales Channels → Add Agentic Storefronts.
             </li>
             <li>
               <strong>Step 2</strong> — Toggle on each AI platform individually: ChatGPT, Microsoft
               Copilot, Google AI Mode.
             </li>
             <li>
-              <strong>Step 3</strong> — Enable "Allow Shopify to manage for me" so new channels are
-              added automatically as they launch.
+              <strong>Step 3</strong> — Enable &quot;Allow Shopify to manage for me&quot; so new
+              channels are added automatically as they launch.
             </li>
             <li>
               <strong>Step 4</strong> — Go to Sources → Shopify Knowledge Base → Install. Fill in
@@ -475,9 +472,9 @@ export default function ShopifyAgenticStorefrontsPage() {
               sure they are current and Shopify-compliant.
             </li>
             <li>
-              <strong>Step 7</strong> — Check "Recent searches where your products appeared" every
-              week. Use this data to rewrite underperforming product titles and descriptions to
-              match the natural language patterns real shoppers are using.
+              <strong>Step 7</strong> — Check &quot;Recent searches where your products
+              appeared&quot; every week. Use this data to rewrite underperforming product titles and
+              descriptions to match the natural language patterns real shoppers are using.
             </li>
           </ol>
 
@@ -522,10 +519,7 @@ export default function ShopifyAgenticStorefrontsPage() {
                 Gemini).
               </p>
             </GuideFaqItem>
-            <GuideFaqItem
-              value="faq-free"
-              question="Is Agentic Storefronts free to use?"
-            >
+            <GuideFaqItem value="faq-free" question="Is Agentic Storefronts free to use?">
               <p>
                 Activation and basic setup are free. ChatGPT charges 4% on completed sales (with a
                 30-day free trial). Microsoft Copilot, Google AI Mode, and Google Gemini charge no
@@ -538,8 +532,8 @@ export default function ShopifyAgenticStorefrontsPage() {
             >
               <p>
                 Yes. In your Shopify Admin, you can toggle each channel on or off individually.
-                Enable "Allow Shopify to manage for me" to automatically add new channels as they
-                launch.
+                Enable &quot;Allow Shopify to manage for me&quot; to automatically add new channels
+                as they launch.
               </p>
             </GuideFaqItem>
             <GuideFaqItem
@@ -572,10 +566,7 @@ export default function ShopifyAgenticStorefrontsPage() {
                 conversations and improves recommendation accuracy.
               </p>
             </GuideFaqItem>
-            <GuideFaqItem
-              value="faq-timeline"
-              question="How long does setup take?"
-            >
+            <GuideFaqItem value="faq-timeline" question="How long does setup take?">
               <p>
                 Basic activation takes 15 minutes. Auditing product data, setting up your Knowledge
                 Base, and optimizing for AI recommendations typically takes a few days to a week.

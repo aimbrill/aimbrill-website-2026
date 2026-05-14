@@ -39,7 +39,10 @@ export const SHOPIFY_AGENTIC_GUIDE_TOC: GuideTocItem[] = [
     label: "Why Most Shopify Stores Are Still Invisible (And How to Fix That)",
     children: [
       { id: "problem-1-vague-titles", label: "Problem 1 — Vague product titles" },
-      { id: "problem-2-marketing-copy", label: "Problem 2 — Marketing copy instead of specifications" },
+      {
+        id: "problem-2-marketing-copy",
+        label: "Problem 2 — Marketing copy instead of specifications",
+      },
       { id: "problem-3-variants", label: "Problem 3 — Variants listed as separate products" },
       { id: "problem-4-policies", label: "Problem 4 — Missing or outdated policies" },
       { id: "problem-5-reviews", label: "Problem 5 — Shallow reviews" },
