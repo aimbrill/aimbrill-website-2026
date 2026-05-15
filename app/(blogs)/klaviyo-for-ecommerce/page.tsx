@@ -191,7 +191,7 @@ export default function KlaviyoForEcommercePage() {
           </div>
 
           <GuideFigure
-            src="/images/shopify/brand-logos/blogs/Flows.png"
+            src="/images/shopify/blogs/Flows.png"
             alt="Klaviyo flow builder showing automation branches"
             width={1200}
             height={680}
@@ -268,7 +268,7 @@ export default function KlaviyoForEcommercePage() {
           </p>
 
           <GuideFigure
-            src="/images/shopify/brand-logos/blogs/segments.png"
+            src="/images/shopify/blogs/segments.png"
             alt="Klaviyo Lists and Segments dashboard"
             width={1200}
             height={680}
@@ -330,7 +330,7 @@ export default function KlaviyoForEcommercePage() {
             promotions, product launches, and seasonal moments.
           </p>
           <GuideFigure
-            src="/images/shopify/brand-logos/blogs/Campaigns.png"
+            src="/images/shopify/blogs/Campaigns.png"
             alt="Klaviyo Campaigns view with campaign list, filters, open and click rates, and revenue attribution"
             width={1797}
             height={875}
@@ -473,7 +473,7 @@ export default function KlaviyoForEcommercePage() {
 
           <div className="dashboard-image my-6">
             <Image
-              src="/images/shopify/brand-logos/blogs/dashboard.png"
+              src="/images/shopify/blogs/dashboard.png"
               alt="Klaviyo dashboard showing business performance metrics"
               width={1200}
               height={680}

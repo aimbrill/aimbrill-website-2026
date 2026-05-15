@@ -45,9 +45,9 @@ async function getBlogCards(): Promise<BlogCard[]> {
         const publishedAt = cleanQuoted(source.match(/const PUBLISHED_DISPLAY = "([^"]+)"/)?.[1]);
         const coverImage =
           slug === "klaviyo-for-ecommerce"
-            ? "/images/shopify/brand-logos/blogs/main%20image/Klaviyo.png"
+            ? "/images/shopify/blogs/main%20image/Klaviyo.png"
             : slug === "what-is-shopify-agentic-storefronts"
-              ? "/images/shopify/brand-logos/blogs/main%20image/storefront.png"
+              ? "/images/shopify/blogs/main%20image/storefront.png"
               : undefined;
 
         return {

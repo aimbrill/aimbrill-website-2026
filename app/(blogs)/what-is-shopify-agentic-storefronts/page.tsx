@@ -226,7 +226,7 @@ export default function ShopifyAgenticStorefrontsPage() {
           </p>
 
           <GuideFigure
-            src="/images/shopify/brand-logos/blogs/storefront5.png"
+            src="/images/shopify/blogs/storefront5.png"
             alt="ACP and UCP protocols diagram"
             width={1200}
             height={680}
@@ -342,7 +342,7 @@ export default function ShopifyAgenticStorefrontsPage() {
           </ul>
 
           <GuideFigure
-            src="/images/shopify/brand-logos/blogs/storefront1.png"
+            src="/images/shopify/blogs/storefront1.png"
             alt="Shopify Agentic Dashboard interface"
             width={1200}
             height={680}
@@ -498,7 +498,7 @@ export default function ShopifyAgenticStorefrontsPage() {
           </p>
 
           <GuideFigure
-            src="/images/shopify/brand-logos/blogs/storefront4.png"
+            src="/images/shopify/blogs/storefront4.png"
             alt="AI shopping journey visualization"
             width={1200}
             height={680}
