@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { apps } from "./Apps";
+import { useEffect, useRef, useState } from "react";
 
 const CALENDLY_URL = "https://calendly.com/weupsell-experts/ai-campaign-popup";
 
@@ -12,6 +13,8 @@ const links = [
   { href: "/#contact", label: "Contact" },
 ];
 
+// Note: app list imported from Apps.tsx
+
 function navLinkActive(currentHash: string, href: string) {
   const hashFromHref = href.includes("#") ? href.slice(href.indexOf("#")) : "";
   return currentHash === hashFromHref;
@@ -20,7 +23,9 @@ function navLinkActive(currentHash: string, href: string) {
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [appsOpen, setAppsOpen] = useState(false);
   const [hash, setHash] = useState("");
+  const appsRef = useRef<HTMLLIElement | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -31,6 +36,19 @@ export function Navbar() {
       window.removeEventListener("scroll", onScroll);
     };
   }, []);
+
+  // Close apps dropdown when clicking outside
+  useEffect(() => {
+    function onDocClick(e: MouseEvent) {
+      if (!appsOpen) return;
+      const target = e.target as Node;
+      if (appsRef.current && !appsRef.current.contains(target)) {
+        setAppsOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", onDocClick);
+    return () => document.removeEventListener("mousedown", onDocClick);
+  }, [appsOpen]);
 
   useEffect(() => {
     const read = () => setHash(window.location.hash);
@@ -44,6 +62,10 @@ export function Navbar() {
     (scrolled
       ? "bg-background/95 shadow-[0_12px_40px_-12px_rgba(15,15,15,0.2)] backdrop-blur-xl"
       : "bg-background/90 backdrop-blur-md");
+
+  const appsDropdownClass = appsOpen
+    ? "opacity-100 pointer-events-auto"
+    : "opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto";
 
   return (
     <header
@@ -70,10 +92,10 @@ export function Navbar() {
             <Image
               src="/images/aimbrill-wordmark-transparent.png"
               alt="Aimbrill"
-              width={480}
-              height={120}
+              width={720}
+              height={180}
               priority
-              className="h-9 w-auto object-contain sm:h-10 md:h-11"
+              className="h-12 w-auto object-contain sm:h-14 md:h-16"
             />
           </Link>
 
@@ -84,11 +106,72 @@ export function Navbar() {
             <ul className="pointer-events-auto flex items-center gap-8 md:gap-10">
               {links.map((l) => {
                 const active = navLinkActive(hash, l.href);
+
+                // Render Apps item with a simple dropdown showing three app names
+                if (l.label === "Apps") {
+                  return (
+                    <li key={l.href} ref={appsRef} className="relative">
+                      <div className="group">
+                        <a
+                          href={l.href}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setAppsOpen((v) => !v);
+                          }}
+                          aria-haspopup="true"
+                          aria-expanded={appsOpen}
+                          className={`group text-[16px] transition-colors ${
+                            active
+                              ? "font-semibold text-ink"
+                              : "font-medium text-muted-foreground hover:text-ink"
+                          }`}
+                        >
+                          <span className="relative inline-block pb-1">
+                            {l.label}
+                            <span
+                              aria-hidden
+                              className={`absolute inset-x-0 bottom-0 h-0.5 rounded-full bg-[color:var(--lime)] transition-opacity ${active ? "opacity-100" : "opacity-0 group-hover:opacity-60"}`}
+                            />
+                          </span>
+                        </a>
+
+                        <div
+                          className={`absolute left-0 top-full z-20 mt-1 w-56 rounded-xl border border-border bg-background p-2 shadow-lg transition-opacity duration-150 ${appsDropdownClass}`}
+                        >
+                          <ul className="space-y-1">
+                            {apps.map((a) => (
+                              <li key={a.name}>
+                                <a
+                                  href={a.href}
+                                  title={a.full}
+                                  target={a.href.startsWith("http") ? "_blank" : undefined}
+                                  rel={a.href.startsWith("http") ? "noreferrer" : undefined}
+                                  className="block rounded-md px-3 py-2 text-[15px] font-medium text-muted-foreground hover:bg-secondary hover:text-ink"
+                                >
+                                  <div className="flex items-center justify-between">
+                                    <span className="truncate">{a.full}</span>
+                                    <span
+                                      aria-hidden
+                                      className="ml-3 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-ink text-[11px] text-background"
+                                    >
+                                      {"↗"}
+                                    </span>
+                                  </div>
+                                </a>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </li>
+                  );
+                }
+
                 return (
                   <li key={l.href}>
                     <a
                       href={l.href}
-                      className={`text-sm transition-colors ${
+                      className={`group text-[16px] transition-colors ${
                         active
                           ? "font-semibold text-ink"
                           : "font-medium text-muted-foreground hover:text-ink"
@@ -99,7 +182,7 @@ export function Navbar() {
                         <span
                           aria-hidden
                           className={`absolute inset-x-0 bottom-0 h-0.5 rounded-full bg-[color:var(--lime)] transition-opacity ${
-                            active ? "opacity-100" : "opacity-0 hover:opacity-60"
+                            active ? "opacity-100" : "opacity-0 group-hover:opacity-60"
                           }`}
                         />
                       </span>
@@ -116,11 +199,11 @@ export function Navbar() {
               target="_blank"
               rel="noreferrer"
               data-cursor="let's talk"
-              className="group hidden items-center gap-2 rounded-full bg-[color:var(--lime)] px-4 py-2 text-sm font-semibold text-ink shadow-[0_1px_0_rgba(255,255,255,0.35)_inset] transition-transform hover:scale-[1.03] md:inline-flex md:px-5"
+              className="group hidden items-center gap-3 rounded-full bg-[color:var(--lime)] px-5 py-2.5 text-[16px] font-semibold text-ink shadow-[0_1px_0_rgba(255,255,255,0.35)_inset] transition-transform hover:scale-[1.03] md:inline-flex md:px-6"
             >
               <span>Book a free call</span>
               <span
-                className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-ink text-[11px] text-background transition-transform group-hover:rotate-45"
+                className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-ink text-[11px] text-background transition-transform group-hover:rotate-45"
                 aria-hidden
               >
                 ↗
@@ -151,12 +234,50 @@ export function Navbar() {
             <nav className="p-2" aria-label="Mobile">
               {links.map((l) => {
                 const active = navLinkActive(hash, l.href);
+
+                if (l.label === "Apps") {
+                  return (
+                    <div key={l.href} className="px-2">
+                      <a
+                        href={l.href}
+                        onClick={() => setOpen(false)}
+                        className={`flex items-center justify-between rounded-xl px-4 py-3.5 text-[16px] transition-colors hover:bg-secondary ${
+                          active ? "font-semibold text-ink" : "font-medium text-muted-foreground"
+                        }`}
+                      >
+                        {l.label}
+                      </a>
+
+                      <div className="mt-1 space-y-1">
+                        {apps.map((a) => (
+                          <a
+                            key={a.name}
+                            href={a.href}
+                            title={a.full}
+                            target={a.href.startsWith("http") ? "_blank" : undefined}
+                            rel={a.href.startsWith("http") ? "noreferrer" : undefined}
+                            onClick={() => setOpen(false)}
+                            className="block rounded-xl px-4 py-3 text-[15px] font-medium text-muted-foreground hover:bg-secondary"
+                          >
+                            <div className="flex items-center justify-between">
+                              <span className="truncate">{a.full}</span>
+                              <span aria-hidden className="ml-3 text-[13px] text-muted-foreground">
+                                {"↗"}
+                              </span>
+                            </div>
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                }
+
                 return (
                   <a
                     key={l.href}
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    className={`flex items-center justify-between rounded-xl px-4 py-3.5 text-[15px] transition-colors hover:bg-secondary ${
+                    className={`flex items-center justify-between rounded-xl px-4 py-3.5 text-[16px] transition-colors hover:bg-secondary ${
                       active ? "font-semibold text-ink" : "font-medium text-muted-foreground"
                     }`}
                   >
@@ -169,7 +290,7 @@ export function Navbar() {
                 target="_blank"
                 rel="noreferrer"
                 onClick={() => setOpen(false)}
-                className="mx-2 mb-2 block rounded-xl bg-[color:var(--lime)] px-4 py-3.5 text-center text-sm font-semibold text-ink shadow-[0_1px_0_rgba(255,255,255,0.35)_inset]"
+                className="mx-2 mb-2 block rounded-xl bg-[color:var(--lime)] px-5 py-3.5 text-center text-[16px] font-semibold text-ink shadow-[0_1px_0_rgba(255,255,255,0.35)_inset]"
               >
                 Book a free call →
               </a>

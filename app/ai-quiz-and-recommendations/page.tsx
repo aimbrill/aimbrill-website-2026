@@ -46,7 +46,7 @@ export default function AiQuizAndRecommendationsPage() {
             </div>
 
             <div className="mt-10 max-w-4xl">
-              <h1 className="font-display text-4xl font-semibold leading-tight text-ink md:text-6xl">
+              <h1 className="font-display text-4xl font-semibold leading-tight text-ink md:text-[56px]">
                 AI Quiz & Product Recommendation
               </h1>
               <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground md:text-2xl md:leading-relaxed">
@@ -91,7 +91,7 @@ export default function AiQuizAndRecommendationsPage() {
             <div className="mt-6 flex flex-wrap gap-3">
               <a
                 href="mailto:admin@aimbrill.com?subject=AI%20Quiz%20Waitlist"
-                className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-background transition hover:scale-[1.03]"
+                className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-[16px] font-semibold text-background transition hover:scale-[1.03]"
               >
                 Email us <span aria-hidden>→</span>
               </a>
@@ -99,7 +99,7 @@ export default function AiQuizAndRecommendationsPage() {
                 href="https://wa.me/917990488965"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-5 py-2.5 text-sm font-semibold text-ink transition hover:bg-surface-2"
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-5 py-2.5 text-[16px] font-semibold text-ink transition hover:bg-surface-2"
               >
                 WhatsApp <span aria-hidden>↗</span>
               </a>

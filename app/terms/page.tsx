@@ -69,7 +69,7 @@ export default function TermsPage() {
       <main className="min-h-screen bg-background px-4 py-12 text-foreground md:px-8 md:py-16">
         <div className="mx-auto max-w-4xl">
           <div className="rounded-3xl border border-border bg-surface p-6 grain md:p-10">
-            <h1 className="text-center font-display text-4xl font-semibold leading-tight md:text-6xl">
+            <h1 className="text-center font-display text-4xl font-semibold leading-tight md:text-[56px]">
               Terms and Conditions
             </h1>
             <p className="mx-auto mt-6 max-w-3xl text-center text-sm text-muted-foreground md:text-base">

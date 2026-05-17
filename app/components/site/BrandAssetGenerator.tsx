@@ -192,7 +192,7 @@ Format your response with clear headings for each section. Be specific with HEX 
               <div className="absolute top-3 right-3 z-10">
                 <button
                   onClick={() => copyToClipboard(fullPromptTemplate, true)}
-                  className="inline-flex items-center gap-2 rounded-lg bg-lime px-4 py-2 text-sm font-semibold text-lime-foreground shadow-lg hover:shadow-[0_0_15px_var(--lime)] transition-all"
+                  className="inline-flex items-center gap-2 rounded-lg bg-lime px-4 py-2 text-[16px] font-semibold text-lime-foreground shadow-lg hover:shadow-[0_0_15px_var(--lime)] transition-all"
                 >
                   <Copy className="h-4 w-4" />
                   {copiedFullPrompt ? "Copied!" : "Copy Full Prompt"}

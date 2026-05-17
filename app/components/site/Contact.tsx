@@ -59,7 +59,7 @@ export function Contact() {
               <button
                 type="button"
                 onClick={openChatbot}
-                className="inline-flex items-center rounded-lg border border-white/10 bg-foreground px-4 py-2 text-sm font-semibold text-background transition hover:opacity-95"
+                className="inline-flex items-center rounded-lg border border-white/10 bg-foreground px-4 py-2 text-[16px] font-semibold text-background transition hover:opacity-95"
               >
                 💬 Chat with us now
               </button>
@@ -91,7 +91,7 @@ export function Contact() {
                     e.preventDefault();
                     openWaPopup("custom apps");
                   }}
-                  className="w-full flex items-center justify-between rounded-full border border-white/10 bg-[rgba(255,255,255,0.03)] px-4 py-3 text-sm font-medium transition hover:bg-[rgba(255,255,255,0.06)]"
+                  className="w-full flex items-center justify-between rounded-full border border-white/10 bg-[rgba(255,255,255,0.03)] px-4 py-3 text-[16px] font-medium transition hover:bg-[rgba(255,255,255,0.06)]"
                 >
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 shrink-0 inline-grid place-items-center rounded-lg bg-[rgba(0,0,0,0.04)]">
@@ -109,7 +109,7 @@ export function Contact() {
                   href={CALENDLY_URL}
                   target="_blank"
                   rel="noreferrer"
-                  className="w-full flex items-center justify-between rounded-full border border-white/10 bg-[rgba(255,255,255,0.03)] px-4 py-3 text-sm font-medium transition hover:bg-[rgba(255,255,255,0.06)]"
+                  className="w-full flex items-center justify-between rounded-full border border-white/10 bg-[rgba(255,255,255,0.03)] px-4 py-3 text-[16px] font-medium transition hover:bg-[rgba(255,255,255,0.06)]"
                 >
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 shrink-0 inline-grid place-items-center rounded-lg bg-[rgba(0,0,0,0.04)]">
@@ -208,7 +208,7 @@ export function Contact() {
           <button
             type="button"
             onClick={openWhatsApp}
-            className="w-full rounded-lg bg-lime px-3 py-2.5 text-sm font-semibold text-lime-foreground"
+            className="w-full rounded-lg bg-lime px-3 py-2.5 text-[16px] font-semibold text-lime-foreground"
           >
             Chat on WhatsApp
           </button>

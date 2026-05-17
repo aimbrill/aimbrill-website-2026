@@ -47,7 +47,11 @@ export function Testimonials() {
                 Real founders. <span className="italic">Real results.</span>
               </>
             }
-            sub="Hear directly from the brands we've built with."
+            sub={
+              <p className="mt-4 max-w-2xl text-[16px] text-muted-foreground md:text-[16px]">
+                Hear directly from the brands we&apos;ve built with.
+              </p>
+            }
           />
         </div>
 

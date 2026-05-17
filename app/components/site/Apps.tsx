@@ -1,7 +1,7 @@
 import { SectionHeader } from "./Services";
 import { useReveal } from "@/hooks/use-reveal";
 
-const apps = [
+export const apps = [
   {
     name: "WeUpsell",
     full: "WeUpsell — AI Popup & Upsell Widgets",
@@ -101,7 +101,9 @@ function FeaturedApp({ app }: { app: (typeof apps)[number] }) {
           <h3 className="mt-2 font-display text-4xl font-semibold leading-tight md:text-5xl">
             {app.full}
           </h3>
-          <p className="mt-4 max-w-xl text-base text-muted-foreground md:text-lg">{app.desc}</p>
+          <p className="mt-4 max-w-xl text-[16px] text-muted-foreground md:text-[16px]">
+            {app.desc}
+          </p>
         </div>
 
         <div className="relative mt-2 overflow-hidden rounded-2xl border border-border bg-background p-5 shadow-soft">
@@ -126,7 +128,7 @@ function FeaturedApp({ app }: { app: (typeof apps)[number] }) {
             target="_blank"
             rel="noreferrer"
             data-cursor="install"
-            className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-semibold text-background transition hover:scale-[1.03]"
+            className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-[16px] font-semibold text-background transition hover:scale-[1.03]"
           >
             {app.cta} <span aria-hidden>→</span>
           </a>
@@ -182,7 +184,7 @@ function SmallApp({ app }: { app: (typeof apps)[number] }) {
       </div>
       <a
         href={app.href}
-        className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full border border-ink/20 bg-background px-4 py-3 text-sm font-semibold transition hover:bg-secondary sm:w-fit sm:justify-start sm:py-2.5"
+        className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full border border-ink/20 bg-background px-4 py-3 text-[16px] font-semibold transition hover:bg-secondary sm:w-fit sm:justify-start sm:py-2.5"
       >
         {app.cta} <span aria-hidden>→</span>
       </a>

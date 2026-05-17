@@ -111,7 +111,7 @@ export function Services() {
               <div className="relative mt-5">
                 <h3 className="font-display text-2xl font-semibold leading-tight">{s.title}</h3>
                 <p className="mt-3 text-sm text-muted-foreground">{s.desc}</p>
-                <div className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-ink opacity-0 transition-all -translate-x-1 group-hover:translate-x-0 group-hover:opacity-100">
+                <div className="mt-6 inline-flex items-center gap-2 text-[16px] font-medium text-ink opacity-0 transition-all -translate-x-1 group-hover:translate-x-0 group-hover:opacity-100">
                   Learn more <span>→</span>
                 </div>
               </div>
@@ -130,7 +130,7 @@ export function SectionHeader({
 }: {
   label: string;
   title: ReactNode;
-  sub?: string;
+  sub?: ReactNode;
 }) {
   return (
     <div>
@@ -138,10 +138,15 @@ export function SectionHeader({
         <span className="h-px w-10 bg-ink" />
         <span className="font-mono text-xs uppercase tracking-[0.25em] text-ink">{label}</span>
       </div>
-      <h2 className="mt-5 max-w-3xl font-display text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl">
+      <h2 className="mt-5 max-w-3xl font-display text-4xl font-semibold leading-[1.05] tracking-tight md:text-[56px]">
         {title}
       </h2>
-      {sub && <p className="mt-4 max-w-2xl text-base text-muted-foreground md:text-lg">{sub}</p>}
+      {sub &&
+        (typeof sub === "string" ? (
+          <p className="mt-4 max-w-2xl text-[16px] text-muted-foreground md:text-[16px]">{sub}</p>
+        ) : (
+          sub
+        ))}
     </div>
   );
 }

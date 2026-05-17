@@ -95,7 +95,7 @@ export function CaseStudy() {
                 href={CALENDLY_URL}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-semibold text-background hover:scale-[1.03] transition"
+                className="mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-[16px] font-semibold text-background hover:scale-[1.03] transition"
               >
                 Have a similar challenge? Let{"'"}s talk. <span>→</span>
               </a>

@@ -89,7 +89,7 @@
 
   html {
     scroll-behavior: smooth;
-    font-size: 15px;
+    font-size: 16px;
   }
 
   body {
@@ -130,10 +130,12 @@
 
   .font-sans {
     font-family: var(--font-sans);
+    font-size: 16px !important;
   }
 
   .font-mono {
     font-family: var(--font-mono);
+    font-size: 12px !important;
   }
 
   .text-lime {

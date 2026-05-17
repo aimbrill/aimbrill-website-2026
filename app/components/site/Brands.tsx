@@ -86,7 +86,7 @@ export function Brands() {
               </span>{" "}
               to think <span className="font-serif italic">bigger.</span>
             </h2>
-            <p className="mt-5 max-w-md text-base text-muted-foreground">
+            <p className="mt-5 max-w-md text-[16px] text-muted-foreground">
               When these stores needed advanced Shopify solutions — custom apps, AI flows, complex
               integrations — they trusted us to deliver.
             </p>
