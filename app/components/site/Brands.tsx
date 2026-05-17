@@ -38,6 +38,13 @@ const brands = [
     height: 168,
   },
   {
+    name: "Rage Fitness",
+    logo: "/images/shopify/new_brand_logos/Rage_Fitness.png",
+    logoClass: "h-28 w-auto",
+    width: 360,
+    height: 144,
+  },
+  {
     name: "Theloffy",
     logo: "/images/shopify/new_brand_logos/Theloffy.png",
     logoClass: "h-20 w-auto",
@@ -93,15 +100,12 @@ export function Brands() {
           <div className="lg:col-span-7">
             <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 sm:gap-4">
               {brands.map((b, i) => {
-                // Variations: some bigger, some lime, some ink
-                const variant =
-                  i === 0
-                    ? "col-span-2 row-span-1 bg-card"
-                    : i === 4
-                      ? "col-span-2 bg-[color:var(--lime)]/30"
-                      : i === 7
-                        ? "bg-ink/[0.04]"
-                        : "bg-card";
+                let variant = "bg-card";
+                if (i === 0) {
+                  variant = "col-span-2 row-span-1 bg-card";
+                } else if (i === 4) {
+                  variant = "col-span-2 bg-card";
+                }
                 return (
                   <div
                     key={b.name}

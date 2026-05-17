@@ -1,6 +1,6 @@
 import { useReveal } from "@/hooks/use-reveal";
 
-const CALENDLY_URL = "https://calendly.com/weupsell-experts/ai-campaign-popup";
+const CALENDLY_URL = "/#apps";
 
 export function Hero() {
   const ref = useReveal<HTMLDivElement>();
@@ -18,15 +18,7 @@ export function Hero() {
         </div>
 
         <h1 className="reveal mt-6 max-w-4xl font-display text-5xl font-semibold leading-[1.02] tracking-tight md:text-7xl lg:text-[4.5rem]">
-          We build{" "}
-          <span className="relative inline-block">
-            <span className="relative z-10">Shopify apps</span>
-            <span
-              aria-hidden
-              className="absolute inset-x-0 bottom-1 -z-0 h-3 bg-[color:var(--lime)] md:h-4"
-            />
-          </span>
-          , <span className="italic">AI tools</span> & custom storefronts for fast-growing brands
+          We build AI automation, smart apps & solutions for D2C brands.
         </h1>
 
         <p className="reveal mt-6 max-w-2xl text-lg text-muted-foreground md:text-xl">
@@ -37,12 +29,10 @@ export function Hero() {
         <div className="reveal mt-8 flex flex-wrap items-center justify-center gap-3">
           <a
             href={CALENDLY_URL}
-            target="_blank"
-            rel="noreferrer"
-            data-cursor="book"
+            data-cursor="view-apps"
             className="group inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3.5 text-sm font-semibold text-background transition hover:scale-[1.03]"
           >
-            Book a free call
+            View our apps
             <span aria-hidden className="transition-transform group-hover:translate-x-1">
               →
             </span>

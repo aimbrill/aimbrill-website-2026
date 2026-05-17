@@ -27,8 +27,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://aimbrill.com"),
   title: "Aimbrill - Shopify App Development & AI Automation Studio",
-  description:
-    "We build custom Shopify apps, AI automation tools, and e-commerce solutions for growing brands. Book a free call today.",
+  description: "We build AI automation, smart apps & solutions for D2C brands.",
   alternates: {
     canonical: "/",
   },
@@ -46,8 +45,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Aimbrill" }],
   openGraph: {
     title: "Aimbrill - Shopify App Development & AI Automation Studio",
-    description:
-      "Custom Shopify apps, AI automation, and conversion-optimised stores for growing e-commerce brands.",
+    description: "We build AI automation, smart apps & solutions for D2C brands.",
     url: "https://aimbrill.com",
     siteName: "Aimbrill",
     type: "website",
@@ -63,8 +61,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Aimbrill - Shopify App Development & AI Automation Studio",
-    description:
-      "Custom Shopify apps, AI automation, and conversion-optimised stores for growing e-commerce brands.",
+    description: "We build AI automation, smart apps & solutions for D2C brands.",
     images: ["/images/aimbrill-logo.png"],
   },
   icons: {
