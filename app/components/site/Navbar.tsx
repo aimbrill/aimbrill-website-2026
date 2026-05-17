@@ -58,7 +58,7 @@ export function Navbar() {
   }, []);
 
   const barSurface =
-    "relative flex min-h-[3.25rem] w-full items-center justify-between gap-3 rounded-2xl px-4 py-2.5 transition-all duration-300 sm:min-h-[3.5rem] sm:rounded-3xl sm:px-6 sm:py-3 md:px-7 " +
+    "relative flex min-h-[2.75rem] w-full items-center justify-between gap-3 rounded-2xl px-4 py-2 transition-all duration-300 sm:min-h-[3rem] sm:rounded-3xl sm:px-6 sm:py-2.5 md:px-7 " +
     (scrolled
       ? "bg-background/95 shadow-[0_12px_40px_-12px_rgba(15,15,15,0.2)] backdrop-blur-xl"
       : "bg-background/90 backdrop-blur-md");
@@ -69,7 +69,7 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${scrolled ? "py-2" : "py-3"}`}
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${scrolled ? "py-1" : "py-2"}`}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-5">
         {/* Single floating bar — logo | nav (centered) | CTA / menu */}
@@ -95,7 +95,7 @@ export function Navbar() {
               width={720}
               height={180}
               priority
-              className="h-12 w-auto object-contain sm:h-14 md:h-16"
+              className="h-10 w-auto object-contain sm:h-12 md:h-14"
             />
           </Link>
 
