@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Reference sitemap
+Sitemap: https://aimbrill.com/sitemap.xml

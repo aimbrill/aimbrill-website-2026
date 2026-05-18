@@ -130,7 +130,7 @@ export function Navbar() {
                             {l.label}
                             <span
                               aria-hidden
-                              className={`absolute inset-x-0 bottom-0 h-0.5 rounded-full bg-[color:var(--lime)] transition-opacity ${active ? "opacity-100" : "opacity-0 group-hover:opacity-60"}`}
+                              className={`absolute inset-x-0 bottom-0 h-0.5 rounded-full bg-lime transition-opacity ${active ? "opacity-100" : "opacity-0 group-hover:opacity-60"}`}
                             />
                           </span>
                         </a>
@@ -142,10 +142,14 @@ export function Navbar() {
                             {apps.map((a) => (
                               <li key={a.name}>
                                 <a
-                                  href={a.href}
+                                  href={a.slug ? `/${a.slug}` : a.href}
                                   title={a.full}
-                                  target={a.href.startsWith("http") ? "_blank" : undefined}
-                                  rel={a.href.startsWith("http") ? "noreferrer" : undefined}
+                                  target={
+                                    a.slug || !a.href.startsWith("http") ? undefined : "_blank"
+                                  }
+                                  rel={
+                                    a.slug || !a.href.startsWith("http") ? undefined : "noreferrer"
+                                  }
                                   className="block rounded-md px-3 py-2 text-[15px] font-medium text-muted-foreground hover:bg-secondary hover:text-ink"
                                 >
                                   <div className="flex items-center justify-between">
@@ -181,7 +185,7 @@ export function Navbar() {
                         {l.label}
                         <span
                           aria-hidden
-                          className={`absolute inset-x-0 bottom-0 h-0.5 rounded-full bg-[color:var(--lime)] transition-opacity ${
+                          className={`absolute inset-x-0 bottom-0 h-0.5 rounded-full bg-lime transition-opacity ${
                             active ? "opacity-100" : "opacity-0 group-hover:opacity-60"
                           }`}
                         />
@@ -199,7 +203,7 @@ export function Navbar() {
               target="_blank"
               rel="noreferrer"
               data-cursor="let's talk"
-              className="group hidden items-center gap-3 rounded-full bg-[color:var(--lime)] px-5 py-2.5 text-[16px] font-semibold text-ink shadow-[0_1px_0_rgba(255,255,255,0.35)_inset] transition-transform hover:scale-[1.03] md:inline-flex md:px-6"
+              className="group hidden items-center gap-3 rounded-full bg-lime px-5 py-2.5 text-[16px] font-semibold text-ink shadow-[0_1px_0_rgba(255,255,255,0.35)_inset] transition-transform hover:scale-[1.03] md:inline-flex md:px-6"
             >
               <span>Book a free call</span>
               <span
@@ -219,10 +223,10 @@ export function Navbar() {
             >
               <div className="flex h-3.5 w-4 flex-col justify-center gap-1.5">
                 <span
-                  className={`block h-0.5 w-full rounded-full bg-ink transition ${open ? "translate-y-[5px] rotate-45" : ""}`}
+                  className={`block h-0.5 w-full rounded-full bg-ink transition ${open ? "translate-y-1.25 rotate-45" : ""}`}
                 />
                 <span
-                  className={`block h-0.5 w-full rounded-full bg-ink transition ${open ? "-translate-y-[5px] -rotate-45" : ""}`}
+                  className={`block h-0.5 w-full rounded-full bg-ink transition ${open ? "-translate-y-1.25 -rotate-45" : ""}`}
                 />
               </div>
             </button>
@@ -252,10 +256,10 @@ export function Navbar() {
                         {apps.map((a) => (
                           <a
                             key={a.name}
-                            href={a.href}
+                            href={a.slug ? `/${a.slug}` : a.href}
                             title={a.full}
-                            target={a.href.startsWith("http") ? "_blank" : undefined}
-                            rel={a.href.startsWith("http") ? "noreferrer" : undefined}
+                            target={a.slug || !a.href.startsWith("http") ? undefined : "_blank"}
+                            rel={a.slug || !a.href.startsWith("http") ? undefined : "noreferrer"}
                             onClick={() => setOpen(false)}
                             className="block rounded-xl px-4 py-3 text-[15px] font-medium text-muted-foreground hover:bg-secondary"
                           >
@@ -290,7 +294,7 @@ export function Navbar() {
                 target="_blank"
                 rel="noreferrer"
                 onClick={() => setOpen(false)}
-                className="mx-2 mb-2 block rounded-xl bg-[color:var(--lime)] px-5 py-3.5 text-center text-[16px] font-semibold text-ink shadow-[0_1px_0_rgba(255,255,255,0.35)_inset]"
+                className="mx-2 mb-2 block rounded-xl bg-lime px-5 py-3.5 text-center text-[16px] font-semibold text-ink shadow-[0_1px_0_rgba(255,255,255,0.35)_inset]"
               >
                 Book a free call →
               </a>

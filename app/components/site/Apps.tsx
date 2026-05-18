@@ -5,6 +5,7 @@ export const apps = [
   {
     name: "WeUpsell",
     full: "WeUpsell — AI Popup & Upsell Widgets",
+    slug: "weupsell-ai-popup-upsell",
     status: "live" as const,
     statusLabel: "Live on Shopify App Store",
     desc: "AI-powered popups and upsell widgets that show the right offer to the right customer at the right time. No manual rules. Just results.",
@@ -15,6 +16,7 @@ export const apps = [
   {
     name: "AI Quiz",
     full: "AI Quiz & Product Recommendation",
+    slug: "ai-quiz-and-recommendations",
     status: "soon" as const,
     statusLabel: "Coming Soon",
     desc: "Help shoppers find exactly what they need with an AI-powered quiz that recommends the perfect product. Built for fashion, beauty, food, and supplement brands.",
@@ -24,6 +26,7 @@ export const apps = [
   {
     name: "Meal Flow",
     full: "Meal Flow Automation",
+    slug: "meal-subscription-flow",
     status: "soon" as const,
     statusLabel: "Coming Soon",
     desc: "End-to-end meal subscription automation for Shopify — ZIP code restrictions, box builder, and delivery sync. All in one app.",
@@ -67,7 +70,7 @@ function StatusPill({ status, label }: { status: "live" | "soon"; label: string 
     <span
       className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium ${
         status === "live"
-          ? "border-ink/20 bg-[color:var(--lime)] text-ink"
+          ? "border-ink/20 bg-lime text-ink"
           : "border-border bg-surface-2 text-muted-foreground"
       }`}
     >
@@ -84,7 +87,7 @@ function FeaturedApp({ app }: { app: (typeof apps)[number] }) {
     <article className="reveal group relative w-full overflow-hidden rounded-3xl border border-border bg-card p-7 md:p-10 lg:col-span-7 grain hover-lift">
       <div
         aria-hidden
-        className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-[color:var(--lime)] opacity-50 blur-3xl"
+        className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-lime opacity-50 blur-3xl"
       />
       <div className="relative flex flex-col gap-6">
         <div className="flex flex-wrap items-center justify-between gap-3">
@@ -110,7 +113,7 @@ function FeaturedApp({ app }: { app: (typeof apps)[number] }) {
           <div className="flex items-center gap-1.5">
             <span className="h-2.5 w-2.5 rounded-full bg-destructive/70" />
             <span className="h-2.5 w-2.5 rounded-full bg-yellow-500/70" />
-            <span className="h-2.5 w-2.5 rounded-full bg-[color:var(--lime)]" />
+            <span className="h-2.5 w-2.5 rounded-full bg-lime" />
             <span className="ml-3 font-mono text-[11px] text-muted-foreground">
               weupsell.app/preview
             </span>
@@ -124,9 +127,9 @@ function FeaturedApp({ app }: { app: (typeof apps)[number] }) {
 
         <div>
           <a
-            href={app.href}
-            target="_blank"
-            rel="noreferrer"
+            href={app.slug ? `/${app.slug}` : app.href}
+            target={app.slug || !app.href.startsWith("http") ? undefined : "_blank"}
+            rel={app.slug || !app.href.startsWith("http") ? undefined : "noreferrer"}
             data-cursor="install"
             className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-[16px] font-semibold text-background transition hover:scale-[1.03]"
           >
@@ -151,7 +154,7 @@ function Stat({
 }) {
   return (
     <div
-      className={`rounded-xl border p-4 ${highlight ? "border-ink/15 bg-[color:var(--lime)]" : "border-border bg-surface"}`}
+      className={`rounded-xl border p-4 ${highlight ? "border-ink/15 bg-lime" : "border-border bg-surface"}`}
     >
       <div className={`text-xs ${highlight ? "text-ink/80" : "text-muted-foreground"}`}>
         {title}
@@ -183,7 +186,9 @@ function SmallApp({ app }: { app: (typeof apps)[number] }) {
         <p className="mt-3 text-base text-muted-foreground sm:text-sm">{app.desc}</p>
       </div>
       <a
-        href={app.href}
+        href={app.slug ? `/${app.slug}` : app.href}
+        target={app.slug || !app.href.startsWith("http") ? undefined : "_blank"}
+        rel={app.slug || !app.href.startsWith("http") ? undefined : "noreferrer"}
         className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full border border-ink/20 bg-background px-4 py-3 text-[16px] font-semibold transition hover:bg-secondary sm:w-fit sm:justify-start sm:py-2.5"
       >
         {app.cta} <span aria-hidden>→</span>

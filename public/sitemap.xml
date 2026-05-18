@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
+    // Core pages
     {
       url: "https://aimbrill.com",
       lastModified: new Date(),
@@ -15,11 +16,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.5,
     },
     {
-      url: "https://aimbrill.com/ai-quiz-and-recommendations/privacy",
+      url: "https://aimbrill.com/terms",
       lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 0.5,
     },
+    {
+      url: "https://aimbrill.com/aimbrill-brand-assets",
+      lastModified: new Date(),
+      changeFrequency: "yearly",
+      priority: 0.4,
+    },
+
+    // AI Quiz
     {
       url: "https://aimbrill.com/ai-quiz-and-recommendations",
       lastModified: new Date(),
@@ -27,16 +36,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: "https://aimbrill.com/ai-quiz-and-recommendations/privacy",
+      lastModified: new Date(),
+      changeFrequency: "yearly",
+      priority: 0.5,
+    },
+
+    // Apps
+    {
+      url: "https://aimbrill.com/weupsell-ai-popup-upsell",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: "https://aimbrill.com/meal-subscription-flow",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+
+    // Blog index + articles (kept at root slugs per site structure)
+    {
       url: "https://aimbrill.com/blog",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.8,
-    },
-    {
-      url: "https://aimbrill.com/terms",
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.5,
     },
     {
       url: "https://aimbrill.com/klaviyo-for-ecommerce",
