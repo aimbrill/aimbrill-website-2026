@@ -14,14 +14,34 @@ const nextConfig: NextConfig = {
     qualities: [75, 80, 85, 90],
     // Optimize SVG as well
     disableStaticImages: false,
-    // Remote image domains (add if needed)
-    domains: [],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "picsum.photos",
+        pathname: "/**",
+      },
+    ],
   },
   async redirects() {
     return [
       {
         source: "/pages/klaviyo-for-ecommerce",
         destination: "/klaviyo-for-ecommerce",
+        permanent: true,
+      },
+      {
+        source: "/try-meal-flow",
+        destination: "/meal-subscription-flow/try-meal-flow",
+        permanent: true,
+      },
+      {
+        source: "/try-meal-flow/:path*",
+        destination: "/meal-subscription-flow/try-meal-flow/:path*",
         permanent: true,
       },
     ];

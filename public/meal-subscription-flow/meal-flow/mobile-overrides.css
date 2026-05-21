@@ -1,0 +1,370 @@
+/**
+ * Meal flow — mobile / embedded fixes (loaded after Tailwind bundle).
+ * Targets the built Vite app without editing hashed assets.
+ */
+
+@supports (height: 100dvh) {
+  .h-screen {
+    height: 100dvh !important;
+  }
+  .min-h-screen {
+    min-height: 100dvh !important;
+  }
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+html,
+body {
+  margin: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* Landing: full-width feel, less vertical centering, tighter stack (mobile / tablet) */
+@media (max-width: 63.9375rem) {
+  .h-full.flex.items-center.justify-center.bg-dots-pattern {
+    align-items: flex-start !important;
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+    padding-top: 0.75rem !important;
+    padding-bottom: 1rem !important;
+  }
+
+  .max-w-6xl.w-full.grid.grid-cols-1.lg\:grid-cols-2.gap-8 {
+    gap: 1.25rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .max-w-6xl.w-full.grid .text-xl.font-bold[class*="text-primary/"] {
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+  }
+
+  .rounded-\[3rem\] {
+    border-radius: 1.75rem !important;
+  }
+}
+
+/* Landing “Configure experience” — phones only (< sm); tablet/desktop unchanged at sm+ */
+@media (max-width: 639.98px) {
+  .max-w-6xl.w-full.grid[class*="lg:grid-cols-2"][class*="backdrop-blur"] {
+    padding: 1rem 0.75rem !important;
+    border-radius: 1.5rem !important;
+    gap: 1rem !important;
+  }
+
+  .max-w-6xl.w-full.grid[class*="lg:grid-cols-2"] h1.text-4xl {
+    font-size: clamp(1.5rem, 7vw, 2rem) !important;
+    line-height: 1.12 !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  .max-w-6xl.w-full.grid[class*="lg:grid-cols-2"] .text-xl.font-bold[class*="text-primary/"] {
+    font-size: 0.9375rem !important;
+    line-height: 1.45 !important;
+  }
+
+  .max-w-6xl.w-full.grid[class*="lg:grid-cols-2"] .flex.flex-wrap.gap-6.items-center {
+    gap: 0.875rem !important;
+  }
+
+  .max-w-6xl.w-full.grid[class*="lg:grid-cols-2"] .flex.flex-wrap .text-3xl {
+    font-size: 1.5rem !important;
+  }
+
+  .max-w-6xl.w-full.grid[class*="lg:grid-cols-2"] .micro-label {
+    font-size: 0.5625rem !important;
+  }
+
+  .max-w-6xl.w-full.grid[class*="lg:grid-cols-2"] .pt-4.flex.items-center.gap-4 .font-mono {
+    font-size: 0.5625rem !important;
+    letter-spacing: 0.1em !important;
+    line-height: 1.35 !important;
+  }
+
+  /* Configure card form */
+  .brand-card.relative form.space-y-6 > .space-y-6 {
+    gap: 1rem !important;
+  }
+
+  .brand-card.relative form .micro-label {
+    margin-bottom: 0.375rem !important;
+  }
+
+  .brand-card.relative form .brand-input,
+  .brand-card.relative form select.brand-input {
+    font-size: 16px !important;
+    min-height: 3rem !important;
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .brand-card.relative form select.brand-input {
+    padding-right: 2.75rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .brand-card.relative form .grid.grid-cols-1.md\:grid-cols-2 {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  /* Custom category listbox opens below trigger; avoid clipping (landing form only) */
+  .brand-card.relative:has([data-cat-dd]) {
+    overflow: visible !important;
+  }
+
+  .brand-card.relative form [data-cat-dd] {
+    overflow: visible !important;
+  }
+
+  .brand-card.relative form .brand-button {
+    width: 100% !important;
+    min-height: 3.25rem !important;
+    padding-top: 0.875rem !important;
+    padding-bottom: 0.875rem !important;
+    font-size: 0.8125rem !important;
+    letter-spacing: 0.06em !important;
+  }
+
+  .brand-card.relative h2.text-2xl {
+    font-size: 1.125rem !important;
+    margin-bottom: 1rem !important;
+  }
+}
+
+/* “Start free” badge: keep inside card, clear Configure heading */
+@media (max-width: 48rem) {
+  .brand-card.relative .absolute[class*="rounded-full"][class*="border-4"][class*="-rotate-12"] {
+    position: absolute !important;
+    top: 0.75rem !important;
+    right: 0.75rem !important;
+    left: auto !important;
+    width: 5rem !important;
+    height: 5rem !important;
+    font-size: 0.65rem !important;
+  }
+
+  .brand-card.relative h2.text-2xl {
+    padding-right: 5.5rem;
+    padding-top: 0.125rem;
+  }
+}
+
+/* Zip row only (has oversized pr-* for in-field button): stack input + Auto-fill */
+@media (max-width: 32rem) {
+  .relative.group:has(.brand-input.pr-32) {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .relative.group:has(.brand-input.pr-32) .brand-input.text-xl {
+    padding-right: 1.25rem !important;
+    padding-left: 1rem !important;
+    height: auto !important;
+    min-height: 3.25rem;
+  }
+
+  .relative.group:has(.brand-input.pr-32) button.absolute {
+    position: static !important;
+    width: 100%;
+    height: 3rem !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+  }
+}
+
+/* City / postcode label row: allow wrap */
+@media (max-width: 32rem) {
+  .flex.items-center.justify-between.px-1 {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+}
+
+/* Fixed bottom bars: iOS home indicator + room for wrapped controls */
+@media (max-width: 48rem) {
+  .fixed.bottom-0.left-0.right-0.bg-white.h-20 {
+    height: auto !important;
+    min-height: calc(4.5rem + env(safe-area-inset-bottom, 0px));
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    padding-bottom: max(0.75rem, env(safe-area-inset-bottom, 0px));
+    padding-top: 0.5rem;
+    flex-wrap: wrap;
+    row-gap: 0.5rem;
+  }
+
+  /* Larger tap targets for BACK / primary actions */
+  .fixed.bottom-0.left-0.right-0.bg-white.h-20 button {
+    min-height: 48px;
+  }
+
+  .fixed.bottom-0.left-0.right-0.bg-white.h-20 .max-w-7xl {
+    gap: 0.75rem !important;
+  }
+
+  .pb-28 {
+    padding-bottom: 7.5rem !important;
+  }
+
+  .pb-48 {
+    padding-bottom: 9rem !important;
+  }
+}
+
+/* --- Products step: readable type, bigger controls (bundle uses 1-col < sm) --- */
+@media (max-width: 42rem) {
+  /* Slightly larger row gap on phones */
+  div[class*="sm:grid-cols-2"][class*="lg:grid-cols-4"][class*="2xl:grid-cols-6"] {
+    gap: 1rem !important;
+  }
+
+  /* Product cards */
+  div[class*="sm:grid-cols-2"][class*="2xl:grid-cols-6"]
+    > div.bg-white.rounded-\[1\.5rem\].border.border-gray-100 {
+    padding: 1rem !important;
+  }
+
+  /* “Add” on cover image */
+  div[class*="sm:grid-cols-2"][class*="2xl:grid-cols-6"] button.bg-white.text-primary.rounded-full {
+    min-height: 44px;
+    padding: 0.5rem 1rem !important;
+    font-size: 0.75rem !important;
+  }
+
+  /* +/- qty controls on product image */
+  div[class*="sm:grid-cols-2"][class*="2xl:grid-cols-6"] button.w-7.h-7 {
+    width: 2.75rem !important;
+    height: 2.75rem !important;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+  }
+
+  div[class*="sm:grid-cols-2"][class*="2xl:grid-cols-6"] button.w-7.h-7 svg {
+    width: 1rem !important;
+    height: 1rem !important;
+  }
+
+  /* Product title & blurb */
+  div[class*="sm:grid-cols-2"][class*="2xl:grid-cols-6"] h4.text-sm {
+    font-size: 1rem !important;
+    line-height: 1.35 !important;
+    min-height: 0 !important;
+  }
+
+  div[class*="sm:grid-cols-2"][class*="2xl:grid-cols-6"] p.text-\[10px\] {
+    font-size: 0.8125rem !important;
+    line-height: 1.35 !important;
+  }
+
+  div[class*="sm:grid-cols-2"][class*="2xl:grid-cols-6"] span.text-\[8px\] {
+    font-size: 0.6875rem !important;
+  }
+
+  div[class*="sm:grid-cols-2"][class*="2xl:grid-cols-6"] button.text-\[8px\] {
+    font-size: 0.6875rem !important;
+    min-height: 36px;
+    padding: 0.25rem 0.5rem !important;
+  }
+
+  /* Section header + “/ Catalog…” */
+  .font-mono.text-primary\/20.text-xs.italic.uppercase.tracking-widest {
+    font-size: 0.75rem !important;
+  }
+}
+
+/* Subscription pill group — single row on small screens (scroll if needed); sm+ unchanged */
+@media (max-width: 639.98px) {
+  .bg-white.p-2.rounded-full.border.border-primary\/10.shadow-xl.inline-flex.gap-2 {
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    max-width: 100%;
+    padding: 0.375rem 0.5rem !important;
+    gap: 0.375rem !important;
+  }
+
+  .bg-white.p-2.rounded-full.border.border-primary\/10.shadow-xl.inline-flex.gap-2::-webkit-scrollbar {
+    display: none;
+  }
+
+  .bg-white.p-2.rounded-full.border.border-primary\/10.shadow-xl.inline-flex.gap-2 > button {
+    flex: 0 0 auto !important;
+    min-width: 0 !important;
+    min-height: 44px;
+    justify-content: center;
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+    font-size: 0.5625rem !important;
+    letter-spacing: 0.04em !important;
+  }
+
+  .bg-white.p-2.rounded-full.border.border-primary\/10.shadow-xl.inline-flex.gap-2
+    button span.text-\[7px\] {
+    font-size: 0.5rem !important;
+    padding-left: 0.2rem !important;
+    padding-right: 0.2rem !important;
+  }
+}
+
+/* Products step: two columns on phones only (bundle base grid is 2-col below sm) */
+@media (max-width: 639.98px) {
+  div[class*="2xl:grid-cols-6"][class*="lg:grid-cols-4"][class*="sm:grid-cols-2"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.5rem !important;
+  }
+}
+
+/* Start date step: drop the extra outer card around the calendar (inner month grid keeps its card) */
+.max-w-xl.mx-auto > .brand-card.p-2.shadow-2xl {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+/* Flex main can shrink inside h-screen shell (belt-and-suspenders) */
+main.flex-1.min-h-0 {
+  min-height: 0 !important;
+}
+
+/* Date / zip: slightly tighter vertical rhythm on shorter viewports */
+@media (max-height: 780px) {
+  [data-flow-step="date"] .text-center {
+    margin-bottom: 0.75rem !important;
+    padding-top: 0.25rem !important;
+  }
+
+  [data-flow-step="date"] .mt-4.flex.items-center.justify-center {
+    margin-top: 0.5rem !important;
+    padding-top: 0.375rem !important;
+    padding-bottom: 0.375rem !important;
+  }
+}
+
+/* Success step — “Book strategy call” card: 35px padding (bundle uses p-10 / 40px) */
+.brand-card.group.shadow-2xl {
+  padding: 35px !important;
+}
+

@@ -1,0 +1,94 @@
+@import "tailwindcss" source(none);
+@source "./page.tsx";
+
+@theme {
+  --color-primary: #111827;
+  --color-accent: #ffd700;
+  --color-wonky-orange: #f97316;
+  --color-primary-light: #f3f4f6;
+}
+
+:root {
+  --color-bg-main: #f8fafc;
+  --color-card-bg: #ffffff;
+  --color-primary: #111827;
+  --color-accent: #ffd700;
+  --color-wonky-orange: #f97316;
+}
+
+.try-meal-flow-page {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--color-bg-main);
+  color: var(--color-primary);
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial;
+}
+
+.try-meal-flow-page .brand-card {
+  background: var(--color-card-bg);
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
+  transition: all 0.2s ease;
+}
+
+.try-meal-flow-page .brand-button {
+  background: var(--color-accent);
+  color: var(--color-primary);
+  font-weight: 800;
+  padding: 0.75rem 2rem;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.try-meal-flow-page .brand-input {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(17, 24, 39, 0.08);
+  background: rgba(255, 255, 255, 0.85);
+  outline: none;
+}
+
+.try-meal-flow-page .micro-label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 800;
+  opacity: 0.7;
+}
+
+.try-meal-flow-page .bg-dots-pattern {
+  background-image: radial-gradient(rgba(17, 24, 39, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.try-meal-flow-page .no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.try-meal-flow-page .no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.try-meal-flow-page .text-primary {
+  color: var(--color-primary);
+}
+
+.try-meal-flow-page .text-wonky-orange {
+  color: var(--color-wonky-orange);
+}
+
+.try-meal-flow-page .bg-accent {
+  background: var(--color-accent);
+}
