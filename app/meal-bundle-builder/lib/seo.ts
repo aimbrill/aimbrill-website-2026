@@ -35,7 +35,7 @@ export function webPageJsonLd(path: string, name: string, description: string) {
 /** Meal Flow landing: Organization + WebSite + WebPage + ProfessionalService. */
 export function mealFlowJsonLdGraph() {
   const root = base();
-  const pageUrl = canonicalUrl("/meal-subscription-flow");
+  const pageUrl = canonicalUrl("/meal-bundle-builder");
   const orgId = organizationId();
   const webId = websiteId();
   const svcId = serviceId();

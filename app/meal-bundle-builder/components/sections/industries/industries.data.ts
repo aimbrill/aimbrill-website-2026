@@ -21,7 +21,7 @@ export const industryCards: IndustryCard[] = [
     image:
       "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1200&q=80",
     demoHref: mealFlowLinks.tryMealFlow,
-    watchHref: "/meal-subscription-flow/Meal.mp4",
+    watchHref: "/meal-bundle-builder/Meal.mp4",
   },
   {
     title: "FOOD & BEVERAGE BRANDS",
@@ -32,6 +32,6 @@ export const industryCards: IndustryCard[] = [
     image:
       "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=1200&q=80",
     demoHref: mealFlowLinks.tryMealFlow,
-    watchHref: "/meal-subscription-flow/Food.mp4",
+    watchHref: "/meal-bundle-builder/Food.mp4",
   },
 ];

@@ -36,12 +36,12 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/try-meal-flow",
-        destination: "/meal-subscription-flow/try-meal-flow",
+        destination: "/meal-bundle-builder/try-meal-flow",
         permanent: true,
       },
       {
         source: "/try-meal-flow/:path*",
-        destination: "/meal-subscription-flow/try-meal-flow/:path*",
+        destination: "/meal-bundle-builder/try-meal-flow/:path*",
         permanent: true,
       },
     ];

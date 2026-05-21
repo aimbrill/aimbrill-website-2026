@@ -1,5 +1,5 @@
-/** Routes and contact URLs for the meal-subscription-flow section. */
-export const MEAL_FLOW_BASE = "/meal-subscription-flow";
+/** Routes and contact URLs for the meal-bundle-builder section. */
+export const MEAL_FLOW_BASE = "/meal-bundle-builder";
 
 export const mealFlowLinks = {
   home: MEAL_FLOW_BASE,

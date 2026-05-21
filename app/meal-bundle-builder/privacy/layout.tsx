@@ -8,10 +8,10 @@ export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
     "How MealFlow Box collects and uses merchant and customer data for Shopify delivery, subscription, and bundle tools—written for store operators.",
-  alternates: { canonical: canonicalUrl("/meal-subscription-flow/privacy") },
+  alternates: { canonical: canonicalUrl("/meal-bundle-builder/privacy") },
   robots: { index: true, follow: true },
   openGraph: {
-    url: canonicalUrl("/meal-subscription-flow/privacy"),
+    url: canonicalUrl("/meal-bundle-builder/privacy"),
     title: "Privacy Policy | MealFlow Box",
     description: "Privacy practices for MealFlow Box Shopify merchant services.",
   },
@@ -22,7 +22,7 @@ export default function PrivacyLayout({ children }: { children: ReactNode }) {
     <>
       <JsonLd
         data={webPageJsonLd(
-          "/meal-subscription-flow/privacy",
+          "/meal-bundle-builder/privacy",
           "Privacy Policy | MealFlow Box",
           "Privacy Policy for MealFlow Box: data use for Shopify merchants using delivery, subscription, and bundle features.",
         )}

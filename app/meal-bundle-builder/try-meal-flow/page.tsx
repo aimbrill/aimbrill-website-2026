@@ -496,7 +496,7 @@ export default function Page() {
     let mounted = true;
     (async () => {
       try {
-        const resp = await fetch("/meal-subscription-flow/meal-flow/index.html", {
+        const resp = await fetch("/meal-bundle-builder/meal-flow/index.html", {
           method: "HEAD",
         });
         if (mounted && resp && resp.ok) setEmbedAvailable(true);
@@ -670,7 +670,7 @@ export default function Page() {
           <div className="pt-8 flex items-center gap-4">
             <div className="h-0.5 w-16 bg-wonky-orange rounded-full" />
             <span className="font-mono text-[11px] font-black uppercase tracking-[0.4em] text-primary/40">
-              Trusted by <span className="text-primary italic">weupsell</span>
+              Trusted by <span className="text-primary italic">MealFlow Box</span>
             </span>
           </div>
         </motion.div>
@@ -1253,7 +1253,7 @@ export default function Page() {
       <div className="try-meal-flow-page min-h-[100dvh] min-h-screen overflow-x-hidden bg-white">
         {headerHeight > 0 ? <div style={{ height: headerHeight }} aria-hidden /> : null}
         <iframe
-          src="/meal-subscription-flow/meal-flow/index.html"
+          src="/meal-bundle-builder/meal-flow/index.html"
           title="Meal flow"
           className="block w-full max-w-full border-0"
           style={{

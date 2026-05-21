@@ -66,10 +66,10 @@ export default function Hero() {
                 playsInline
                 preload="metadata"
               >
-                <source src="/meal-subscription-flow/meal-delivery.mp4" type="video/mp4" />
+                <source src="/meal-bundle-builder/meal-delivery.mp4" type="video/mp4" />
                 <track
                   kind="captions"
-                  src="/meal-subscription-flow/meal-delivery-captions.vtt"
+                  src="/meal-bundle-builder/meal-delivery-captions.vtt"
                   srcLang="en"
                   label="English"
                   default

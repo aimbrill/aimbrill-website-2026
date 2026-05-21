@@ -4,7 +4,7 @@ import LandingPageClient from "./components/pages/LandingPageClient";
 import { canonicalUrl } from "./lib/canonical";
 import { mealFlowJsonLdGraph } from "./lib/seo";
 
-const canonical = canonicalUrl("/meal-subscription-flow");
+const canonical = canonicalUrl("/meal-bundle-builder");
 
 export const metadata: Metadata = {
   title: "Meal Flow | Meal Subscription Automation for Shopify",

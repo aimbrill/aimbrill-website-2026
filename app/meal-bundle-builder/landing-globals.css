@@ -5,14 +5,14 @@
 /* Local font: Super Youth (copied to public/fonts/super_youth) */
 @font-face {
   font-family: 'Super Youth';
-  src: url('/meal-subscription-flow/fonts/super_youth/Super Youth.ttf') format('truetype');
+  src: url('/meal-bundle-builder/fonts/super_youth/Super Youth.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Super Youth';
-  src: url('/meal-subscription-flow/fonts/super_youth/Super Youth.ttf') format('truetype');
+  src: url('/meal-bundle-builder/fonts/super_youth/Super Youth.ttf') format('truetype');
   font-weight: 400;
   font-style: italic;
   font-display: swap;

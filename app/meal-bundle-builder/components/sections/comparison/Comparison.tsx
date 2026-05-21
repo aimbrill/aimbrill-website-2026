@@ -60,7 +60,7 @@ export default function Comparison() {
                   className="border-l-2 px-5 py-3 text-[11px] font-extrabold uppercase tracking-wider text-[var(--heading)]"
                   style={{ borderColor: "var(--brown)", background: "var(--brown-soft)" }}
                 >
-                  CUSTOM SYSTEM (WEUPSELL)
+                  CUSTOM SYSTEM (MEALFLOW BOX)
                 </th>
               </tr>
             </thead>

@@ -26,7 +26,7 @@ export const apps = [
   {
     name: "Meal Flow",
     full: "Meal Flow Automation",
-    slug: "meal-subscription-flow",
+    slug: "meal-bundle-builder",
     status: "soon" as const,
     statusLabel: "Coming Soon",
     desc: "End-to-end meal subscription automation for Shopify — ZIP code restrictions, box builder, and delivery sync. All in one app.",
@@ -128,8 +128,8 @@ function FeaturedApp({ app }: { app: (typeof apps)[number] }) {
         <div>
           <a
             href={app.slug ? `/${app.slug}` : app.href}
-            target={app.slug || !app.href.startsWith("http") ? undefined : "_blank"}
-            rel={app.slug || !app.href.startsWith("http") ? undefined : "noreferrer"}
+            target="_blank"
+            rel="noopener noreferrer"
             data-cursor="install"
             className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-[16px] font-semibold text-background transition hover:scale-[1.03]"
           >
@@ -187,8 +187,8 @@ function SmallApp({ app }: { app: (typeof apps)[number] }) {
       </div>
       <a
         href={app.slug ? `/${app.slug}` : app.href}
-        target={app.slug || !app.href.startsWith("http") ? undefined : "_blank"}
-        rel={app.slug || !app.href.startsWith("http") ? undefined : "noreferrer"}
+        target="_blank"
+        rel="noopener noreferrer"
         className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full border border-ink/20 bg-background px-4 py-3 text-[16px] font-semibold transition hover:bg-secondary sm:w-fit sm:justify-start sm:py-2.5"
       >
         {app.cta} <span aria-hidden>→</span>

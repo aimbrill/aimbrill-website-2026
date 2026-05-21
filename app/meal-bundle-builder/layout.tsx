@@ -10,7 +10,7 @@ export default function MealSubscriptionFlowLayout({ children }: { children: Rea
   return (
     <>
       <ScrollProgress />
-      <div className="meal-subscription-flow-landing antialiased overflow-x-hidden">{children}</div>
+      <div className="meal-bundle-builder-landing antialiased overflow-x-hidden">{children}</div>
     </>
   );
 }
