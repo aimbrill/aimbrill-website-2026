@@ -71,6 +71,14 @@ export const metadata: Metadata = {
   title: "Blog | Aimbrill",
   description: "Explore guides and insights on Shopify growth, Klaviyo, and e-commerce marketing.",
   alternates: { canonical: "/blog" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
 };
 
 export default async function BlogIndexPage() {

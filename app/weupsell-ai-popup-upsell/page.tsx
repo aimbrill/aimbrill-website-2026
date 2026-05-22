@@ -10,6 +10,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/weupsell-ai-popup-upsell",
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
 };
 
 const benefits = [
@@ -63,7 +71,7 @@ export default function WeUpsellAppPage() {
                 rel="noreferrer"
                 className="inline-flex items-center gap-3 rounded-full border border-ink/20 bg-background px-6 py-3 text-lg font-semibold text-ink transition hover:bg-surface-2"
               >
-                Install free on Shopify <span aria-hidden>↗</span>
+                View on Shopify App Store <span aria-hidden>↗</span>
               </a>
               <Link
                 href="/#contact"
@@ -86,6 +94,32 @@ export default function WeUpsellAppPage() {
                 </p>
               </article>
             ))}
+          </div>
+
+          <div className="mt-8 rounded-3xl border border-border bg-card p-6 shadow-soft md:p-8">
+            <h2 className="font-display text-2xl font-semibold text-ink md:text-3xl">
+              Built for conversion-first Shopify teams
+            </h2>
+            <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted-foreground md:text-base">
+              WeUpsell uses AI to surface the right popup or upsell at the right moment—so you lift
+              AOV and conversions without maintaining complex manual rules.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a
+                href="mailto:admin@aimbrill.com?subject=WeUpsell%20Support"
+                className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-[16px] font-semibold text-background transition hover:scale-[1.03]"
+              >
+                Email us <span aria-hidden>→</span>
+              </a>
+              <a
+                href="https://wa.me/917990488965"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-5 py-2.5 text-[16px] font-semibold text-ink transition hover:bg-surface-2"
+              >
+                WhatsApp <span aria-hidden>↗</span>
+              </a>
+            </div>
           </div>
         </div>
       </section>

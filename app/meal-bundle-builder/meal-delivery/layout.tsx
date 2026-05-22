@@ -9,7 +9,14 @@ export const metadata: Metadata = {
   description:
     "See a Shopify-style meal flow: pincode, delivery date, box builder, and subscription plans—for merchants evaluating connected checkout.",
   alternates: { canonical: canonicalUrl("/meal-bundle-builder/meal-delivery") },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
   openGraph: {
     url: canonicalUrl("/meal-bundle-builder/meal-delivery"),
     title: "Meal delivery Shopify demo | MealFlow Box",

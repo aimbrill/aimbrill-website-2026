@@ -4,9 +4,32 @@ import { BrandAssetGenerator } from "@/components/site/BrandAssetGenerator";
 
 export const metadata: Metadata = {
   title: "Aimbrill Brand Assets",
+  description:
+    "Aimbrill brand assets, typography, colors, and logo references for the current brand system.",
+  alternates: {
+    canonical: "/aimbrill-brand-assets",
+  },
   robots: {
-    index: false,
-    follow: false,
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
+  openGraph: {
+    title: "Aimbrill Brand Assets",
+    description:
+      "Aimbrill brand assets, typography, colors, and logo references for the current brand system.",
+    url: "https://aimbrill.com/aimbrill-brand-assets",
+    siteName: "Aimbrill",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Aimbrill Brand Assets",
+    description:
+      "Aimbrill brand assets, typography, colors, and logo references for the current brand system.",
   },
 };
 

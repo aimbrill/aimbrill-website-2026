@@ -11,7 +11,14 @@ export const metadata: Metadata = {
   description:
     "Meal Flow connects delivery dates, subscriptions, and bundles on Shopify for meal and food brands. ZIP checks, box building, and delivery sync in one system.",
   alternates: { canonical },
-  robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
   keywords: [
     "Shopify meal delivery",
     "meal subscription checkout Shopify",

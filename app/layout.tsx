@@ -36,6 +36,10 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
   },
   keywords: [...site.keywords],
   authors: [{ name: site.author }],

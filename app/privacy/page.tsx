@@ -8,6 +8,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/privacy",
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
 };
 
 const personalInformation = [

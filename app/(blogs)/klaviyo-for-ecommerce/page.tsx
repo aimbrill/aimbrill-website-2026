@@ -28,6 +28,14 @@ export const metadata: Metadata = {
   description:
     "How Klaviyo works for e-commerce: flows, segmentation, campaigns, A/B testing, and pricing—plus how to turn email and SMS into a predictable revenue channel.",
   alternates: { canonical: CANONICAL },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
   openGraph: {
     title: OG_TITLE,
     description: OG_DESC,

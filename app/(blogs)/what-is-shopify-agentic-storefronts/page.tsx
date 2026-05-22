@@ -20,6 +20,14 @@ export const metadata: Metadata = {
   description:
     "Shopify Agentic Storefronts brings your store inside ChatGPT, Copilot, and Google AI. Learn how it works, how to activate it, and why most stores are still invisible.",
   alternates: { canonical: CANONICAL },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
   openGraph: {
     title: OG_TITLE,
     description: OG_DESC,

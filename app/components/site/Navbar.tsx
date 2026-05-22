@@ -2,25 +2,52 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { ChevronDown } from "lucide-react";
 import { apps } from "./Apps";
+import { AppsMegaMenu } from "./AppsMegaMenu";
 import { useEffect, useRef, useState } from "react";
 
 const CALENDLY_URL = "https://calendly.com/weupsell-experts/ai-campaign-popup";
 
 const links = [
   { href: "/#work", label: "Work" },
-  { href: "/#apps", label: "Apps" },
+  { href: "/#apps", label: "Apps", isApps: true },
   { href: "/blog", label: "Blog" },
-];
+] as const;
 
-// Note: app list imported from Apps.tsx
+function NavUnderline({ active }: { active: boolean }) {
+  return (
+    <span
+      aria-hidden
+      className={`absolute inset-x-0 bottom-0 h-0.5 rounded-full bg-lime transition-opacity duration-200 ${
+        active ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+      }`}
+    />
+  );
+}
 
-function navLinkActive(currentHash: string, href: string) {
-  const hashFromHref = href.includes("#") ? href.slice(href.indexOf("#")) : "";
-  return currentHash === hashFromHref;
+function NavLinkLabel({ label, active }: { label: string; active: boolean }) {
+  return (
+    <span className="relative inline-block">
+      {label}
+      <NavUnderline active={active} />
+    </span>
+  );
+}
+
+function navItemActive(pathname: string, hash: string, href: string) {
+  if (href === "/blog") {
+    return pathname === "/blog" || pathname.startsWith("/blog/");
+  }
+  if (href.startsWith("/#")) {
+    return pathname === "/" && hash === href.slice(href.indexOf("#"));
+  }
+  return pathname === href;
 }
 
 export function Navbar() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [appsOpen, setAppsOpen] = useState(false);
@@ -31,13 +58,9 @@ export function Navbar() {
     const onScroll = () => setScrolled(window.scrollY > 12);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-    };
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close apps dropdown when clicking outside
   useEffect(() => {
     function onDocClick(e: MouseEvent) {
       if (!appsOpen) return;
@@ -57,22 +80,24 @@ export function Navbar() {
     return () => window.removeEventListener("hashchange", read);
   }, []);
 
+  useEffect(() => {
+    setAppsOpen(false);
+  }, [pathname]);
+
   const barSurface =
     "relative flex min-h-[2.75rem] w-full items-center justify-between gap-3 rounded-2xl px-4 py-2 transition-all duration-300 sm:min-h-[3rem] sm:rounded-3xl sm:px-6 sm:py-2.5 md:px-7 " +
     (scrolled
       ? "bg-background/95 shadow-[0_12px_40px_-12px_rgba(15,15,15,0.2)] backdrop-blur-xl"
       : "bg-background/90 backdrop-blur-md");
 
-  const appsDropdownClass = appsOpen
-    ? "opacity-100 pointer-events-auto"
-    : "opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto";
+  const linkTone = (active: boolean) =>
+    active ? "font-semibold text-ink" : "font-medium text-muted-foreground hover:text-ink";
 
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${scrolled ? "py-1" : "py-2"}`}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-5">
-        {/* Single floating bar — logo | nav (centered) | CTA / menu */}
         <div className={barSurface}>
           <Link
             href="/"
@@ -105,90 +130,36 @@ export function Navbar() {
           >
             <ul className="pointer-events-auto flex items-center gap-8 md:gap-10">
               {links.map((l) => {
-                const active = navLinkActive(hash, l.href);
+                const active = navItemActive(pathname, hash, l.href);
 
-                // Render Apps item with a simple dropdown showing three app names
-                if (l.label === "Apps") {
+                if ("isApps" in l && l.isApps) {
                   return (
                     <li key={l.href} ref={appsRef} className="relative">
-                      <div className="group">
-                        <a
-                          href={l.href}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            setAppsOpen((v) => !v);
-                          }}
-                          aria-haspopup="true"
-                          aria-expanded={appsOpen}
-                          className={`group text-[16px] transition-colors ${
-                            active
-                              ? "font-semibold text-ink"
-                              : "font-medium text-muted-foreground hover:text-ink"
+                      <button
+                        type="button"
+                        onClick={() => setAppsOpen((v) => !v)}
+                        aria-haspopup="menu"
+                        aria-expanded={appsOpen}
+                        className={`group inline-flex items-center gap-0.5 ${linkTone(active || appsOpen)}`}
+                      >
+                        <NavLinkLabel label={l.label} active={active || appsOpen} />
+                        <ChevronDown
+                          className={`relative -top-px ml-0.5 h-4 w-4 shrink-0 transition-transform duration-200 ${
+                            appsOpen ? "rotate-180" : ""
                           }`}
-                        >
-                          <span className="relative inline-block pb-1">
-                            {l.label}
-                            <span
-                              aria-hidden
-                              className={`absolute inset-x-0 bottom-0 h-0.5 rounded-full bg-lime transition-opacity ${active ? "opacity-100" : "opacity-0 group-hover:opacity-60"}`}
-                            />
-                          </span>
-                        </a>
-
-                        <div
-                          className={`absolute left-0 top-full z-20 mt-1 w-56 rounded-xl border border-border bg-background p-2 shadow-lg transition-opacity duration-150 ${appsDropdownClass}`}
-                        >
-                          <ul className="space-y-1">
-                            {apps.map((a) => (
-                              <li key={a.name}>
-                                <a
-                                  href="/meal-bundle-builder"
-                                  title={`${a.name} — ${a.headline}`}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="block rounded-md px-3 py-2 text-[15px] font-medium text-muted-foreground hover:bg-secondary hover:text-ink"
-                                >
-                                  <div className="flex items-center justify-between">
-                                    <span className="truncate">
-                                      {a.name} — {a.headline}
-                                    </span>
-                                    <span
-                                      aria-hidden
-                                      className="ml-3 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-ink text-[11px] text-background"
-                                    >
-                                      {"↗"}
-                                    </span>
-                                  </div>
-                                </a>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
+                          aria-hidden
+                        />
+                      </button>
+                      <AppsMegaMenu open={appsOpen} onClose={() => setAppsOpen(false)} />
                     </li>
                   );
                 }
 
                 return (
                   <li key={l.href}>
-                    <a
-                      href={l.href}
-                      className={`group text-[16px] transition-colors ${
-                        active
-                          ? "font-semibold text-ink"
-                          : "font-medium text-muted-foreground hover:text-ink"
-                      }`}
-                    >
-                      <span className="relative inline-block pb-1">
-                        {l.label}
-                        <span
-                          aria-hidden
-                          className={`absolute inset-x-0 bottom-0 h-0.5 rounded-full bg-lime transition-opacity ${
-                            active ? "opacity-100" : "opacity-0 group-hover:opacity-60"
-                          }`}
-                        />
-                      </span>
-                    </a>
+                    <Link href={l.href} className={`group ${linkTone(active)}`}>
+                      <NavLinkLabel label={l.label} active={active} />
+                    </Link>
                   </li>
                 );
               })}
@@ -235,58 +206,79 @@ export function Navbar() {
           <div className="mt-2 overflow-hidden rounded-2xl border border-border bg-background/95 shadow-[0_16px_48px_-20px_rgba(15,15,15,0.2)] backdrop-blur-xl md:hidden">
             <nav className="p-2" aria-label="Mobile">
               {links.map((l) => {
-                const active = navLinkActive(hash, l.href);
+                const active = navItemActive(pathname, hash, l.href);
 
-                if (l.label === "Apps") {
+                if ("isApps" in l && l.isApps) {
                   return (
                     <div key={l.href} className="px-2">
-                      <a
-                        href={l.href}
-                        onClick={() => setOpen(false)}
-                        className={`flex items-center justify-between rounded-xl px-4 py-3.5 text-[16px] transition-colors hover:bg-secondary ${
-                          active ? "font-semibold text-ink" : "font-medium text-muted-foreground"
-                        }`}
+                      <button
+                        type="button"
+                        onClick={() => setAppsOpen((v) => !v)}
+                        className={`flex w-full items-center justify-between rounded-xl px-4 py-3.5 text-left text-[16px] transition-colors hover:bg-secondary ${linkTone(active || appsOpen)}`}
                       >
-                        {l.label}
-                      </a>
+                        <span>{l.label}</span>
+                        <ChevronDown
+                          className={`h-4 w-4 transition-transform ${appsOpen ? "rotate-180" : ""}`}
+                          aria-hidden
+                        />
+                      </button>
 
-                      <div className="mt-1 space-y-1">
-                        {apps.map((a) => (
-                          <a
-                            key={a.name}
-                            href="/meal-bundle-builder"
-                            title={`${a.name} — ${a.headline}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={() => setOpen(false)}
-                            className="block rounded-xl px-4 py-3 text-[15px] font-medium text-muted-foreground hover:bg-secondary"
-                          >
-                            <div className="flex items-center justify-between">
-                              <span className="truncate">
-                                {a.name} — {a.headline}
-                              </span>
-                              <span aria-hidden className="ml-3 text-[13px] text-muted-foreground">
-                                {"↗"}
-                              </span>
+                      {appsOpen && (
+                        <div className="mb-2 mt-1 space-y-1 rounded-xl border border-border bg-surface p-2">
+                          {apps.map((a) => (
+                            <div key={a.name} className="rounded-lg">
+                              <Link
+                                href={a.pagePath}
+                                onClick={() => {
+                                  setOpen(false);
+                                  setAppsOpen(false);
+                                }}
+                                className="block rounded-lg p-3 transition-colors hover:bg-surface-2"
+                              >
+                                <p className="text-[15px] font-semibold text-ink">{a.name}</p>
+                                <p className="mt-0.5 text-[13px] leading-snug text-muted-foreground">
+                                  {a.menuDesc}
+                                </p>
+                              </Link>
+                              {a.secondaryMenuLink ? (
+                                <Link
+                                  href={a.secondaryMenuLink.href}
+                                  onClick={() => {
+                                    setOpen(false);
+                                    setAppsOpen(false);
+                                  }}
+                                  className="block px-3 pb-3 text-[12px] font-semibold text-violet-600"
+                                >
+                                  {a.secondaryMenuLink.label} →
+                                </Link>
+                              ) : null}
                             </div>
-                          </a>
-                        ))}
-                      </div>
+                          ))}
+                          <Link
+                            href="/#apps"
+                            onClick={() => {
+                              setOpen(false);
+                              setAppsOpen(false);
+                            }}
+                            className="block rounded-lg px-3 py-2 text-center text-[13px] font-semibold text-muted-foreground"
+                          >
+                            View all apps →
+                          </Link>
+                        </div>
+                      )}
                     </div>
                   );
                 }
 
                 return (
-                  <a
+                  <Link
                     key={l.href}
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    className={`flex items-center justify-between rounded-xl px-4 py-3.5 text-[16px] transition-colors hover:bg-secondary ${
-                      active ? "font-semibold text-ink" : "font-medium text-muted-foreground"
-                    }`}
+                    className={`flex items-center justify-between rounded-xl px-4 py-3.5 text-[16px] transition-colors hover:bg-secondary ${linkTone(active)}`}
                   >
                     {l.label}
-                  </a>
+                  </Link>
                 );
               })}
               <a
