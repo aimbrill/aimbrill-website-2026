@@ -45,6 +45,16 @@ export const site = {
     { path: "/ai-quiz-and-recommendations", changeFrequency: "monthly" as const, priority: 0.7 },
     { path: "/weupsell-ai-popup-upsell", changeFrequency: "monthly" as const, priority: 0.8 },
     { path: "/meal-bundle-builder", changeFrequency: "monthly" as const, priority: 0.7 },
+    {
+      path: "/meal-bundle-builder/meal-delivery",
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    },
+    {
+      path: "/meal-bundle-builder/try-meal-flow",
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    },
     { path: "/blog", changeFrequency: "weekly" as const, priority: 0.8 },
     { path: "/klaviyo-for-ecommerce", changeFrequency: "monthly" as const, priority: 0.7 },
     {

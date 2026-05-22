@@ -8,6 +8,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/ai-quiz-and-recommendations/privacy",
   },
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 const personalInformation = [

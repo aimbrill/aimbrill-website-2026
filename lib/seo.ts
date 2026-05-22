@@ -79,7 +79,6 @@ export function buildSiteJsonLdGraph() {
     "@graph": [
       buildOrganizationJsonLd(),
       buildWebSiteJsonLd(),
-      buildWebPageJsonLd("/", site.title, site.description),
       ...site.services.map((service) => buildServiceJsonLd(service.name, service.description, "/")),
     ],
   };

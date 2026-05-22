@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     "How MealFlow Box collects and uses merchant and customer data for Shopify delivery, subscription, and bundle tools—written for store operators.",
   alternates: { canonical: canonicalUrl("/meal-bundle-builder/privacy") },
-  robots: { index: true, follow: true },
+  robots: { index: false, follow: false },
   openGraph: {
     url: canonicalUrl("/meal-bundle-builder/privacy"),
     title: "Privacy Policy | MealFlow Box",
