@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { DM_Sans, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import "./styles.css";
+import { buildSiteJsonLdGraph } from "../lib/seo";
+import { site } from "../lib/site";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -25,9 +27,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://aimbrill.com"),
-  title: "Aimbrill - Shopify App Development & AI Automation Studio",
-  description: "We build AI automation, smart apps & solutions for D2C brands.",
+  metadataBase: new URL(site.url),
+  title: site.title,
+  description: site.description,
   alternates: {
     canonical: "/",
   },
@@ -35,19 +37,13 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  keywords: [
-    "Shopify app development",
-    "AI automation",
-    "Shopify agency",
-    "custom Shopify storefront",
-    "e-commerce automation",
-  ],
-  authors: [{ name: "Aimbrill" }],
+  keywords: [...site.keywords],
+  authors: [{ name: site.author }],
   openGraph: {
-    title: "Aimbrill - Shopify App Development & AI Automation Studio",
-    description: "We build AI automation, smart apps & solutions for D2C brands.",
-    url: "https://aimbrill.com",
-    siteName: "Aimbrill",
+    title: site.title,
+    description: site.description,
+    url: site.url,
+    siteName: site.name,
     type: "website",
     images: [
       {
@@ -60,8 +56,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aimbrill - Shopify App Development & AI Automation Studio",
-    description: "We build AI automation, smart apps & solutions for D2C brands.",
+    title: site.title,
+    description: site.description,
     images: ["/images/aimbrill-logo.png"],
   },
   icons: {
@@ -73,32 +69,7 @@ export const metadata: Metadata = {
   },
 };
 
-const structuredData = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      name: "Aimbrill",
-      url: "https://aimbrill.com",
-      logo: "https://aimbrill.com/images/aimbrill-logo.png",
-      sameAs: [
-        "https://www.instagram.com/aimbrill?igsh=NTBrOXNmdXZjYWx2",
-        "https://www.linkedin.com/company/aimbrill/",
-        "https://wa.me/917990488965",
-      ],
-    },
-    {
-      "@type": "WebSite",
-      name: "Aimbrill",
-      url: "https://aimbrill.com",
-      potentialAction: {
-        "@type": "SearchAction",
-        target: "https://aimbrill.com/?q={search_term_string}",
-        "query-input": "required name=search_term_string",
-      },
-    },
-  ],
-};
+const structuredData = buildSiteJsonLdGraph();
 
 const fontVariables = `${spaceGrotesk.variable} ${dmSans.variable} ${jetbrainsMono.variable}`;
 
