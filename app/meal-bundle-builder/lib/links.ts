@@ -4,6 +4,7 @@ export const MEAL_FLOW_BASE = "/meal-bundle-builder";
 export const mealFlowLinks = {
   home: MEAL_FLOW_BASE,
   tryMealFlow: `${MEAL_FLOW_BASE}/try-meal-flow`,
+  mealDelivery: `${MEAL_FLOW_BASE}/meal-delivery`,
   privacy: `${MEAL_FLOW_BASE}/privacy`,
   mealFlowEmbed: `${MEAL_FLOW_BASE}/meal-flow/index.html`,
   whatsapp: "https://wa.me/917990488965",

@@ -142,18 +142,16 @@ export function Navbar() {
                             {apps.map((a) => (
                               <li key={a.name}>
                                 <a
-                                  href={a.slug ? `/${a.slug}` : a.href}
-                                  title={a.full}
-                                  target={
-                                    a.slug || !a.href.startsWith("http") ? undefined : "_blank"
-                                  }
-                                  rel={
-                                    a.slug || !a.href.startsWith("http") ? undefined : "noreferrer"
-                                  }
+                                  href={a.href}
+                                  title={`${a.name} — ${a.headline}`}
+                                  target={a.external ? "_blank" : undefined}
+                                  rel={a.external ? "noopener noreferrer" : undefined}
                                   className="block rounded-md px-3 py-2 text-[15px] font-medium text-muted-foreground hover:bg-secondary hover:text-ink"
                                 >
                                   <div className="flex items-center justify-between">
-                                    <span className="truncate">{a.full}</span>
+                                    <span className="truncate">
+                                      {a.name} — {a.headline}
+                                    </span>
                                     <span
                                       aria-hidden
                                       className="ml-3 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-ink text-[11px] text-background"
@@ -256,15 +254,17 @@ export function Navbar() {
                         {apps.map((a) => (
                           <a
                             key={a.name}
-                            href={a.slug ? `/${a.slug}` : a.href}
-                            title={a.full}
-                            target={a.slug || !a.href.startsWith("http") ? undefined : "_blank"}
-                            rel={a.slug || !a.href.startsWith("http") ? undefined : "noreferrer"}
+                            href={a.href}
+                            title={`${a.name} — ${a.headline}`}
+                            target={a.external ? "_blank" : undefined}
+                            rel={a.external ? "noopener noreferrer" : undefined}
                             onClick={() => setOpen(false)}
                             className="block rounded-xl px-4 py-3 text-[15px] font-medium text-muted-foreground hover:bg-secondary"
                           >
                             <div className="flex items-center justify-between">
-                              <span className="truncate">{a.full}</span>
+                              <span className="truncate">
+                                {a.name} — {a.headline}
+                              </span>
                               <span aria-hidden className="ml-3 text-[13px] text-muted-foreground">
                                 {"↗"}
                               </span>

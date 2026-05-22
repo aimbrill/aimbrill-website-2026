@@ -24,8 +24,8 @@ export function FounderNote() {
             <div className="flex flex-col items-center text-center md:pb-4">
               <div className="relative h-32 w-32 overflow-hidden rounded-full border-2 border-background bg-surface-2 ring-1 ring-border md:h-44 md:w-44">
                 <Image
-                  src="/images/founder-dharmik.png"
-                  alt="Dharmik profile"
+                  src="/images/AIICON.png"
+                  alt="Aimbrill AI icon"
                   fill
                   sizes="(max-width: 768px) 128px, 176px"
                   quality={85}
@@ -34,14 +34,14 @@ export function FounderNote() {
                 />
               </div>
               <div className="mt-4 font-display text-xl font-semibold leading-none text-ink">
-                Dharmik
+                Aimbrill Team.
               </div>
-              <div className="mt-1 text-sm text-muted-foreground">Founder, Aimbrill</div>
+              <div className="mt-1 text-sm text-muted-foreground">Shopify Growth Specialists</div>
               <a
                 href="#contact"
                 className="mt-5 inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-1.5 text-xs font-medium text-ink transition-colors hover:bg-surface-2"
               >
-                Work with me <span aria-hidden>→</span>
+                Work with us <span aria-hidden>→</span>
               </a>
               <div className="mt-4 flex items-center justify-center gap-2.5">
                 <a
@@ -82,9 +82,7 @@ export function FounderNote() {
             <div>
               <span className="mb-6 inline-block h-1 w-12 rounded-full bg-[color:var(--lime)]" />
               <blockquote className="max-w-4xl font-display text-[28px] font-semibold leading-[1.18] tracking-tight text-ink md:text-[28px] md:leading-[1.18]">
-                {`"I started Aimbrill with a simple belief — every brand deserves brilliant execution, not just 'good enough.'
-The name says it all: aim higher, deliver brilliance.
-Over the last 3 years, we've grown from an idea into a team that ships real work, focused on one thing — becoming the partner your brand actually deserves."`}
+                {`Aimbrill was built with one belief — every brand deserves brilliant execution, not just “good enough.” Our name reflects the way we work: aim higher, deliver brilliance. Over the last 3 years, we’ve grown into a team focused on shipping real work, building Shopify systems, and becoming the partner brands can truly rely on.`}
               </blockquote>
 
               <div className="mt-7 border-t border-border pt-5">

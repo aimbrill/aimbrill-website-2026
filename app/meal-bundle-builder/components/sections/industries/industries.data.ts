@@ -20,7 +20,7 @@ export const industryCards: IndustryCard[] = [
     desc: "Customers want flexibility. You need automation.\nLet them choose delivery dates, pick meals, and manage plans easily.\nYour system handles orders, schedules, and subscriptions — automatically. No manual work. No confusion.",
     image:
       "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1200&q=80",
-    demoHref: mealFlowLinks.tryMealFlow,
+    demoHref: mealFlowLinks.mealDelivery,
     watchHref: "/meal-bundle-builder/Meal.mp4",
   },
   {
