@@ -52,11 +52,7 @@ export function Footer({ privacyHref = "/privacy" }: FooterProps) {
                   Brand Assets
                 </a>
               </li>
-              <li>
-                <a href="#contact" className="underline-grow">
-                  Contact
-                </a>
-              </li>
+              {/* Contact removed per update */}
             </ul>
           </div>
 
@@ -76,13 +72,23 @@ export function Footer({ privacyHref = "/privacy" }: FooterProps) {
                 </a>
               </li>
               <li>
-                <a href="#apps" className="underline-grow">
-                  AI Quiz (soon)
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://apps.shopify.com/ai-quiz-recommendation"
+                  className="inline-flex items-center gap-2 underline-grow"
+                >
+                  AI Quiz on Shopify <span>↗</span>
                 </a>
               </li>
               <li>
-                <a href="#apps" className="underline-grow">
-                  Meal Flow (soon)
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://apps.shopify.com/mealflow-box"
+                  className="inline-flex items-center gap-2 underline-grow"
+                >
+                  Meal Flow on Shopify <span>↗</span>
                 </a>
               </li>
             </ul>
@@ -146,7 +152,7 @@ export function Footer({ privacyHref = "/privacy" }: FooterProps) {
         </div>
 
         <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-border pt-6 text-xs text-muted-foreground md:flex-row md:items-center">
-          <div>© 2025 Aimbrill. All rights reserved.</div>
+          <div>© 2026 Aimbrill. All rights reserved.</div>
           <div className="flex flex-wrap items-center gap-4">
             <a
               href={privacyHref}

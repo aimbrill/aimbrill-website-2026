@@ -10,7 +10,7 @@ const CALENDLY_URL = "https://calendly.com/weupsell-experts/ai-campaign-popup";
 const links = [
   { href: "/#work", label: "Work" },
   { href: "/#apps", label: "Apps" },
-  { href: "/#contact", label: "Contact" },
+  { href: "/blog", label: "Blog" },
 ];
 
 // Note: app list imported from Apps.tsx
