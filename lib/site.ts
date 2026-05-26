@@ -1,7 +1,8 @@
 export const site = {
   name: "Aimbrill",
-  title: "Aimbrill | AI-Powered Shopify Studio",
-  description: "We build AI automation, smart apps & solutions for D2C brands.",
+  title: "Aimbrill | AI-Powered Shopify Studio & Apps",
+  description:
+    "Aimbrill builds AI automation, Shopify apps, and custom commerce solutions for D2C brands, including WeUpsell, AI Quiz, and Meal Flow.",
   url: "https://aimbrill.com",
   logoUrl: "https://aimbrill.com/images/aimbrill-logo.png",
   author: "Aimbrill",
@@ -16,9 +17,38 @@ export const site = {
     "Shopify app development",
     "AI automation",
     "custom Shopify store development",
+    "WeUpsell",
+    "AI Quiz",
+    "Meal Flow",
     "Shopify upsell widgets",
     "Shopify quiz recommendation",
     "meal subscription automation",
+  ],
+  apps: [
+    {
+      name: "WeUpsell",
+      headline: "AI Popup & Upsell Widgets",
+      description:
+        "AI-powered popups and upsell widgets that show the right offer to the right customer at the right time.",
+      pagePath: "/weupsell-ai-popup-upsell",
+      shopifyHref: "https://apps.shopify.com/aimbrill-popup-ai-automate-bot",
+    },
+    {
+      name: "AI Quiz",
+      headline: "AI Quiz & Product Recommendation",
+      description:
+        "Guided quizzes and AI-driven product recommendations that help shoppers find the right product faster.",
+      pagePath: "/ai-quiz-and-recommendations",
+      shopifyHref: "https://apps.shopify.com/ai-quiz-recommendation",
+    },
+    {
+      name: "Meal Flow",
+      headline: "Meal Flow Automation",
+      description:
+        "Meal subscription automation for Shopify with ZIP code checks, box building, and delivery sync.",
+      pagePath: "/meal-bundle-builder",
+      shopifyHref: "https://apps.shopify.com/mealflow-box",
+    },
   ],
   services: [
     {
@@ -45,6 +75,11 @@ export const site = {
     { path: "/ai-quiz-and-recommendations", changeFrequency: "monthly" as const, priority: 0.7 },
     { path: "/weupsell-ai-popup-upsell", changeFrequency: "monthly" as const, priority: 0.8 },
     { path: "/meal-bundle-builder", changeFrequency: "monthly" as const, priority: 0.7 },
+    {
+      path: "/macola-shopify-integration-pulse-ecommerce",
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    },
     {
       path: "/meal-bundle-builder/meal-delivery",
       changeFrequency: "monthly" as const,

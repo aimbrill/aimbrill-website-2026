@@ -43,12 +43,15 @@ async function getBlogCards(): Promise<BlogCard[]> {
         const category = cleanQuoted(source.match(/category="([^"]+)"/)?.[1]) ?? "Guide";
         const author = cleanQuoted(source.match(/author="([^"]+)"/)?.[1]);
         const publishedAt = cleanQuoted(source.match(/const PUBLISHED_DISPLAY = "([^"]+)"/)?.[1]);
-        const coverImage =
-          slug === "klaviyo-for-ecommerce"
-            ? "/images/shopify/blogs/main%20image/Klaviyo.png"
-            : slug === "what-is-shopify-agentic-storefronts"
-              ? "/images/shopify/blogs/main%20image/storefront.png"
-              : undefined;
+        let coverImage: string | undefined;
+
+        if (slug === "klaviyo-for-ecommerce") {
+          coverImage = "/images/shopify/blogs/main%20image/Klaviyo.png";
+        } else if (slug === "what-is-shopify-agentic-storefronts") {
+          coverImage = "/images/shopify/blogs/main%20image/storefront.png";
+        } else if (slug === "macola-shopify-integration-pulse-ecommerce") {
+          coverImage = "/images/shopify/blogs/dashboard_macola.png";
+        }
 
         return {
           slug,
