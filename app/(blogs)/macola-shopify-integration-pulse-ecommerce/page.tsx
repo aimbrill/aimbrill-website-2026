@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     siteName: "Aimbrill",
     images: [
       {
-        url: "/images/shopify/blogs/dashboard_macola.png",
+        url: "/images/shopify/blogs/main%20image/macola.png",
         width: 1200,
         height: 630,
         alt: "Macola ERP and Shopify integration using PULSE eCommerce",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: OG_TITLE,
     description: OG_DESC,
-    images: ["/images/shopify/blogs/dashboard_macola.png"],
+    images: ["/images/shopify/blogs/main%20image/macola.png"],
   },
 };
 
@@ -64,7 +64,7 @@ const articleJsonLd = {
   datePublished: PUBLISHED_ISO,
   dateModified: PUBLISHED_ISO,
   mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE}${CANONICAL}` },
-  image: `${SITE}/images/shopify/blogs/dashboard_macola.png`,
+  image: `${SITE}/images/shopify/blogs/main%20image/macola.png`,
 };
 
 const capabilities = [
@@ -199,8 +199,7 @@ export default function MacolaShopifyIntegrationPulseEcommercePage() {
 
           <GuideFigure
             src="/images/shopify/blogs/dashboard_macola.png"
-            alt="Macola ERP and Shopify connected through PULSE eCommerce"
-            priority
+            alt="Dashboard view of Macola ERP and Shopify integration"
           />
 
           <h2 id="what-is-pulse-ecommerce">What Is PULSE eCommerce?</h2>

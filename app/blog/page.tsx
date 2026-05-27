@@ -50,7 +50,7 @@ async function getBlogCards(): Promise<BlogCard[]> {
         } else if (slug === "what-is-shopify-agentic-storefronts") {
           coverImage = "/images/shopify/blogs/main%20image/storefront.png";
         } else if (slug === "macola-shopify-integration-pulse-ecommerce") {
-          coverImage = "/images/shopify/blogs/dashboard_macola.png";
+          coverImage = "/images/shopify/blogs/main%20image/macola.png";
         }
 
         return {
