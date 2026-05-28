@@ -232,29 +232,37 @@
   }
 
   .aq-header-cta {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    margin-left: auto;
-    padding: 0.5rem 0.85rem;
-    font-size: 0.72rem;
-    font-weight: 600;
-    gap: 0.3rem;
-    line-height: 1.2;
-    min-height: 2.1rem;
-    box-sizing: border-box;
-  }
-
-  .aq-header-cta span[aria-hidden] {
-    font-size: 0.85em;
-    line-height: 1;
+    display: none;
   }
 
   .aq-menu-toggle {
     flex-shrink: 0;
-    margin-left: 0.15rem;
+    margin-left: auto;
     padding: 0.4rem;
+    font-size: 1.15rem;
+    line-height: 1;
+  }
+
+  .aq-mobile-nav {
+    gap: 0;
+    padding: 0.5rem 0 1rem;
+  }
+
+  .aq-mobile-nav > a:not(.aq-mobile-nav-cta) {
+    padding: 0.72rem 0;
+    font-size: 0.92rem;
+    border-bottom: 1px solid rgba(235, 229, 217, 0.65);
+  }
+
+  .aq-mobile-nav-cta {
+    margin-top: 0.85rem;
+    width: 100%;
+    padding: 0.78rem 1.1rem;
+    font-size: 0.88rem;
+    font-weight: 700;
+    justify-content: center;
+    gap: 0.4rem;
+    box-sizing: border-box;
   }
 }
 

@@ -59,10 +59,10 @@ export function QuizSiteHeader() {
               href={SHOPIFY_APP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="aq-btn aq-btn--primary"
-              style={{ marginTop: "0.5rem", width: "fit-content" }}
+              className="aq-btn aq-btn--primary aq-mobile-nav-cta"
             >
-              Install free →
+              Install free
+              <span aria-hidden>→</span>
             </a>
           </nav>
         )}
