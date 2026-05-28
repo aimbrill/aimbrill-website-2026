@@ -1,61 +1,96 @@
-.banner {
-  background-image: url("/images/banner/bnr1.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 96px 0 72px;
+.page {
+  padding: clamp(5.5rem, 10vw, 6.5rem) 0 var(--aq-section-py);
+  background: var(--aq-bg);
 }
 
-.bannerTitle {
-  color: #ffffff;
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 700;
+.inner {
+  max-width: 42rem;
+  margin-inline: auto;
+}
+
+.title {
+  font-family: var(--aq-serif);
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--aq-ink);
   margin: 0;
-  text-align: center;
 }
 
-.containerContent {
-  max-width: 980px;
-  padding-bottom: 56px;
-  padding-top: 56px;
+.lead {
+  margin-top: 1.15rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--aq-body);
 }
 
-.privacyContent {
-  color: #1f2937;
+.back {
+  display: inline-block;
+  margin-top: 1.25rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--aq-purple);
+}
+
+.back:hover {
+  color: var(--aq-purple-dark);
+}
+
+.content {
+  margin-top: 2.5rem;
+  color: var(--aq-body);
   font-size: 1rem;
   line-height: 1.75;
 }
 
-.privacyContent h2,
-.privacyContent h3,
-.privacyContent h4 {
-  color: #111827;
-  font-weight: 700;
-  line-height: 1.35;
-  margin-top: 1.75rem;
-}
-
-.privacyContent h2 {
-  font-size: 1.85rem;
-}
-
-.privacyContent h3 {
+.content h2 {
+  font-family: var(--aq-font);
   font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--aq-ink);
+  margin: 2rem 0 0;
+  letter-spacing: -0.01em;
 }
 
-.privacyContent h4 {
-  font-size: 1.1rem;
+.content h2:first-child {
+  margin-top: 0;
 }
 
-.privacyContent p {
+.content h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--aq-ink);
+  margin: 1.25rem 0 0;
+}
+
+.content p {
+  margin: 0.85rem 0 0;
+}
+
+.content ul {
+  margin: 0.65rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.content li {
+  margin-top: 0.4rem;
+}
+
+.content li::marker {
+  color: var(--aq-purple);
+}
+
+.content a {
+  color: var(--aq-purple);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.content a:hover {
+  color: var(--aq-purple-dark);
+}
+
+.commitmentIntro {
   margin-top: 0.85rem;
-}
-
-.privacyContent ul {
-  margin: 0.75rem 0 0.75rem 1.2rem;
-  padding: 0;
-}
-
-.privacyContent li {
-  margin-bottom: 0.35rem;
 }

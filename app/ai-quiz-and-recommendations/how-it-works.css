@@ -1,0 +1,131 @@
+/* How it works */
+.aq-how {
+  background: var(--aq-white);
+  border-top: 1px solid var(--aq-line);
+  border-bottom: 1px solid var(--aq-line);
+}
+
+.aq-how-steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .aq-how-steps {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .aq-how-steps {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+.aq-how-step {
+  position: relative;
+}
+
+.aq-how-step__connector {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .aq-how-step__connector {
+    display: block;
+    position: absolute;
+    top: 2.75rem;
+    left: calc(50% + 2.5rem);
+    width: calc(100% - 3rem);
+    height: 2px;
+    background: linear-gradient(90deg, var(--aq-purple) 0%, rgba(249, 115, 22, 0.2) 100%);
+    z-index: 0;
+  }
+
+  .aq-how-step:last-child .aq-how-step__connector {
+    display: none;
+  }
+}
+
+.aq-how-step__card {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  padding: 1.5rem 1.35rem;
+  border-radius: var(--aq-radius);
+  background: var(--aq-bg);
+  border: 1px solid var(--aq-line);
+  box-shadow: 0 8px 28px -14px rgba(26, 26, 26, 0.1);
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.aq-how-step__card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px -16px rgba(249, 115, 22, 0.15);
+}
+
+.aq-how-step__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.aq-how-step__num {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--aq-purple);
+}
+
+.aq-how-step__icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 10px;
+  background: #fff;
+  border: 1px solid var(--aq-line);
+  display: grid;
+  place-items: center;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.aq-how-step:nth-child(1) .aq-how-step__icon {
+  background: #ecfdf5;
+}
+
+.aq-how-step:nth-child(2) .aq-how-step__icon {
+  background: #ffedd5;
+}
+
+.aq-how-step:nth-child(3) .aq-how-step__icon {
+  background: #fef9c3;
+}
+
+.aq-how-step:nth-child(4) .aq-how-step__icon {
+  background: #fff4ed;
+}
+
+.aq-how-step__card h3 {
+  font-family: var(--aq-font);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--aq-ink);
+}
+
+.aq-how-step__card p {
+  margin-top: 0.55rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--aq-body);
+}

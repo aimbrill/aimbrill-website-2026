@@ -1,0 +1,189 @@
+/* Footer — Quiz Kit style */
+.aq-footer {
+  position: relative;
+  background: #111111;
+  color: #fff;
+  padding: var(--aq-section-py) 0 clamp(2.5rem, 5vw, 3.5rem);
+  overflow: hidden;
+}
+
+.aq-footer__watermark {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  font-family: var(--aq-font);
+  font-size: clamp(6rem, 22vw, 14rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: rgba(255, 255, 255, 0.06);
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.aq-footer__wrap {
+  position: relative;
+  z-index: 2;
+}
+
+.aq-footer__main {
+  display: grid;
+  gap: 3rem;
+}
+
+@media (min-width: 768px) {
+  .aq-footer__main {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem 4rem;
+    align-items: start;
+  }
+}
+
+.ai-quiz-landing .aq-footer .aq-footer__title {
+  margin: 0;
+  font-family: var(--aq-font);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: #ffffff;
+}
+
+.aq-footer__desc {
+  margin: 1.25rem 0 0;
+  max-width: 22rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.72);
+  font-weight: 500;
+}
+
+.aq-footer__shopify-badge {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin-top: 1.75rem;
+  padding: 0.55rem 0.85rem 0.6rem;
+  border-radius: 10px;
+  background: #000;
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  color: #fff;
+  transition: border-color 0.2s, transform 0.15s;
+}
+
+.aq-footer__shopify-badge:hover {
+  border-color: #fff;
+  transform: translateY(-1px);
+}
+
+.aq-footer__shopify-label {
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  opacity: 0.9;
+}
+
+.aq-footer__shopify-row {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.aq-footer__shopify-row strong {
+  font-weight: 800;
+}
+
+.aq-footer__shopify-row svg {
+  color: #95bf47;
+  flex-shrink: 0;
+}
+
+.aq-footer__social {
+  display: flex;
+  gap: 0.65rem;
+  margin-top: 1.5rem;
+}
+
+.aq-footer__social-link {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  color: rgba(255, 255, 255, 0.85);
+  transition: color 0.2s, transform 0.15s;
+}
+
+.aq-footer__social-link:hover {
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.aq-footer__logo {
+  margin-top: 2.5rem;
+}
+
+.aq-footer__logo .aq-logo {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.aq-footer__resources {
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .aq-footer__resources {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+}
+
+.aq-footer__links {
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.aq-footer__links a {
+  font-size: clamp(1.35rem, 3.5vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #fff;
+  line-height: 1.15;
+  transition: opacity 0.2s;
+}
+
+.aq-footer__links a:hover {
+  opacity: 0.75;
+}
+
+.aq-footer__credit {
+  margin: 2.5rem 0 0;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.aq-footer__credit a {
+  color: inherit;
+  transition: color 0.2s;
+}
+
+.aq-footer__credit a:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.aq-logo--light {
+  color: #fff;
+}

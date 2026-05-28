@@ -1,0 +1,101 @@
+/**
+ * Purple accents inside illustrative mockups only.
+ * Site text & CTAs use orange via --aq-purple in landing.css.
+ */
+:root {
+  --aq-mock-accent: #5a31f4;
+  --aq-mock-accent-dark: #4c25d9;
+  --aq-mock-accent-soft: #ede9fe;
+  --aq-mock-gradient: linear-gradient(105deg, #5a31f4 0%, #6b4ff7 48%, #4c25d9 100%);
+  --aq-mock-shadow: 0 12px 32px -10px rgba(99, 102, 241, 0.45);
+}
+
+/* Hero illustration */
+.aq-hero-showcase .aq-hero-card__progress {
+  color: var(--aq-mock-accent);
+}
+
+.aq-hero-showcase .aq-hero-card__bar span {
+  background: var(--aq-mock-gradient);
+}
+
+.aq-hero-showcase .aq-hero-quiz-next,
+.aq-hero-showcase .aq-hero-product__cta {
+  background: var(--aq-mock-accent);
+  box-shadow: var(--aq-mock-shadow);
+}
+
+.aq-hero-showcase .aq-hero-live-chip {
+  background: #f5f3ff;
+  border-color: rgba(90, 49, 244, 0.18);
+  color: #5b21b6;
+}
+
+.aq-hero-showcase .aq-hero-side-stat__icon--spark {
+  background: var(--aq-mock-accent-soft);
+  color: var(--aq-mock-accent);
+}
+
+/* Feature showcase mockups */
+.aq-feat-stage .aq-feat-quiz-card__step,
+.aq-feat-stage .aq-feat-embed-quiz__title,
+.aq-feat-stage .aq-feat-embed-quiz__step {
+  color: var(--aq-mock-accent);
+}
+
+.aq-feat-stage .aq-feat-quiz-card__bar span {
+  background: var(--aq-mock-gradient);
+}
+
+.aq-feat-stage .aq-feat-quiz-next,
+.aq-feat-stage .aq-feat-rec-product__btn {
+  background: var(--aq-mock-gradient);
+  box-shadow: var(--aq-mock-shadow);
+}
+
+.aq-feat-stage .aq-feat-ai-tip__icon {
+  background: var(--aq-mock-accent-soft);
+  color: var(--aq-mock-accent);
+}
+
+.aq-feat-list--lavender li::before {
+  background: #8b5cf6;
+}
+
+/* Before / after comparison graphics */
+.aq-bva__vs > span {
+  background: var(--aq-mock-gradient);
+  box-shadow: var(--aq-mock-shadow);
+}
+
+.aq-bva__vs-arrows {
+  color: var(--aq-mock-accent);
+}
+
+.aq-bva__step-num {
+  color: var(--aq-mock-accent);
+}
+
+.aq-bva .aq-bva__panel-icon--happy {
+  background: var(--aq-mock-accent-soft);
+  border-color: rgba(90, 49, 244, 0.2);
+}
+
+.aq-bva .aq-bva__bubble {
+  background: var(--aq-mock-accent-soft);
+  border-color: rgba(90, 49, 244, 0.2);
+}
+
+.aq-bva .aq-bva__step-btn,
+.aq-bva .aq-bva__cart-btn {
+  background: var(--aq-mock-gradient);
+}
+
+/* Industry phone mockups (lavender theme) */
+.aq-ind-phone--lavender .aq-ind-phone__checks li::before {
+  color: #7c3aed;
+}
+
+.aq-ind-phone--lavender .aq-ind-phone__cta {
+  background: #7c3aed;
+}
