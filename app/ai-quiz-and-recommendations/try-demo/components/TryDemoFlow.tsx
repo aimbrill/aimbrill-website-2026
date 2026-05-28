@@ -6,9 +6,16 @@ import Image from "next/image";
 import { mapApiQuestionsToDemo, type DemoQuestion } from "@/lib/quiz-preview/map-questions";
 import { normalizeShopUrl } from "@/lib/quiz-preview/normalize-shop";
 import type { QuizPreviewApiQuestion } from "@/lib/quiz-preview/types";
-import { QuizContactForm } from "./QuizContactForm";
 
-type DemoStep = "url" | "select" | "generating" | "review" | "recommendations" | "contact";
+type DemoStep =
+  | "url"
+  | "select"
+  | "scanning"
+  | "generated"
+  | "quiz"
+  | "generating"
+  | "review"
+  | "recommendations";
 
 type QuestionType = DemoQuestion["type"];
 
@@ -103,6 +110,20 @@ const INITIAL_QUESTIONS: DemoQuestion[] = [
   },
 ];
 
+function defaultAnswerForQuestion(question: DemoQuestion): string {
+  if (question.type === "input") {
+    return "";
+  }
+  return question.options?.[0] ?? "Answer";
+}
+
+function buildDefaultAnswersMap(questions: DemoQuestion[]): Record<string, string> {
+  return questions.reduce<Record<string, string>>((acc, question) => {
+    acc[question.id] = defaultAnswerForQuestion(question);
+    return acc;
+  }, {});
+}
+
 function AdminShell({
   children,
   footer,
@@ -196,15 +217,6 @@ function toRecommendationQuestions(questions: DemoQuestion[]): QuizPreviewApiQue
   }));
 }
 
-function toRecommendationAnswers(questions: DemoQuestion[]): string[] {
-  return questions.map((question) => {
-    if (question.type === "input") {
-      return /email/i.test(question.text) ? "preview@example.com" : "Preview User";
-    }
-    return question.options?.[0] ?? "Answer";
-  });
-}
-
 function mapRecommendationProducts(
   products: Array<Record<string, unknown>>,
   shop: string,
@@ -296,6 +308,18 @@ function mapRecommendationProducts(
   });
 }
 
+function formatDisplayPrice(raw?: string): string | undefined {
+  if (!raw) return undefined;
+  const trimmed = raw.trim();
+  if (!trimmed) return undefined;
+  if (/^usd\s+/i.test(trimmed)) {
+    return trimmed.replace(/^usd\s+/i, "$");
+  }
+  if (trimmed.startsWith("$")) return trimmed;
+  if (/^\d/.test(trimmed)) return `$${trimmed}`;
+  return trimmed;
+}
+
 export function TryDemoFlow() {
   const [step, setStep] = useState<DemoStep>("url");
   const [shopUrl, setShopUrl] = useState("");
@@ -303,6 +327,8 @@ export function TryDemoFlow() {
   const [selectionLabel, setSelectionLabel] = useState("");
   const [questions, setQuestions] = useState<DemoQuestion[]>(INITIAL_QUESTIONS);
   const [installUrl, setInstallUrl] = useState("");
+  const [previewQuizId, setPreviewQuizId] = useState("");
+  const [previewToken, setPreviewToken] = useState("");
   const [generateError, setGenerateError] = useState<string | null>(null);
   const [createQuizError, setCreateQuizError] = useState<string | null>(null);
   const [isCreatingQuiz, setIsCreatingQuiz] = useState(false);
@@ -310,9 +336,14 @@ export function TryDemoFlow() {
   const [recommendationUiCopy, setRecommendationUiCopy] = useState<RecommendationUiCopy | null>(
     null,
   );
-  const [showEmailPopup, setShowEmailPopup] = useState(false);
-  const [emailValue, setEmailValue] = useState("");
+  const [generatedRevealCount, setGeneratedRevealCount] = useState(0);
+  const [demoQuestionIndex, setDemoQuestionIndex] = useState(0);
+  const [userSelectedAnswers, setUserSelectedAnswers] = useState<Record<string, boolean>>({});
+  const [questionAnswers, setQuestionAnswers] = useState<Record<string, string>>(
+    buildDefaultAnswersMap(INITIAL_QUESTIONS),
+  );
   const generateAbortRef = useRef<AbortController | null>(null);
+  const recommendationsInFlightRef = useRef(false);
   const canProceedSelect = sourceKind !== null && selectionLabel.length > 0;
 
   const footerStatus = useMemo(() => {
@@ -325,7 +356,7 @@ export function TryDemoFlow() {
   }, []);
 
   useEffect(() => {
-    if (step !== "generating") return;
+    if (step !== "scanning") return;
 
     generateAbortRef.current?.abort();
     const controller = new AbortController();
@@ -367,10 +398,17 @@ export function TryDemoFlow() {
         }
 
         setInstallUrl(payload.data.installUrl ?? "");
+        setPreviewQuizId(payload.data.previewQuizId ?? "");
+        setPreviewToken(payload.data.previewToken ?? "");
         setQuestions(mapped);
+        setQuestionAnswers(buildDefaultAnswersMap(mapped));
         setActiveQuestionIndex(0);
+        setDemoQuestionIndex(0);
+        setGeneratedRevealCount(0);
+        setRecommendations([]);
+        setRecommendationUiCopy(null);
         setGenerateError(null);
-        setStep("review");
+        setStep("generated");
       } catch (err) {
         if (controller.signal.aborted) return;
         const message =
@@ -389,15 +427,30 @@ export function TryDemoFlow() {
     };
   }, [step, shopUrl]);
 
+  useEffect(() => {
+    if (step !== "generated") return;
+    if (generatedRevealCount >= questions.length) return;
+    const timer = window.setTimeout(() => {
+      setGeneratedRevealCount((prev) => Math.min(prev + 1, questions.length));
+    }, 400);
+    return () => window.clearTimeout(timer);
+  }, [generatedRevealCount, questions.length, step]);
+
   const handleUrlSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const normalized = normalizeShopUrl(shopUrl);
     if (!normalized) return;
     setShopUrl(normalized);
     setGenerateError(null);
+    setPreviewQuizId("");
+    setPreviewToken("");
     setSourceKind(null);
     setSelectionLabel("");
-    setStep("generating");
+    setGeneratedRevealCount(0);
+    setDemoQuestionIndex(0);
+    setQuestionAnswers(buildDefaultAnswersMap(INITIAL_QUESTIONS));
+    setUserSelectedAnswers({});
+    setStep("scanning");
   };
 
   const pickCollection = () => {
@@ -412,6 +465,10 @@ export function TryDemoFlow() {
 
   const updateQuestionText = (id: string, text: string) => {
     setQuestions((prev) => prev.map((q) => (q.id === id ? { ...q, text } : q)));
+    setQuestionAnswers((prev) => {
+      if (!(id in prev)) return prev;
+      return { ...prev, [id]: text && /email/i.test(text) ? "" : prev[id] };
+    });
   };
 
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(0);
@@ -425,20 +482,38 @@ export function TryDemoFlow() {
         return { ...q, options };
       }),
     );
+    setQuestionAnswers((prev) => {
+      const current = prev[qId];
+      if (!current || index !== 0) return prev;
+      return { ...prev, [qId]: value || "Answer" };
+    });
   };
 
   const changeQuestionType = (id: string, type: QuestionType) => {
+    let nextDefaultAnswer: string | null = null;
     setQuestions((prev) =>
       prev.map((q) => {
         if (q.id !== id) return q;
-        if (type === "input") return { ...q, type, options: undefined };
+        if (type === "input") {
+          nextDefaultAnswer = "";
+          return { ...q, type, options: undefined };
+        }
+        const nextOptions = q.options?.length ? q.options : ["Option 1", "Option 2"];
+        nextDefaultAnswer = nextOptions[0] ?? "Answer";
         return {
           ...q,
           type,
-          options: q.options?.length ? q.options : ["Option 1", "Option 2"],
+          options: nextOptions,
         };
       }),
     );
+    setQuestionAnswers((prev) => {
+      if (!nextDefaultAnswer) return prev;
+      return {
+        ...prev,
+        [id]: nextDefaultAnswer,
+      };
+    });
   };
 
   const addOption = (qId: string) => {
@@ -452,12 +527,21 @@ export function TryDemoFlow() {
   };
 
   const removeOption = (qId: string, index: number) => {
+    let nextDefaultAnswer: string | null = null;
     setQuestions((prev) =>
       prev.map((q) => {
         if (q.id !== qId || !q.options || q.options.length <= 2) return q;
-        return { ...q, options: q.options.filter((_, i) => i !== index) };
+        const nextOptions = q.options.filter((_, i) => i !== index);
+        if (index === 0) {
+          nextDefaultAnswer = nextOptions[0] ?? "Answer";
+        }
+        return { ...q, options: nextOptions };
       }),
     );
+    setQuestionAnswers((prev) => {
+      if (index !== 0 || !nextDefaultAnswer) return prev;
+      return { ...prev, [qId]: nextDefaultAnswer };
+    });
   };
 
   const removeQuestion = (id: string) => {
@@ -465,6 +549,12 @@ export function TryDemoFlow() {
       if (prev.length <= 1) return prev;
       const next = prev.filter((q) => q.id !== id);
       setActiveQuestionIndex((i) => Math.min(i, Math.max(0, next.length - 1)));
+      return next;
+    });
+    setQuestionAnswers((prev) => {
+      if (!(id in prev)) return prev;
+      const next = { ...prev };
+      delete next[id];
       return next;
     });
   };
@@ -484,25 +574,37 @@ export function TryDemoFlow() {
       setActiveQuestionIndex(next.length - 1);
       return next;
     });
+    setQuestionAnswers((prev) => ({ ...prev, [id]: "Option 1" }));
   };
 
   const activeQuestion = questions[activeQuestionIndex];
   const isFirstQuestion = activeQuestionIndex === 0;
   const isLastQuestion = activeQuestionIndex === questions.length - 1;
+  const demoQuestion = questions[demoQuestionIndex];
+  const isLastDemoQuestion = demoQuestionIndex === questions.length - 1;
 
   const handleShowRecommendations = useCallback(async () => {
+    if (recommendationsInFlightRef.current) return;
+
+    recommendationsInFlightRef.current = true;
     setCreateQuizError(null);
     setIsCreatingQuiz(true);
 
     try {
       const recommendationQuestions = toRecommendationQuestions(questions);
-      const recommendationAnswers = toRecommendationAnswers(questions);
+      const recommendationAnswers = questions.map((question) => {
+        const answer = questionAnswers[question.id];
+        if (typeof answer === "string" && answer.trim().length > 0) return answer.trim();
+        return defaultAnswerForQuestion(question);
+      });
 
       const res = await fetch("/api/quiz-preview/recommendations", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           shop: shopUrl,
+          previewQuizId: previewQuizId || undefined,
+          previewToken: previewToken || undefined,
           questions: recommendationQuestions,
           answers: recommendationAnswers,
         }),
@@ -534,212 +636,361 @@ export function TryDemoFlow() {
     } catch {
       setCreateQuizError("Could not generate recommendations. Please try again.");
     } finally {
+      recommendationsInFlightRef.current = false;
       setIsCreatingQuiz(false);
     }
-  }, [questions, shopUrl]);
+  }, [previewQuizId, previewToken, questionAnswers, questions, shopUrl]);
 
-  const handleEmailPopupSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!emailValue.trim()) return;
-    setShowEmailPopup(false);
-    setStep("contact");
+  const handleSelectDemoAnswer = (question: DemoQuestion, answer: string) => {
+    if (isCreatingQuiz) return;
+
+    setQuestionAnswers((prev) => ({ ...prev, [question.id]: answer }));
+    setUserSelectedAnswers((prev) => ({ ...prev, [question.id]: true }));
+    if (demoQuestionIndex >= questions.length - 1) {
+      void handleShowRecommendations();
+      return;
+    }
+    setDemoQuestionIndex((prev) => Math.min(prev + 1, questions.length - 1));
   };
 
-  if (step === "contact") {
+  if (step === "scanning") {
     return (
-      <QuizContactForm
-        shopUrl={shopUrl}
-        installUrl={installUrl || undefined}
-        onBack={() => setStep(recommendations.length ? "recommendations" : "review")}
-      />
+      <div className="td-root">
+        <div className="td-url-page">
+          <main className="td-url-main">
+            <div className="td-scan-status">
+              <span className="td-scan-spinner" aria-hidden />
+              <strong>Scanning https://{shopUrl}/</strong>
+            </div>
+            <p className="td-demo-progress">Generating questions...</p>
+            <p className="td-url-sub">Please wait while we analyze products and collections.</p>
+          </main>
+        </div>
+      </div>
+    );
+  }
+
+  if (step === "generated") {
+    const visibleQuestions = questions.slice(0, generatedRevealCount);
+    const allRevealed = generatedRevealCount >= questions.length;
+    return (
+      <div className="td-root">
+        <div className="td-url-page">
+          <main className="td-generated-main">
+            {allRevealed ? (
+              <div className="td-generated-done-row">
+                <div className="td-scan-status">
+                  <span className="td-scan-done" aria-hidden>
+                    ✓
+                  </span>
+                  <strong>Done</strong>
+                </div>
+              </div>
+            ) : (
+              <div className="td-scan-status">
+                <span className="td-scan-spinner" aria-hidden />
+                <strong>Generating AI logic...</strong>
+              </div>
+            )}
+            <section className="td-generated-card">
+              <h2>Your Quiz</h2>
+              {visibleQuestions.map((question, index) => (
+                <article key={question.id} className="td-generated-question">
+                  <p>
+                    {index + 1}. {question.text}
+                  </p>
+                  {question.type === "multiple" && question.options ? (
+                    <div className="td-generated-options">
+                      {question.options.map((option) => (
+                        <button key={`${question.id}-${option}`} type="button" disabled>
+                          {option}
+                        </button>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="td-generated-input">Input field</div>
+                  )}
+                </article>
+              ))}
+            </section>
+            {allRevealed && (
+              <button
+                type="button"
+                className="td-btn td-btn--primary td-start-demo-btn"
+                onClick={() => setStep("quiz")}
+              >
+                <span aria-hidden>▷</span> Demo Quiz
+              </button>
+            )}
+          </main>
+        </div>
+      </div>
+    );
+  }
+
+  if (step === "quiz" && demoQuestion) {
+    const selectedAnswer = questionAnswers[demoQuestion.id] ?? "";
+    return (
+      <div className="td-root">
+        <div className="td-url-page">
+          <main className="td-generated-main">
+            <span className="td-url-badge">✦ AI Quiz Builder Demo</span>
+            <h1 className="td-demo-title">AI Quiz</h1>
+            <section className="td-generated-card">
+              <p className="td-demo-progress">
+                Question {demoQuestionIndex + 1} of {questions.length}
+              </p>
+              <article className="td-generated-question td-generated-question--active">
+                <p>{demoQuestion.text}</p>
+                {demoQuestion.type === "multiple" && demoQuestion.options ? (
+                  <div className="td-generated-options td-generated-options--active">
+                    {demoQuestion.options.map((option) => (
+                      <button
+                        key={`${demoQuestion.id}-${option}`}
+                        type="button"
+                        disabled={isCreatingQuiz}
+                        className={
+                          userSelectedAnswers[demoQuestion.id] && selectedAnswer === option
+                            ? "is-selected"
+                            : ""
+                        }
+                        onClick={() => handleSelectDemoAnswer(demoQuestion, option)}
+                      >
+                        {option}
+                      </button>
+                    ))}
+                  </div>
+                ) : (
+                  <form
+                    className="td-demo-input-form"
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      if (isCreatingQuiz) return;
+                      if (!selectedAnswer.trim()) return;
+                      handleSelectDemoAnswer(demoQuestion, selectedAnswer.trim());
+                    }}
+                  >
+                    <input
+                      className="td-option-input"
+                      type={/email/i.test(demoQuestion.text) ? "email" : "text"}
+                      value={selectedAnswer}
+                      placeholder={
+                        /email/i.test(demoQuestion.text) ? "Your email address" : "Type your answer"
+                      }
+                      onChange={(e) => {
+                        setQuestionAnswers((prev) => ({
+                          ...prev,
+                          [demoQuestion.id]: e.target.value,
+                        }));
+                        setUserSelectedAnswers((prev) => ({ ...prev, [demoQuestion.id]: true }));
+                      }}
+                      required
+                    />
+                    <button type="submit" className="td-btn td-btn--primary">
+                      {isLastDemoQuestion ? (
+                        isCreatingQuiz ? (
+                          <span className="td-btn-spinner" aria-label="Loading" />
+                        ) : (
+                          "Finish Quiz"
+                        )
+                      ) : (
+                        "Next Question"
+                      )}
+                    </button>
+                  </form>
+                )}
+              </article>
+            </section>
+            <div className="td-quiz-actions">
+              <button
+                type="button"
+                className="td-btn td-btn--ghost"
+                onClick={() => setDemoQuestionIndex((prev) => Math.max(prev - 1, 0))}
+                disabled={demoQuestionIndex === 0 || isCreatingQuiz}
+              >
+                Previous
+              </button>
+              <button
+                type="button"
+                className="td-btn td-btn--ghost"
+                onClick={() => {
+                  if (isCreatingQuiz) return;
+                  setDemoQuestionIndex(0);
+                  setQuestionAnswers(buildDefaultAnswersMap(questions));
+                  setUserSelectedAnswers({});
+                }}
+                disabled={isCreatingQuiz}
+              >
+                Restart Quiz
+              </button>
+            </div>
+            {createQuizError && (
+              <p className="td-review-error" role="alert">
+                {createQuizError}
+              </p>
+            )}
+          </main>
+        </div>
+      </div>
     );
   }
 
   if (step === "recommendations") {
+    const shopperName = questions.reduce<string | null>((name, question) => {
+      if (name) return name;
+      if (question.type !== "input") return null;
+      if (/email/i.test(question.text)) return null;
+      const answer = questionAnswers[question.id]?.trim();
+      return answer ? answer : null;
+    }, null);
+
+    const bundleImages = recommendations
+      .slice(0, 3)
+      .map((product) => ({
+        id: product.id,
+        src: product.imageUrl || product.gallery[0]?.url,
+        alt: product.imageAlt || product.title,
+      }))
+      .filter((item): item is { id: string; src: string; alt: string } => Boolean(item.src));
+
+    const summaryWithoutName = recommendationUiCopy?.summary
+      ? recommendationUiCopy.summary.replace(/^((hi|hello)\s+[^,!.]+[,.!]\s*)/i, "").trim()
+      : undefined;
+
     return (
       <div className="td-root">
         <div className="td-reco-page">
           <div className="td-reco-page__wrap">
             <div className="td-reco-page__head">
-              <h1>AI Recommendations</h1>
-              <p>
-                {recommendationUiCopy?.summary ??
-                  "Based on quiz answers, these products are the best fit for this shopper."}
-              </p>
+              {shopperName && <h1>Hello {shopperName}!</h1>}
+              {summaryWithoutName && <p>{summaryWithoutName}</p>}
             </div>
 
-            <section className="td-reco-page__products">
-              {recommendations.map((product) => (
-                <article key={product.id} className="td-reco-page__card">
-                  {product.imageUrl ? (
-                    <Image
-                      src={product.imageUrl}
-                      alt={product.imageAlt || product.title}
-                      className="td-reco-page__image"
-                      width={480}
-                      height={320}
-                      unoptimized
-                    />
-                  ) : (
-                    <div className="td-reco-page__image td-reco-page__image--placeholder" />
-                  )}
-                  <div className="td-reco-page__meta">
-                    <p className="td-reco-page__title">{product.title}</p>
-                    {product.subtitle && (
-                      <p className="td-reco-page__subtitle">{product.subtitle}</p>
+            <section className="td-reco-v2-products">
+              <h2>Recommended Products for You</h2>
+              <div className="td-reco-v2-grid">
+                {recommendations.map((product) => (
+                  <article key={product.id} className="td-reco-v2-card">
+                    {product.imageUrl ? (
+                      <Image
+                        src={product.imageUrl}
+                        alt={product.imageAlt || product.title}
+                        className="td-reco-v2-image"
+                        width={240}
+                        height={220}
+                        unoptimized
+                      />
+                    ) : (
+                      <div className="td-reco-v2-image td-reco-v2-image--placeholder" />
                     )}
-                    {product.price && <p className="td-reco-page__price">{product.price}</p>}
-                    {product.priceRange && product.priceRange !== product.price && (
-                      <p className="td-reco-page__price">Range: {product.priceRange}</p>
-                    )}
-                    {product.reason && <p className="td-reco-page__reason">{product.reason}</p>}
-                    {typeof product.score === "number" && (
-                      <p className="td-reco-page__score">Score: {product.score.toFixed(2)}</p>
-                    )}
-                    <div className="td-reco-page__chips">
-                      {product.status && (
-                        <span className="td-reco-page__chip">{product.status}</span>
-                      )}
-                      {typeof product.availableForSale === "boolean" && (
-                        <span
-                          className={`td-reco-page__chip${product.availableForSale ? " is-instock" : " is-outstock"}`}
-                        >
-                          {product.availableForSale ? "In stock" : "Out of stock"}
-                        </span>
-                      )}
-                      {product.productType && (
-                        <span className="td-reco-page__chip">{product.productType}</span>
-                      )}
-                    </div>
-                    {product.tags.length > 0 && (
-                      <p className="td-reco-page__tags">
-                        Tags: {product.tags.slice(0, 4).join(", ")}
+                    <p className="td-reco-v2-title">{product.title}</p>
+                    {(product.price || product.priceRange) && (
+                      <p className="td-reco-v2-price">
+                        {formatDisplayPrice(product.price || product.priceRange)}
                       </p>
                     )}
-                    {product.description && (
-                      <p className="td-reco-page__description">{product.description}</p>
-                    )}
-                    {product.gallery.length > 1 && (
-                      <div className="td-reco-page__gallery">
-                        {product.gallery.slice(0, 6).map((image, index) => (
-                          <Image
-                            key={`${product.id}-gallery-${index}`}
-                            src={image.url}
-                            alt={image.altText || `${product.title} ${index + 1}`}
-                            className="td-reco-page__thumb"
-                            width={54}
-                            height={54}
-                            unoptimized
-                          />
-                        ))}
-                      </div>
-                    )}
-                    {product.variants.length > 0 && (
-                      <div className="td-reco-page__variants">
-                        <p className="td-reco-page__variants-title">Variants</p>
-                        <ul>
-                          {product.variants.slice(0, 3).map((variant) => (
-                            <li key={variant.id}>
-                              <span>{variant.title || "Default"}</span>
-                              {variant.price && <strong>{variant.price}</strong>}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                    {product.url && (
-                      <a
-                        href={product.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="td-reco-link"
-                      >
-                        View product →
-                      </a>
-                    )}
-                  </div>
-                </article>
-              ))}
+                    <button type="button" className="td-reco-v2-cart" disabled>
+                      Add to Cart
+                    </button>
+                  </article>
+                ))}
+              </div>
             </section>
 
-            {(recommendationUiCopy?.expertAdvice ||
-              recommendationUiCopy?.marketTrends ||
-              recommendationUiCopy?.bundle) && (
-              <section className="td-reco-page__insights">
+            {(recommendationUiCopy?.expertAdvice || recommendationUiCopy?.marketTrends) && (
+              <section className="td-reco-v2-insights">
                 {recommendationUiCopy?.expertAdvice && (
-                  <article className="td-reco-page__insight-card">
-                    <h3>{recommendationUiCopy.expertAdvice.title ?? "Expert Advice"}</h3>
-                    <p>{recommendationUiCopy.expertAdvice.body}</p>
+                  <article className="td-reco-v2-insight-card">
+                    <Image
+                      src="/ai-quiz-landing/before-after/quiz-expert-icon.png"
+                      alt=""
+                      aria-hidden
+                      className="td-reco-v2-insight-icon"
+                      width={56}
+                      height={56}
+                      unoptimized
+                    />
+                    <h3>{recommendationUiCopy.expertAdvice.title || "Expert Advice"}</h3>
+                    {recommendationUiCopy.expertAdvice.body && (
+                      <p>{recommendationUiCopy.expertAdvice.body}</p>
+                    )}
                   </article>
                 )}
                 {recommendationUiCopy?.marketTrends && (
-                  <article className="td-reco-page__insight-card">
-                    <h3>{recommendationUiCopy.marketTrends.title ?? "Market Trends"}</h3>
-                    <p>{recommendationUiCopy.marketTrends.body}</p>
-                  </article>
-                )}
-                {recommendationUiCopy?.bundle && (
-                  <article className="td-reco-page__bundle">
-                    <h3>{recommendationUiCopy.bundle.title ?? "Bundle Recommendation"}</h3>
-                    {recommendationUiCopy.bundle.subtitle && (
-                      <p>{recommendationUiCopy.bundle.subtitle}</p>
-                    )}
-                    {recommendationUiCopy.bundle.tagline && (
-                      <span>{recommendationUiCopy.bundle.tagline}</span>
+                  <article className="td-reco-v2-insight-card">
+                    <Image
+                      src="/ai-quiz-landing/before-after/quiz-market-icon.png"
+                      alt=""
+                      aria-hidden
+                      className="td-reco-v2-insight-icon"
+                      width={56}
+                      height={56}
+                      unoptimized
+                    />
+                    <h3>{recommendationUiCopy.marketTrends.title || "Market Trends"}</h3>
+                    {recommendationUiCopy.marketTrends.body && (
+                      <p>{recommendationUiCopy.marketTrends.body}</p>
                     )}
                   </article>
                 )}
               </section>
             )}
 
-            <div className="td-reco-page__actions">
+            {recommendationUiCopy?.bundle && (
+              <section className="td-reco-v2-bundle">
+                {bundleImages.length > 0 && (
+                  <div className="td-reco-v2-bundle-images">
+                    {bundleImages.map((image) => (
+                      <Image
+                        key={`bundle-${image.id}`}
+                        src={image.src}
+                        alt={image.alt}
+                        className="td-reco-v2-bundle-image"
+                        width={132}
+                        height={96}
+                        unoptimized
+                      />
+                    ))}
+                  </div>
+                )}
+                <h3>{recommendationUiCopy.bundle.title || "Complete Bundle Offer"}</h3>
+                {recommendationUiCopy.bundle.subtitle && (
+                  <p>{recommendationUiCopy.bundle.subtitle}</p>
+                )}
+                {recommendationUiCopy.bundle.tagline && (
+                  <p>{recommendationUiCopy.bundle.tagline}</p>
+                )}
+                <button type="button" className="td-reco-v2-cart" disabled>
+                  Add Bundle to Cart
+                </button>
+              </section>
+            )}
+
+            <div className="td-reco-v2-retake">
               <button
                 type="button"
-                className="td-btn td-btn--ghost"
-                onClick={() => setStep("review")}
+                className="td-reco-v2-retake-link"
+                onClick={() => {
+                  setDemoQuestionIndex(0);
+                  setStep("quiz");
+                }}
               >
-                Back to review
-              </button>
-              <button
-                type="button"
-                className="td-btn td-btn--primary"
-                onClick={() => setShowEmailPopup(true)}
-              >
-                Continue
+                Retake Quiz
               </button>
             </div>
+            <p className="td-reco-v2-install-note">
+              Want to try the full AI Quiz app on your store?{" "}
+              <a
+                href="https://apps.shopify.com/ai-quiz-recommendation"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Install from Shopify App Store
+              </a>
+              .
+            </p>
           </div>
         </div>
-        {showEmailPopup && (
-          <div className="td-email-popup-backdrop" role="dialog" aria-modal="true">
-            <form className="td-email-popup" onSubmit={handleEmailPopupSubmit}>
-              <h3>Get your recommendations by email</h3>
-              <p>
-                Your recommendations are ready. Add your email and we&apos;ll share the full quiz
-                preview with you.
-              </p>
-              <input
-                type="email"
-                required
-                placeholder="you@store.com"
-                value={emailValue}
-                onChange={(e) => setEmailValue(e.target.value)}
-              />
-              <div className="td-email-popup-actions">
-                <button
-                  type="button"
-                  className="td-btn td-btn--ghost"
-                  onClick={() => setShowEmailPopup(false)}
-                >
-                  Cancel
-                </button>
-                <button type="submit" className="td-btn td-btn--primary">
-                  Continue
-                </button>
-              </div>
-            </form>
-          </div>
-        )}
       </div>
     );
   }
@@ -768,7 +1019,7 @@ export function TryDemoFlow() {
                   setShopUrl(e.target.value);
                   if (generateError) setGenerateError(null);
                 }}
-                placeholder="myshopify.com"
+                placeholder="https://yourstore.myshopify.com"
                 aria-label="Store URL"
                 aria-invalid={generateError ? true : undefined}
               />
@@ -1038,6 +1289,47 @@ export function TryDemoFlow() {
                     </button>
                   </div>
                 )}
+                <div className="td-options">
+                  <p className="td-options-label">Answer used for recommendations</p>
+                  {activeQuestion.type === "multiple" && activeQuestion.options ? (
+                    <select
+                      className="td-q-type"
+                      value={questionAnswers[activeQuestion.id] ?? activeQuestion.options[0] ?? ""}
+                      onChange={(e) =>
+                        setQuestionAnswers((prev) => ({
+                          ...prev,
+                          [activeQuestion.id]: e.target.value,
+                        }))
+                      }
+                      aria-label="Selected answer"
+                    >
+                      {activeQuestion.options.map((option, index) => (
+                        <option key={`${activeQuestion.id}-answer-${index}`} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                  ) : (
+                    <input
+                      className="td-option-input"
+                      type={/email/i.test(activeQuestion.text) ? "email" : "text"}
+                      value={
+                        questionAnswers[activeQuestion.id] ??
+                        defaultAnswerForQuestion(activeQuestion)
+                      }
+                      onChange={(e) =>
+                        setQuestionAnswers((prev) => ({
+                          ...prev,
+                          [activeQuestion.id]: e.target.value,
+                        }))
+                      }
+                      placeholder={
+                        /email/i.test(activeQuestion.text) ? "Your email address" : "Enter answer"
+                      }
+                      aria-label="Input answer"
+                    />
+                  )}
+                </div>
               </div>
             </div>
           </article>
@@ -1105,36 +1397,6 @@ export function TryDemoFlow() {
           </button>
         </div>
       </AdminShell>
-      {showEmailPopup && (
-        <div className="td-email-popup-backdrop" role="dialog" aria-modal="true">
-          <form className="td-email-popup" onSubmit={handleEmailPopupSubmit}>
-            <h3>Get your recommendations by email</h3>
-            <p>
-              Your recommendations are ready. Add your email and we&apos;ll share the full quiz
-              preview with you.
-            </p>
-            <input
-              type="email"
-              required
-              placeholder="you@store.com"
-              value={emailValue}
-              onChange={(e) => setEmailValue(e.target.value)}
-            />
-            <div className="td-email-popup-actions">
-              <button
-                type="button"
-                className="td-btn td-btn--ghost"
-                onClick={() => setShowEmailPopup(false)}
-              >
-                Cancel
-              </button>
-              <button type="submit" className="td-btn td-btn--primary">
-                Continue
-              </button>
-            </div>
-          </form>
-        </div>
-      )}
     </div>
   );
 }

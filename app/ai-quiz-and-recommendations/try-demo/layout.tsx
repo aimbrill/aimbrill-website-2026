@@ -1,4 +1,6 @@
 import type { Metadata, Viewport } from "next";
+import { QuizSiteHeader } from "../components/QuizSiteHeader";
+import "../landing.css";
 import "./try-demo.css";
 
 export const metadata: Metadata = {
@@ -12,5 +14,10 @@ export const viewport: Viewport = {
 };
 
 export default function TryDemoLayout({ children }: { children: React.ReactNode }) {
-  return children;
+  return (
+    <div className="ai-quiz-landing antialiased overflow-x-hidden" data-quiz-landing="">
+      <QuizSiteHeader />
+      {children}
+    </div>
+  );
 }

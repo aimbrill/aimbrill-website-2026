@@ -6,6 +6,10 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const shop = typeof body.shop === "string" ? body.shop.trim() : "";
+    const previewQuizId =
+      typeof body.previewQuizId === "string" ? body.previewQuizId.trim() : undefined;
+    const previewToken =
+      typeof body.previewToken === "string" ? body.previewToken.trim() : undefined;
     const questions = Array.isArray(body.questions)
       ? (body.questions as QuizPreviewApiQuestion[])
       : [];
@@ -22,7 +26,13 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const data = await fetchRecommendations({ shop, questions, answers });
+    const data = await fetchRecommendations({
+      shop,
+      previewQuizId,
+      previewToken,
+      questions,
+      answers,
+    });
     return NextResponse.json({ success: true, data });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Failed to fetch recommendations";

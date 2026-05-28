@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { QuizLogo } from "./QuizLogo";
 
 const SHOPIFY_APP_URL = "https://apps.shopify.com/ai-quiz-recommendation";
@@ -18,9 +19,9 @@ export function QuizSiteHeader() {
     <header className="aq-header">
       <div className="aq-wrap">
         <div className="aq-header-inner">
-          <a href="#top" onClick={() => setOpen(false)}>
+          <Link href="/ai-quiz-and-recommendations" onClick={() => setOpen(false)}>
             <QuizLogo />
-          </a>
+          </Link>
           <nav className="aq-nav" aria-label="Main">
             {links.map((link) => (
               <a key={link.href} href={link.href}>

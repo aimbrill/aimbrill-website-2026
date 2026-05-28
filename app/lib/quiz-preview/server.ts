@@ -62,17 +62,35 @@ export async function fetchGenerateQuestions({
 
 export async function fetchRecommendations({
   shop,
+  previewQuizId,
+  previewToken,
   questions,
   answers,
 }: {
   shop: string;
+  previewQuizId?: string;
+  previewToken?: string;
   questions: QuizPreviewApiQuestion[];
   answers: string[];
 }): Promise<RecommendationsData> {
+  const payloadBody: {
+    shop: string;
+    questions: QuizPreviewApiQuestion[];
+    answers: string[];
+    previewQuizId?: string;
+    previewToken?: string;
+  } = {
+    shop,
+    questions,
+    answers,
+  };
+  if (previewQuizId) payloadBody.previewQuizId = previewQuizId;
+  if (previewToken) payloadBody.previewToken = previewToken;
+
   const res = await fetch(`${getBaseUrl()}/api/public/recommendations`, {
     method: "POST",
     headers: previewHeaders(),
-    body: JSON.stringify({ shop, questions, answers }),
+    body: JSON.stringify(payloadBody),
     cache: "no-store",
   });
 

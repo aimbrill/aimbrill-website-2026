@@ -116,32 +116,20 @@ function HeroFlowDecor() {
 function HeroSceneDeco() {
   return (
     <div className="aq-hero-scene-deco" aria-hidden>
-      <div className="aq-hero-scene-deco__pedestal" />
-      <div className="aq-hero-scene-deco__plant">
-        <span className="aq-hero-scene-deco__pot" />
-        <span className="aq-hero-scene-deco__leaf aq-hero-scene-deco__leaf--1" />
-        <span className="aq-hero-scene-deco__leaf aq-hero-scene-deco__leaf--2" />
-        <span className="aq-hero-scene-deco__leaf aq-hero-scene-deco__leaf--3" />
+      <div className="aq-hero-scene-deco__plate" />
+      <div className="aq-hero-scene-deco__bubble">
+        <p>
+          AI finds what
+          <br />
+          your customers
+          <br />
+          will love <span>♡</span>
+        </p>
       </div>
-      <div className="aq-hero-scene-deco__robot">
-        <svg viewBox="0 0 48 48" fill="none">
-          <defs>
-            <linearGradient id="heroRobotGrad" x1="8" y1="8" x2="40" y2="40">
-              <stop offset="0%" stopColor="#a78bfa" />
-              <stop offset="100%" stopColor="#6366f1" />
-            </linearGradient>
-          </defs>
-          <circle cx="24" cy="24" r="22" fill="url(#heroRobotGrad)" />
-          <circle cx="17" cy="20" r="3" fill="#fff" />
-          <circle cx="31" cy="20" r="3" fill="#fff" />
-          <path
-            d="M16 30 Q24 36 32 30"
-            stroke="#fff"
-            strokeWidth="2"
-            strokeLinecap="round"
-            fill="none"
-          />
-        </svg>
+      <div className="aq-hero-scene-deco__sprig">
+        <span className="aq-hero-scene-deco__sprig-leaf aq-hero-scene-deco__sprig-leaf--1" />
+        <span className="aq-hero-scene-deco__sprig-leaf aq-hero-scene-deco__sprig-leaf--2" />
+        <span className="aq-hero-scene-deco__sprig-leaf aq-hero-scene-deco__sprig-leaf--3" />
       </div>
     </div>
   );
@@ -188,9 +176,9 @@ export function HeroIllustration() {
 
               <article className="aq-hero-card aq-hero-card--recs">
                 <h3 className="aq-hero-recs-title">
-                  Recommended for you{" "}
+                  AI Picks for Your Skin{" "}
                   <span className="aq-hero-recs-sparkles" aria-hidden>
-                    ✨✨
+                    ✨
                   </span>
                 </h3>
                 <div className="aq-hero-products">

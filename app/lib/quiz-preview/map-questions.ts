@@ -31,7 +31,7 @@ export function mapApiQuestionsToDemo(questions: QuizPreviewApiQuestion[]): Demo
 export function buildPreviewAnswers(questions: QuizPreviewApiQuestion[]): string[] {
   return questions.map((question) => {
     if (question.type === "input") {
-      return question.inputType === "email" ? "preview@example.com" : "Preview User";
+      return "";
     }
     if (question.type === "choice" || question.type === "multiple") {
       return Array.isArray(question.answers) && question.answers.length

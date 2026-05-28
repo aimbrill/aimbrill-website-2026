@@ -427,6 +427,9 @@
 }
 
 .aq-hero-showcase__frame {
+  --aq-mock-accent: #f97316;
+  --aq-mock-gradient: linear-gradient(105deg, #f97316 0%, #fb923c 48%, #ea580c 100%);
+  --aq-mock-shadow: 0 12px 30px -12px rgba(249, 115, 22, 0.45);
   position: relative;
   flex: 1;
   min-width: 0;
@@ -997,8 +1000,9 @@
   min-height: 500px;
   padding: clamp(1.1rem, 2vw, 1.5rem) clamp(1rem, 2vw, 1.35rem) 4.5rem;
   border-radius: 28px;
-  background: linear-gradient(155deg, #fffefb 0%, #fff8f0 45%, #fff4eb 100%);
-  border: 1px solid rgba(235, 229, 217, 0.9);
+  background: radial-gradient(circle at 15% 45%, rgba(251, 146, 60, 0.22), transparent 36%),
+    linear-gradient(155deg, #fffcf8 0%, #fff6ed 50%, #ffefe2 100%);
+  border: 1px solid rgba(247, 200, 158, 0.45);
   box-shadow: 0 32px 72px -36px rgba(26, 26, 26, 0.14);
   overflow: hidden;
 }
@@ -1083,9 +1087,9 @@
   gap: 0.35rem;
   padding: 0.28rem 0.55rem;
   border-radius: 999px;
-  background: #f5f3ff;
-  border: 1px solid rgba(90, 49, 244, 0.16);
-  color: #5b21b6;
+  background: #fff6ed;
+  border: 1px solid rgba(249, 115, 22, 0.2);
+  color: #c2410c;
   font-size: 0.62rem;
   font-weight: 700;
   white-space: nowrap;
@@ -1095,8 +1099,8 @@
   width: 0.42rem;
   height: 0.42rem;
   border-radius: 50%;
-  background: #22c55e;
-  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.22);
+  background: #f97316;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2);
   flex-shrink: 0;
 }
 
@@ -1148,8 +1152,8 @@
 }
 
 .aq-hero-quiz-options li.is-selected {
-  background: #f0fdfa;
-  border-color: #2dd4bf;
+  background: #fff7ed;
+  border-color: #fdba74;
 }
 
 .aq-hero-radio {
@@ -1158,8 +1162,8 @@
 }
 
 .aq-hero-quiz-options li.is-selected .aq-hero-radio {
-  border-color: #14b8a6;
-  box-shadow: inset 0 0 0 3px #14b8a6;
+  border-color: #f97316;
+  box-shadow: inset 0 0 0 3px #f97316;
 }
 
 .aq-hero-quiz-next {
@@ -1221,8 +1225,8 @@
   margin-bottom: 0.35rem;
   padding: 0.14rem 0.45rem;
   border-radius: 999px;
-  background: #dcfce7;
-  color: #166534;
+  background: #ffedd5;
+  color: #c2410c;
   font-size: 0.52rem;
   font-weight: 800;
 }
@@ -1343,98 +1347,94 @@
 .aq-hero-flow-decor__star--3 {
   right: 11rem;
   top: 5.5rem;
-  color: #a78bfa;
+  color: #fdba74;
 }
 
 .aq-hero-scene-deco {
   position: absolute;
-  right: 0.75rem;
-  bottom: 0.35rem;
-  width: 7.5rem;
-  height: 5.5rem;
+  right: 0.9rem;
+  bottom: 0.5rem;
+  width: 11.5rem;
+  height: 8.6rem;
   z-index: 2;
   pointer-events: none;
 }
 
-.aq-hero-scene-deco__pedestal {
-  position: absolute;
-  right: 0.5rem;
-  bottom: 0;
-  width: 4.5rem;
-  height: 1.1rem;
-  border-radius: 50%;
-  background: linear-gradient(180deg, #fdba74 0%, #fb923c 55%, #f97316 100%);
-  box-shadow: 0 8px 20px rgba(249, 115, 22, 0.25);
-}
-
-.aq-hero-scene-deco__plant {
-  position: absolute;
-  right: 2.75rem;
-  bottom: 0.65rem;
-  width: 2.5rem;
-  height: 3.25rem;
-}
-
-.aq-hero-scene-deco__pot {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1.35rem;
-  height: 1rem;
-  border-radius: 0 0 8px 8px;
-  background: linear-gradient(180deg, #fdba74, #ea580c);
-}
-
-.aq-hero-scene-deco__leaf {
-  position: absolute;
-  border-radius: 50% 50% 50% 0;
-  background: #4ade80;
-}
-
-.aq-hero-scene-deco__leaf--1 {
-  width: 1.1rem;
-  height: 1.4rem;
-  left: 0.2rem;
-  bottom: 0.85rem;
-  transform: rotate(-35deg);
-  background: #22c55e;
-}
-
-.aq-hero-scene-deco__leaf--2 {
-  width: 0.95rem;
-  height: 1.25rem;
-  left: 0.85rem;
-  bottom: 1.35rem;
-  transform: rotate(10deg);
-  background: #4ade80;
-}
-
-.aq-hero-scene-deco__leaf--3 {
-  width: 0.85rem;
-  height: 1.1rem;
-  right: 0.15rem;
-  bottom: 1rem;
-  transform: rotate(55deg);
-  background: #16a34a;
-}
-
-.aq-hero-scene-deco__robot {
+.aq-hero-scene-deco__plate {
   position: absolute;
   right: 0;
-  bottom: 1.35rem;
-  width: 2.65rem;
-  height: 2.65rem;
+  bottom: 0;
+  width: 10rem;
+  height: 2rem;
   border-radius: 50%;
-  background: #fff;
-  padding: 0.15rem;
-  box-shadow: 0 10px 28px rgba(99, 102, 241, 0.28);
+  background: radial-gradient(ellipse at center, #fcd6b8 0%, #fcb67a 70%, #fb923c 100%);
+  box-shadow: 0 14px 32px rgba(249, 115, 22, 0.3);
 }
 
-.aq-hero-scene-deco__robot svg {
-  display: block;
-  width: 100%;
-  height: 100%;
+.aq-hero-scene-deco__bubble {
+  position: absolute;
+  right: 2.05rem;
+  bottom: 1.35rem;
+  width: 6.4rem;
+  height: 6.4rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 28% 26%, rgba(255, 255, 255, 0.95), #ffe8d5 68%, #fdc89c 100%);
+  border: 1px solid rgba(252, 168, 102, 0.5);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  box-shadow: 0 18px 36px -16px rgba(249, 115, 22, 0.45);
+}
+
+.aq-hero-scene-deco__bubble p {
+  margin: 0;
+  font-size: 1.04rem;
+  line-height: 1.35;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.aq-hero-scene-deco__bubble span {
+  color: #f97316;
+}
+
+.aq-hero-scene-deco__sprig {
+  position: absolute;
+  right: 0.4rem;
+  bottom: 1.05rem;
+  width: 2.2rem;
+  height: 3.2rem;
+}
+
+.aq-hero-scene-deco__sprig-leaf {
+  position: absolute;
+  border-radius: 50% 50% 50% 0;
+  background: #f8b27d;
+  opacity: 0.9;
+}
+
+.aq-hero-scene-deco__sprig-leaf--1 {
+  width: 0.95rem;
+  height: 1.3rem;
+  right: 1rem;
+  bottom: 1.35rem;
+  transform: rotate(-28deg);
+}
+
+.aq-hero-scene-deco__sprig-leaf--2 {
+  width: 0.85rem;
+  height: 1.05rem;
+  right: 0.45rem;
+  bottom: 1.8rem;
+  transform: rotate(28deg);
+}
+
+.aq-hero-scene-deco__sprig-leaf--3 {
+  width: 0.75rem;
+  height: 0.95rem;
+  right: 1.2rem;
+  bottom: 2.2rem;
+  transform: rotate(-58deg);
 }
 
 .aq-hero-side-stat {
@@ -1456,8 +1456,8 @@
 }
 
 .aq-hero-side-stat__icon--spark {
-  background: #ede9fe;
-  color: #7c3aed;
+  background: #fff7ed;
+  color: #ea580c;
 }
 
 .aq-hero-side-stat__icon--user {
@@ -1482,7 +1482,7 @@
 .aq-hero-deco-sparkle {
   position: absolute;
   font-size: 1rem;
-  color: #a78bfa;
+  color: #fbbf24;
   opacity: 0.85;
   pointer-events: none;
   z-index: 2;
