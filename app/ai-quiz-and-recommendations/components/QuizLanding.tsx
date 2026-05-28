@@ -8,6 +8,7 @@ import { HowItWorks } from "./HowItWorks";
 import { FeatureShowcase } from "./FeatureShowcase";
 import { IndustryShowcase } from "./IndustryShowcase";
 import { BeforeVsAfter } from "./BeforeVsAfter";
+// import { QuizFaq } from "./QuizFaq";
 
 const SHOPIFY_APP_URL = "https://apps.shopify.com/ai-quiz-recommendation";
 
@@ -36,7 +37,7 @@ export function QuizLanding() {
     <>
       <QuizSiteHeader />
 
-      <section className="aq-hero">
+      <section className="aq-hero" id="top">
         <div className="aq-hero-glow" aria-hidden />
         <div className="aq-wrap">
           <div className="aq-hero-grid">
@@ -85,6 +86,16 @@ export function QuizLanding() {
       <IndustryShowcase />
 
       <BeforeVsAfter />
+
+      {/* <section className="aq-section aq-section--white" id="faq">
+        <div className="aq-wrap">
+          <div className="aq-section-intro">
+            <span className="aq-section-eyebrow">FAQ</span>
+            <h2>Common Questions About AI Quiz Setup</h2>
+          </div>
+          <QuizFaq />
+        </div>
+      </section> */}
 
       <section className="aq-cta-band">
         <h2>Ready to Transform Your Store?</h2>

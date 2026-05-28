@@ -34,7 +34,7 @@
   align-items: center;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1024px) {
   .aq-feat-block {
     grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
     gap: clamp(2.5rem, 4vw, 4rem);
@@ -181,7 +181,7 @@
   margin-inline: auto;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1024px) {
   .aq-feat-stage__inner {
     max-width: 24.5rem;
   }
@@ -406,7 +406,7 @@
   z-index: 2;
 }
 
-@media (max-width: 899px) {
+@media (max-width: 1023px) {
   .aq-feat-ai-tip {
     position: static;
     margin-top: 1rem;
@@ -689,12 +689,19 @@
   line-height: 1.35;
 }
 
-@media (max-width: 899px) {
+@media (max-width: 1023px) {
   .aq-feat-shopify-badge {
     position: static;
     transform: none;
     margin-bottom: 1rem;
     max-width: 100%;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1199px) {
+  .aq-feat-store__nav {
+    flex-wrap: wrap;
+    row-gap: 0.5rem;
   }
 }
 

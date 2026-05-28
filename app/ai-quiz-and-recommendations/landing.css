@@ -280,7 +280,7 @@
   align-items: center;
 }
 
-@media (min-width: 960px) {
+@media (min-width: 1024px) {
   .aq-hero-grid {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr);
     gap: 2.5rem;
@@ -689,7 +689,7 @@
   }
 }
 
-@media (min-width: 960px) and (max-width: 1099px) {
+@media (min-width: 1024px) and (max-width: 1099px) {
   .aq-hero-side-stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1532,7 +1532,7 @@
   }
 }
 
-@media (max-width: 959px) {
+@media (max-width: 1023px) {
   .aq-hero-visual {
     min-height: 0;
     justify-content: center;

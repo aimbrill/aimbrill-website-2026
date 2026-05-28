@@ -117,6 +117,19 @@ export function QuizContactForm({ shopUrl, installUrl, onBack }: QuizContactForm
 
   const websiteDefault = shopUrl.startsWith("http") ? shopUrl : `https://${shopUrl}`;
   const shopifyInstallHref = installUrl || "https://apps.shopify.com/ai-quiz-recommendation";
+  const safeShopifyInstallHref = (() => {
+    if (!shopifyInstallHref) return "https://apps.shopify.com/ai-quiz-recommendation";
+    if (/^https?:\/\//i.test(shopifyInstallHref)) return shopifyInstallHref;
+    return `https://${shopifyInstallHref.replace(/^\/+/, "")}`;
+  })();
+
+  const handleContinueWithShopify = () => {
+    if (typeof window === "undefined") return;
+    const opened = window.open(safeShopifyInstallHref, "_blank", "noopener,noreferrer");
+    if (!opened) {
+      window.location.href = safeShopifyInstallHref;
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -184,7 +197,7 @@ export function QuizContactForm({ shopUrl, installUrl, onBack }: QuizContactForm
             personalized shopping flows from your Shopify catalog.
           </p>
 
-          <Link href="/ai-quiz-and-recommendations/try-demo" className="td-contact-wizard-link">
+          <Link href="/ai-quiz-and-recommendations/" className="td-contact-wizard-link">
             <span aria-hidden>🪄</span> Try the quiz demo — paste any store URL
           </Link>
 
@@ -314,15 +327,14 @@ export function QuizContactForm({ shopUrl, installUrl, onBack }: QuizContactForm
               {tab === "create" ? "Create account" : "Sign in"}
             </button>
 
-            <a
-              href={shopifyInstallHref}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              type="button"
               className="td-contact-btn td-contact-btn--shopify"
+              onClick={handleContinueWithShopify}
             >
               <ShopifyBagIcon />
               Continue with Shopify
-            </a>
+            </button>
           </form>
 
           <button type="button" className="td-contact-back-demo" onClick={onBack}>

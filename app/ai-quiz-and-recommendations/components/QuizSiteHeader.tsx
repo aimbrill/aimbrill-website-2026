@@ -8,8 +8,7 @@ const SHOPIFY_APP_URL = "https://apps.shopify.com/ai-quiz-recommendation";
 const links = [
   { href: "#how-it-works", label: "How It Works" },
   { href: "#features", label: "Features" },
-  { href: "#showcase", label: "Showcase" },
-  { href: "#faq", label: "FAQ" },
+  { href: "#before-after", label: "Showcase" },
 ];
 
 export function QuizSiteHeader() {
@@ -19,7 +18,7 @@ export function QuizSiteHeader() {
     <header className="aq-header">
       <div className="aq-wrap">
         <div className="aq-header-inner">
-          <a href="#" onClick={() => setOpen(false)}>
+          <a href="#top" onClick={() => setOpen(false)}>
             <QuizLogo />
           </a>
           <nav className="aq-nav" aria-label="Main">
