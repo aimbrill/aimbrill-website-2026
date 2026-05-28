@@ -298,7 +298,7 @@ function mapRecommendationProducts(
 
 export function TryDemoFlow() {
   const [step, setStep] = useState<DemoStep>("url");
-  const [shopUrl, setShopUrl] = useState("www.gharsoaps.shop");
+  const [shopUrl, setShopUrl] = useState("");
   const [sourceKind, setSourceKind] = useState<SourceKind>(null);
   const [selectionLabel, setSelectionLabel] = useState("");
   const [questions, setQuestions] = useState<DemoQuestion[]>(INITIAL_QUESTIONS);
@@ -768,7 +768,7 @@ export function TryDemoFlow() {
                   setShopUrl(e.target.value);
                   if (generateError) setGenerateError(null);
                 }}
-                placeholder="www.yourstore.com"
+                placeholder="myshopify.com"
                 aria-label="Store URL"
                 aria-invalid={generateError ? true : undefined}
               />

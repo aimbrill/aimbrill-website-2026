@@ -82,20 +82,6 @@ function HowItWorksIcon({ type }: { type: (typeof HOW_IT_WORKS)[number]["icon"] 
   );
 }
 
-function BrandIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
-      <path
-        d="M4 18L9 11l4 4 7-9"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
 function ShopifyBagIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
@@ -133,14 +119,17 @@ export function QuizContactForm({ shopUrl, installUrl, onBack }: QuizContactForm
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const form = e.currentTarget;
-    const name = (form.elements.namedItem("name") as HTMLInputElement).value.trim();
-    const country = (form.elements.namedItem("country") as HTMLSelectElement).value;
-    const website = (form.elements.namedItem("website") as HTMLInputElement).value.trim();
+    if (tab === "create") {
+      const form = e.currentTarget;
+      const name = (form.elements.namedItem("name") as HTMLInputElement | null)?.value.trim() ?? "";
+      const country = (form.elements.namedItem("country") as HTMLSelectElement | null)?.value ?? "";
+      const website =
+        (form.elements.namedItem("website") as HTMLInputElement | null)?.value.trim() ?? "";
 
-    if (!name || !country || !website) {
-      form.reportValidity();
-      return;
+      if (!name || !country || !website) {
+        form.reportValidity();
+        return;
+      }
     }
 
     setSubmitted(true);
@@ -185,9 +174,6 @@ export function QuizContactForm({ shopUrl, installUrl, onBack }: QuizContactForm
       <div className="td-contact-layout">
         <div className="td-contact-left">
           <Link href="/ai-quiz-and-recommendations" className="td-contact-brand">
-            <span className="td-contact-brand-icon" aria-hidden>
-              <BrandIcon />
-            </span>
             AI Quiz
           </Link>
 
@@ -243,13 +229,15 @@ export function QuizContactForm({ shopUrl, installUrl, onBack }: QuizContactForm
           </div>
 
           <form className="td-contact-form" onSubmit={handleSubmit}>
-            <label>
-              <span className="td-contact-label-text">
-                Full Name
-                <RequiredMark />
-              </span>
-              <input type="text" name="name" required placeholder="Your name" />
-            </label>
+            {tab === "create" && (
+              <label>
+                <span className="td-contact-label-text">
+                  Full Name
+                  <RequiredMark />
+                </span>
+                <input type="text" name="name" required placeholder="Your name" />
+              </label>
+            )}
 
             <label>
               Email Address
@@ -291,37 +279,39 @@ export function QuizContactForm({ shopUrl, installUrl, onBack }: QuizContactForm
               </span>
             </label>
 
-            <div className="td-contact-form-row">
-              <label>
-                <span className="td-contact-label-text">
-                  Country
-                  <RequiredMark />
-                </span>
-                <select name="country" required defaultValue="">
-                  <option value="" disabled>
-                    Select country
-                  </option>
-                  <option value="US">United States</option>
-                  <option value="IN">India</option>
-                  <option value="GB">United Kingdom</option>
-                  <option value="CA">Canada</option>
-                  <option value="AU">Australia</option>
-                </select>
-              </label>
-              <label>
-                <span className="td-contact-label-text">
-                  Website URL
-                  <RequiredMark />
-                </span>
-                <input
-                  type="url"
-                  name="website"
-                  required
-                  defaultValue={websiteDefault}
-                  placeholder="https://yourstore.com"
-                />
-              </label>
-            </div>
+            {tab === "create" && (
+              <div className="td-contact-form-row">
+                <label>
+                  <span className="td-contact-label-text">
+                    Country
+                    <RequiredMark />
+                  </span>
+                  <select name="country" required defaultValue="">
+                    <option value="" disabled>
+                      Select country
+                    </option>
+                    <option value="US">United States</option>
+                    <option value="IN">India</option>
+                    <option value="GB">United Kingdom</option>
+                    <option value="CA">Canada</option>
+                    <option value="AU">Australia</option>
+                  </select>
+                </label>
+                <label>
+                  <span className="td-contact-label-text">
+                    Website URL
+                    <RequiredMark />
+                  </span>
+                  <input
+                    type="url"
+                    name="website"
+                    required
+                    defaultValue={websiteDefault}
+                    placeholder="https://yourstore.com"
+                  />
+                </label>
+              </div>
+            )}
 
             <button type="submit" className="td-contact-btn td-contact-btn--gradient">
               {tab === "create" ? "Create account" : "Sign in"}
