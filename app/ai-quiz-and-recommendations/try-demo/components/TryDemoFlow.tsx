@@ -872,16 +872,18 @@ export function TryDemoFlow() {
                 {recommendations.map((product) => (
                   <article key={product.id} className="td-reco-v2-card">
                     {product.imageUrl ? (
-                      <Image
-                        src={product.imageUrl}
-                        alt={product.imageAlt || product.title}
-                        className="td-reco-v2-image"
-                        width={240}
-                        height={220}
-                        unoptimized
-                      />
+                      <div className="td-reco-v2-image-wrap">
+                        <Image
+                          src={product.imageUrl}
+                          alt={product.imageAlt || product.title}
+                          className="td-reco-v2-image"
+                          fill
+                          sizes="(max-width: 820px) 90vw, 320px"
+                          unoptimized
+                        />
+                      </div>
                     ) : (
-                      <div className="td-reco-v2-image td-reco-v2-image--placeholder" />
+                      <div className="td-reco-v2-image-wrap td-reco-v2-image-wrap--placeholder" />
                     )}
                     <p className="td-reco-v2-title">{product.title}</p>
                     {(product.price || product.priceRange) && (
@@ -895,76 +897,77 @@ export function TryDemoFlow() {
                   </article>
                 ))}
               </div>
-            </section>
 
-            {(recommendationUiCopy?.expertAdvice || recommendationUiCopy?.marketTrends) && (
-              <section className="td-reco-v2-insights">
-                {recommendationUiCopy?.expertAdvice && (
-                  <article className="td-reco-v2-insight-card">
-                    <Image
-                      src="/ai-quiz-landing/before-after/quiz-expert-icon.png"
-                      alt=""
-                      aria-hidden
-                      className="td-reco-v2-insight-icon"
-                      width={56}
-                      height={56}
-                      unoptimized
-                    />
-                    <h3>{recommendationUiCopy.expertAdvice.title || "Expert Advice"}</h3>
-                    {recommendationUiCopy.expertAdvice.body && (
-                      <p>{recommendationUiCopy.expertAdvice.body}</p>
-                    )}
-                  </article>
-                )}
-                {recommendationUiCopy?.marketTrends && (
-                  <article className="td-reco-v2-insight-card">
-                    <Image
-                      src="/ai-quiz-landing/before-after/quiz-market-icon.png"
-                      alt=""
-                      aria-hidden
-                      className="td-reco-v2-insight-icon"
-                      width={56}
-                      height={56}
-                      unoptimized
-                    />
-                    <h3>{recommendationUiCopy.marketTrends.title || "Market Trends"}</h3>
-                    {recommendationUiCopy.marketTrends.body && (
-                      <p>{recommendationUiCopy.marketTrends.body}</p>
-                    )}
-                  </article>
-                )}
-              </section>
-            )}
-
-            {recommendationUiCopy?.bundle && (
-              <section className="td-reco-v2-bundle">
-                {bundleImages.length > 0 && (
-                  <div className="td-reco-v2-bundle-images">
-                    {bundleImages.map((image) => (
+              {(recommendationUiCopy?.expertAdvice || recommendationUiCopy?.marketTrends) && (
+                <div className="td-reco-v2-insights">
+                  {recommendationUiCopy?.expertAdvice && (
+                    <article className="td-reco-v2-insight-card">
                       <Image
-                        key={`bundle-${image.id}`}
-                        src={image.src}
-                        alt={image.alt}
-                        className="td-reco-v2-bundle-image"
-                        width={132}
-                        height={96}
+                        src="/ai-quiz-landing/before-after/quiz-expert-icon.png"
+                        alt=""
+                        aria-hidden
+                        className="td-reco-v2-insight-icon"
+                        width={56}
+                        height={56}
                         unoptimized
                       />
-                    ))}
-                  </div>
-                )}
-                <h3>{recommendationUiCopy.bundle.title || "Complete Bundle Offer"}</h3>
-                {recommendationUiCopy.bundle.subtitle && (
-                  <p>{recommendationUiCopy.bundle.subtitle}</p>
-                )}
-                {recommendationUiCopy.bundle.tagline && (
-                  <p>{recommendationUiCopy.bundle.tagline}</p>
-                )}
-                <button type="button" className="td-reco-v2-cart" disabled>
-                  Add Bundle to Cart
-                </button>
-              </section>
-            )}
+                      <h3>{recommendationUiCopy.expertAdvice.title || "Expert Advice"}</h3>
+                      {recommendationUiCopy.expertAdvice.body && (
+                        <p>{recommendationUiCopy.expertAdvice.body}</p>
+                      )}
+                    </article>
+                  )}
+                  {recommendationUiCopy?.marketTrends && (
+                    <article className="td-reco-v2-insight-card">
+                      <Image
+                        src="/ai-quiz-landing/before-after/quiz-market-icon.png"
+                        alt=""
+                        aria-hidden
+                        className="td-reco-v2-insight-icon"
+                        width={56}
+                        height={56}
+                        unoptimized
+                      />
+                      <h3>{recommendationUiCopy.marketTrends.title || "Market Trends"}</h3>
+                      {recommendationUiCopy.marketTrends.body && (
+                        <p>{recommendationUiCopy.marketTrends.body}</p>
+                      )}
+                    </article>
+                  )}
+                </div>
+              )}
+
+              {recommendationUiCopy?.bundle && (
+                <div className="td-reco-v2-bundle">
+                  {bundleImages.length > 0 && (
+                    <div className="td-reco-v2-bundle-images">
+                      {bundleImages.map((image) => (
+                        <div key={`bundle-${image.id}`} className="td-reco-v2-bundle-image-wrap">
+                          <Image
+                            src={image.src}
+                            alt={image.alt}
+                            className="td-reco-v2-bundle-image"
+                            fill
+                            sizes="132px"
+                            unoptimized
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  <h3>{recommendationUiCopy.bundle.title || "Complete Bundle Offer"}</h3>
+                  {recommendationUiCopy.bundle.subtitle && (
+                    <p>{recommendationUiCopy.bundle.subtitle}</p>
+                  )}
+                  {recommendationUiCopy.bundle.tagline && (
+                    <p>{recommendationUiCopy.bundle.tagline}</p>
+                  )}
+                  <button type="button" className="td-reco-v2-cart" disabled>
+                    Add Bundle to Cart
+                  </button>
+                </div>
+              )}
+            </section>
 
             <div className="td-reco-v2-retake">
               <button

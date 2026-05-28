@@ -4,229 +4,152 @@ const QUIZ_OPTIONS = ["Dry", "Oily", "Combination", "Sensitive"];
 
 const PRODUCTS = [
   {
-    name: "The Ordinary",
-    subtitle: "Hyaluronic Acid 2%",
-    price: "$6.80",
+    name: "Hyaluronic Serum",
+    price: "$24.90",
     match: "98%",
-    image: "/ai-quiz-landing/industries/skincare/1.jpg",
+    image: "/ai-quiz-landing/before-after/hero3.png",
   },
   {
-    name: "CeraVe",
-    subtitle: "Moisturizing Cream",
-    price: "$16.99",
+    name: "Moisturizing Cream",
+    price: "$19.90",
     match: "95%",
-    image: "/ai-quiz-landing/industries/skincare/2.jpg",
+    image: "/ai-quiz-landing/before-after/hero1.png",
   },
   {
-    name: "La Roche-Posay",
-    subtitle: "Toleriane Moisturizer",
-    price: "$19.99",
+    name: "Daily Moisturizer",
+    price: "$18.90",
     match: "93%",
-    image: "/ai-quiz-landing/industries/skincare/3.jpg",
+    image: "/ai-quiz-landing/before-after/hreo2.png",
   },
 ];
-
-function StatIcon({ type }: { type: "chart" | "spark" | "user" | "bolt" }) {
-  if (type === "chart") {
-    return (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
-        <path
-          d="M4 18V10M10 18V6M16 18v-4M20 18V8"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-        />
-      </svg>
-    );
-  }
-  if (type === "spark") {
-    return (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
-        <path
-          d="M12 3l1.8 5.5L19 10l-5.2 1.5L12 17l-1.8-5.5L5 10l5.2-1.5L12 3z"
-          fill="currentColor"
-        />
-      </svg>
-    );
-  }
-  if (type === "user") {
-    return (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
-        <circle cx="12" cy="8" r="3.5" stroke="currentColor" strokeWidth="1.8" />
-        <path
-          d="M5 19c0-3.3 3.1-5 7-5s7 1.7 7 5"
-          stroke="currentColor"
-          strokeWidth="1.8"
-          strokeLinecap="round"
-        />
-      </svg>
-    );
-  }
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
-      <path
-        d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-const STATS = [
-  { type: "chart" as const, title: "+38%", sub: "Conversion lift" },
-  { type: "spark" as const, title: "AI Powered", sub: "Smart matching" },
-  { type: "user" as const, title: "Personalized", sub: "For every shopper" },
-  { type: "bolt" as const, title: "2 Min Setup", sub: "Super easy" },
-];
-
-function HeroFlowDecor() {
-  return (
-    <div className="aq-hero-flow-decor" aria-hidden>
-      <svg className="aq-hero-flow-decor__path aq-hero-flow-decor__path--a" viewBox="0 0 200 120">
-        <path
-          d="M8 60 C 56 20, 120 24, 168 52"
-          fill="none"
-          stroke="#f59e0b"
-          strokeWidth="2"
-          strokeDasharray="5 8"
-          strokeLinecap="round"
-          opacity="0.75"
-        />
-      </svg>
-      <svg className="aq-hero-flow-decor__path aq-hero-flow-decor__path--b" viewBox="0 0 200 140">
-        <path
-          d="M12 16 C 72 8, 148 64, 176 112"
-          fill="none"
-          stroke="#8b5cf6"
-          strokeWidth="2"
-          strokeDasharray="5 8"
-          strokeLinecap="round"
-          opacity="0.65"
-        />
-      </svg>
-      <span className="aq-hero-flow-decor__star aq-hero-flow-decor__star--1">✦</span>
-      <span className="aq-hero-flow-decor__star aq-hero-flow-decor__star--2">✦</span>
-      <span className="aq-hero-flow-decor__star aq-hero-flow-decor__star--3">✦</span>
-    </div>
-  );
-}
-
-function HeroSceneDeco() {
-  return (
-    <div className="aq-hero-scene-deco" aria-hidden>
-      <div className="aq-hero-scene-deco__plate" />
-      <div className="aq-hero-scene-deco__bubble">
-        <p>
-          AI finds what
-          <br />
-          your customers
-          <br />
-          will love <span>♡</span>
-        </p>
-      </div>
-      <div className="aq-hero-scene-deco__sprig">
-        <span className="aq-hero-scene-deco__sprig-leaf aq-hero-scene-deco__sprig-leaf--1" />
-        <span className="aq-hero-scene-deco__sprig-leaf aq-hero-scene-deco__sprig-leaf--2" />
-        <span className="aq-hero-scene-deco__sprig-leaf aq-hero-scene-deco__sprig-leaf--3" />
-      </div>
-    </div>
-  );
-}
 
 export function HeroIllustration() {
   return (
-    <div className="aq-hero-showcase" aria-hidden>
-      <div className="aq-hero-showcase__frame">
-        <span className="aq-hero-bg-box aq-hero-bg-box--lavender" />
-        <span className="aq-hero-bg-box aq-hero-bg-box--peach" />
-        <span className="aq-hero-bg-box aq-hero-bg-box--mint" />
+    <div className="aq-hero-mock" aria-hidden>
+      <div className="aq-hero-mock__scene">
+        {/* Flow lines: quiz top-right → bottle; 98% badge → recs */}
+        <svg
+          className="aq-hero-mock__flow"
+          viewBox="0 0 700 520"
+          preserveAspectRatio="none"
+          aria-hidden
+        >
+          <path
+            className="aq-hero-mock__flow-path aq-hero-mock__flow-path--quiz-bottle"
+            d="M 448 68
+               C 472 28, 528 18, 582 42
+               C 628 62, 642 98, 624 132"
+            fill="none"
+            strokeWidth="2"
+            strokeDasharray="6 6"
+            strokeLinecap="round"
+          />
+          <path
+            className="aq-hero-mock__flow-path aq-hero-mock__flow-path--badge-recs"
+            d="M 542 362
+               C 492 398, 438 428, 388 468"
+            fill="none"
+            strokeWidth="1.5"
+            strokeDasharray="5 8"
+            strokeLinecap="round"
+          />
+        </svg>
 
-        <div className="aq-hero-showcase__canvas">
-          <div className="aq-hero-showcase__main">
-            <div className="aq-hero-showcase__cards">
-              <article className="aq-hero-card aq-hero-card--quiz">
-                <div className="aq-hero-card__head">
-                  <span className="aq-hero-card__title">Skincare Quiz</span>
-                  <div className="aq-hero-card__meta">
-                    <span className="aq-hero-live-chip">
-                      <span className="aq-hero-live-chip__dot" />
-                      Live personalization
-                    </span>
-                    <span className="aq-hero-card__progress">2 / 5</span>
-                  </div>
-                </div>
-                <div className="aq-hero-card__bar">
-                  <span style={{ width: "40%" }} />
-                </div>
-                <p className="aq-hero-card__question">What is your skin type?</p>
-                <ul className="aq-hero-quiz-options">
-                  {QUIZ_OPTIONS.map((opt) => (
-                    <li key={opt} className={opt === "Dry" ? "is-selected" : ""}>
-                      <span className="aq-hero-radio" />
-                      {opt}
-                    </li>
-                  ))}
-                </ul>
-                <button type="button" className="aq-hero-quiz-next">
-                  Next <span aria-hidden>→</span>
-                </button>
-              </article>
-
-              <article className="aq-hero-card aq-hero-card--recs">
-                <h3 className="aq-hero-recs-title">
-                  AI Picks for Your Skin{" "}
-                  <span className="aq-hero-recs-sparkles" aria-hidden>
-                    ✨
-                  </span>
-                </h3>
-                <div className="aq-hero-products">
-                  {PRODUCTS.map((p) => (
-                    <div key={p.name} className="aq-hero-product">
-                      <span className="aq-hero-product__match">Match {p.match}</span>
-                      <div className="aq-hero-product__img">
-                        <Image
-                          src={p.image}
-                          alt={p.name}
-                          fill
-                          sizes="120px"
-                          className="aq-hero-product__photo"
-                        />
-                      </div>
-                      <p className="aq-hero-product__name">{p.name}</p>
-                      <p className="aq-hero-product__sub">{p.subtitle}</p>
-                      <p className="aq-hero-product__price">{p.price}</p>
-                      <span className="aq-hero-product__cta">
-                        View product <span aria-hidden>→</span>
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </article>
-            </div>
-
-            <aside className="aq-hero-side-stats">
-              {STATS.map((stat) => (
-                <div key={stat.title} className="aq-hero-side-stat">
-                  <span className={`aq-hero-side-stat__icon aq-hero-side-stat__icon--${stat.type}`}>
-                    <StatIcon type={stat.type} />
-                  </span>
-                  <div>
-                    <strong>{stat.title}</strong>
-                    <span>{stat.sub}</span>
-                  </div>
-                </div>
-              ))}
-            </aside>
-          </div>
-
-          <HeroFlowDecor />
+        <div className="aq-hero-mock__decor" aria-hidden>
+          <span className="aq-hero-mock__flow-spark aq-hero-mock__flow-spark--1">✦</span>
+          <span className="aq-hero-mock__flow-spark aq-hero-mock__flow-spark--2">✦</span>
+          <span className="aq-hero-mock__flow-spark aq-hero-mock__flow-spark--3">✦</span>
+          <span className="aq-hero-mock__flow-spark aq-hero-mock__flow-spark--4">✦</span>
         </div>
 
-        <HeroSceneDeco />
-        <span className="aq-hero-deco-sparkle aq-hero-deco-sparkle--tl">✦</span>
-        <span className="aq-hero-deco-sparkle aq-hero-deco-sparkle--tr">✦</span>
+        <div className="aq-hero-mock__left">
+          <article className="aq-hero-mock__quiz">
+            <div className="aq-hero-mock__quiz-top">
+              <div className="aq-hero-mock__quiz-heading">
+                <strong>
+                  <span className="aq-hero-mock__title-spark" aria-hidden>
+                    ✦
+                  </span>
+                  Skincare Quiz
+                </strong>
+                <span className="aq-hero-mock__live">
+                  <span className="aq-hero-mock__live-dot" />
+                  Live personalization
+                </span>
+              </div>
+              <span className="aq-hero-mock__progress">2 / 5</span>
+            </div>
+            <div className="aq-hero-mock__bar">
+              <span />
+            </div>
+            <p className="aq-hero-mock__question">What is your skin type?</p>
+            <ul className="aq-hero-mock__options">
+              {QUIZ_OPTIONS.map((opt) => (
+                <li key={opt} className={opt === "Dry" ? "is-selected" : ""}>
+                  <span className="aq-hero-mock__radio" />
+                  {opt}
+                </li>
+              ))}
+            </ul>
+            <button type="button" className="aq-hero-mock__next">
+              Next <span aria-hidden>→</span>
+            </button>
+          </article>
+
+          <article className="aq-hero-mock__recs">
+            <h3>
+              Recommended for you <span aria-hidden>✨</span>
+            </h3>
+            <div className="aq-hero-mock__products">
+              {PRODUCTS.map((p) => (
+                <div key={p.name} className="aq-hero-mock__product">
+                  <span className="aq-hero-mock__match">Match {p.match}</span>
+                  <div className="aq-hero-mock__product-img">
+                    <Image
+                      src={p.image}
+                      alt={p.name}
+                      fill
+                      sizes="96px"
+                      className="aq-hero-mock__photo"
+                    />
+                  </div>
+                  <p className="aq-hero-mock__product-name">{p.name}</p>
+                  <p className="aq-hero-mock__product-price">{p.price}</p>
+                  <span className="aq-hero-mock__view">
+                    <span className="aq-hero-mock__view-long">View product →</span>
+                    <span className="aq-hero-mock__view-short" aria-hidden>
+                      View →
+                    </span>
+                  </span>
+                </div>
+              ))}
+            </div>
+          </article>
+        </div>
+
+        <div className="aq-hero-mock__right">
+          <div className="aq-hero-mock__bottle">
+            <div className="aq-hero-mock__product-focus">
+              <Image
+                src="/ai-quiz-landing/before-after/heromain.png"
+                alt="Lumière hydrating serum"
+                fill
+                sizes="320px"
+                priority
+                className="aq-hero-mock__focus-photo"
+              />
+            </div>
+          </div>
+
+          <div className="aq-hero-mock__score" aria-label="98% Match, AI Recommended">
+            <strong className="aq-hero-mock__score-pct">98%</strong>
+            <span className="aq-hero-mock__score-label">Match</span>
+            <small className="aq-hero-mock__score-meta">AI Recommended</small>
+            <span className="aq-hero-mock__score-spark" aria-hidden>
+              ✦
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   );
