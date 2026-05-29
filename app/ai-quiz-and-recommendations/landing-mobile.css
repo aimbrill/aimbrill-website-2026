@@ -1,0 +1,113 @@
+/* AI Quiz landing — tablet & mobile only (≤1023px). Desktop (≥1024px) unchanged. */
+
+@media (max-width: 1023px) {
+  .ai-quiz-landing .aq-section {
+    padding: clamp(2.75rem, 6vw, 4rem) 0;
+  }
+
+  .ai-quiz-landing .aq-section-intro {
+    max-width: 100%;
+    padding-inline: 0.25rem;
+  }
+
+  .ai-quiz-landing .aq-section-intro h2,
+  .ai-quiz-landing .aq-cta-band h2 {
+    font-size: clamp(1.75rem, 7vw, var(--aq-landing-heading));
+    line-height: 1.12;
+  }
+
+  .ai-quiz-landing .aq-section-intro > p,
+  .ai-quiz-landing .aq-cta-band p {
+    font-size: var(--aq-landing-subheading);
+    line-height: 1.65;
+    text-wrap: balance;
+  }
+
+  /* Industries — stack intro above slider, centered on small screens */
+  .ai-quiz-landing .aq-industries__layout {
+    gap: 1.75rem;
+  }
+
+  .ai-quiz-landing .aq-industries__intro.aq-section-intro--left {
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .ai-quiz-landing .aq-industries__intro h2,
+  .ai-quiz-landing .aq-industries__intro > p {
+    max-width: 36rem;
+    margin-inline: auto;
+  }
+
+  .ai-quiz-landing .aq-industries__intro .aq-section-accent--break {
+    display: block;
+  }
+
+  .ai-quiz-landing .aq-industries__cta {
+    margin-inline: auto;
+  }
+
+  .ai-quiz-landing .aq-industries__showcase {
+    min-height: 20rem;
+  }
+
+  /* CTA band */
+  .ai-quiz-landing .aq-cta-band {
+    width: calc(100% - 1.5rem);
+    padding: clamp(2rem, 5vw, 2.75rem) 1.15rem;
+    margin-bottom: clamp(2.5rem, 6vw, 4rem);
+  }
+
+  .ai-quiz-landing .aq-cta-band .aq-btn {
+    width: 100%;
+    max-width: 20rem;
+    justify-content: center;
+  }
+
+  /* Before vs after — shorter panels on narrow viewports */
+  .ai-quiz-landing .aq-bva__body {
+    min-height: clamp(14rem, 48vw, 20rem);
+  }
+
+  .ai-quiz-landing .aq-bva__scene--after {
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .ai-quiz-landing .aq-how-steps {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .ai-quiz-landing .aq-hero-ctas {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+
+  .ai-quiz-landing .aq-hero-ctas .aq-btn--lg {
+    width: 100%;
+    max-width: none;
+  }
+
+  .ai-quiz-landing .aq-hero-cta-demo {
+    justify-content: center;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .ai-quiz-landing .aq-industries__showcase {
+    min-height: 18rem;
+  }
+
+  .ai-quiz-landing .aq-bva__scene--after {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 479px) {
+  .ai-quiz-landing .aq-cta-band {
+    width: calc(100% - 1rem);
+    padding-inline: 1rem;
+  }
+}

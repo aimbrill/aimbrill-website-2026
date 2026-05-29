@@ -1,6 +1,6 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
-// ShopifyMark import removed; badge renders text only now
+import { ShopifyMark } from "./ShopifyMark";
 
 type FeatureTheme = "mint" | "lavender" | "yellow" | "coral";
 
@@ -30,12 +30,12 @@ const BLOCKS: FeatureBlock[] = [
     theme: "lavender",
     title: "Smart Recommendations",
     description:
-      "AI match scores deliver highly accurate product suggestions based on each customer's unique quiz responses.",
+      "Our AI analyzes quiz responses to recommend the right products, explain why they fit, and create complete routines tailored to every customer.",
     reverse: true,
     items: [
-      "High-converting product matches",
-      "Personalized for every customer",
-      "Increase AOV & customer satisfaction",
+      "Personalized product matches",
+      "AI-powered recommendations & insights",
+      "Smart bundles that increase AOV",
     ],
   },
   {
@@ -57,9 +57,14 @@ const BLOCKS: FeatureBlock[] = [
     theme: "coral",
     title: "Embedded on Your Store",
     description:
-      "Embed quizzes anywhere on your Shopify store. No popups, no redirects — just a seamless experience for your customers.",
+      "Embed quizzes anywhere on your Shopify store. Display them inline or as a popup to engage customers wherever they shop.",
     reverse: true,
-    items: ["Works on any page", "Fully responsive & fast", "Match your brand perfectly"],
+    items: [
+      "Works on any page",
+      "Inline & popup modes",
+      "Fully responsive & fast",
+      "Match your brand perfectly",
+    ],
   },
 ];
 
@@ -162,7 +167,7 @@ function RecsVisual() {
                   src={p.image}
                   alt={p.name}
                   fill
-                  sizes="(max-width: 900px) 20vw, 120px"
+                  sizes="(max-width: 767px) 28vw, (max-width: 1023px) 20vw, 120px"
                   className="aq-feat-rec-product__photo"
                 />
               </div>
@@ -251,6 +256,7 @@ function AnalyticsVisual() {
 function ShopifyBadge() {
   return (
     <div className="aq-feat-shopify-badge">
+      <ShopifyMark size={18} className="aq-feat-shopify-badge__icon" />
       <span>Seamlessly works with Shopify</span>
     </div>
   );
@@ -264,38 +270,43 @@ function EmbedVisual() {
           <div className="aq-feat-store__nav">
             <span className="aq-feat-store__logo">Your Store</span>
             <span>Shop</span>
-            <span>Bestsellers</span>
-            <span>Skincare</span>
-            <span>About</span>
-            {/* decorative icons removed */}
+            <span>Best sellers</span>
           </div>
           <div className="aq-feat-store__hero">
             <Image
               src="/ai-quiz-landing/industries/skincare/2.jpg"
               alt=""
               fill
-              sizes="(max-width: 900px) 70vw, 420px"
+              sizes="(max-width: 900px) 70vw, 480px"
               className="aq-feat-store__hero-bg"
               aria-hidden
             />
             <span className="aq-feat-store__hero-scrim" aria-hidden />
-            <div className="aq-feat-store__hero-content">
-              <h4>Find what&apos;s perfect for you</h4>
-              <p className="aq-feat-store__sub">Take our quiz and get personalized product picks</p>
-              <ShopifyBadge />
-            </div>
-            <article className="aq-feat-embed-quiz aq-feat-embed-quiz--phone">
-              <p className="aq-feat-embed-quiz__title">Skin Quiz</p>
-              <p className="aq-feat-embed-quiz__step">1 / 5</p>
-              <p className="aq-feat-embed-quiz__q">What is your main skin concern?</p>
-              <div className="aq-feat-embed-quiz__opts">
-                <span>Acne</span>
-                <span className="is-on">Dryness</span>
-                <span>Dullness</span>
-                <span>Sensitivity</span>
+            <div className="aq-feat-store__hero-layout">
+              <div className="aq-feat-store__hero-content">
+                <div className="aq-feat-store__hero-text">
+                  <h4>Find what&apos;s perfect for you</h4>
+                  <p className="aq-feat-store__sub">
+                    Take a quick quiz and get personalized picks.
+                  </p>
+                </div>
+                <ShopifyBadge />
               </div>
-              <span className="aq-feat-embed-quiz__btn">Next</span>
-            </article>
+              <article className="aq-feat-embed-quiz">
+                <div className="aq-feat-embed-quiz__head">
+                  <p className="aq-feat-embed-quiz__title">Skin Quiz</p>
+                  <p className="aq-feat-embed-quiz__step">1 / 5</p>
+                </div>
+                <p className="aq-feat-embed-quiz__q">What is your main skin concern?</p>
+                <div className="aq-feat-embed-quiz__opts">
+                  <span>Acne</span>
+                  <span className="is-on">Dryness</span>
+                  <span>Dullness</span>
+                  <span>Sensitivity</span>
+                </div>
+                <span className="aq-feat-embed-quiz__btn">Next →</span>
+              </article>
+            </div>
           </div>
         </div>
       </div>
@@ -316,7 +327,8 @@ export function FeatureShowcase() {
       <div className="aq-wrap">
         <div className="aq-section-intro aq-feature-showcase__intro">
           <h2>
-            Everything You Need to <span className="aq-section-accent">Sell Smarter</span>
+            Everything You Need to{" "}
+            <span className="aq-section-accent aq-section-accent--break">Sell Smarter</span>
           </h2>
           <p>
             A complete suite of AI tools designed to turn every store visit into a personalized

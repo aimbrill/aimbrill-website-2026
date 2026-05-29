@@ -6,6 +6,7 @@ import "./industry-showcase.css";
 import "./before-vs-after.css";
 import "./footer.css";
 import "./mockup-accent.css";
+import "./landing-mobile.css";
 
 export const viewport: Viewport = {
   themeColor: "#fdfaf3",
