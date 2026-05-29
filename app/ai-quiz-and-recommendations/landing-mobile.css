@@ -68,14 +68,6 @@
     justify-content: center;
   }
 
-  /* Before vs after — shorter panels on narrow viewports */
-  .ai-quiz-landing .aq-bva__body {
-    min-height: clamp(14rem, 48vw, 20rem);
-  }
-
-  .ai-quiz-landing .aq-bva__scene--after {
-    gap: 0.5rem;
-  }
 }
 
 @media (max-width: 767px) {
@@ -128,10 +120,6 @@
 
   .ai-quiz-landing .aq-industries__showcase {
     min-height: 18rem;
-  }
-
-  .ai-quiz-landing .aq-bva__scene--after {
-    grid-template-columns: 1fr;
   }
 }
 

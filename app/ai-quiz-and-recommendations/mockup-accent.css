@@ -59,33 +59,40 @@
   color: var(--aq-mock-accent);
 }
 
-/* Before / after comparison graphics */
+/* Before / after — site orange theme only (overrides purple mock tokens above) */
+.aq-bva .aq-section-accent {
+  color: var(--aq-purple);
+}
+
 .aq-bva__vs > span {
-  background: var(--aq-mock-gradient);
-  box-shadow: var(--aq-mock-shadow);
+  background: var(--aq-gradient);
+  box-shadow: var(--aq-shadow-purple);
 }
 
 .aq-bva__vs-arrows {
-  color: var(--aq-mock-accent);
+  color: var(--aq-purple);
+  opacity: 0.55;
 }
 
 .aq-bva__step-num {
-  color: var(--aq-mock-accent);
+  color: var(--aq-purple);
 }
 
 .aq-bva .aq-bva__panel-icon--happy {
-  background: var(--aq-mock-accent-soft);
-  border-color: rgba(90, 49, 244, 0.2);
+  background: var(--aq-purple-soft);
+  border-color: rgba(249, 115, 22, 0.22);
 }
 
 .aq-bva .aq-bva__bubble {
-  background: var(--aq-mock-accent-soft);
-  border-color: rgba(90, 49, 244, 0.2);
+  background: var(--aq-purple-soft);
+  border-color: rgba(249, 115, 22, 0.2);
+  color: var(--aq-ink);
 }
 
 .aq-bva .aq-bva__step-btn,
 .aq-bva .aq-bva__cart-btn {
-  background: var(--aq-mock-gradient);
+  background: var(--aq-gradient);
+  box-shadow: 0 6px 16px -6px rgba(249, 115, 22, 0.4);
 }
 
 /* Industry phone mockups (lavender theme) */

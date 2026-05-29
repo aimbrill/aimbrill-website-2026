@@ -260,7 +260,7 @@ export function BeforeVsAfter() {
                 </ul>
                 <div className="aq-bva__photo-wrap">
                   <p className="aq-bva__bubble">
-                    Perfect routine just for you! <span aria-hidden>💜</span>
+                    Perfect routine just for you! <span aria-hidden>✨</span>
                   </p>
                   <div className="aq-bva__photo aq-bva__photo--after">
                     <Image

@@ -4,6 +4,7 @@ import "./how-it-works.css";
 import "./feature-showcase.css";
 import "./industry-showcase.css";
 import "./before-vs-after.css";
+import "./before-vs-after-mobile.css";
 import "./footer.css";
 import "./mockup-accent.css";
 import "./landing-mobile.css";
