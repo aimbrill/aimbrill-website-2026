@@ -361,6 +361,7 @@ export function TryDemoFlow() {
   const [questionAnswers, setQuestionAnswers] = useState<Record<string, string>>(
     buildDefaultAnswersMap(INITIAL_QUESTIONS),
   );
+  const [cartDemoNoteOpen, setCartDemoNoteOpen] = useState(false);
   const generateAbortRef = useRef<AbortController | null>(null);
   const recommendationsInFlightRef = useRef(false);
   const canProceedSelect = sourceKind !== null && selectionLabel.length > 0;
@@ -454,6 +455,32 @@ export function TryDemoFlow() {
     }, 400);
     return () => window.clearTimeout(timer);
   }, [generatedRevealCount, questions.length, step]);
+
+  const showCartDemoNote = useCallback(() => {
+    setCartDemoNoteOpen(true);
+  }, []);
+
+  const closeCartDemoNote = useCallback(() => {
+    setCartDemoNoteOpen(false);
+  }, []);
+
+  useEffect(() => {
+    if (step !== "recommendations") setCartDemoNoteOpen(false);
+  }, [step]);
+
+  useEffect(() => {
+    if (!cartDemoNoteOpen) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") closeCartDemoNote();
+    };
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [cartDemoNoteOpen, closeCartDemoNote]);
 
   const handleUrlSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -935,7 +962,7 @@ export function TryDemoFlow() {
                         {formatDisplayPrice(product.price || product.priceRange)}
                       </p>
                     )}
-                    <button type="button" className="td-reco-v2-cart" disabled>
+                    <button type="button" className="td-reco-v2-cart" onClick={showCartDemoNote}>
                       Add to Cart
                     </button>
                   </article>
@@ -1035,7 +1062,11 @@ export function TryDemoFlow() {
                   </div>
                 )}
 
-                <button type="button" className="td-reco-v2-cart td-reco-v2-upsell-cta" disabled>
+                <button
+                  type="button"
+                  className="td-reco-v2-cart td-reco-v2-upsell-cta"
+                  onClick={showCartDemoNote}
+                >
                   Add Bundle to Cart
                 </button>
               </aside>
@@ -1066,6 +1097,49 @@ export function TryDemoFlow() {
             </p>
           </div>
         </div>
+
+        {cartDemoNoteOpen && (
+          <div
+            className="td-cart-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="td-cart-modal-title"
+          >
+            <button
+              type="button"
+              className="td-cart-modal__backdrop"
+              aria-label="Close dialog"
+              onClick={closeCartDemoNote}
+            />
+            <div className="td-cart-modal__panel">
+              <button
+                type="button"
+                className="td-cart-modal__close"
+                aria-label="Close"
+                onClick={closeCartDemoNote}
+              >
+                ×
+              </button>
+              <h2 id="td-cart-modal-title" className="td-cart-modal__title">
+                This is a demo preview
+              </h2>
+              <p className="td-cart-modal__text">
+                Add to Cart is not available in this demo. To offer personalized recommendations,
+                then checkout on your store, install AI Quiz from the Shopify App Store, connect
+                your product catalog, and publish your quiz. You will see the best results when
+                shoppers use it on your live storefront.
+              </p>
+              <a
+                href="https://apps.shopify.com/ai-quiz-recommendation"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="td-cart-modal__cta"
+              >
+                Install on Shopify App Store
+              </a>
+            </div>
+          </div>
+        )}
       </div>
     );
   }
