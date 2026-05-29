@@ -51,6 +51,13 @@
     margin-inline: auto;
   }
 
+  .ai-quiz-landing .aq-industries__cta.aq-btn--lg {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.78rem;
+    width: auto;
+    justify-content: center;
+  }
+
   .ai-quiz-landing .aq-industries__showcase {
     min-height: 20rem;
   }
@@ -102,7 +109,8 @@
     width: 100%;
   }
 
-  .ai-quiz-landing .aq-hero-ctas .aq-btn--lg {
+  .ai-quiz-landing .aq-hero-ctas .aq-btn--lg,
+  .ai-quiz-landing .aq-industries__cta.aq-btn--lg {
     width: auto;
     max-width: 9.25rem;
     flex: 0 1 auto;
@@ -110,6 +118,11 @@
     padding: 0.55rem 0.62rem;
     font-size: 0.68rem;
     justify-content: center;
+  }
+
+  .ai-quiz-landing .aq-industries__cta.aq-btn--lg {
+    max-width: 11rem;
+    flex: none;
   }
 
   .ai-quiz-landing .aq-hero-cta-demo {
@@ -132,6 +145,12 @@
   .ai-quiz-landing .aq-hero-ctas .aq-btn--lg {
     max-width: 8.5rem;
     padding: 0.5rem 0.5rem;
+    font-size: 0.64rem;
+  }
+
+  .ai-quiz-landing .aq-industries__cta.aq-btn--lg {
+    max-width: 10rem;
+    padding: 0.5rem 0.55rem;
     font-size: 0.64rem;
   }
 }

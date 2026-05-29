@@ -1172,10 +1172,6 @@
   margin-top: 0.15rem;
 }
 
-.td-reco-v2-products .td-reco-v2-bundle {
-  margin-top: 0;
-}
-
 .td-reco-v2-subtext {
   margin: 0.45rem auto 0;
   font-size: 0.9rem;
@@ -1208,7 +1204,9 @@
 
 .td-reco-v2-image-wrap {
   position: relative;
-  width: 100%;
+  width: 78%;
+  max-width: 168px;
+  margin: 0 auto;
   aspect-ratio: 1 / 1;
   min-height: 0;
   border-radius: 10px;
@@ -1310,13 +1308,36 @@
   grid-column: 2;
 }
 
-.td-reco-v2-bundle {
-  margin-top: 1.1rem;
-  border: 1px solid var(--td-line);
-  border-radius: 14px;
-  background: #fff;
-  padding: 1rem;
+.td-reco-v2-upsell {
+  margin-top: 1.35rem;
+  border: 1px solid #fed7aa;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #fffbf5 0%, #fff 42%);
+  padding: 1.15rem 1.25rem 1.25rem;
   text-align: center;
+  box-shadow: 0 10px 28px rgba(249, 115, 22, 0.08);
+}
+
+.td-reco-v2-upsell-badge {
+  display: inline-block;
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+  background: #fff7ed;
+  border: 1px solid #fdba74;
+  color: #c2410c;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.td-reco-v2-upsell-kicker {
+  margin: 0.65rem auto 0;
+  max-width: 34rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #9a3412;
 }
 
 .td-reco-v2-bundle-images {
@@ -1324,17 +1345,19 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 0.6rem;
+  margin-top: 0.9rem;
 }
 
 .td-reco-v2-bundle-image-wrap {
   position: relative;
-  width: 132px;
-  height: 96px;
+  width: 88px;
+  height: 88px;
   flex-shrink: 0;
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
   background: #fff;
   border: 1px solid var(--td-line);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
 }
 
 .td-reco-v2-bundle-image {
@@ -1345,25 +1368,60 @@
   background: #fff;
 }
 
-.td-reco-v2-bundle h3 {
-  margin: 0.85rem 0 0;
-  font-size: 1.28rem;
+.td-reco-v2-upsell-title {
+  margin: 0.75rem 0 0;
+  font-size: 1.22rem;
   font-weight: 800;
   color: var(--td-ink);
 }
 
-.td-reco-v2-bundle p {
-  margin: 0.45rem auto 0;
-  font-size: 0.92rem;
+.td-reco-v2-upsell-desc,
+.td-reco-v2-upsell-tagline {
+  margin: 0.4rem auto 0;
+  font-size: 0.9rem;
   color: var(--td-muted);
-  line-height: 1.6;
+  line-height: 1.55;
   max-width: 720px;
 }
 
-.td-reco-v2-bundle .td-reco-v2-cart {
+.td-reco-v2-upsell-tagline {
+  font-weight: 600;
+  color: #57534e;
+}
+
+.td-reco-v2-upsell-pricing {
+  margin-top: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.45rem 0.65rem;
+}
+
+.td-reco-v2-upsell-compare {
+  font-size: 0.95rem;
+  color: #a8a29e;
+  text-decoration: line-through;
+}
+
+.td-reco-v2-upsell-offer {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--td-ink);
+}
+
+.td-reco-v2-upsell-save {
+  flex-basis: 100%;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #16a34a;
+}
+
+.td-reco-v2-upsell-cta {
+  margin-top: 0.9rem;
   width: auto;
-  min-width: 180px;
-  padding-inline: 1.25rem;
+  min-width: 200px;
+  padding-inline: 1.35rem;
 }
 
 .td-reco-v2-retake {
@@ -1777,20 +1835,34 @@
     line-height: 1.5;
   }
 
-  .td-reco-v2-bundle {
-    padding: 0.85rem 0.75rem;
+  .td-reco-v2-upsell {
+    padding: 0.9rem 0.75rem 1rem;
   }
 
-  .td-reco-v2-bundle h3 {
+  .td-reco-v2-upsell-kicker {
+    font-size: 0.84rem;
+  }
+
+  .td-reco-v2-bundle-image-wrap {
+    width: 72px;
+    height: 72px;
+  }
+
+  .td-reco-v2-upsell-title {
     font-size: 1.05rem;
     line-height: 1.25;
   }
 
-  .td-reco-v2-bundle p {
+  .td-reco-v2-upsell-desc,
+  .td-reco-v2-upsell-tagline {
     font-size: 0.86rem;
   }
 
-  .td-reco-v2-bundle .td-reco-v2-cart {
+  .td-reco-v2-upsell-offer {
+    font-size: 1.2rem;
+  }
+
+  .td-reco-v2-upsell-cta {
     width: 100%;
     min-width: 0;
     max-width: none;
@@ -1812,8 +1884,9 @@
   }
 
   .td-url-main {
-    justify-content: flex-start;
-    padding: 1.35rem 1rem 2.5rem;
+    flex: 1;
+    justify-content: center;
+    padding: 1.35rem 1rem;
   }
 
   .td-url-title {
@@ -1866,10 +1939,17 @@
     max-width: 100%;
   }
 
-  .td-generated-main {
+  .td-url-page > .td-generated-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    padding: 1.15rem 0.85rem 2rem;
-    min-height: calc(100dvh - 64px);
+    max-width: 100%;
+    margin: 0;
+    padding: 1.35rem 1rem;
+    min-height: 0;
   }
 
   .td-generated-card {

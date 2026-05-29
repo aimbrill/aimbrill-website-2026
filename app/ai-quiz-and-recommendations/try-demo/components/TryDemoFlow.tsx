@@ -61,6 +61,8 @@ type RecommendationUiCopy = {
     title?: string;
     subtitle?: string;
     tagline?: string;
+    discountLabel?: string;
+    discountPercent?: number;
   };
 };
 
@@ -318,6 +320,23 @@ function formatDisplayPrice(raw?: string): string | undefined {
   if (trimmed.startsWith("$")) return trimmed;
   if (/^\d/.test(trimmed)) return `$${trimmed}`;
   return trimmed;
+}
+
+function parsePriceAmount(raw?: string): number | null {
+  if (!raw) return null;
+  const match = raw.replace(/,/g, "").match(/(\d+(?:\.\d+)?)/);
+  if (!match) return null;
+  const value = Number.parseFloat(match[1]);
+  return Number.isFinite(value) ? value : null;
+}
+
+function formatUsdAmount(amount: number): string {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: amount % 1 === 0 ? 0 : 2,
+    maximumFractionDigits: 2,
+  }).format(amount);
 }
 
 export function TryDemoFlow() {
@@ -844,14 +863,39 @@ export function TryDemoFlow() {
       return answer ? answer : null;
     }, null);
 
-    const bundleImages = recommendations
-      .slice(0, 3)
+    const bundleProducts = recommendations.slice(0, 3);
+
+    const bundleImages = bundleProducts
       .map((product) => ({
         id: product.id,
         src: product.imageUrl || product.gallery[0]?.url,
         alt: product.imageAlt || product.title,
       }))
       .filter((item): item is { id: string; src: string; alt: string } => Boolean(item.src));
+
+    const bundleDiscountPercent = Math.min(
+      50,
+      Math.max(5, recommendationUiCopy?.bundle?.discountPercent ?? 15),
+    );
+
+    const bundlePriceParts = bundleProducts
+      .map((product) => parsePriceAmount(product.price || product.priceRange))
+      .filter((amount): amount is number => amount !== null);
+
+    const bundleCompareTotal =
+      bundlePriceParts.length > 0
+        ? bundlePriceParts.reduce((sum, amount) => sum + amount, 0)
+        : null;
+
+    const bundleOfferTotal =
+      bundleCompareTotal !== null
+        ? Math.round(bundleCompareTotal * (1 - bundleDiscountPercent / 100) * 100) / 100
+        : null;
+
+    const bundleSavings =
+      bundleCompareTotal !== null && bundleOfferTotal !== null
+        ? Math.round((bundleCompareTotal - bundleOfferTotal) * 100) / 100
+        : null;
 
     const summaryWithoutName = recommendationUiCopy?.summary
       ? recommendationUiCopy.summary.replace(/^((hi|hello)\s+[^,!.]+[,.!]\s*)/i, "").trim()
@@ -936,38 +980,66 @@ export function TryDemoFlow() {
                   )}
                 </div>
               )}
-
-              {recommendationUiCopy?.bundle && (
-                <div className="td-reco-v2-bundle">
-                  {bundleImages.length > 0 && (
-                    <div className="td-reco-v2-bundle-images">
-                      {bundleImages.map((image) => (
-                        <div key={`bundle-${image.id}`} className="td-reco-v2-bundle-image-wrap">
-                          <Image
-                            src={image.src}
-                            alt={image.alt}
-                            className="td-reco-v2-bundle-image"
-                            fill
-                            sizes="132px"
-                            unoptimized
-                          />
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                  <h3>{recommendationUiCopy.bundle.title || "Complete Bundle Offer"}</h3>
-                  {recommendationUiCopy.bundle.subtitle && (
-                    <p>{recommendationUiCopy.bundle.subtitle}</p>
-                  )}
-                  {recommendationUiCopy.bundle.tagline && (
-                    <p>{recommendationUiCopy.bundle.tagline}</p>
-                  )}
-                  <button type="button" className="td-reco-v2-cart" disabled>
-                    Add Bundle to Cart
-                  </button>
-                </div>
-              )}
             </section>
+
+            {recommendationUiCopy?.bundle && (
+              <aside className="td-reco-v2-upsell" aria-label="Bundle offer">
+                <span className="td-reco-v2-upsell-badge">
+                  {recommendationUiCopy.bundle.discountLabel ||
+                    `Save ${bundleDiscountPercent}% — bundle deal`}
+                </span>
+                <p className="td-reco-v2-upsell-kicker">
+                  Buy together as a bundle and get a discount on your full routine.
+                </p>
+
+                {bundleImages.length > 0 && (
+                  <div className="td-reco-v2-bundle-images">
+                    {bundleImages.map((image) => (
+                      <div key={`bundle-${image.id}`} className="td-reco-v2-bundle-image-wrap">
+                        <Image
+                          src={image.src}
+                          alt={image.alt}
+                          className="td-reco-v2-bundle-image"
+                          fill
+                          sizes="132px"
+                          unoptimized
+                        />
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                <h3 className="td-reco-v2-upsell-title">
+                  {recommendationUiCopy.bundle.title || "Your Perfect Daily Bundle"}
+                </h3>
+                {recommendationUiCopy.bundle.subtitle && (
+                  <p className="td-reco-v2-upsell-desc">{recommendationUiCopy.bundle.subtitle}</p>
+                )}
+                {recommendationUiCopy.bundle.tagline && (
+                  <p className="td-reco-v2-upsell-tagline">{recommendationUiCopy.bundle.tagline}</p>
+                )}
+
+                {bundleCompareTotal !== null && bundleOfferTotal !== null && (
+                  <div className="td-reco-v2-upsell-pricing">
+                    <span className="td-reco-v2-upsell-compare">
+                      {formatUsdAmount(bundleCompareTotal)}
+                    </span>
+                    <span className="td-reco-v2-upsell-offer">
+                      {formatUsdAmount(bundleOfferTotal)}
+                    </span>
+                    {bundleSavings !== null && bundleSavings > 0 && (
+                      <span className="td-reco-v2-upsell-save">
+                        You save {formatUsdAmount(bundleSavings)}
+                      </span>
+                    )}
+                  </div>
+                )}
+
+                <button type="button" className="td-reco-v2-cart td-reco-v2-upsell-cta" disabled>
+                  Add Bundle to Cart
+                </button>
+              </aside>
+            )}
 
             <div className="td-reco-v2-retake">
               <button
