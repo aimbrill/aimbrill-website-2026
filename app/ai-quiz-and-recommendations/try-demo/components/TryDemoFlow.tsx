@@ -892,14 +892,6 @@ export function TryDemoFlow() {
 
     const bundleProducts = recommendations.slice(0, 3);
 
-    const bundleImages = bundleProducts
-      .map((product) => ({
-        id: product.id,
-        src: product.imageUrl || product.gallery[0]?.url,
-        alt: product.imageAlt || product.title,
-      }))
-      .filter((item): item is { id: string; src: string; alt: string } => Boolean(item.src));
-
     const bundleDiscountPercent = Math.min(
       50,
       Math.max(5, recommendationUiCopy?.bundle?.discountPercent ?? 15),
@@ -928,6 +920,58 @@ export function TryDemoFlow() {
       ? recommendationUiCopy.summary.replace(/^((hi|hello)\s+[^,!.]+[,.!]\s*)/i, "").trim()
       : undefined;
 
+    const bundleProductsList = recommendations.slice(0, 3);
+
+    const matchPercentByRank = [98, 95, 98];
+
+    const matchLabelForProduct = (product: RecommendationPreview, index: number) => {
+      const ranked = matchPercentByRank[index];
+      if (ranked != null) return `${ranked}% Match`;
+
+      if (product.score == null || Number.isNaN(product.score)) return null;
+      const percent =
+        product.score <= 1 ? Math.round(product.score * 100) : Math.round(product.score);
+      return `${Math.min(100, Math.max(0, percent))}% Match`;
+    };
+
+    const renderRecoProductCard = (product: RecommendationPreview, index: number) => {
+      const matchLabel = matchLabelForProduct(product, index);
+
+      return (
+        <article key={product.id} className="td-reco-v2-card td-reco-v2-card--rich">
+          <div className="td-reco-v2-card__top">
+            {matchLabel ? <span className="td-reco-v2-match">{matchLabel}</span> : null}
+            <span className="td-reco-v2-wish" aria-hidden>
+              ♡
+            </span>
+          </div>
+          {product.imageUrl ? (
+            <div className="td-reco-v2-image-wrap">
+              <Image
+                src={product.imageUrl}
+                alt={product.imageAlt || product.title}
+                className="td-reco-v2-image"
+                fill
+                sizes="(max-width: 820px) 90vw, 280px"
+                unoptimized
+              />
+            </div>
+          ) : (
+            <div className="td-reco-v2-image-wrap td-reco-v2-image-wrap--placeholder" />
+          )}
+          <p className="td-reco-v2-title">{product.title}</p>
+          {(product.price || product.priceRange) && (
+            <p className="td-reco-v2-price">
+              {formatDisplayPrice(product.price || product.priceRange)}
+            </p>
+          )}
+          <button type="button" className="td-reco-v2-cart" onClick={showCartDemoNote}>
+            Add to Cart
+          </button>
+        </article>
+      );
+    };
+
     return (
       <div className="td-root">
         <div className="td-reco-page">
@@ -937,139 +981,177 @@ export function TryDemoFlow() {
               {summaryWithoutName && <p>{summaryWithoutName}</p>}
             </div>
 
-            <section className="td-reco-v2-products">
-              <h2>Recommended Products for You</h2>
-              <div className="td-reco-v2-grid">
-                {recommendations.map((product) => (
-                  <article key={product.id} className="td-reco-v2-card">
-                    {product.imageUrl ? (
-                      <div className="td-reco-v2-image-wrap">
-                        <Image
-                          src={product.imageUrl}
-                          alt={product.imageAlt || product.title}
-                          className="td-reco-v2-image"
-                          fill
-                          sizes="(max-width: 820px) 90vw, 320px"
-                          unoptimized
-                        />
-                      </div>
-                    ) : (
-                      <div className="td-reco-v2-image-wrap td-reco-v2-image-wrap--placeholder" />
-                    )}
-                    <p className="td-reco-v2-title">{product.title}</p>
-                    {(product.price || product.priceRange) && (
-                      <p className="td-reco-v2-price">
-                        {formatDisplayPrice(product.price || product.priceRange)}
-                      </p>
-                    )}
-                    <button type="button" className="td-reco-v2-cart" onClick={showCartDemoNote}>
-                      Add to Cart
-                    </button>
-                  </article>
-                ))}
-              </div>
+            {(bundleProductsList.length > 0 ||
+              recommendationUiCopy?.bundle ||
+              bundleCompareTotal !== null) && (
+              <section className="td-reco-v2-shop" aria-label="Recommended products and bundle">
+                {bundleProductsList.length > 0 && (
+                  <>
+                    <h2>Recommended Products for You</h2>
+                    <div className="td-reco-v2-grid">
+                      {bundleProductsList.map(renderRecoProductCard)}
+                    </div>
+                  </>
+                )}
 
-              {(recommendationUiCopy?.expertAdvice || recommendationUiCopy?.marketTrends) && (
+                {(recommendationUiCopy?.bundle || bundleCompareTotal !== null) && (
+                  <aside className="td-reco-v2-bundle-panel" aria-label="Bundle offer">
+                    <div className="td-reco-v2-bundle-panel__copy">
+                      {(recommendationUiCopy?.bundle?.discountLabel ||
+                        bundleDiscountPercent > 0) && (
+                        <span className="td-reco-v2-upsell-badge">
+                          {recommendationUiCopy?.bundle?.discountLabel ||
+                            `Save ${bundleDiscountPercent}%`}
+                        </span>
+                      )}
+                      {recommendationUiCopy?.bundle?.title && (
+                        <h3 className="td-reco-v2-upsell-title">
+                          <span aria-hidden>✦ </span>
+                          {recommendationUiCopy.bundle.title}
+                        </h3>
+                      )}
+                      {recommendationUiCopy?.bundle?.subtitle && (
+                        <p className="td-reco-v2-upsell-desc">
+                          {recommendationUiCopy.bundle.subtitle}
+                        </p>
+                      )}
+                      {recommendationUiCopy?.bundle?.tagline && (
+                        <p className="td-reco-v2-upsell-tagline">
+                          {recommendationUiCopy.bundle.tagline}
+                        </p>
+                      )}
+                    </div>
+
+                    {bundleProductsList.length > 0 && (
+                      <div className="td-reco-v2-bundle-strip" aria-hidden>
+                        {bundleProductsList.map((product, index) => (
+                          <div
+                            key={`strip-${product.id}`}
+                            className="td-reco-v2-bundle-strip__item"
+                          >
+                            {index > 0 && <span className="td-reco-v2-bundle-plus">+</span>}
+                            <div className="td-reco-v2-bundle-image-wrap">
+                              {product.imageUrl ? (
+                                <Image
+                                  src={product.imageUrl}
+                                  alt=""
+                                  className="td-reco-v2-bundle-image"
+                                  fill
+                                  sizes="88px"
+                                  unoptimized
+                                />
+                              ) : null}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    <div className="td-reco-v2-bundle-panel__buy">
+                      {bundleCompareTotal !== null && bundleOfferTotal !== null && (
+                        <div className="td-reco-v2-bundle-pricing">
+                          <div className="td-reco-v2-bundle-price-row">
+                            <span className="td-reco-v2-bundle-price-label">Regular Price</span>
+                            <span className="td-reco-v2-upsell-compare">
+                              {formatUsdAmount(bundleCompareTotal)}
+                            </span>
+                          </div>
+                          <div className="td-reco-v2-bundle-price-block">
+                            <span className="td-reco-v2-bundle-price-label td-reco-v2-bundle-price-label--strong">
+                              Bundle Price
+                            </span>
+                            <span className="td-reco-v2-upsell-offer td-reco-v2-upsell-offer--hero">
+                              {formatUsdAmount(bundleOfferTotal)}
+                            </span>
+                          </div>
+                          {bundleSavings !== null && bundleSavings > 0 && (
+                            <span className="td-reco-v2-upsell-save td-reco-v2-upsell-save--pill">
+                              You Save {formatUsdAmount(bundleSavings)}
+                            </span>
+                          )}
+                        </div>
+                      )}
+                      <button
+                        type="button"
+                        className="td-reco-v2-cart td-reco-v2-upsell-cta"
+                        onClick={showCartDemoNote}
+                      >
+                        <svg
+                          className="td-reco-v2-cart-bag"
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          aria-hidden
+                        >
+                          <path
+                            d="M6 7h12l-1.2 11.5a1 1 0 0 1-1 .9H8.2a1 1 0 0 1-1-.9L6 7Z"
+                            stroke="currentColor"
+                            strokeWidth="1.6"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M9 7V5.5a3 3 0 0 1 6 0V7"
+                            stroke="currentColor"
+                            strokeWidth="1.6"
+                            strokeLinecap="round"
+                          />
+                        </svg>
+                        Add Bundle to Cart
+                      </button>
+                    </div>
+                  </aside>
+                )}
+              </section>
+            )}
+
+            {(recommendationUiCopy?.expertAdvice || recommendationUiCopy?.marketTrends) && (
+              <section className="td-reco-v2-insights-section" aria-label="Insights">
                 <div className="td-reco-v2-insights">
                   {recommendationUiCopy?.expertAdvice && (
                     <article className="td-reco-v2-insight-card">
-                      <Image
-                        src="/ai-quiz-landing/before-after/quiz-expert-icon.png"
-                        alt=""
-                        aria-hidden
-                        className="td-reco-v2-insight-icon"
-                        width={56}
-                        height={56}
-                        unoptimized
-                      />
-                      <h3>{recommendationUiCopy.expertAdvice.title || "Expert Advice"}</h3>
-                      {recommendationUiCopy.expertAdvice.body && (
-                        <p>{recommendationUiCopy.expertAdvice.body}</p>
-                      )}
+                      <div className="td-reco-v2-insight-card__intro">
+                        <Image
+                          src="/ai-quiz-landing/before-after/quiz-expert-icon.png"
+                          alt=""
+                          aria-hidden
+                          className="td-reco-v2-insight-icon"
+                          width={56}
+                          height={56}
+                          unoptimized
+                        />
+                        <div className="td-reco-v2-insight-card__copy">
+                          <h3>{recommendationUiCopy.expertAdvice.title || "Expert Advice"}</h3>
+                          {recommendationUiCopy.expertAdvice.body && (
+                            <p>{recommendationUiCopy.expertAdvice.body}</p>
+                          )}
+                        </div>
+                      </div>
                     </article>
                   )}
                   {recommendationUiCopy?.marketTrends && (
                     <article className="td-reco-v2-insight-card">
-                      <Image
-                        src="/ai-quiz-landing/before-after/quiz-market-icon.png"
-                        alt=""
-                        aria-hidden
-                        className="td-reco-v2-insight-icon"
-                        width={56}
-                        height={56}
-                        unoptimized
-                      />
-                      <h3>{recommendationUiCopy.marketTrends.title || "Market Trends"}</h3>
-                      {recommendationUiCopy.marketTrends.body && (
-                        <p>{recommendationUiCopy.marketTrends.body}</p>
-                      )}
+                      <div className="td-reco-v2-insight-card__intro">
+                        <Image
+                          src="/ai-quiz-landing/before-after/quiz-market-icon.png"
+                          alt=""
+                          aria-hidden
+                          className="td-reco-v2-insight-icon"
+                          width={56}
+                          height={56}
+                          unoptimized
+                        />
+                        <div className="td-reco-v2-insight-card__copy">
+                          <h3>{recommendationUiCopy.marketTrends.title || "Market Trends"}</h3>
+                          {recommendationUiCopy.marketTrends.body && (
+                            <p>{recommendationUiCopy.marketTrends.body}</p>
+                          )}
+                        </div>
+                      </div>
                     </article>
                   )}
                 </div>
-              )}
-            </section>
-
-            {recommendationUiCopy?.bundle && (
-              <aside className="td-reco-v2-upsell" aria-label="Bundle offer">
-                <span className="td-reco-v2-upsell-badge">
-                  {recommendationUiCopy.bundle.discountLabel ||
-                    `Save ${bundleDiscountPercent}% — bundle deal`}
-                </span>
-                <p className="td-reco-v2-upsell-kicker">
-                  Buy together as a bundle and get a discount on your full routine.
-                </p>
-
-                {bundleImages.length > 0 && (
-                  <div className="td-reco-v2-bundle-images">
-                    {bundleImages.map((image) => (
-                      <div key={`bundle-${image.id}`} className="td-reco-v2-bundle-image-wrap">
-                        <Image
-                          src={image.src}
-                          alt={image.alt}
-                          className="td-reco-v2-bundle-image"
-                          fill
-                          sizes="132px"
-                          unoptimized
-                        />
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                <h3 className="td-reco-v2-upsell-title">
-                  {recommendationUiCopy.bundle.title || "Your Perfect Daily Bundle"}
-                </h3>
-                {recommendationUiCopy.bundle.subtitle && (
-                  <p className="td-reco-v2-upsell-desc">{recommendationUiCopy.bundle.subtitle}</p>
-                )}
-                {recommendationUiCopy.bundle.tagline && (
-                  <p className="td-reco-v2-upsell-tagline">{recommendationUiCopy.bundle.tagline}</p>
-                )}
-
-                {bundleCompareTotal !== null && bundleOfferTotal !== null && (
-                  <div className="td-reco-v2-upsell-pricing">
-                    <span className="td-reco-v2-upsell-compare">
-                      {formatUsdAmount(bundleCompareTotal)}
-                    </span>
-                    <span className="td-reco-v2-upsell-offer">
-                      {formatUsdAmount(bundleOfferTotal)}
-                    </span>
-                    {bundleSavings !== null && bundleSavings > 0 && (
-                      <span className="td-reco-v2-upsell-save">
-                        You save {formatUsdAmount(bundleSavings)}
-                      </span>
-                    )}
-                  </div>
-                )}
-
-                <button
-                  type="button"
-                  className="td-reco-v2-cart td-reco-v2-upsell-cta"
-                  onClick={showCartDemoNote}
-                >
-                  Add Bundle to Cart
-                </button>
-              </aside>
+              </section>
             )}
 
             <div className="td-reco-v2-retake">
