@@ -27,7 +27,7 @@
   --aq-serif: "Playfair Display", Georgia, serif;
   --aq-footer: #1a1a1a;
   --aq-section-py: clamp(4.5rem, 7vw, 5.5rem);
-  --aq-hero-py: clamp(2rem, 3.5vw, 2.75rem);
+  --aq-hero-py: clamp(3.25rem, 6vw, 5rem);
   --aq-hero-flow: rgba(249, 115, 22, 0.42);
   --aq-section-intro-gap: clamp(2.5rem, 5vw, 3.25rem);
   --aq-section-title: clamp(1.85rem, 4vw, 2.65rem);
@@ -134,7 +134,9 @@
 
 .aq-logo {
   font-weight: 800;
-  font-size: 1.05rem;
+  font-size: clamp(1.2rem, 2.2vw, 1.45rem);
+  letter-spacing: -0.02em;
+  line-height: 1;
   color: var(--aq-ink);
 }
 
@@ -230,7 +232,7 @@
   .aq-logo {
     flex-shrink: 1;
     min-width: 0;
-    font-size: 0.95rem;
+    font-size: 1.2rem;
   }
 
   .aq-header-cta {
