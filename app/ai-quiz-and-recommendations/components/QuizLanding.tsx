@@ -8,28 +8,13 @@ import { HowItWorks } from "./HowItWorks";
 import { FeatureShowcase } from "./FeatureShowcase";
 import { IndustryShowcase } from "./IndustryShowcase";
 import { BeforeVsAfter } from "./BeforeVsAfter";
+// ShopifyMark removed from hero to eliminate decorative icons
 // import { QuizFaq } from "./QuizFaq";
 
 const SHOPIFY_APP_URL = "https://apps.shopify.com/ai-quiz-recommendation";
 
-function ShopifyMark() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
-      <path d="M12 2L3 7v10l9 5 9-5V7l-9-5z" fill="currentColor" opacity="0.95" />
-      <path d="M12 6v15M3 7l9 5 9-5" stroke="#fff" strokeWidth="1.2" opacity="0.5" />
-    </svg>
-  );
-}
-
 function PlayMark() {
-  return (
-    <span className="aq-hero-play" aria-hidden>
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-        <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" />
-        <path d="M10 8.5v7l6-3.5-6-3.5z" fill="currentColor" />
-      </svg>
-    </span>
-  );
+  return null;
 }
 
 export function QuizLanding() {
@@ -57,11 +42,7 @@ export function QuizLanding() {
                   rel="noopener noreferrer"
                   className="aq-btn aq-btn--primary aq-btn--lg aq-hero-cta-shopify"
                 >
-                  <ShopifyMark />
                   Install free on Shopify
-                  <span className="aq-hero-cta-arrow" aria-hidden>
-                    →
-                  </span>
                 </a>
                 <Link
                   href="/ai-quiz-and-recommendations/try-demo"
@@ -110,7 +91,6 @@ export function QuizLanding() {
           className="aq-btn aq-btn--primary aq-btn--lg"
         >
           Install Free on Shopify
-          <span aria-hidden>→</span>
         </a>
       </section>
 

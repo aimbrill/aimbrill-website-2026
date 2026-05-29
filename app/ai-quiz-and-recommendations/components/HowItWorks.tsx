@@ -43,9 +43,7 @@ export function HowItWorks() {
               <div className="aq-how-step__card">
                 <div className="aq-how-step__top">
                   <span className="aq-how-step__num">Step {step.num}</span>
-                  <span className="aq-how-step__icon" aria-hidden>
-                    {step.icon}
-                  </span>
+                  {/* icon removed */}
                 </div>
                 <h3>{step.title}</h3>
                 <p>{step.text}</p>

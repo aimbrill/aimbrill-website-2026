@@ -36,7 +36,6 @@ export function QuizSiteHeader() {
             className="aq-btn aq-btn--primary aq-header-cta"
           >
             Install free
-            <span aria-hidden>→</span>
           </a>
           <button
             type="button"
@@ -62,7 +61,6 @@ export function QuizSiteHeader() {
               className="aq-btn aq-btn--primary aq-mobile-nav-cta"
             >
               Install free
-              <span aria-hidden>→</span>
             </a>
           </nav>
         )}

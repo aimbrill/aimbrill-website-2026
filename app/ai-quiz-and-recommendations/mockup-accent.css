@@ -36,7 +36,7 @@
   color: var(--aq-mock-accent);
 }
 
-/* Feature showcase mockups */
+/* Feature showcase mockups — accent tokens set per .aq-feat-stage--{theme} */
 .aq-feat-stage .aq-feat-quiz-card__step,
 .aq-feat-stage .aq-feat-embed-quiz__title,
 .aq-feat-stage .aq-feat-embed-quiz__step {
@@ -44,22 +44,19 @@
 }
 
 .aq-feat-stage .aq-feat-quiz-card__bar span {
-  background: var(--aq-mock-gradient);
+  background: var(--aq-mock-accent);
 }
 
 .aq-feat-stage .aq-feat-quiz-next,
-.aq-feat-stage .aq-feat-rec-product__btn {
-  background: var(--aq-mock-gradient);
+.aq-feat-stage .aq-feat-rec-product__btn,
+.aq-feat-stage .aq-feat-embed-quiz__btn {
+  background: var(--aq-mock-accent);
   box-shadow: var(--aq-mock-shadow);
 }
 
 .aq-feat-stage .aq-feat-ai-tip__icon {
   background: var(--aq-mock-accent-soft);
   color: var(--aq-mock-accent);
-}
-
-.aq-feat-list--lavender li::before {
-  background: #8b5cf6;
 }
 
 /* Before / after comparison graphics */

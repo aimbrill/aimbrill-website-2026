@@ -405,6 +405,12 @@
   gap: 0.55rem;
 }
 
+.aq-hero-cta-shopify__icon {
+  flex-shrink: 0;
+  object-fit: contain;
+  display: block;
+}
+
 .aq-hero-cta-demo {
   gap: 0.55rem;
   padding-left: 1.1rem;

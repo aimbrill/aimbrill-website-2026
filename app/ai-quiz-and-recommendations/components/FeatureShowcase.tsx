@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
+// ShopifyMark import removed; badge renders text only now
 
 type FeatureTheme = "mint" | "lavender" | "yellow" | "coral";
 
@@ -67,24 +68,24 @@ const REC_PRODUCTS = [
     name: "Hyaluronic Acid 2% + B5",
     brand: "The Ordinary",
     price: "$6.80",
-    match: "98% Match",
-    tone: "#e8f4fc",
+    match: "97% Match",
+    tone: "#f5f3ff",
     image: "/ai-quiz-landing/industries/skincare/1.jpg",
   },
   {
     name: "Moisturizing Cream",
     brand: "CeraVe",
     price: "$16.99",
-    match: "95% Match",
-    tone: "#eef6ee",
+    match: "96% Match",
+    tone: "#ede9fe",
     image: "/ai-quiz-landing/industries/skincare/2.jpg",
   },
   {
     name: "Toleriane Moisturizer",
     brand: "La Roche-Posay",
     price: "$19.99",
-    match: "93% Match",
-    tone: "#f3eef8",
+    match: "92% Match",
+    tone: "#e9e5ff",
     image: "/ai-quiz-landing/industries/skincare/3.jpg",
   },
 ];
@@ -121,14 +122,14 @@ function QuizVisual() {
             ))}
           </ul>
           <button type="button" className="aq-feat-quiz-next">
-            Next <span aria-hidden>→</span>
+            Next
           </button>
         </article>
         <svg className="aq-feat-dash-arrow" viewBox="0 0 120 80" aria-hidden>
           <path
             d="M8 12 C 52 8, 98 36, 72 68"
             fill="none"
-            stroke="#6366f1"
+            stroke="currentColor"
             strokeWidth="2.2"
             strokeDasharray="5 7"
             strokeLinecap="round"
@@ -136,14 +137,7 @@ function QuizVisual() {
           />
         </svg>
         <aside className="aq-feat-ai-tip">
-          <span className="aq-feat-ai-tip__icon" aria-hidden>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M12 3l1.8 5.5L19 10l-5.2 1.5L12 17l-1.8-5.5L5 10l5.2-1.5L12 3z"
-                fill="currentColor"
-              />
-            </svg>
-          </span>
+          {/* decorative icon removed */}
           <div>
             <strong>AI is analyzing...</strong>
             <p>Understanding your customer&apos;s needs</p>
@@ -158,9 +152,7 @@ function RecsVisual() {
   return (
     <VisualStage theme="lavender">
       <article className="aq-feat-recs-card">
-        <h3>
-          Recommended for you <span aria-hidden>✦</span>
-        </h3>
+        <h3>Recommended for you</h3>
         <div className="aq-feat-recs-grid">
           {REC_PRODUCTS.map((p) => (
             <div key={p.brand} className="aq-feat-rec-product">
@@ -177,9 +169,7 @@ function RecsVisual() {
               <p className="aq-feat-rec-product__brand">{p.brand}</p>
               <p className="aq-feat-rec-product__name">{p.name}</p>
               <p className="aq-feat-rec-product__price">{p.price}</p>
-              <span className="aq-feat-rec-product__btn">
-                View product <span aria-hidden>→</span>
-              </span>
+              <span className="aq-feat-rec-product__btn">View product</span>
             </div>
           ))}
         </div>
@@ -202,7 +192,6 @@ function AnalyticsVisual() {
       <article className="aq-feat-dash">
         <div className="aq-feat-dash__head">
           <span>This month</span>
-          <span aria-hidden>⌄</span>
         </div>
         <div className="aq-feat-dash__metrics">
           {metrics.map((m) => (
@@ -218,30 +207,31 @@ function AnalyticsVisual() {
           <div className="aq-feat-dash__chart">
             <svg viewBox="0 0 320 100" preserveAspectRatio="none" className="aq-feat-dash__svg">
               <defs>
-                <linearGradient id="aqChartFill" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#5a31f4" stopOpacity="0.22" />
-                  <stop offset="100%" stopColor="#5a31f4" stopOpacity="0" />
+                <linearGradient id="aqFeatChartFill" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" className="aq-feat-dash__fill-start" stopOpacity="0.22" />
+                  <stop offset="100%" className="aq-feat-dash__fill-end" stopOpacity="0" />
                 </linearGradient>
               </defs>
               <path
+                className="aq-feat-dash__area"
                 d="M0 84 L40 72 L80 68 L120 52 L160 56 L200 38 L240 49 L280 34 L320 26 L320 100 L0 100 Z"
-                fill="url(#aqChartFill)"
+                fill="url(#aqFeatChartFill)"
               />
               <path
+                className="aq-feat-dash__line"
                 d="M0 84 L40 72 L80 68 L120 52 L160 56 L200 38 L240 49 L280 34 L320 26"
                 fill="none"
-                stroke="#5a31f4"
                 strokeWidth="2.5"
                 strokeLinecap="round"
               />
               {[84, 72, 68, 52, 56, 38, 49, 34, 26].map((y, i) => (
                 <circle
                   key={i}
+                  className="aq-feat-dash__dot"
                   cx={i * 40}
                   cy={y}
                   r="4"
                   fill="#fff"
-                  stroke="#5a31f4"
                   strokeWidth="2"
                 />
               ))}
@@ -261,9 +251,6 @@ function AnalyticsVisual() {
 function ShopifyBadge() {
   return (
     <div className="aq-feat-shopify-badge">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
-        <path d="M12 2L4 7v10l8 4 8-4V7l-8-5z" fill="#008060" />
-      </svg>
       <span>Seamlessly works with Shopify</span>
     </div>
   );
@@ -273,7 +260,6 @@ function EmbedVisual() {
   return (
     <VisualStage theme="coral">
       <div className="aq-feat-embed-wrap">
-        <ShopifyBadge />
         <div className="aq-feat-store">
           <div className="aq-feat-store__nav">
             <span className="aq-feat-store__logo">Your Store</span>
@@ -281,37 +267,36 @@ function EmbedVisual() {
             <span>Bestsellers</span>
             <span>Skincare</span>
             <span>About</span>
-            <span aria-hidden>⌕</span>
-            <span aria-hidden>◌</span>
+            {/* decorative icons removed */}
           </div>
           <div className="aq-feat-store__hero">
-            <h4>Find what&apos;s perfect for you</h4>
-            <p className="aq-feat-store__sub">Take our quiz and get personalized product picks</p>
-            <button type="button" className="aq-feat-store__cta">
-              Take the Quiz
-            </button>
-            <div className="aq-feat-store__product-shot">
-              <Image
-                src="/ai-quiz-landing/industries/skincare/2.jpg"
-                alt="Skincare product recommendation"
-                fill
-                sizes="(max-width: 900px) 70vw, 420px"
-                className="aq-feat-store__product-image"
-              />
+            <Image
+              src="/ai-quiz-landing/industries/skincare/2.jpg"
+              alt=""
+              fill
+              sizes="(max-width: 900px) 70vw, 420px"
+              className="aq-feat-store__hero-bg"
+              aria-hidden
+            />
+            <span className="aq-feat-store__hero-scrim" aria-hidden />
+            <div className="aq-feat-store__hero-content">
+              <h4>Find what&apos;s perfect for you</h4>
+              <p className="aq-feat-store__sub">Take our quiz and get personalized product picks</p>
+              <ShopifyBadge />
             </div>
+            <article className="aq-feat-embed-quiz aq-feat-embed-quiz--phone">
+              <p className="aq-feat-embed-quiz__title">Skin Quiz</p>
+              <p className="aq-feat-embed-quiz__step">1 / 5</p>
+              <p className="aq-feat-embed-quiz__q">What is your main skin concern?</p>
+              <div className="aq-feat-embed-quiz__opts">
+                <span>Acne</span>
+                <span className="is-on">Dryness</span>
+                <span>Dullness</span>
+                <span>Sensitivity</span>
+              </div>
+              <span className="aq-feat-embed-quiz__btn">Next</span>
+            </article>
           </div>
-          <article className="aq-feat-embed-quiz aq-feat-embed-quiz--phone">
-            <p className="aq-feat-embed-quiz__title">Skin Quiz</p>
-            <p className="aq-feat-embed-quiz__step">1 / 5</p>
-            <p className="aq-feat-embed-quiz__q">What is your main skin concern?</p>
-            <div className="aq-feat-embed-quiz__opts">
-              <span>Acne</span>
-              <span className="is-on">Dryness</span>
-              <span>Dullness</span>
-              <span>Sensitivity</span>
-            </div>
-            <span className="aq-feat-embed-quiz__btn">Next →</span>
-          </article>
         </div>
       </div>
     </VisualStage>
@@ -350,9 +335,7 @@ export function FeatureShowcase() {
                 <div className="aq-feat-copy">
                   <div className={`aq-feat-num aq-feat-num--${block.theme}`}>
                     <span className="aq-feat-num__n">{block.num}</span>
-                    <span className="aq-feat-num__emoji" aria-hidden>
-                      {block.emoji}
-                    </span>
+                    {/* emoji removed */}
                   </div>
                   <h3>{block.title}</h3>
                   <p className="aq-feat-desc">{block.description}</p>
