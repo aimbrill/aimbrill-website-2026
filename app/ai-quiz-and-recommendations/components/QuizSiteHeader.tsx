@@ -35,7 +35,7 @@ export function QuizSiteHeader() {
             rel="noopener noreferrer"
             className="aq-btn aq-btn--primary aq-header-cta"
           >
-            Install free
+            Start Your Free Trial
           </a>
           <button
             type="button"
@@ -60,7 +60,7 @@ export function QuizSiteHeader() {
               rel="noopener noreferrer"
               className="aq-btn aq-btn--primary aq-mobile-nav-cta"
             >
-              Install free
+              Start Your Free Trial
             </a>
           </nav>
         )}

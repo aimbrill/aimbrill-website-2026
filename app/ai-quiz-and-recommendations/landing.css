@@ -622,21 +622,29 @@
   align-items: end;
 }
 
-/* Mobile hero mock — quiz + bottle side-by-side, recs full width below */
+/* Mobile hero mock — compact quiz + bottle, recs below */
 @media (max-width: 959px) {
+  .aq-hero-visual {
+    margin-top: -0.1rem;
+  }
+
   .aq-hero-mock {
     overflow: hidden;
+    max-width: min(100%, 24.5rem);
+    margin-inline: auto;
   }
 
   .aq-hero-mock__scene {
     display: grid;
-    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    grid-template-columns: minmax(0, 1.22fr) minmax(0, 0.62fr);
     grid-template-rows: auto auto;
     grid-template-areas:
       "quiz bottle"
       "recs recs";
-    gap: 0.45rem 0.3rem;
-    padding: 0.55rem 0.45rem 0.6rem;
+    gap: 0.1rem 0.2rem;
+    padding: 0.32rem 0.34rem 0.34rem;
+    border-radius: 14px;
+    box-shadow: 0 10px 26px -16px rgba(26, 26, 26, 0.14);
     overflow: hidden;
     align-items: start;
   }
@@ -653,52 +661,63 @@
   .aq-hero-mock__scene > .aq-hero-mock__right {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-end;
+    justify-content: flex-start;
+    align-items: center;
     grid-area: bottle;
-    align-self: stretch;
+    align-self: start;
     position: relative;
     min-height: 0;
-    height: 100%;
-    margin-top: 0;
-    padding: 0 0 0.15rem;
-    overflow: hidden;
+    height: auto;
+    margin-top: -2.35rem;
+    padding: 0;
+    overflow: visible;
+  }
+
+  .aq-hero-mock__quiz,
+  .aq-hero-mock__recs {
+    border-radius: 12px;
+    box-shadow: 0 6px 16px -10px rgba(26, 26, 26, 0.12);
   }
 
   .aq-hero-mock__quiz {
     grid-area: quiz;
-    align-self: stretch;
+    align-self: start;
     min-width: 0;
     width: 100%;
-    padding: 0.5rem 0.5rem 0.55rem;
+    padding: 0.38rem 0.4rem 0.34rem;
   }
 
   .aq-hero-mock__recs {
     grid-area: recs;
     min-width: 0;
     width: 100%;
-    margin-top: 0.15rem;
-    padding: 0.5rem 0.45rem 0.55rem;
+    margin-top: 0.08rem;
+    padding: 0.32rem 0.34rem 0.34rem;
   }
 
   .aq-hero-mock__quiz-top {
     font-size: 0.68rem;
     align-items: center;
-    gap: 0.25rem;
+    gap: 0.2rem;
   }
 
   .aq-hero-mock__quiz-heading {
-    gap: 0.12rem;
+    gap: 0.08rem;
     min-width: 0;
   }
 
   .aq-hero-mock__quiz-heading strong {
     font-size: 0.74rem;
-    line-height: 1.2;
+    line-height: 1.15;
   }
 
   .aq-hero-mock__live {
-    font-size: 0.52rem;
+    font-size: 0.5rem;
+  }
+
+  .aq-hero-mock__live-dot {
+    width: 0.38rem;
+    height: 0.38rem;
   }
 
   .aq-hero-mock__progress {
@@ -706,42 +725,49 @@
     flex-shrink: 0;
   }
 
+  .aq-hero-mock__bar {
+    margin-top: 0.22rem;
+    height: 3px;
+  }
+
   .aq-hero-mock__question {
-    margin: 0.3rem 0 0.28rem;
+    margin: 0.22rem 0 0.18rem;
     font-size: 0.76rem;
+    line-height: 1.25;
   }
 
   .aq-hero-mock__options {
-    gap: 0.24rem;
+    gap: 0.18rem;
   }
 
   .aq-hero-mock__options li {
     min-width: 0;
-    padding: 0.28rem 0.4rem;
+    padding: 0.22rem 0.35rem;
     font-size: 0.64rem;
-    gap: 0.35rem;
+    gap: 0.3rem;
     border-radius: 8px;
   }
 
   .aq-hero-mock__radio {
-    width: 12px;
-    height: 12px;
+    width: 11px;
+    height: 11px;
   }
 
   .aq-hero-mock__next {
-    margin-top: 0.35rem;
-    padding: 0.38rem 0.55rem;
-    font-size: 0.68rem;
+    margin-top: 0.28rem;
+    padding: 0.32rem 0.5rem;
+    font-size: 0.66rem;
     border-radius: 8px;
   }
 
   .aq-hero-mock__recs h3 {
-    font-size: 0.78rem;
+    font-size: 0.74rem;
+    line-height: 1.2;
   }
 
   .aq-hero-mock__products {
-    margin-top: 0.4rem;
-    gap: 0.28rem;
+    margin-top: 0.22rem;
+    gap: 0.18rem;
     width: 100%;
     min-width: 0;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -749,8 +775,8 @@
 
   .aq-hero-mock__product {
     min-width: 0;
-    padding: 0.3rem 0.2rem 0.35rem;
-    border-radius: 10px;
+    padding: 0.2rem 0.14rem 0.22rem;
+    border-radius: 9px;
   }
 
   .aq-hero-mock__match {
@@ -760,9 +786,10 @@
 
   .aq-hero-mock__product-img {
     width: 100%;
-    max-width: 44px;
-    height: 44px;
-    border-radius: 8px;
+    max-width: 38px;
+    height: 38px;
+    margin-inline: auto;
+    border-radius: 7px;
   }
 
   .aq-hero-mock__product-name {
@@ -791,87 +818,132 @@
 
   .aq-hero-mock__bottle {
     width: 100%;
-    max-width: 100%;
-    transform: none;
+    max-width: 4.5rem;
+    transform: translateY(-2.45rem);
     margin: 0;
-    flex: 1 1 auto;
+    flex: 0 0 auto;
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start;
     justify-content: center;
   }
 
   .aq-hero-mock__product-focus {
     width: 100%;
-    max-width: 130px;
-    height: 168px;
-    margin: 0;
+    max-width: 70px;
+    height: 72px;
+    margin: -1.35rem 0 0;
   }
 
   .aq-hero-mock__focus-photo {
-    object-position: center bottom;
-    transform: scale(1);
+    object-position: center 12%;
+    transform: scale(0.68);
   }
 
   .aq-hero-mock__score {
     position: absolute;
-    right: 0;
+    right: -0.1rem;
     bottom: 0;
-    width: 68px;
-    height: 68px;
+    width: 44px;
+    height: 44px;
     margin: 0;
-    padding: 0.35rem 0.25rem;
-    transform: none;
+    padding: 0.22rem 0.16rem;
+    transform: translateY(-2rem);
     flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(26, 26, 26, 0.1);
   }
 
   .aq-hero-mock__score-pct {
-    font-size: 1.2rem;
+    font-size: 0.85rem;
   }
 
   .aq-hero-mock__score-label {
-    font-size: 0.62rem;
+    font-size: 0.48rem;
   }
 
   .aq-hero-mock__score-meta {
-    font-size: 0.46rem;
-    margin-top: 0.08rem;
+    font-size: 0.36rem;
+    margin-top: 0.03rem;
   }
 
   .aq-hero-mock__score-spark {
-    font-size: 0.5rem;
-    margin-top: 0.08rem;
+    font-size: 0.38rem;
+    margin-top: 0.03rem;
   }
 }
 
 /* Narrow phones (e.g. 360px) */
 @media (max-width: 420px) {
+  .aq-hero-mock {
+    max-width: 100%;
+  }
+
   .aq-hero-mock__scene {
-    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
-    gap: 0.4rem 0.25rem;
-    padding: 0.5rem 0.4rem 0.55rem;
+    grid-template-columns: minmax(0, 1.24fr) minmax(0, 0.58fr);
+    gap: 0.08rem 0.16rem;
+    padding: 0.28rem 0.3rem 0.3rem;
+    border-radius: 12px;
+  }
+
+  .aq-hero-mock__scene > .aq-hero-mock__right {
+    margin-top: -2.5rem;
+  }
+
+  .aq-hero-mock__bottle {
+    max-width: 4.1rem;
+    transform: translateY(-2.55rem);
+  }
+
+  .aq-hero-mock__product-focus {
+    max-width: 64px;
+    height: 66px;
+    margin-top: -1.45rem;
+  }
+
+  .aq-hero-mock__focus-photo {
+    transform: scale(0.64);
+  }
+
+  .aq-hero-mock__score {
+    width: 40px;
+    height: 40px;
+    transform: translateY(-1.85rem);
+  }
+
+  .aq-hero-mock__score-pct {
+    font-size: 0.78rem;
+  }
+
+  .aq-hero-mock__score-label {
+    font-size: 0.44rem;
+  }
+
+  .aq-hero-mock__recs {
+    margin-top: 0.06rem;
+    padding: 0.28rem 0.3rem 0.3rem;
+  }
+
+  .aq-hero-mock__quiz {
+    padding: 0.34rem 0.36rem 0.3rem;
+  }
+
+  .aq-hero-mock__question {
+    margin: 0.18rem 0 0.15rem;
+    font-size: 0.72rem;
   }
 
   .aq-hero-mock__options li {
     font-size: 0.6rem;
-    padding: 0.26rem 0.32rem;
+    padding: 0.2rem 0.3rem;
   }
 
-  .aq-hero-mock__product-focus {
-    max-width: 118px;
-    height: 155px;
+  .aq-hero-mock__next {
+    margin-top: 0.24rem;
+    padding: 0.28rem 0.45rem;
   }
 
-  .aq-hero-mock__score {
-    width: 62px;
-    height: 62px;
-  }
-
-  .aq-hero-mock__score-pct {
-    font-size: 1.05rem;
-  }
-
-  .aq-hero-mock__score-label {
-    font-size: 0.56rem;
+  .aq-hero-mock__product-img {
+    max-width: 34px;
+    height: 34px;
   }
 
   .aq-hero-mock__view {

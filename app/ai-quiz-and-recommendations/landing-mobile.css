@@ -10,16 +10,20 @@
     padding-inline: 0.25rem;
   }
 
+  .ai-quiz-landing .aq-hero h1,
   .ai-quiz-landing .aq-section-intro h2,
-  .ai-quiz-landing .aq-cta-band h2 {
-    font-size: clamp(1.75rem, 7vw, var(--aq-landing-heading));
+  .ai-quiz-landing .aq-cta-band h2,
+  .ai-quiz-landing .aq-feature-showcase__intro h2 {
+    font-size: 26px;
     line-height: 1.12;
   }
 
+  .ai-quiz-landing .aq-hero-sub,
   .ai-quiz-landing .aq-section-intro > p,
-  .ai-quiz-landing .aq-cta-band p {
-    font-size: var(--aq-landing-subheading);
-    line-height: 1.65;
+  .ai-quiz-landing .aq-cta-band p,
+  .ai-quiz-landing .aq-feature-showcase__intro > p {
+    font-size: 12px;
+    line-height: 1.55;
     text-wrap: balance;
   }
 
@@ -80,19 +84,45 @@
     gap: 1rem;
   }
 
+  .ai-quiz-landing .aq-hero-grid > div:first-child {
+    text-align: center;
+  }
+
+  .ai-quiz-landing .aq-hero h1 {
+    text-align: center;
+    margin-inline: auto;
+    max-width: 100%;
+  }
+
+  .ai-quiz-landing .aq-hero-sub {
+    text-align: center;
+    margin-inline: auto;
+    max-width: 22rem;
+  }
+
   .ai-quiz-landing .aq-hero-ctas {
-    grid-template-columns: 1fr;
-    gap: 0.65rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.45rem;
+    margin-top: 0.85rem;
+    width: 100%;
   }
 
   .ai-quiz-landing .aq-hero-ctas .aq-btn--lg {
-    width: 100%;
-    max-width: none;
+    width: auto;
+    max-width: 9.25rem;
+    flex: 0 1 auto;
+    min-width: 0;
+    padding: 0.55rem 0.62rem;
+    font-size: 0.68rem;
+    justify-content: center;
   }
 
   .ai-quiz-landing .aq-hero-cta-demo {
     justify-content: center;
-    white-space: normal;
+    white-space: nowrap;
     text-align: center;
   }
 
@@ -109,5 +139,11 @@
   .ai-quiz-landing .aq-cta-band {
     width: calc(100% - 1rem);
     padding-inline: 1rem;
+  }
+
+  .ai-quiz-landing .aq-hero-ctas .aq-btn--lg {
+    max-width: 8.5rem;
+    padding: 0.5rem 0.5rem;
+    font-size: 0.64rem;
   }
 }

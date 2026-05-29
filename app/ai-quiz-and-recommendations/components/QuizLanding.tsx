@@ -49,7 +49,7 @@ export function QuizLanding() {
                   className="aq-btn aq-btn--outline aq-btn--lg aq-hero-cta-demo"
                 >
                   <PlayMark />
-                  Try demo
+                  Try the AI Quiz
                 </Link>
               </div>
             </div>

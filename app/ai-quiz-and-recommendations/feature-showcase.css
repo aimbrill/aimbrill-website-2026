@@ -1095,14 +1095,8 @@
     padding-inline: 0.15rem;
   }
 
-  .aq-feature-showcase__intro h2 {
-    font-size: clamp(1.75rem, 7vw, var(--aq-landing-heading));
-    line-height: 1.12;
-  }
-
   .aq-feature-showcase__intro > p {
     max-width: 32rem;
-    font-size: var(--aq-landing-subheading);
   }
 
   .aq-feat-blocks {
