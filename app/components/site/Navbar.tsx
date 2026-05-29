@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown } from "lucide-react";
-import { apps } from "./Apps";
+import { apps, AppIcon } from "./Apps";
 import { AppsMegaMenu } from "./AppsMegaMenu";
 import { useEffect, useRef, useState } from "react";
 
@@ -63,7 +63,7 @@ export function Navbar() {
 
   useEffect(() => {
     function onDocClick(e: MouseEvent) {
-      if (!appsOpen) return;
+      if (!appsOpen || open) return;
       const target = e.target as Node;
       if (appsRef.current && !appsRef.current.contains(target)) {
         setAppsOpen(false);
@@ -71,7 +71,11 @@ export function Navbar() {
     }
     document.addEventListener("mousedown", onDocClick);
     return () => document.removeEventListener("mousedown", onDocClick);
-  }, [appsOpen]);
+  }, [appsOpen, open]);
+
+  useEffect(() => {
+    if (!open) setAppsOpen(false);
+  }, [open]);
 
   useEffect(() => {
     const read = () => setHash(window.location.hash);
@@ -224,46 +228,71 @@ export function Navbar() {
                       </button>
 
                       {appsOpen && (
-                        <div className="mb-2 mt-1 space-y-1 rounded-xl border border-border bg-surface p-2">
-                          {apps.map((a) => (
-                            <div key={a.name} className="rounded-lg">
-                              <Link
-                                href={a.pagePath}
-                                onClick={() => {
-                                  setOpen(false);
-                                  setAppsOpen(false);
-                                }}
-                                className="block rounded-lg p-3 transition-colors hover:bg-surface-2"
+                        <div
+                          className="mb-2 mt-1 rounded-xl border border-border bg-surface p-2"
+                          onPointerDown={(e) => e.stopPropagation()}
+                        >
+                          <ul className="flex flex-col gap-0.5" role="menu" aria-label="Our apps">
+                            {apps.map((a) => (
+                              <li
+                                key={a.name}
+                                role="none"
+                                className="rounded-lg transition-colors hover:bg-surface-2"
                               >
-                                <p className="text-[15px] font-semibold text-ink">{a.name}</p>
-                                <p className="mt-0.5 text-[13px] leading-snug text-muted-foreground">
-                                  {a.menuDesc}
-                                </p>
-                              </Link>
-                              {a.secondaryMenuLink ? (
                                 <Link
-                                  href={a.secondaryMenuLink.href}
+                                  href={a.pagePath}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  role="menuitem"
                                   onClick={() => {
                                     setOpen(false);
                                     setAppsOpen(false);
                                   }}
-                                  className="block px-3 pb-3 text-[12px] font-semibold text-violet-600"
+                                  className="flex gap-3 rounded-lg p-3 active:bg-surface-2"
                                 >
-                                  {a.secondaryMenuLink.label} →
+                                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-border bg-background">
+                                    <AppIcon app={a} size="sm" />
+                                  </div>
+                                  <div className="min-w-0 flex-1 pt-0.5">
+                                    <p className="text-[15px] font-semibold leading-snug text-ink">
+                                      {a.name}
+                                    </p>
+                                    <p className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
+                                      {a.menuDesc}
+                                    </p>
+                                  </div>
                                 </Link>
-                              ) : null}
-                            </div>
-                          ))}
-                          <Link
-                            href="/#apps"
-                            onClick={() => {
-                              setOpen(false);
-                              setAppsOpen(false);
-                            }}
-                            className="block rounded-lg px-3 py-2 text-center text-[13px] font-semibold text-muted-foreground"
-                          >
-                            View all apps →
-                          </Link>
+                                {a.secondaryMenuLink ? (
+                                  <div className="border-t border-border/60 px-3 pb-3 pt-0">
+                                    <Link
+                                      href={a.secondaryMenuLink.href}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      onClick={() => {
+                                        setOpen(false);
+                                        setAppsOpen(false);
+                                      }}
+                                      className="inline-flex text-[12px] font-semibold text-violet-600 hover:underline"
+                                    >
+                                      {a.secondaryMenuLink.label} →
+                                    </Link>
+                                  </div>
+                                ) : null}
+                              </li>
+                            ))}
+                          </ul>
+                          <div className="mt-1 border-t border-border pt-1">
+                            <Link
+                              href="/#apps"
+                              onClick={() => {
+                                setOpen(false);
+                                setAppsOpen(false);
+                              }}
+                              className="block rounded-lg px-3 py-2.5 text-center text-[13px] font-semibold text-muted-foreground transition-colors active:bg-surface-2 hover:bg-surface-2 hover:text-ink"
+                            >
+                              View all apps →
+                            </Link>
+                          </div>
                         </div>
                       )}
                     </div>

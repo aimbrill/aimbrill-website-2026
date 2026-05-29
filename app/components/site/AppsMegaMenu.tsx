@@ -27,6 +27,8 @@ export function AppsMegaMenu({ open, onClose }: AppsMegaMenuProps) {
             <Link
               href={app.pagePath}
               role="menuitem"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={onClose}
               className="group/item flex gap-4 p-3"
             >
@@ -44,6 +46,8 @@ export function AppsMegaMenu({ open, onClose }: AppsMegaMenuProps) {
               <div className="border-t border-border/60 px-3 pb-3 pt-0">
                 <Link
                   href={app.secondaryMenuLink.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={onClose}
                   className="inline-flex text-[12px] font-semibold text-violet-600 hover:text-violet-700 hover:underline"
                 >
