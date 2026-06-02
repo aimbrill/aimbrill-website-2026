@@ -52,7 +52,7 @@ async function getBlogCards(): Promise<BlogCard[]> {
         } else if (slug === "macola-shopify-integration-pulse-ecommerce") {
           coverImage = "/images/shopify/blogs/main%20image/macola.png";
         } else if (slug === "recomai-ai-chatbot-convert-visitors-to-buyers") {
-          coverImage = "/images/AIICON.png";
+          coverImage = "/images/shopify/blogs/main%20image/Recomi.png";
         }
 
         return {
