@@ -51,6 +51,8 @@ async function getBlogCards(): Promise<BlogCard[]> {
           coverImage = "/images/shopify/blogs/main%20image/storefront.png";
         } else if (slug === "macola-shopify-integration-pulse-ecommerce") {
           coverImage = "/images/shopify/blogs/main%20image/macola.png";
+        } else if (slug === "recomai-ai-chatbot-convert-visitors-to-buyers") {
+          coverImage = "/images/AIICON.png";
         }
 
         return {

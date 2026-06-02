@@ -97,6 +97,11 @@ export const site = {
       changeFrequency: "monthly" as const,
       priority: 0.7,
     },
+    {
+      path: "/recomai-ai-chatbot-convert-visitors-to-buyers",
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    },
   ],
 } as const;
 
