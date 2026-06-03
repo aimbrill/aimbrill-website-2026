@@ -23,5 +23,5 @@ export const RECOMAI_GUIDE_TOC: GuideTocItem[] = [
   },
   { id: "pricing", label: "Real pricing" },
   { id: "platform-integrations", label: "Platform integrations" },
-  { id: "final-word", label: "Final word" },
+  { id: "final-thoughts", label: "Final Thoughts" },
 ];

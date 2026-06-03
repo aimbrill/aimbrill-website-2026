@@ -473,7 +473,7 @@ export default function RecomaiAiChatbotPage() {
             ))}
           </ul>
 
-          <h2 id="final-word">Final word</h2>
+          <h2 id="final-thoughts">Final Thoughts</h2>
           <p>
             Most online stores are built to showcase products. ReComAI is built to sell them. It
             understands what your customers want, guides them through your catalog, answers every
