@@ -109,7 +109,9 @@
   background: #000;
   border: 1.5px solid rgba(255, 255, 255, 0.85);
   color: #fff;
-  transition: border-color 0.2s, transform 0.15s;
+  transition:
+    border-color 0.2s,
+    transform 0.15s;
 }
 
 .aq-footer__shopify-badge:hover {
@@ -155,7 +157,9 @@
   width: 2.5rem;
   height: 2.5rem;
   color: rgba(255, 255, 255, 0.85);
-  transition: color 0.2s, transform 0.15s;
+  transition:
+    color 0.2s,
+    transform 0.15s;
 }
 
 .aq-footer__social-link svg {
@@ -173,9 +177,10 @@
 }
 
 .aq-footer__logo .aq-logo {
-  font-size: 1.35rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  display: block;
+  width: clamp(8rem, 16vw, 10.5rem);
+  height: auto;
+  object-fit: contain;
 }
 
 .aq-footer__resources {
@@ -219,7 +224,7 @@
   color: rgba(255, 255, 255, 0.7);
 }
 
-.aq-logo--light {
+.afilter: brightness(0) invert(1)ht {
   color: #fff;
 }
 

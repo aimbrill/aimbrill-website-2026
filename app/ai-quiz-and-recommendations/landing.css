@@ -119,8 +119,8 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(253, 250, 243, 0.88);
-  backdrop-filter: blur(14px);
+  background: rgba(253, 250, 243, 0.92);
+  backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--aq-line);
 }
 
@@ -128,16 +128,17 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  padding: 0.85rem 0;
+  gap: 0.75rem;
+  padding: 0 0;
+  height: 56px; /* fixed header height to prevent growth when logo scales */
 }
 
 .aq-logo {
-  font-weight: 800;
-  font-size: clamp(1.2rem, 2.2vw, 1.45rem);
-  letter-spacing: -0.02em;
-  line-height: 1;
-  color: var(--aq-ink);
+  display: block;
+  width: clamp(9rem, 16vw, 11rem);
+  height: auto;
+  max-height: 56px; /* increased cap so logo appears larger while header height remains fixed */
+  object-fit: contain;
 }
 
 .aq-nav {
@@ -1816,7 +1817,6 @@
   color: var(--aq-body);
 }
 
-
 /* FAQ */
 .aq-faq {
   max-width: 720px;
@@ -1957,7 +1957,8 @@
   min-height: 500px;
   padding: clamp(1.1rem, 2vw, 1.5rem) clamp(1rem, 2vw, 1.35rem) 4.5rem;
   border-radius: 28px;
-  background: radial-gradient(circle at 15% 45%, rgba(251, 146, 60, 0.22), transparent 36%),
+  background:
+    radial-gradient(circle at 15% 45%, rgba(251, 146, 60, 0.22), transparent 36%),
     linear-gradient(155deg, #fffcf8 0%, #fff6ed 50%, #ffefe2 100%);
   border: 1px solid rgba(247, 200, 158, 0.45);
   box-shadow: 0 32px 72px -36px rgba(26, 26, 26, 0.14);
@@ -2085,7 +2086,10 @@
 }
 
 .aq-hero-showcase .aq-hero-card__bar span {
-  background: var(--aq-mock-gradient, linear-gradient(105deg, #5a31f4 0%, #6b4ff7 48%, #4c25d9 100%));
+  background: var(
+    --aq-mock-gradient,
+    linear-gradient(105deg, #5a31f4 0%, #6b4ff7 48%, #4c25d9 100%)
+  );
 }
 
 .aq-hero-card__question {
@@ -2335,7 +2339,12 @@
   width: 6.4rem;
   height: 6.4rem;
   border-radius: 50%;
-  background: radial-gradient(circle at 28% 26%, rgba(255, 255, 255, 0.95), #ffe8d5 68%, #fdc89c 100%);
+  background: radial-gradient(
+    circle at 28% 26%,
+    rgba(255, 255, 255, 0.95),
+    #ffe8d5 68%,
+    #fdc89c 100%
+  );
   border: 1px solid rgba(252, 168, 102, 0.5);
   display: grid;
   place-items: center;
@@ -2513,4 +2522,3 @@
     max-width: 3.5rem;
   }
 }
-
