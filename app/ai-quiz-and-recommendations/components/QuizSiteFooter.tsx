@@ -106,11 +106,9 @@ export function QuizSiteFooter() {
                 Deliver personalized shopping at scale with AI-driven quizzes built for Shopify.
               </p>
               <ShopifyAppBadge />
-              <div className="aq-footer__desktop-only">
-                <FooterSocial />
-              </div>
+              <FooterSocial />
             </div>
-            <div className="aq-footer__desktop-only aq-footer__start-foot">
+            <div className="aq-footer__start-foot">
               <div className="aq-footer__logo">
                 <QuizLogo light />
               </div>
@@ -140,18 +138,12 @@ export function QuizSiteFooter() {
                 ))}
               </ul>
             </div>
-            <div className="aq-footer__desktop-only aq-footer__resources-foot">
+            <div className="aq-footer__resources-foot">
               <FooterCredit />
             </div>
           </div>
 
-          <div className="aq-footer__mobile-only">
-            <FooterSocial />
-            <div className="aq-footer__logo">
-              <QuizLogo light />
-            </div>
-            <FooterCredit />
-          </div>
+          {/** Single responsive footer block above replaces previous desktop/mobile duplicates */}
         </div>
       </div>
     </footer>
