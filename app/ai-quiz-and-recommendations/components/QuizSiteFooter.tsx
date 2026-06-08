@@ -110,7 +110,7 @@ export function QuizSiteFooter() {
             </div>
             <div className="aq-footer__start-foot">
               <div className="aq-footer__logo">
-                <QuizLogo light />
+                <QuizLogo />
               </div>
             </div>
           </div>

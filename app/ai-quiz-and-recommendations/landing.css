@@ -129,15 +129,29 @@
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
-  padding: 0 0;
-  height: 56px; /* fixed header height to prevent growth when logo scales */
+  padding: 0;
+  height: 56px;
+}
+
+.aq-header .aq-header-inner > a {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.aq-header .aq-logo,
+.aq-header .aq-logo--header {
+  display: block;
+  width: auto !important;
+  height: 30px !important;
+  max-width: none !important;
+  object-fit: contain;
 }
 
 .aq-logo {
   display: block;
   width: clamp(9rem, 16vw, 11rem);
   height: auto;
-  max-height: 56px; /* increased cap so logo appears larger while header height remains fixed */
   object-fit: contain;
 }
 
@@ -229,13 +243,12 @@
 @media (max-width: 899px) {
   .aq-header-inner {
     gap: 0.45rem;
-    padding: 0.65rem 0;
+    padding: 0;
   }
 
-  .aq-logo {
-    flex-shrink: 1;
-    min-width: 0;
-    font-size: 1.2rem;
+  .aq-header .aq-logo,
+  .aq-header .aq-logo--header {
+    height: 48px !important;
   }
 
   .aq-header-cta {

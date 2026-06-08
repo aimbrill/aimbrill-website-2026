@@ -173,12 +173,18 @@
 }
 
 .aq-footer__logo {
+  display: inline-flex;
+  align-items: center;
   margin-top: 2.5rem;
+  padding: 0.5rem 0.85rem;
+  border-radius: 12px;
+  background: var(--aq-bg);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
 }
 
 .aq-footer__logo .aq-logo {
   display: block;
-  width: clamp(8rem, 16vw, 10.5rem);
+  width: clamp(7rem, 14vw, 9rem);
   height: auto;
   object-fit: contain;
 }
@@ -224,7 +230,7 @@
   color: rgba(255, 255, 255, 0.7);
 }
 
-.afilter: brightness(0) invert(1)ht {
+.aq-logo--light {
   color: #fff;
 }
 

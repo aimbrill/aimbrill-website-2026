@@ -20,7 +20,7 @@ export function QuizSiteHeader() {
       <div className="aq-wrap">
         <div className="aq-header-inner">
           <Link href="/ai-quiz-and-recommendations" onClick={() => setOpen(false)}>
-            <QuizLogo />
+            <QuizLogo header />
           </Link>
           <nav className="aq-nav" aria-label="Main">
             {links.map((link) => (
