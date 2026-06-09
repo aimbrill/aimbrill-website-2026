@@ -1,4 +1,5 @@
 export const site = {
+  googleAnalyticsId: "G-LJ0Y9HGV79",
   name: "Aimbrill",
   title: "Aimbrill | AI-Powered Shopify Studio & Apps",
   description:

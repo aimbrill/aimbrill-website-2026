@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { DM_Sans, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import "./styles.css";
+import GoogleAnalytics from "./components/site/GoogleAnalytics";
 import { buildSiteJsonLdGraph } from "../lib/seo";
 import { site } from "../lib/site";
 
@@ -85,6 +86,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={fontVariables}>
       <head>
+        <GoogleAnalytics />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
