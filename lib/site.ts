@@ -32,7 +32,7 @@ export const site = {
       description:
         "AI-powered popups and upsell widgets that show the right offer to the right customer at the right time.",
       pagePath: "/weupsell-ai-popup-upsell",
-      shopifyHref: "https://apps.shopify.com/aimbrill-popup-ai-automate-bot",
+      shopifyHref: "https://apps.shopify.com/ai-upsell-cross-sell-by-weupsell",
     },
     {
       name: "AI Quiz",

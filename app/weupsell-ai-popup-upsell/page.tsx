@@ -66,7 +66,7 @@ export default function WeUpsellAppPage() {
 
             <div className="mt-10 flex flex-wrap gap-3">
               <a
-                href="https://apps.shopify.com/aimbrill-popup-ai-automate-bot"
+                href="https://apps.shopify.com/ai-upsell-cross-sell-by-weupsell"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-3 rounded-full border border-ink/20 bg-background px-6 py-3 text-lg font-semibold text-ink transition hover:bg-surface-2"

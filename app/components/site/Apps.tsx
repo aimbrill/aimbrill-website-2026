@@ -110,7 +110,7 @@ export const apps: AppConfig[] = [
     desc: "AI-powered popups and upsell widgets that show the right offer to the right customer at the right time. No manual rules. Just results.",
     cta: "View on Shopify App Store",
     pagePath: "https://www.weupsell.com/",
-    shopifyHref: "https://apps.shopify.com/aimbrill-popup-ai-automate-bot",
+    shopifyHref: "https://apps.shopify.com/ai-upsell-cross-sell-by-weupsell",
     menuDesc: "AI-powered popups and upsell widgets that show the right offer at the right time.",
     panel: "stats",
     stats: [

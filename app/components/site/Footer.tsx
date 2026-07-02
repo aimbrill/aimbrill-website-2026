@@ -65,7 +65,7 @@ export function Footer({ privacyHref = "/privacy" }: FooterProps) {
                 <a
                   target="_blank"
                   rel="noreferrer"
-                  href="https://apps.shopify.com/aimbrill-popup-ai-automate-bot"
+                  href="https://apps.shopify.com/ai-upsell-cross-sell-by-weupsell"
                   className="inline-flex items-center gap-2 underline-grow"
                 >
                   WeUpsell on Shopify <span>↗</span>
