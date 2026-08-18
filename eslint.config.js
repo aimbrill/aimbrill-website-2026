@@ -16,7 +16,17 @@ const compat = new FlatCompat({
 });
 
 export default tseslint.config(
-  { ignores: ["dist", ".next", ".output", ".vinxi", "next-env.d.ts"] },
+  {
+    ignores: [
+      "dist",
+      ".next",
+      ".output",
+      ".vinxi",
+      "next-env.d.ts",
+      "public/**",
+      "node_modules/**",
+    ],
+  },
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   eslintConfigPrettier,
   {

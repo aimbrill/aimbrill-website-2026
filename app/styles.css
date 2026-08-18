@@ -99,12 +99,16 @@
     font-feature-settings: "ss01", "cv11";
     -webkit-font-smoothing: antialiased;
     background-image:
-      radial-gradient(60% 40% at 90% -10%,
+      radial-gradient(
+        60% 40% at 90% -10%,
         color-mix(in oklab, var(--lime) 35%, transparent),
-        transparent 60%),
-      radial-gradient(50% 30% at -10% 10%,
+        transparent 60%
+      ),
+      radial-gradient(
+        50% 30% at -10% 10%,
         color-mix(in oklab, var(--lime) 12%, transparent),
-        transparent 60%);
+        transparent 60%
+      );
     background-attachment: fixed;
   }
 
@@ -208,7 +212,6 @@
   }
 
   @keyframes floaty {
-
     0%,
     100% {
       transform: translateY(0);
@@ -418,8 +421,16 @@
 
 .blog-hero {
   background-image:
-    radial-gradient(60% 80% at 100% -10%, color-mix(in oklab, var(--lime) 22%, transparent), transparent 60%),
-    radial-gradient(50% 50% at 0% 120%, color-mix(in oklab, var(--lime) 15%, transparent), transparent 70%);
+    radial-gradient(
+      60% 80% at 100% -10%,
+      color-mix(in oklab, var(--lime) 22%, transparent),
+      transparent 60%
+    ),
+    radial-gradient(
+      50% 50% at 0% 120%,
+      color-mix(in oklab, var(--lime) 15%, transparent),
+      transparent 70%
+    );
 }
 
 .blog-card {
@@ -430,12 +441,17 @@
   background: var(--card);
   overflow: hidden;
   box-shadow: var(--shadow-soft);
-  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+  transition:
+    transform 0.28s ease,
+    box-shadow 0.28s ease,
+    border-color 0.28s ease;
 }
 
 .blog-card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-pop), 0 0 18px -10px color-mix(in oklab, var(--lime) 45%, transparent);
+  box-shadow:
+    var(--shadow-pop),
+    0 0 18px -10px color-mix(in oklab, var(--lime) 45%, transparent);
   border-color: var(--lime);
 }
 
@@ -447,8 +463,16 @@
   align-items: flex-end;
   padding: 1rem;
   background:
-    linear-gradient(145deg, color-mix(in oklab, var(--ink) 96%, transparent), color-mix(in oklab, var(--ink) 70%, transparent)),
-    radial-gradient(65% 75% at 82% 24%, color-mix(in oklab, var(--lime) 55%, transparent), transparent 75%);
+    linear-gradient(
+      145deg,
+      color-mix(in oklab, var(--ink) 96%, transparent),
+      color-mix(in oklab, var(--ink) 70%, transparent)
+    ),
+    radial-gradient(
+      65% 75% at 82% 24%,
+      color-mix(in oklab, var(--lime) 55%, transparent),
+      transparent 75%
+    );
 }
 
 .blog-card-cover--image {
@@ -596,7 +620,7 @@
   }
 }
 
-.guide-prose>*+* {
+.guide-prose > * + * {
   margin-top: 1rem;
 }
 

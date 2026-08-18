@@ -321,7 +321,8 @@ body {
   }
 
   .bg-white.p-2.rounded-full.border.border-primary\/10.shadow-xl.inline-flex.gap-2
-    button span.text-\[7px\] {
+    button
+    span.text-\[7px\] {
     font-size: 0.5rem !important;
     padding-left: 0.2rem !important;
     padding-right: 0.2rem !important;
@@ -367,4 +368,3 @@ main.flex-1.min-h-0 {
 .brand-card.group.shadow-2xl {
   padding: 35px !important;
 }
-

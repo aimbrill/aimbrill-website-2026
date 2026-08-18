@@ -4,28 +4,28 @@
    ============================================ */
 
 :root {
-  --bg-page: #F5EFE4;
-  --bg-card: #FFFFFF;
-  --bg-card-hover: #FDF9F5;
-  --bg-selected: #FDF0EB;
+  --bg-page: #f5efe4;
+  --bg-card: #ffffff;
+  --bg-card-hover: #fdf9f5;
+  --bg-selected: #fdf0eb;
 
-  --brand: #C45C38;
-  --brand-hover: #A84D2E;
-  --brand-light: #FAEAE4;
+  --brand: #c45c38;
+  --brand-hover: #a84d2e;
+  --brand-light: #faeae4;
 
-  --gold: #E8C87A;
-  --gold-dark: #B8922A;
-  --gold-light: #FDF5E0;
+  --gold: #e8c87a;
+  --gold-dark: #b8922a;
+  --gold-light: #fdf5e0;
 
-  --green: #4A7C59;
-  --green-light: #EAF4EE;
+  --green: #4a7c59;
+  --green-light: #eaf4ee;
 
-  --text-primary: #2D1B0E;
-  --text-secondary: #7A6050;
-  --text-muted: #AFA098;
+  --text-primary: #2d1b0e;
+  --text-secondary: #7a6050;
+  --text-muted: #afa098;
 
-  --border: #EDE0D6;
-  --border-strong: #C45C38;
+  --border: #ede0d6;
+  --border-strong: #c45c38;
 
   --radius-card: 16px;
   --radius-pill: 99px;
@@ -43,9 +43,9 @@ html {
 body {
   margin: 0;
   background: var(--bg-page);
-  background-image: 
-    linear-gradient(to right, rgba(0,0,0,0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0,0,0,0.02) 1px, transparent 1px);
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
   background-size: 40px 40px;
 }
 
@@ -87,11 +87,15 @@ body {
 }
 
 @media (min-width: 640px) {
-  .meal3-section { padding: 32px 20px; }
+  .meal3-section {
+    padding: 32px 20px;
+  }
 }
 
 @media (min-width: 1024px) {
-  .meal3-section { padding: 40px 32px; }
+  .meal3-section {
+    padding: 40px 32px;
+  }
 }
 
 .meal3-section--hero {
@@ -187,11 +191,10 @@ body {
   margin-bottom: 32px;
 }
 
-
 /* How It Works Strip */
 .meal3-how-it-works {
-  background: #EDE7D9;
-  border: 1px solid #DDD4C4;
+  background: #ede7d9;
+  border: 1px solid #ddd4c4;
   border-radius: 12px;
   padding: 12px 18px;
   margin-top: 6px;
@@ -203,7 +206,7 @@ body {
 .meal3-how-label {
   font-size: 9px;
   font-weight: 800;
-  color: #A8937A;
+  color: #a8937a;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   margin-bottom: 12px;
@@ -235,20 +238,20 @@ body {
 .meal3-how-title {
   font-size: 13px;
   font-weight: 800;
-  color: #1C1810;
+  color: #1c1810;
   margin-bottom: 2px;
   white-space: nowrap;
 }
 
 .meal3-how-sub {
   font-size: 11px;
-  color: #8A7968;
+  color: #8a7968;
   font-weight: 500;
 }
 
 .meal3-how-arrow {
   font-size: 13px;
-  color: #A8937A;
+  color: #a8937a;
   opacity: 0.5;
   font-weight: 400;
   margin-bottom: 20px;
@@ -302,7 +305,9 @@ body {
   font-size: 16px;
   font-weight: 600;
   outline: none;
-  transition: border-color 150ms ease, box-shadow 150ms ease;
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
 }
 
 .meal3-input:focus {
@@ -349,7 +354,9 @@ body {
   font-weight: 600;
   font-size: 16px;
   cursor: pointer;
-  transition: background 150ms ease, transform 150ms ease;
+  transition:
+    background 150ms ease,
+    transform 150ms ease;
   letter-spacing: 0.1px;
 }
 
@@ -479,14 +486,14 @@ body {
   width: 40px;
   height: 40px;
   border-radius: 999px;
-  background: #D9D0C8;
+  background: #d9d0c8;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 900;
   font-size: 14px;
-  color: #FFFFFF;
-  border: 2px solid #EDE0D6;
+  color: #ffffff;
+  border: 2px solid #ede0d6;
 }
 
 .meal3-progress-step.completed .meal3-progress-dot {
@@ -528,7 +535,7 @@ body {
 
 .meal3-progress-connector {
   height: 2px;
-  background: #D8CDC3;
+  background: #d8cdc3;
   flex: 1;
   margin-top: 20px;
   border-radius: 99px;
@@ -609,7 +616,11 @@ body {
   padding: 12px 8px;
   text-align: center;
   cursor: pointer;
-  transition: border-color 150ms ease, background 150ms ease, transform 150ms ease, box-shadow 150ms ease;
+  transition:
+    border-color 150ms ease,
+    background 150ms ease,
+    transform 150ms ease,
+    box-shadow 150ms ease;
   position: relative;
 }
 
@@ -730,7 +741,9 @@ body {
   opacity: 0;
   transform: translateY(8px);
   pointer-events: none;
-  transition: opacity 250ms ease, transform 250ms ease;
+  transition:
+    opacity 250ms ease,
+    transform 250ms ease;
   z-index: 50;
   margin: 0 auto;
 }
@@ -757,13 +770,15 @@ body {
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 8px 32px rgba(45, 27, 14, 0.10), 0 0 0 0 rgba(196, 92, 56, 0.0);
+  box-shadow:
+    0 8px 32px rgba(45, 27, 14, 0.1),
+    0 0 0 0 rgba(196, 92, 56, 0);
   transition: all 0.3s ease;
 }
 
 .meal3-floating-cta::before,
 .meal3-persistent-cta::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   border-radius: 50px;
@@ -794,7 +809,9 @@ body {
 .meal3-floating-cta:hover:not(:disabled),
 .meal3-persistent-cta:hover:not(:disabled) {
   border-color: rgba(196, 92, 56, 0.35);
-  box-shadow: 0 12px 40px rgba(45, 27, 14, 0.16), 0 0 20px rgba(196, 92, 56, 0.16);
+  box-shadow:
+    0 12px 40px rgba(45, 27, 14, 0.16),
+    0 0 20px rgba(196, 92, 56, 0.16);
   transform: scale(1.06);
 }
 
@@ -836,7 +853,6 @@ body {
 }
 
 @media (max-width: 575px) {
-
   .meal3-floating-cta,
   .meal3-persistent-cta {
     padding: 10px 20px;
@@ -1046,7 +1062,12 @@ body {
   cursor: pointer;
   position: relative;
   text-align: center;
-  transition: opacity 200ms ease, transform 200ms ease, border 150ms ease, background 150ms ease, box-shadow 150ms ease;
+  transition:
+    opacity 200ms ease,
+    transform 200ms ease,
+    border 150ms ease,
+    background 150ms ease,
+    box-shadow 150ms ease;
 }
 
 .meal3-meal-card:hover:not(.locked) {
@@ -1226,7 +1247,10 @@ body {
   justify-content: space-between;
   gap: 12px;
   box-shadow: 0 6px 16px rgba(45, 27, 14, 0.05);
-  transition: transform 200ms ease, box-shadow 200ms ease, opacity 200ms ease;
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease,
+    opacity 200ms ease;
 }
 
 .meal3-slot-card:hover {
@@ -1404,7 +1428,11 @@ body {
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  transition: border 150ms ease, background 150ms ease, transform 150ms ease, box-shadow 150ms ease;
+  transition:
+    border 150ms ease,
+    background 150ms ease,
+    transform 150ms ease,
+    box-shadow 150ms ease;
 }
 
 .meal3-plan-card:hover {
@@ -1534,7 +1562,11 @@ body {
   align-items: center;
   gap: 16px;
   cursor: pointer;
-  transition: border 150ms ease, background 150ms ease, transform 150ms ease, box-shadow 150ms ease;
+  transition:
+    border 150ms ease,
+    background 150ms ease,
+    transform 150ms ease,
+    box-shadow 150ms ease;
 }
 
 .meal3-addon-card:hover {
@@ -1752,7 +1784,7 @@ body {
 
 @keyframes meal3-savings-pulse {
   0% {
-    box-shadow: 0 0 0 rgba(232, 200, 122, 0.0);
+    box-shadow: 0 0 0 rgba(232, 200, 122, 0);
     transform: scale(1);
   }
 
@@ -1806,7 +1838,9 @@ body {
   font-weight: 700;
   cursor: pointer;
   box-shadow: 0 4px 16px rgba(45, 27, 14, 0.25);
-  transition: background 150ms ease, transform 150ms ease;
+  transition:
+    background 150ms ease,
+    transform 150ms ease;
 }
 
 .meal3-btn-summary:hover {
@@ -1878,7 +1912,11 @@ body {
   text-align: left;
   position: relative;
   cursor: pointer;
-  transition: border 150ms ease, background 150ms ease, transform 150ms ease, box-shadow 150ms ease;
+  transition:
+    border 150ms ease,
+    background 150ms ease,
+    transform 150ms ease,
+    box-shadow 150ms ease;
 }
 
 .meal3-time-card:hover:not(.selected) {
@@ -1985,7 +2023,10 @@ body {
   font-size: 13px;
   font-weight: 500;
   cursor: pointer;
-  transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
+  transition:
+    background 150ms ease,
+    color 150ms ease,
+    border-color 150ms ease;
   white-space: nowrap;
 }
 
@@ -2335,7 +2376,10 @@ body {
   border-radius: 999px;
   font-weight: 900;
   cursor: pointer;
-  transition: transform 150ms ease, background 150ms ease, border-color 150ms ease;
+  transition:
+    transform 150ms ease,
+    background 150ms ease,
+    border-color 150ms ease;
 }
 
 .meal3-modal-btn--add {
@@ -2385,10 +2429,10 @@ body {
 
 .meal3-guarantee-banner {
   margin-top: 10px;
-  background: #E6FAF2;
+  background: #e6faf2;
   border-radius: 8px;
   padding: 10px 14px;
-  color: #0D8A5E;
+  color: #0d8a5e;
   font-size: 13px;
   font-weight: 700;
   display: flex;

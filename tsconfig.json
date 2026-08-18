@@ -5,8 +5,9 @@
     "app/**/*.ts",
     "app/**/*.tsx",
     "eslint.config.js",
-    ".next/types/**/*.ts"
-, "public/sitemap.ts"  ],
+    ".next/types/**/*.ts",
+    "public/sitemap.ts"
+  ],
   "compilerOptions": {
     "target": "ES2022",
     "jsx": "preserve",

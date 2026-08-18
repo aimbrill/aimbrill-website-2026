@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { ChevronDown } from "lucide-react";
 import { apps, AppIcon } from "./Apps";
 import { AppsMegaMenu } from "./AppsMegaMenu";
+import { AiToolsMegaMenu, aiToolsList, AiToolIcon } from "./AiToolsMegaMenu";
 import { useEffect, useRef, useState } from "react";
 
 const CALENDLY_URL = "https://calendly.com/weupsell-experts/ai-campaign-popup";
@@ -13,6 +14,7 @@ const CALENDLY_URL = "https://calendly.com/weupsell-experts/ai-campaign-popup";
 const links = [
   { href: "/#work", label: "Work" },
   { href: "/#apps", label: "Apps", isApps: true },
+  { href: "/ai-tools", label: "AI Tools", isAiTools: true },
   { href: "/blog", label: "Blog" },
 ] as const;
 
@@ -40,6 +42,11 @@ function navItemActive(pathname: string, hash: string, href: string) {
   if (href === "/blog") {
     return pathname === "/blog" || pathname.startsWith("/blog/");
   }
+  if (href === "/ai-tools") {
+    return (
+      pathname.startsWith("/seo-dashboard") || pathname.startsWith("/ai-quiz-and-recommendations")
+    );
+  }
   if (href.startsWith("/#")) {
     return pathname === "/" && hash === href.slice(href.indexOf("#"));
   }
@@ -51,8 +58,10 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [appsOpen, setAppsOpen] = useState(false);
+  const [aiToolsOpen, setAiToolsOpen] = useState(false);
   const [hash, setHash] = useState("");
   const appsRef = useRef<HTMLLIElement | null>(null);
+  const aiToolsRef = useRef<HTMLLIElement | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -63,18 +72,24 @@ export function Navbar() {
 
   useEffect(() => {
     function onDocClick(e: MouseEvent) {
-      if (!appsOpen || open) return;
+      if (open) return;
       const target = e.target as Node;
-      if (appsRef.current && !appsRef.current.contains(target)) {
+      if (appsOpen && appsRef.current && !appsRef.current.contains(target)) {
         setAppsOpen(false);
+      }
+      if (aiToolsOpen && aiToolsRef.current && !aiToolsRef.current.contains(target)) {
+        setAiToolsOpen(false);
       }
     }
     document.addEventListener("mousedown", onDocClick);
     return () => document.removeEventListener("mousedown", onDocClick);
-  }, [appsOpen, open]);
+  }, [appsOpen, aiToolsOpen, open]);
 
   useEffect(() => {
-    if (!open) setAppsOpen(false);
+    if (!open) {
+      setAppsOpen(false);
+      setAiToolsOpen(false);
+    }
   }, [open]);
 
   useEffect(() => {
@@ -86,6 +101,7 @@ export function Navbar() {
 
   useEffect(() => {
     setAppsOpen(false);
+    setAiToolsOpen(false);
   }, [pathname]);
 
   const barSurface =
@@ -141,7 +157,10 @@ export function Navbar() {
                     <li key={l.href} ref={appsRef} className="relative">
                       <button
                         type="button"
-                        onClick={() => setAppsOpen((v) => !v)}
+                        onClick={() => {
+                          setAppsOpen((v) => !v);
+                          setAiToolsOpen(false);
+                        }}
                         aria-haspopup="menu"
                         aria-expanded={appsOpen}
                         className={`group inline-flex items-center gap-0.5 ${linkTone(active || appsOpen)}`}
@@ -155,6 +174,32 @@ export function Navbar() {
                         />
                       </button>
                       <AppsMegaMenu open={appsOpen} onClose={() => setAppsOpen(false)} />
+                    </li>
+                  );
+                }
+
+                if ("isAiTools" in l && l.isAiTools) {
+                  return (
+                    <li key={l.href} ref={aiToolsRef} className="relative">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setAiToolsOpen((v) => !v);
+                          setAppsOpen(false);
+                        }}
+                        aria-haspopup="menu"
+                        aria-expanded={aiToolsOpen}
+                        className={`group inline-flex items-center gap-0.5 ${linkTone(active || aiToolsOpen)}`}
+                      >
+                        <NavLinkLabel label={l.label} active={active || aiToolsOpen} />
+                        <ChevronDown
+                          className={`relative -top-px ml-0.5 h-4 w-4 shrink-0 transition-transform duration-200 ${
+                            aiToolsOpen ? "rotate-180" : ""
+                          }`}
+                          aria-hidden
+                        />
+                      </button>
+                      <AiToolsMegaMenu open={aiToolsOpen} onClose={() => setAiToolsOpen(false)} />
                     </li>
                   );
                 }
@@ -217,7 +262,10 @@ export function Navbar() {
                     <div key={l.href} className="px-2">
                       <button
                         type="button"
-                        onClick={() => setAppsOpen((v) => !v)}
+                        onClick={() => {
+                          setAppsOpen((v) => !v);
+                          setAiToolsOpen(false);
+                        }}
                         className={`flex w-full items-center justify-between rounded-xl px-4 py-3.5 text-left text-[16px] transition-colors hover:bg-secondary ${linkTone(active || appsOpen)}`}
                       >
                         <span>{l.label}</span>
@@ -293,6 +341,73 @@ export function Navbar() {
                               View all apps →
                             </Link>
                           </div>
+                        </div>
+                      )}
+                    </div>
+                  );
+                }
+
+                if ("isAiTools" in l && l.isAiTools) {
+                  return (
+                    <div key={l.href} className="px-2">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setAiToolsOpen((v) => !v);
+                          setAppsOpen(false);
+                        }}
+                        className={`flex w-full items-center justify-between rounded-xl px-4 py-3.5 text-left text-[16px] transition-colors hover:bg-secondary ${linkTone(active || aiToolsOpen)}`}
+                      >
+                        <span>{l.label}</span>
+                        <ChevronDown
+                          className={`h-4 w-4 transition-transform ${aiToolsOpen ? "rotate-180" : ""}`}
+                          aria-hidden
+                        />
+                      </button>
+
+                      {aiToolsOpen && (
+                        <div
+                          className="mb-2 mt-1 rounded-xl border border-border bg-surface p-2"
+                          onPointerDown={(e) => e.stopPropagation()}
+                        >
+                          <ul className="flex flex-col gap-0.5" role="menu" aria-label="AI Tools">
+                            {aiToolsList.map((tool) => (
+                              <li
+                                key={tool.name}
+                                role="none"
+                                className="rounded-lg transition-colors hover:bg-surface-2"
+                              >
+                                <Link
+                                  href={tool.href}
+                                  target={tool.isExternal ? "_blank" : undefined}
+                                  rel={tool.isExternal ? "noopener noreferrer" : undefined}
+                                  role="menuitem"
+                                  onClick={() => {
+                                    setOpen(false);
+                                    setAiToolsOpen(false);
+                                  }}
+                                  className="flex gap-3 rounded-lg p-3 active:bg-surface-2"
+                                >
+                                  <AiToolIcon icon={tool.icon} />
+                                  <div className="min-w-0 flex-1 pt-0.5">
+                                    <div className="flex items-center gap-2">
+                                      <p className="text-[15px] font-semibold leading-snug text-ink">
+                                        {tool.name}
+                                      </p>
+                                      {tool.badge ? (
+                                        <span className="inline-flex items-center rounded-full bg-lime/20 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-lime-800">
+                                          {tool.badge}
+                                        </span>
+                                      ) : null}
+                                    </div>
+                                    <p className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
+                                      {tool.desc}
+                                    </p>
+                                  </div>
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
                         </div>
                       )}
                     </div>
