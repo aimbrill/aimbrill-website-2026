@@ -60,24 +60,16 @@ export function PromptCopyBox({ promptText }: PromptCopyBoxProps) {
 
       {/* Code Block Container */}
       <div className="mt-5 relative">
-        <div className="max-h-[420px] overflow-y-auto rounded-2xl border border-border bg-surface p-4 sm:p-5 font-mono text-xs sm:text-[13px] text-ink/90 leading-relaxed scrollbar-thin">
+        <div className="max-h-[420px] overflow-y-auto rounded-2xl border border-border bg-surface p-4 sm:p-5 font-mono text-xs sm:text-[13px] text-ink/90 leading-relaxed [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           <pre className="whitespace-pre-wrap font-mono text-xs sm:text-[13px] leading-relaxed selection:bg-lime selection:text-ink">
             {promptText}
           </pre>
         </div>
 
-        {/* Bottom Quick Floating Action */}
-        <div className="mt-3.5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs sm:text-sm text-muted-foreground">
-          <div className="flex items-center gap-2">
-            <Terminal className="h-4 w-4 text-lime-700 shrink-0" />
-            <span>Compatible with Claude 3.7 Sonnet, GPT-4o, Cursor &amp; Antigravity</span>
-          </div>
-          <button
-            onClick={handleCopy}
-            className="text-xs sm:text-sm font-bold text-lime-900 hover:text-ink underline transition self-start sm:self-auto"
-          >
-            {copied ? "✓ Copied to clipboard!" : "Click here to copy"}
-          </button>
+        {/* Bottom Quick Compatibility Note */}
+        <div className="mt-3.5 flex items-center gap-2 text-xs sm:text-sm text-muted-foreground">
+          <Terminal className="h-4 w-4 text-lime-700 shrink-0" />
+          <span>Compatible with Claude 3.7 Sonnet, GPT-4o, Cursor &amp; Antigravity</span>
         </div>
       </div>
     </div>
@@ -117,7 +109,7 @@ export function EnvExampleCopyBox({ envText }: { envText: string }) {
           )}
         </button>
       </div>
-      <div className="mt-3 overflow-x-auto rounded-xl border border-border bg-surface p-3 sm:p-4 font-mono text-[11px] sm:text-xs text-ink leading-relaxed w-full">
+      <div className="mt-3 overflow-x-auto rounded-xl border border-border bg-surface p-3 sm:p-4 font-mono text-[11px] sm:text-xs text-ink leading-relaxed w-full [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
         <pre className="whitespace-pre leading-relaxed">{envText}</pre>
       </div>
     </div>

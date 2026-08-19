@@ -5,6 +5,7 @@ import { Footer } from "@/components/site/Footer";
 import { PromptCopyBox, EnvExampleCopyBox } from "@/components/seo/PromptCopyBox";
 import { InteractiveDashboardPreview } from "@/components/seo/InteractiveDashboardPreview";
 import { ProblemSolutionVisualizer } from "@/components/seo/ProblemSolutionVisualizer";
+import { VisualSetupGuide } from "@/components/seo/VisualSetupGuide";
 import { ArrowRight, CheckCircle2, Code2 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -458,228 +459,20 @@ export default function SeoDashboardPage() {
         </div>
       </section>
 
-      {/* SECTION 4: 4 EASY SETUP STEPS */}
+      {/* SECTION 4: 6 VISUAL SETUP STEPS */}
       <section className="py-16 md:py-24">
         <div className="mx-auto max-w-5xl px-4">
-          <div className="text-center max-w-3xl mx-auto">
+          <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
             <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-ink leading-tight">
-              How to Connect Your Real Google Account
+              Visual Setup Guide: Connect GSC &amp; GA4
             </h2>
             <p className="mt-3 text-sm sm:text-base md:text-lg leading-relaxed text-muted-foreground">
-              Follow this 4-step checklist to connect your live Google Search Console and GA4 data
-              in under 5 minutes:
+              Follow this step-by-step visual blueprint to connect your Google Cloud credentials,
+              Search Console site, and GA4 property in under 5 minutes:
             </p>
           </div>
 
-          <div className="mt-10 sm:mt-12 space-y-5 sm:space-y-6">
-            {/* Step 1 */}
-            <div className="rounded-3xl border border-border bg-card p-4 sm:p-6 md:p-7 shadow-soft transition hover:border-lime/60">
-              <div className="flex flex-col sm:flex-row items-start gap-3.5 sm:gap-4">
-                <div className="flex items-center justify-between w-full sm:w-auto">
-                  <div className="flex h-10 w-10 sm:h-11 sm:w-11 shrink-0 items-center justify-center rounded-2xl bg-lime font-display text-base font-bold text-ink shadow-sm">
-                    1
-                  </div>
-                  <span className="sm:hidden rounded-full bg-surface border border-border px-2.5 py-0.5 text-[11px] font-mono text-muted-foreground">
-                    ⏱️ 1 minute
-                  </span>
-                </div>
-
-                <div className="flex-1 w-full min-w-0">
-                  <div className="hidden sm:flex flex-wrap items-center justify-between gap-2">
-                    <h3 className="font-display text-base sm:text-lg font-bold text-ink">
-                      Enable Google APIs in Google Cloud Console
-                    </h3>
-                    <span className="rounded-full bg-surface border border-border px-2.5 py-0.5 text-[11px] font-mono text-muted-foreground">
-                      ⏱️ 1 minute
-                    </span>
-                  </div>
-
-                  <h3 className="sm:hidden font-display text-base font-bold text-ink mt-1">
-                    Enable Google APIs in Google Cloud Console
-                  </h3>
-
-                  <p className="mt-2 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                    Open{" "}
-                    <a
-                      href="https://console.cloud.google.com/"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="text-blue-600 font-bold underline"
-                    >
-                      console.cloud.google.com
-                    </a>{" "}
-                    (100% free), create or select your project, go to{" "}
-                    <strong>APIs &amp; Services &gt; Library</strong>, and enable these 2 APIs:
-                  </p>
-
-                  <div className="mt-3.5 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs w-full">
-                    <div className="rounded-2xl border border-border bg-surface p-3.5 flex items-start gap-2.5">
-                      <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0 mt-0.5" />
-                      <div>
-                        <strong className="text-ink font-bold">Google Search Console API</strong>
-                        <p className="text-muted-foreground text-[11px] mt-0.5">
-                          Fetches search keywords, impressions, clicks, and rank positions.
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="rounded-2xl border border-border bg-surface p-3.5 flex items-start gap-2.5">
-                      <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0 mt-0.5" />
-                      <div>
-                        <strong className="text-ink font-bold">Google Analytics Data API</strong>
-                        <p className="text-muted-foreground text-[11px] mt-0.5">
-                          Fetches page visits, sessions, and checkout conversions.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Step 2 */}
-            <div className="rounded-3xl border border-border bg-card p-4 sm:p-6 md:p-7 shadow-soft transition hover:border-lime/60">
-              <div className="flex flex-col sm:flex-row items-start gap-3.5 sm:gap-4">
-                <div className="flex items-center justify-between w-full sm:w-auto">
-                  <div className="flex h-10 w-10 sm:h-11 sm:w-11 shrink-0 items-center justify-center rounded-2xl bg-lime font-display text-base font-bold text-ink shadow-sm">
-                    2
-                  </div>
-                  <span className="sm:hidden rounded-full bg-surface border border-border px-2.5 py-0.5 text-[11px] font-mono text-muted-foreground">
-                    ⏱️ 2 minutes
-                  </span>
-                </div>
-
-                <div className="flex-1 w-full min-w-0">
-                  <div className="hidden sm:flex flex-wrap items-center justify-between gap-2">
-                    <h3 className="font-display text-base sm:text-lg font-bold text-ink">
-                      Create Your OAuth 2.0 Client Credentials
-                    </h3>
-                    <span className="rounded-full bg-surface border border-border px-2.5 py-0.5 text-[11px] font-mono text-muted-foreground">
-                      ⏱️ 2 minutes
-                    </span>
-                  </div>
-
-                  <h3 className="sm:hidden font-display text-base font-bold text-ink mt-1">
-                    Create Your OAuth 2.0 Client Credentials
-                  </h3>
-
-                  <p className="mt-2 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                    In Google Cloud, navigate to{" "}
-                    <strong>
-                      APIs &amp; Services &gt; Credentials &gt; Create Credentials &gt; OAuth Client
-                      ID
-                    </strong>
-                    :
-                  </p>
-
-                  <ul className="mt-2.5 space-y-1 text-xs sm:text-sm text-muted-foreground">
-                    <li>
-                      • Application Type: <strong>Web application</strong>
-                    </li>
-                    <li>
-                      • Name: <strong>SEO Intelligence Dashboard</strong>
-                    </li>
-                  </ul>
-
-                  <div className="mt-3.5 rounded-2xl border border-border bg-surface p-3.5 sm:p-4 text-xs w-full">
-                    <span className="font-bold text-ink block mb-2">
-                      Add this exact URL to &ldquo;Authorized redirect URIs&rdquo;:
-                    </span>
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 bg-card p-3 rounded-xl border border-border font-mono text-xs text-ink font-semibold w-full overflow-x-auto">
-                      <span className="break-all text-[11px] sm:text-xs">
-                        http://localhost:3000/api/auth/callback
-                      </span>
-                      <span className="text-[10px] uppercase font-bold text-emerald-600 bg-emerald-500/10 px-2 py-0.5 rounded shrink-0">
-                        Required
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Step 3 */}
-            <div className="rounded-3xl border border-border bg-card p-4 sm:p-6 md:p-7 shadow-soft transition hover:border-lime/60">
-              <div className="flex flex-col sm:flex-row items-start gap-3.5 sm:gap-4">
-                <div className="flex items-center justify-between w-full sm:w-auto">
-                  <div className="flex h-10 w-10 sm:h-11 sm:w-11 shrink-0 items-center justify-center rounded-2xl bg-lime font-display text-base font-bold text-ink shadow-sm">
-                    3
-                  </div>
-                  <span className="sm:hidden rounded-full bg-surface border border-border px-2.5 py-0.5 text-[11px] font-mono text-muted-foreground">
-                    ⏱️ 1 minute
-                  </span>
-                </div>
-
-                <div className="flex-1 w-full min-w-0">
-                  <div className="hidden sm:flex flex-wrap items-center justify-between gap-2">
-                    <h3 className="font-display text-base sm:text-lg font-bold text-ink">
-                      Paste Your Keys in .env.local
-                    </h3>
-                    <span className="rounded-full bg-surface border border-border px-2.5 py-0.5 text-[11px] font-mono text-muted-foreground">
-                      ⏱️ 1 minute
-                    </span>
-                  </div>
-
-                  <h3 className="sm:hidden font-display text-base font-bold text-ink mt-1">
-                    Paste Your Keys in .env.local
-                  </h3>
-
-                  <p className="mt-2 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                    Create a file named{" "}
-                    <code className="font-mono text-ink font-bold">.env.local</code> in your project
-                    root folder and paste your Client ID, Secret, and Property IDs:
-                  </p>
-
-                  <div className="mt-3.5 w-full">
-                    <EnvExampleCopyBox envText={ENV_EXAMPLE_SNIPPET} />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Step 4 */}
-            <div className="rounded-3xl border border-border bg-card p-4 sm:p-6 md:p-7 shadow-soft transition hover:border-lime/60">
-              <div className="flex flex-col sm:flex-row items-start gap-3.5 sm:gap-4">
-                <div className="flex items-center justify-between w-full sm:w-auto">
-                  <div className="flex h-10 w-10 sm:h-11 sm:w-11 shrink-0 items-center justify-center rounded-2xl bg-lime font-display text-base font-bold text-ink shadow-sm">
-                    4
-                  </div>
-                  <span className="sm:hidden rounded-full bg-surface border border-border px-2.5 py-0.5 text-[11px] font-mono text-muted-foreground">
-                    ⏱️ 30 seconds
-                  </span>
-                </div>
-
-                <div className="flex-1 w-full min-w-0">
-                  <div className="hidden sm:flex flex-wrap items-center justify-between gap-2">
-                    <h3 className="font-display text-base sm:text-lg font-bold text-ink">
-                      Run &ldquo;npm run dev&rdquo; &amp; Click &ldquo;Connect Google&rdquo;
-                    </h3>
-                    <span className="rounded-full bg-surface border border-border px-2.5 py-0.5 text-[11px] font-mono text-muted-foreground">
-                      ⏱️ 30 seconds
-                    </span>
-                  </div>
-
-                  <h3 className="sm:hidden font-display text-base font-bold text-ink mt-1">
-                    Run &ldquo;npm run dev&rdquo; &amp; Click &ldquo;Connect Google&rdquo;
-                  </h3>
-
-                  <p className="mt-2 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                    Launch your dashboard, click the <strong>&ldquo;Connect Google&rdquo;</strong>{" "}
-                    button in the top right, and approve read access once. Your dashboard will
-                    immediately fetch, normalize, and display your live data!
-                  </p>
-
-                  <div className="mt-3.5 rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-3.5 flex items-center gap-2.5 text-xs text-emerald-800 dark:text-emerald-300 w-full">
-                    <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0" />
-                    <span>
-                      <strong>Auto-Archiving:</strong> Tokens and daily metrics are cached locally
-                      so your dashboard loads instantly without re-authenticating every day.
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <VisualSetupGuide />
         </div>
       </section>
 
