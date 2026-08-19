@@ -98,6 +98,9 @@ export const site = {
       changeFrequency: "monthly" as const,
       priority: 0.7,
     },
+    { path: "/work", changeFrequency: "weekly" as const, priority: 0.9 },
+    { path: "/work/funky-food", changeFrequency: "monthly" as const, priority: 0.8 },
+    { path: "/seo-dashboard", changeFrequency: "weekly" as const, priority: 0.8 },
     {
       path: "/recomai-ai-chatbot-convert-visitors-to-buyers",
       changeFrequency: "monthly" as const,

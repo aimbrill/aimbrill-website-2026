@@ -1,9 +1,11 @@
+import Link from "next/link";
 import Image from "next/image";
 import { useReveal } from "@/hooks/use-reveal";
 
 const brands = [
   {
     name: "Funky Food",
+    slug: "funky-food",
     logo: "/images/shopify/new_brand_logos/Funky_Food.png",
     logoClass: "h-28 w-auto",
     width: 360,
@@ -11,6 +13,7 @@ const brands = [
   },
   {
     name: "Gibson",
+    slug: "gibson",
     logo: "/images/shopify/new_brand_logos/Gibson.png",
     logoClass: "h-20 w-auto",
     width: 240,
@@ -18,6 +21,7 @@ const brands = [
   },
   {
     name: "Maison Fayard",
+    slug: "maison-fayard",
     logo: "/images/shopify/new_brand_logos/Maison_Fayard.png",
     logoClass: "h-20 w-auto",
     width: 260,
@@ -25,6 +29,7 @@ const brands = [
   },
   {
     name: "OceanWash",
+    slug: "oceanwash",
     logo: "/images/shopify/new_brand_logos/OceanWash.png",
     logoClass: "h-20 w-auto",
     width: 240,
@@ -32,6 +37,7 @@ const brands = [
   },
   {
     name: "PT PRO",
+    slug: "pt-pro",
     logo: "/images/shopify/new_brand_logos/PT_PRO.png",
     logoClass: "h-32 w-auto",
     width: 420,
@@ -39,6 +45,7 @@ const brands = [
   },
   {
     name: "Rage Fitness",
+    slug: "rage-fitness",
     logo: "/images/shopify/new_brand_logos/Rage_Fitness.png",
     logoClass: "h-28 w-auto",
     width: 360,
@@ -46,6 +53,7 @@ const brands = [
   },
   {
     name: "Theloffy",
+    slug: "theloffy",
     logo: "/images/shopify/new_brand_logos/Theloffy.png",
     logoClass: "h-20 w-auto",
     width: 220,
@@ -53,6 +61,7 @@ const brands = [
   },
   {
     name: "Reisport",
+    slug: "reisport",
     logo: "/images/shopify/new_brand_logos/reisport.png",
     logoClass: "h-20 w-auto",
     width: 240,
@@ -60,6 +69,7 @@ const brands = [
   },
   {
     name: "Shilives",
+    slug: "shilives",
     logo: "/images/shopify/new_brand_logos/shilives.png",
     logoClass: "h-20 w-auto",
     width: 240,
@@ -106,9 +116,11 @@ export function Brands() {
                 } else if (i === 4) {
                   variant = "col-span-2 bg-card";
                 }
+                const href = b.slug === "funky-food" ? "/work/funky-food" : "/work";
                 return (
-                  <div
+                  <Link
                     key={b.name}
+                    href={href}
                     data-cursor="brand"
                     className={`reveal hover-lift group relative grid place-items-center overflow-hidden rounded-2xl border border-ink/10 ${variant} aspect-[5/4] p-3 shadow-soft transition-all`}
                     data-delay={`${i * 40}`}
@@ -124,7 +136,7 @@ export function Brands() {
                       height={b.height}
                       className={`relative z-10 object-contain ${b.logoClass}`}
                     />
-                  </div>
+                  </Link>
                 );
               })}
             </div>

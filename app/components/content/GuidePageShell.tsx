@@ -26,8 +26,8 @@ type GuidePageShellProps = {
   /** Optional circular author image (e.g. `/images/team/author.jpg`). */
   authorAvatar?: string;
   authorAvatarAlt?: string;
-  publishedAt: string;
-  publishedAtIso: string;
+  publishedAt?: string;
+  publishedAtIso?: string;
   readingMinutes?: number;
   toc: GuideTocItem[];
   sidebarCta?: GuideSidebarCta;
@@ -146,10 +146,12 @@ export function GuidePageShell({
                 {author}
               </span>
             </span>
-            <span className="inline-flex items-center gap-1.5 text-sm font-normal text-muted-foreground">
-              <CalendarGlyph className="shrink-0 opacity-80" />
-              <time dateTime={publishedAtIso}>{publishedAt}</time>
-            </span>
+            {publishedAt && publishedAtIso ? (
+              <span className="inline-flex items-center gap-1.5 text-sm font-normal text-muted-foreground">
+                <CalendarGlyph className="shrink-0 opacity-80" />
+                <time dateTime={publishedAtIso}>{publishedAt}</time>
+              </span>
+            ) : null}
             {readingMinutes != null ? (
               <span className="text-sm text-muted-foreground">· {readingMinutes} min read</span>
             ) : null}

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 import { SectionHeader } from "./Services";
 import mealImg from "@/assets/case-study-meal.jpg";
@@ -42,17 +43,22 @@ export function CaseStudy() {
                 height={960}
                 className="h-full w-full object-cover"
               />
-              <div className="absolute inset-x-6 bottom-6 flex items-center gap-3 rounded-2xl border border-border bg-background/95 p-4 backdrop-blur shadow-soft">
+              <Link
+                href="/work/funky-food"
+                className="absolute inset-x-6 bottom-6 flex items-center gap-3 rounded-2xl border border-border bg-background/95 p-4 backdrop-blur shadow-soft transition hover:border-lime"
+              >
                 <span className="grid h-12 w-12 place-items-center rounded-xl bg-ink text-xl font-bold text-background">
                   F
                 </span>
-                <div>
-                  <div className="font-display text-lg font-semibold">Funky Food Australia</div>
+                <div className="flex-1">
+                  <div className="font-display text-lg font-semibold text-ink">
+                    Funky Food Australia
+                  </div>
                   <div className="text-xs text-muted-foreground">
-                    Meal subscription · Food delivery
+                    Meal subscription · Food delivery →
                   </div>
                 </div>
-              </div>
+              </Link>
             </div>
 
             {/* Content */}
@@ -91,14 +97,23 @@ export function CaseStudy() {
                 ))}
               </div>
 
-              <a
-                href={CALENDLY_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-[16px] font-semibold text-background hover:scale-[1.03] transition"
-              >
-                Have a similar challenge? Let{"'"}s talk. <span>→</span>
-              </a>
+              <div className="mt-8 flex flex-wrap items-center gap-3">
+                <Link
+                  href="/work/funky-food"
+                  className="inline-flex items-center gap-2 rounded-full bg-lime px-6 py-3.5 text-sm font-bold text-ink shadow-sm transition hover:scale-105 active:scale-95"
+                >
+                  <span>Read Full Case Study</span>
+                  <span>→</span>
+                </Link>
+                <a
+                  href={CALENDLY_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-5 py-3.5 text-sm font-semibold text-ink transition hover:bg-surface-2"
+                >
+                  <span>Have a similar challenge? Let&apos;s talk</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
