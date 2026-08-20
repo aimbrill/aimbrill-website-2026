@@ -721,14 +721,14 @@
   margin-top: 0.35rem;
 }
 
-.guide-prose a {
+.guide-prose a:not(.not-prose a, .not-prose) {
   color: var(--ink);
   text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-color: color-mix(in oklab, var(--foreground) 25%, transparent);
 }
 
-.guide-prose a:hover {
+.guide-prose a:not(.not-prose a, .not-prose):hover {
   color: var(--lime);
   text-decoration-color: var(--lime);
 }

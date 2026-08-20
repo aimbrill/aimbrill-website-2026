@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 import { GuidePageShell, type GuideTocItem } from "@/components/content/GuidePageShell";
 import { GuideFaqAccordion, GuideFaqItem } from "@/components/content/GuideFaqAccordion";
 import { ChatGptSummaryCard } from "@/components/work/ChatGptSummaryCard";
@@ -8,18 +10,27 @@ import { Footer } from "@/components/site/Footer";
 const SITE = "https://aimbrill.com";
 const CANONICAL = "/work/funky-food";
 const PUBLISHED_ISO = "2026-05-18";
-const PUBLISHED_DISPLAY = "May 18, 2026";
+const MODIFIED_ISO = "2026-08-20";
+const PUBLISHED_DISPLAY = "May 18, 2026 (Updated Aug 20, 2026)";
 const CALENDLY_URL = "https://calendly.com/weupsell-experts/ai-campaign-popup";
 const PAGE_URL = `${SITE}${CANONICAL}`;
-const ARTICLE_TITLE = "How We Automated Funky Food's Meal Subscription on Shopify";
+const ARTICLE_TITLE = "Funky Food: How We Automated a Meal Subscription Brand's Entire Order Flow";
 const ARTICLE_LEAD =
-  "Funky Food was running ZIP rules, box customisation, and delivery sync by hand. We turned that into one Shopify flow from suburb check to recurring checkout.";
+  "How Aimbrill built a connected Shopify Plus subscription flow for Funky Food Australia — automating delivery eligibility, dynamic box building, and native checkout validation end-to-end.";
 
 export const metadata: Metadata = {
-  title: "Funky Food Case Study: Automated Meal Subscription on Shopify | Aimbrill",
+  title: "Funky Food: Shopify Plus Meal Subscription Case Study | Aimbrill",
   description:
-    "How Aimbrill built a custom Shopify box builder, suburb validation gate, and recurring subscription flow for Funky Food Australia.",
+    "How Aimbrill built a Shopify Plus subscription flow for Funky Food — automated eligibility, box building, and checkout validation end-to-end.",
   alternates: { canonical: CANONICAL },
+  keywords: [
+    "Shopify Plus subscription case study",
+    "Shopify Plus checkout extensibility example",
+    "Shopify meal subscription build",
+    "Shopify Plus agency case study",
+    "custom Shopify subscription app",
+    "Shopify box builder development",
+  ],
   robots: {
     index: true,
     follow: true,
@@ -29,47 +40,128 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: ARTICLE_TITLE,
+    title: "Funky Food: Shopify Plus Meal Subscription Case Study",
     description: ARTICLE_LEAD,
     url: PAGE_URL,
     type: "article",
     publishedTime: PUBLISHED_ISO,
+    modifiedTime: MODIFIED_ISO,
     authors: ["Aimbrill"],
     siteName: "Aimbrill",
   },
   twitter: {
     card: "summary_large_image",
-    title: ARTICLE_TITLE,
+    title: "Funky Food: Shopify Plus Meal Subscription Case Study",
     description: ARTICLE_LEAD,
   },
 };
+
+const faqs = [
+  {
+    question: "Is Funky Food's flow a public Shopify app or a custom build?",
+    answer:
+      "It is a custom-engineered Shopify Plus app integrated directly with native checkout extensions and selling plan APIs, built specifically around Funky Food's custom delivery routes, box rules, and warehouse fulfillment workflows.",
+  },
+  {
+    question: "What was actually broken before this build?",
+    answer:
+      "Manual ZIP code checks, guesswork on box sizing, add-ons that conflicted with the subscription cart, and packing lists that didn't reliably match what customers ordered — all handled through spreadsheets and support tickets rather than the storefront itself.",
+  },
+  {
+    question: "What does the customer experience now, compared to before?",
+    answer:
+      "A guided six-step flow: suburb check, household-size-based box recommendation, a customisable weekly box with swaps and exclusions, rescued add-ons in the same cart, and a checkout that clearly shows the recurring weekly total before payment.",
+  },
+  {
+    question: "Can another subscription or meal-box brand use a similar system?",
+    answer:
+      "Yes. Aimbrill architects custom subscription engines, box builders, and delivery gates tailored to the unique product configurations and operational logistics of subscription & DTC brands.",
+  },
+  {
+    question: "Is Funky Food on Shopify Plus?",
+    answer:
+      "Yes — Funky Food runs on Shopify Plus, and the checkout-level validation in this build uses Shopify's checkout extensibility to enforce postcode and box-content rules inside native checkout itself, immediately before an order is created.",
+  },
+];
 
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: ARTICLE_TITLE,
   description: ARTICLE_LEAD,
-  author: { "@type": "Organization", name: "Aimbrill" },
+  author: {
+    "@type": "Organization",
+    name: "Aimbrill",
+    url: SITE,
+  },
   publisher: {
     "@type": "Organization",
     name: "Aimbrill",
     logo: { "@type": "ImageObject", url: `${SITE}/images/aimbrill-logo.png` },
   },
   datePublished: PUBLISHED_ISO,
-  dateModified: PUBLISHED_ISO,
+  dateModified: MODIFIED_ISO,
   mainEntityOfPage: { "@type": "WebPage", "@id": PAGE_URL },
 };
 
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
+};
+
 const TOC: GuideTocItem[] = [
-  { id: "introduction", label: "Introduction" },
-  { id: "the-problem", label: "The problem" },
-  { id: "functional", label: "Functional solution" },
-  { id: "technical", label: "Technical solution" },
-  { id: "issue-solution", label: "Issue → solution" },
+  { id: "snapshot", label: "Snapshot" },
+  { id: "the-problem", label: "The Problem" },
+  { id: "customer-journey", label: "Customer Journey (6 Steps)" },
+  { id: "the-build", label: "The Build Behind the Flow" },
+  { id: "design-decisions", label: "Why the Flow Converts" },
+  { id: "issue-solution", label: "Issue → Solution" },
   { id: "results", label: "Results" },
+  { id: "is-this-relevant", label: "Is This Relevant to You?" },
   { id: "faq", label: "FAQ" },
-  { id: "conclusion", label: "Conclusion" },
 ];
+
+function CaseStudyImage({
+  src,
+  alt,
+  caption,
+  priority = false,
+}: {
+  src: string;
+  alt: string;
+  caption?: string;
+  priority?: boolean;
+}) {
+  return (
+    <figure className="not-prose my-6">
+      <div className="overflow-hidden rounded-2xl border border-border/80 bg-card shadow-sm transition hover:shadow-md">
+        <Image
+          src={src}
+          alt={alt}
+          width={1200}
+          height={675}
+          sizes="(max-width: 768px) 100vw, 840px"
+          quality={90}
+          priority={priority}
+          className="h-auto w-full object-contain"
+        />
+      </div>
+      {caption ? (
+        <figcaption className="mt-2 text-center text-xs text-muted-foreground">
+          {caption}
+        </figcaption>
+      ) : null}
+    </figure>
+  );
+}
 
 export default function FunkyFoodCaseStudyPage() {
   return (
@@ -78,318 +170,466 @@ export default function FunkyFoodCaseStudyPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <main className="min-h-screen bg-background pb-8 text-foreground md:pb-12">
         <GuidePageShell
           category="Case Study"
-          secondaryTag="Shopify · Subscriptions"
+          secondaryTag="Shopify Plus · Subscriptions · Custom App"
           title={ARTICLE_TITLE}
           lead={ARTICLE_LEAD}
-          author="Aimbrill"
+          author="Aimbrill Engineering Team"
           publishedAt={PUBLISHED_DISPLAY}
           publishedAtIso={PUBLISHED_ISO}
           toc={TOC}
           articleClassName="guide-prose-editorial"
           sidebarCta={{
-            body: "Need a custom subscription flow, box builder, or delivery logic for your Shopify brand?",
+            body: "Need a custom subscription flow, box builder, or delivery logic for your Shopify Plus brand?",
             href: CALENDLY_URL,
             label: "Book a technical call →",
             external: true,
           }}
         >
-          <h2 id="introduction">Introduction</h2>
-          <p>
-            Funky Food Australia (funkyfood.com.au) delivers weekly rescued fruit and vegetable
-            boxes to households. The brand was growing, but the Shopify store behind it was still
-            running delivery rules, box customisation, and packing lists by hand.
-          </p>
-          <p>
-            This case study splits the work into two parts: the <strong>functional</strong> journey
-            customers and ops now use, and the <strong>technical</strong> Shopify system that makes
-            that journey hold together.
-          </p>
-
-          <ChatGptSummaryCard pageUrl={PAGE_URL} title={ARTICLE_TITLE} />
-
-          <div className="guide-table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Client</th>
-                  <th>Industry</th>
-                  <th>What we built</th>
-                  <th>Stack</th>
-                </tr>
-              </thead>
+          {/* Client Overview Table */}
+          <div className="guide-table-wrap not-prose mb-8">
+            <table className="w-full text-left text-sm">
               <tbody>
+                <tr className="border-b border-border/60">
+                  <th className="py-2.5 pr-4 font-semibold text-muted-foreground w-1/3">Client</th>
+                  <td className="py-2.5 text-ink font-medium">
+                    <a
+                      href="https://funkyfood.com.au"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline decoration-border hover:decoration-ink"
+                    >
+                      Funky Food Australia (funkyfood.com.au)
+                    </a>
+                  </td>
+                </tr>
+                <tr className="border-b border-border/60">
+                  <th className="py-2.5 pr-4 font-semibold text-muted-foreground">Industry</th>
+                  <td className="py-2.5 text-ink">Rescued food / weekly meal box subscription</td>
+                </tr>
+                <tr className="border-b border-border/60">
+                  <th className="py-2.5 pr-4 font-semibold text-muted-foreground">Platform</th>
+                  <td className="py-2.5 text-ink">
+                    <span className="inline-flex items-center rounded-md bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                      Shopify Plus
+                    </span>
+                  </td>
+                </tr>
                 <tr>
-                  <td>Funky Food Australia</td>
-                  <td>Rescued food / weekly meal box</td>
-                  <td>Custom box builder + delivery gate</td>
-                  <td>Shopify, selling plans, custom app, checkout extensions</td>
+                  <th className="py-2.5 pr-4 font-semibold text-muted-foreground">Engagement</th>
+                  <td className="py-2.5 text-ink">
+                    Custom development — box builder, delivery eligibility logic, subscription flow
+                  </td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-          <ImageSlot
-            size="hero"
-            label="Homepage screenshot"
-            hint="Rescue Food From Waste, suburb input, Build my box."
+          <ChatGptSummaryCard pageUrl={PAGE_URL} title={ARTICLE_TITLE} />
+
+          <h2 id="snapshot">Snapshot</h2>
+          <div className="guide-table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Manual Ops</th>
+                  <th>Order Errors</th>
+                  <th>Flow</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <strong>0%</strong> — no spreadsheet ZIP/swap fixes
+                  </td>
+                  <td>
+                    <strong>Near 0</strong> — invalid orders blocked before checkout
+                  </td>
+                  <td>
+                    <strong>End-to-end</strong> — suburb check through to weekly delivery
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            Funky Food delivers weekly rescued fruit and vegetable boxes across Australia. Funky
+            Food runs on <strong>Shopify Plus</strong>, but the store itself was still being run
+            manually — postcode checks, box customisation, and packing lists all lived in
+            spreadsheets and support tickets instead of in Shopify.
+          </p>
+          <p>
+            Aimbrill replaced that manual layer with one connected flow, using{" "}
+            <strong>Shopify Plus checkout extensibility</strong> to enforce eligibility and order
+            rules directly inside native checkout rather than bolting logic on top of it.
+          </p>
+
+          {/* Image 1: Homepage hero */}
+          <CaseStudyImage
+            src="/images/work/funky-food/homepage-hero.png"
+            alt="Funky Food Shopify homepage with suburb entry and box builder CTA"
+            caption="Funky Food Shopify homepage featuring upfront suburb eligibility entry and box builder CTA."
+            priority
           />
 
-          <h2 id="the-problem">The problem</h2>
-          <p>Demand was fine. Operations were not. Four things kept breaking the week:</p>
+          <h2 id="the-problem">The Problem: A Growing Brand Outrunning Its Manual Operations</h2>
+          <p>
+            Demand was not the issue — operations were. Four specific things were breaking every
+            week:
+          </p>
           <ul>
             <li>
-              <strong>Postcode rules were manual.</strong> Customers could order from suburbs Funky
-              Food did not deliver to. The team then cancelled, refunded, and explained the
-              restriction after payment.
+              <strong>Postcode rules were manual.</strong> Customers could order from suburbs
+              outside the delivery zone. The team found out after payment, then cancelled, refunded,
+              and explained the restriction to an already-frustrated customer.
             </li>
             <li>
-              <strong>Box size was a guess.</strong> Shoppers did not know if they needed XSmall or
-              Big. Weekly swaps and exclusions lived in support tickets and spreadsheets.
+              <strong>Box size was a guess.</strong> Shoppers did not know if they needed an XSmall
+              or a Big box. Size questions, swaps, and exclusions were handled through support
+              tickets, not the storefront.
             </li>
             <li>
-              <strong>Add-ons fought the subscription.</strong> Off-the-shelf apps could not keep a
-              weekly box and one-time rescued pantry items in one cart without breaking checkout.
+              <strong>Add-ons broke the subscription cart.</strong> Off-the-shelf apps could not
+              keep a recurring weekly box and one-time rescued pantry items in the same cart without
+              checkout errors.
             </li>
             <li>
-              <strong>Packing did not match the order.</strong> Warehouse lists were not tied to
-              what the customer actually chose. Staff fixed boxes after the order was already paid.
+              <strong>Packing did not match the order.</strong> Warehouse staff worked from lists
+              that were not reliably tied to what the customer actually selected, so boxes were
+              corrected after the order was already paid for.
             </li>
           </ul>
           <p>
-            The store needed one flow: check the suburb first, then size the box, then customise it,
-            then add extras, then check out on a weekly plan — with the same rules applied again
-            before the order is created.
+            The brief was not &ldquo;add a subscription app.&rdquo; It was to build one flow where
+            eligibility, box building, and delivery logic all agree with each other automatically,
+            before an order is ever created.
           </p>
 
-          <h2 id="functional">Functional solution</h2>
+          <h2 id="customer-journey">The Customer Journey: Six Steps From Suburb to Subscription</h2>
           <p>
-            Functional means what the customer and the packing team actually do. The live journey is
-            six steps. Each step has an empty image slot so you can drop the screenshot in later.
+            This is the customer-facing flow Aimbrill designed and built, in the order a shopper
+            moves through it:
           </p>
 
-          <h3 id="functional-suburb">1. Suburb / postcode gate</h3>
+          <h3 id="step-1-suburb">1. Suburb / postcode gate</h3>
           <p>
-            The customer enters a suburb before building a box. If the area is not on a courier
-            route, they never reach checkout. Invalid orders stop here instead of becoming refunds.
+            The customer enters their suburb before they can build a box. If the area is not on a
+            courier route, they never reach checkout at all — invalid orders are stopped at the
+            first screen instead of becoming a refund three days later.
           </p>
-          <ImageSlot
-            label="Step 1 — suburb check"
-            hint="Enter suburb + Get started / Build my box."
+          {/* Image 2: Suburb check */}
+          <CaseStudyImage
+            src="/images/work/funky-food/suburb-gate.png"
+            alt="Funky Food suburb eligibility check before checkout"
+            caption="Step 1: Upfront suburb & postcode autocomplete check that halts out-of-zone orders before customisation."
           />
 
-          <h3 id="functional-household">2. Household size</h3>
+          <h3 id="step-2-household">2. Household size</h3>
           <p>
-            Adults and children counters recommend a box size (XSmall, Small, Medium, or Big). The
-            shopper does not pick a SKU by guesswork. Support stops answering “which box is right
-            for two people?”
+            Adult and children counters recommend a box size (XSmall, Small, Medium, or Big) instead
+            of asking the shopper to guess a SKU. This single step removed &ldquo;which box is right
+            for two people?&rdquo; from the support queue entirely.
           </p>
-          <ImageSlot
-            label="Step 2 — household size"
-            hint="How many people are you feeding? Adults / Children counters."
+          {/* Image 4: Household size */}
+          <CaseStudyImage
+            src="/images/work/funky-food/household-size.png"
+            alt="Funky Food household size selector for box recommendation"
+            caption="Step 2: Interactive household counters (Adults & Children) recommending the ideal box size."
           />
 
-          <h3 id="functional-box">3. Weekly box + swaps</h3>
+          <h3 id="step-3-box">3. Weekly box + swaps</h3>
           <p>
-            The customer sees next week’s produce list, changes size, swaps items, and sets
-            exclusions. The box is no longer a mystery bag — they know what arrives.
+            The customer sees next week&apos;s actual produce list and can change size, swap
+            individual items, or set exclusions. The box stops being a mystery bag — they know
+            exactly what&apos;s arriving before they pay.
           </p>
-          <ImageSlot
-            size="wide"
-            label="Step 3 — box customiser"
-            hint="Weekly order + Customise drawer: What’s included, Swap, Exclusions."
+          {/* Image 5: Weekly order box size */}
+          <CaseStudyImage
+            src="/images/work/funky-food/weekly-order-box.png"
+            alt="Funky Food weekly box size selector with savings badge"
+            caption="Step 3: Weekly produce overview with box size toggles (XSmall, Small, Medium, Big) and dynamic supermarket savings badge."
+          />
+          {/* Image 6: Weekly box customiser drawer */}
+          <CaseStudyImage
+            src="/images/work/funky-food/box-customiser-drawer.png"
+            alt="Funky Food weekly box customiser with swap and exclusion options"
+            caption="Step 3 (Customiser Drawer): Interactive item swapping and exclusion controls for upcoming weekly produce."
           />
 
-          <h3 id="functional-addons">4. Rescued add-ons</h3>
+          <h3 id="step-4-addons">4. Rescued add-ons</h3>
           <p>
-            After the box is set, they can add rescued juice, pantry, fruit, and veg. Each product
-            shows a Rescued badge and a save-vs-supermarket percentage. Add-ons sit in the same cart
-            as the weekly box.
+            Once the weekly box is set, the customer can add rescued juice, pantry items, fruit, or
+            veg — each tagged with a &ldquo;Rescued&rdquo; badge and a savings percentage versus
+            supermarket pricing. These sit in the same cart as the recurring box, not a separate
+            order.
           </p>
-          <ImageSlot
-            size="wide"
-            label="Step 4 — shop add-ons"
-            hint="Shop Now grid: category pills, Rescued / Save % badges."
+          {/* Image 7: Rescued add-ons grid */}
+          <CaseStudyImage
+            src="/images/work/funky-food/rescued-addons.png"
+            alt="Funky Food rescued add-ons with savings badges"
+            caption="Step 4: Rescued add-ons shop grid with category filters, 'Rescued' badges, and comparison savings percentages."
           />
 
-          <h3 id="functional-cart">5. Cart: delivery, frequency, savings</h3>
+          <h3 id="step-5-cart">5. Cart: delivery, frequency, savings</h3>
           <p>
-            The cart re-checks postcode, shows weekly frequency, free-delivery progress, and
-            supermarket savings. Discount codes still work. Ops no longer reconcile ZIP in a
-            spreadsheet after payment.
+            The cart re-checks the postcode, shows delivery frequency, a free-delivery progress bar,
+            and total savings versus supermarket prices — all before checkout, so nothing is a
+            surprise at the final step.
           </p>
-          <ImageSlot
-            size="wide"
-            label="Step 5 — cart"
-            hint="Slide-out cart: suburb, weekly frequency, box line, savings, checkout."
+          {/* Image 8: Cart drawer */}
+          <CaseStudyImage
+            src="/images/work/funky-food/cart-drawer.png"
+            alt="Funky Food cart showing delivery frequency and savings progress"
+            caption="Step 5: Unified slide-out cart showing suburb validation, delivery schedule, free-delivery progress bar, and calculated supermarket savings."
           />
 
-          <h3 id="functional-checkout">6. Recurring checkout</h3>
+          <h3 id="step-6-checkout">6. Recurring checkout</h3>
           <p>
-            Checkout shows Shop Pay, PayPal, and Google Pay, a review block, Channel 7 proof, the
-            exact produce list, and “$X every week”. The customer can see this is a subscription
-            before they pay.
+            Checkout shows express payment options (Shop Pay, PayPal, Google Pay), customer reviews,
+            the exact produce list for the upcoming box, and a clear &ldquo;$X every week&rdquo;
+            line — so the customer can see this is a subscription, not a one-off purchase, before
+            they commit.
           </p>
-          <ImageSlot
-            size="wide"
-            label="Step 6 — checkout"
-            hint="Express pay, reviews, box contents, recurring subtotal."
+          {/* Image 9: Checkout flow */}
+          <CaseStudyImage
+            src="/images/work/funky-food/checkout-flow.png"
+            alt="Funky Food Shopify checkout with delivery details and box contents"
+            caption="Step 6: Native Shopify Plus checkout displaying clear recurring subscription subtotal, itemized box contents, Channel 7 badge, and Trustpilot reviews."
           />
 
-          <h2 id="technical">Technical solution</h2>
+          <div className="not-prose my-6 rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-5">
+            <p className="text-sm font-semibold text-emerald-800 dark:text-emerald-300">
+              Operational Outcome
+            </p>
+            <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+              Support stopped fielding &ldquo;which size do I need,&rdquo; staff stopped fixing
+              orders after the fact, and ZIP-related refunds dropped to effectively zero — without
+              adding headcount.
+            </p>
+          </div>
+
+          <h2 id="the-build">The Build Behind the Flow</h2>
           <p>
-            Technical means what Shopify is doing underneath those six steps. We did not stack five
-            apps that each owned ZIP, subscriptions, or bundles. One custom flow owns eligibility,
-            box configuration, selling plans, and the last checkout check.
+            Rather than stacking multiple apps that each partially own ZIP rules, subscriptions, or
+            bundling — a common failure pattern that causes checkout conflicts — Aimbrill built one
+            custom system on Funky Food&apos;s <strong>Shopify Plus</strong> store that owns the
+            entire flow.
           </p>
-          <ImageSlot
-            size="wide"
-            label="Technical diagram"
-            hint="Optional: flow diagram or selling-plan setup. No private admin URLs."
+
+          <CaseStudyImage
+            src="/images/work/funky-food/architecture-diagram.png"
+            alt="Aimbrill Custom Shopify App architecture diagram for Funky Food"
+            caption="System Architecture: One connected system uniting ZIP Validation, Box Builder, Subscriptions, Selling Plans API, and Shopify Checkout Extensibility in real-time."
           />
 
-          <h3 id="technical-app">One custom Shopify app</h3>
+          <h3 id="build-app">One custom Shopify app</h3>
           <p>
-            ZIP validation, box configuration, and recurring orders run in one app instead of
-            competing storefront scripts. The same rules apply at the start of the journey and again
-            before the order is created.
+            ZIP validation, box configuration, and recurring order logic all run inside a single app
+            instead of competing storefront scripts. The same rule set is applied twice — once when
+            the customer starts the journey, and again immediately before the order is actually
+            created — so nothing valid at step 1 can become invalid by checkout.
           </p>
 
-          <h3 id="technical-line-items">Line-item properties</h3>
+          <h3 id="build-line-items">Line-item properties</h3>
           <p>
-            Size, swaps, and exclusions store on the line item. Packing lists can read what the
-            customer chose without a side spreadsheet.
+            Box size, item swaps, and exclusions are stored directly on the line item. The warehouse
+            packing list can read exactly what a customer chose without needing a side spreadsheet —
+            closing the gap between what was ordered and what got packed.
           </p>
 
-          <h3 id="technical-selling-plans">Native selling plans</h3>
+          <h3 id="build-selling-plans">Native Shopify selling plans</h3>
           <p>
-            The weekly box uses Shopify selling plans so checkout can show a recurring subtotal, and
-            the customer can skip or pause later in the customer portal.
+            The weekly box runs on Shopify&apos;s own selling plan infrastructure rather than a
+            bolted-on subscription app. Checkout natively displays a recurring subtotal, and
+            customers can skip or pause deliveries later through Shopify&apos;s standard customer
+            portal — no custom account system required.
           </p>
 
-          <h3 id="technical-checkout">Pre-checkout validation</h3>
+          <h3 id="build-checkout-extensibility">Checkout extensibility</h3>
           <p>
-            Checkout extensions re-check postcode and box contents before the order exists. A bad
-            ZIP or an empty box cannot sneak through at the last step.
+            Postcode and box contents are re-verified inside Shopify&apos;s native checkout
+            extension framework immediately before the order is created. This enforces custom
+            business rules inside checkout itself, not just in the front-end UI, so a bad ZIP code
+            or an incomplete box cannot reach payment.
           </p>
 
-          <h2 id="issue-solution">Issue → solution</h2>
-          <p>Each operational issue mapped to one rule in the flow:</p>
+          <blockquote>
+            <p>
+              <strong>Why this matters for a brand evaluating an agency:</strong> this is the
+              difference between installing apps and building a system. Apps that do not share data
+              create exactly the kind of conflict Funky Food had before — a subscription app that
+              does not know about a bundling app&apos;s rules. A custom build on Shopify Plus means
+              every rule is enforced consistently, at every stage, by one source of truth.
+            </p>
+          </blockquote>
+
+          <h2 id="design-decisions">Why the Flow Converts: The Design Decisions Behind It</h2>
+          <p>
+            Beyond the mechanics, several choices in this flow were made specifically to reduce
+            hesitation at a point where subscription commitments typically cause drop-off:
+          </p>
+          <ul>
+            <li>
+              <strong>Eligibility is checked first, not last.</strong> Asking for a suburb before
+              anything else means a shopper who cannot be served finds out in five seconds, not
+              after filling in an entire order.
+            </li>
+            <li>
+              <strong>Guesswork is replaced with guided input.</strong> Household-size counters turn
+              an ambiguous decision into a simple, low-friction question, reducing cognitive load
+              for a first-time buyer.
+            </li>
+            <li>
+              <strong>Transparency before commitment.</strong> Showing the exact produce list, swap
+              options, and savings percentage before checkout addresses the biggest hesitation point
+              in food-box subscriptions: not knowing what you are actually going to receive.
+            </li>
+            <li>
+              <strong>Progress and reward framing in cart.</strong> A free-delivery progress bar and
+              running savings total reframe the cart from &ldquo;here&apos;s what you are
+              spending&rdquo; to &ldquo;here&apos;s what you are saving&rdquo; — a well-established
+              pattern for reducing cart abandonment.
+            </li>
+            <li>
+              <strong>Subscription clarity at the exact moment of payment.</strong> Rather than
+              burying the recurring nature of the purchase in fine print, checkout explicitly shows
+              &ldquo;$X every week&rdquo; alongside reviews and press mentions, building confidence
+              right when commitment-anxiety is highest.
+            </li>
+          </ul>
+          <p>
+            None of these are visual polish — each maps directly to a specific point in the funnel
+            where a hesitant shopper would otherwise drop off.
+          </p>
+
+          <h2 id="issue-solution">Issue → Solution at a Glance</h2>
           <div className="guide-table-wrap">
             <table>
               <thead>
                 <tr>
                   <th>Issue</th>
-                  <th>What we solved</th>
+                  <th>What Was Solved</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>Orders in non-delivery suburbs</td>
-                  <td>Suburb / ZIP check at step 1, then again in cart and checkout</td>
+                  <td>Orders placed in non-delivery suburbs</td>
+                  <td>Suburb/ZIP check at step 1, then re-verified in cart and checkout</td>
                 </tr>
                 <tr>
-                  <td>Guessing box size</td>
-                  <td>Household step suggests XSmall → Big from adults and children</td>
+                  <td>Shoppers guessing their box size</td>
+                  <td>Household step recommends XSmall → Big based on adults and children</td>
                 </tr>
                 <tr>
-                  <td>Nobody knew what was in the box</td>
-                  <td>Weekly “what’s included” list with swap and exclude</td>
+                  <td>No visibility into box contents before purchase</td>
+                  <td>
+                    Weekly &ldquo;what&apos;s included&rdquo; list with swap and exclude options
+                  </td>
                 </tr>
                 <tr>
-                  <td>Add-ons broke the subscription cart</td>
-                  <td>One cart: weekly box + rescued add-ons</td>
+                  <td>Add-ons breaking the subscription cart</td>
+                  <td>One unified cart for the weekly box and rescued add-ons</td>
                 </tr>
                 <tr>
                   <td>Staff fixing orders after payment</td>
-                  <td>Rules run in the app before the order exists</td>
+                  <td>Validation rules run inside the app before the order is ever created</td>
                 </tr>
                 <tr>
-                  <td>Checkout felt risky for a weekly plan</td>
-                  <td>Reviews, express pay, and recurring total shown on checkout</td>
+                  <td>Checkout feeling risky for a recurring commitment</td>
+                  <td>Reviews, express pay, and the recurring total shown clearly on checkout</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-          <h2 id="results">Results</h2>
-          <p>
-            The store now runs suburb → box → add-ons → checkout as one flow. Manual ZIP and swap
-            work dropped off the packing list.
-          </p>
+          <h2 id="results">The Results</h2>
           <div className="guide-table-wrap">
             <table>
               <thead>
                 <tr>
                   <th>Metric</th>
-                  <th>After the build</th>
+                  <th>Before</th>
+                  <th>After</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>Manual ops</td>
-                  <td>0% — no spreadsheet ZIP / swap fixes</td>
+                  <td>Manual ZIP/swap corrections</td>
+                  <td>Handled via spreadsheet, ongoing weekly work</td>
+                  <td>
+                    <strong>0%</strong> — fully automated
+                  </td>
                 </tr>
                 <tr>
-                  <td>Order errors</td>
-                  <td>Near 0 — out-of-zone and incomplete boxes blocked early</td>
+                  <td>Order errors (out-of-zone / incomplete boxes)</td>
+                  <td>Recurring issue, caught after payment</td>
+                  <td>
+                    <strong>Near 0</strong> — blocked before the order exists
+                  </td>
                 </tr>
                 <tr>
-                  <td>Flow</td>
-                  <td>End-to-end — suburb check through to weekly delivery</td>
+                  <td>End-to-end flow</td>
+                  <td>Fragmented across manual steps and multiple tools</td>
+                  <td>
+                    <strong>One connected system</strong>, suburb check through delivery
+                  </td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-          <h2 id="faq">FAQ</h2>
-          <GuideFaqAccordion>
-            <GuideFaqItem value="faq-1" question="What was broken before this build?">
-              <p>
-                ZIP rules, box swaps, and delivery sync were manual. Customers could order outside
-                delivery areas, and packing did not always match the box they thought they bought.
-              </p>
-            </GuideFaqItem>
-            <GuideFaqItem value="faq-2" question="What does the customer do now?">
-              <p>
-                They enter a suburb, set household size, customise the weekly box, add rescued
-                extras, then check out on a weekly selling plan.
-              </p>
-            </GuideFaqItem>
-            <GuideFaqItem value="faq-3" question="Is this a public app or a custom build?">
-              <p>
-                Custom Shopify app plus checkout extensions, built around Funky Food’s delivery and
-                box rules. The same pattern powers Aimbrill’s Meal Flow product for other meal
-                brands.
-              </p>
-            </GuideFaqItem>
-            <GuideFaqItem value="faq-4" question="Can another meal brand use this?">
-              <p>
-                Yes. If you have ZIP rules, a configurable box, and a weekly subscription, the same
-                functional and technical split applies.
-              </p>
-            </GuideFaqItem>
-          </GuideFaqAccordion>
+          <h2 id="is-this-relevant">Is This Relevant to Your Shopify Plus Brand?</h2>
+          <p>
+            This project is a useful reference point because it was not a simple storefront build —
+            it required eligibility logic, dynamic product configuration, native subscription
+            billing, and checkout-level validation to all work together without conflicting. If your
+            brand has:
+          </p>
+          <ul>
+            <li>A subscription or recurring-order model</li>
+            <li>Delivery zones, eligibility rules, or geographic restrictions</li>
+            <li>
+              A product that needs to be configured or customised before purchase (box builders,
+              bundles, quizzes)
+            </li>
+            <li>Operational work currently happening in spreadsheets instead of your storefront</li>
+          </ul>
+          <p>
+            ...this is the type of system Aimbrill builds — one flow that owns the logic end-to-end,
+            rather than several apps loosely stitched together.
+          </p>
+          <p>
+            Explore our related solution, the{" "}
+            <Link href="/meal-bundle-builder" className="font-semibold text-ink underline">
+              Meal Bundle Builder
+            </Link>
+            , or{" "}
+            <a
+              href={CALENDLY_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="font-semibold text-ink underline"
+            >
+              schedule a technical consultation with our engineering team
+            </a>
+            .
+          </p>
 
-          <h2 id="conclusion">Conclusion</h2>
-          <p>
-            Funky Food did not need another disconnected Shopify app. They needed one flow that
-            matched how a rescued-food box actually sells: check the area, size the household, show
-            next week’s produce, allow swaps, add extras, then charge on a weekly plan.
-          </p>
-          <p>
-            Functional work is the six-step journey. Technical work is the custom app, line items,
-            selling plans, and checkout checks that keep that journey honest.
-          </p>
-          <p>
-            If you have a similar subscription or box-builder problem,{" "}
-            <a href={CALENDLY_URL} target="_blank" rel="noreferrer">
-              book a technical call
-            </a>{" "}
-            or browse <a href="/work">other Aimbrill case studies</a>.
-          </p>
+          <h2 id="faq">Frequently Asked Questions</h2>
+          <GuideFaqAccordion>
+            {faqs.map((faq, idx) => (
+              <GuideFaqItem key={idx} value={`faq-${idx + 1}`} question={faq.question}>
+                <p>{faq.answer}</p>
+              </GuideFaqItem>
+            ))}
+          </GuideFaqAccordion>
         </GuidePageShell>
       </main>
       <Footer />

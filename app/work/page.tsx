@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 import { ArrowRight, Sparkles } from "lucide-react";
@@ -137,19 +138,18 @@ export default function WorkIndexPage() {
         {/* Featured Case Study: Funky Food */}
         <div className="mt-14 overflow-hidden rounded-3xl border border-lime-400/60 bg-card shadow-soft transition hover:border-lime">
           <div className="grid lg:grid-cols-12">
-            <div className="relative lg:col-span-6 flex min-h-[280px] items-center justify-center border-b border-border bg-surface lg:border-b-0 lg:border-r">
-              <div className="absolute top-4 left-4 rounded-full bg-lime px-3 py-1 text-xs font-bold text-ink shadow-sm">
+            <div className="relative lg:col-span-6 flex min-h-[280px] items-center justify-center overflow-hidden border-b border-border bg-surface lg:border-b-0 lg:border-r">
+              <div className="absolute top-4 left-4 z-10 rounded-full bg-lime px-3 py-1 text-xs font-bold text-ink shadow-sm">
                 Featured case study
               </div>
-              <div className="max-w-[220px] px-6 text-center">
-                <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-                  Image space
-                </p>
-                <p className="mt-2 font-display text-sm font-semibold text-ink">
-                  Funky Food homepage or box photo
-                </p>
-                <p className="mt-1 text-xs text-muted-foreground">Add screenshot later</p>
-              </div>
+              <Image
+                src="/images/work/funky-food/homepage-hero.png"
+                alt="Funky Food Shopify homepage with suburb entry and box builder CTA"
+                width={800}
+                height={450}
+                className="h-full w-full object-cover object-left"
+                priority
+              />
             </div>
 
             <div className="p-6 sm:p-8 md:p-10 lg:col-span-6 flex flex-col justify-between">

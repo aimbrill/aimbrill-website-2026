@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
-import { Sparkles, ArrowRight, Copy, Check } from "lucide-react";
+import React from "react";
+import { Sparkles, ArrowRight } from "lucide-react";
 
 interface ChatGptSummaryCardProps {
   pageUrl: string;
@@ -14,15 +14,7 @@ export function chatgptSummaryUrl(pageUrl: string, title: string) {
 }
 
 export function ChatGptSummaryCard({ pageUrl, title }: ChatGptSummaryCardProps) {
-  const [copied, setCopied] = useState(false);
-  const promptText = `Summarize ${pageUrl}. Cover problem, functional solution, technical solution, and results. Do not invent metrics.`;
   const summaryUrl = chatgptSummaryUrl(pageUrl, title);
-
-  const handleCopyPrompt = () => {
-    navigator.clipboard.writeText(promptText);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
 
   return (
     <div className="not-prose my-8 overflow-hidden rounded-3xl border border-lime-400/60 bg-card p-5 sm:p-6 shadow-soft">
@@ -50,35 +42,11 @@ export function ChatGptSummaryCard({ pageUrl, title }: ChatGptSummaryCardProps) 
           href={summaryUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-2 rounded-full bg-lime px-5 py-2.5 text-xs sm:text-sm font-bold text-ink shadow-sm transition hover:scale-105 active:scale-95 shrink-0"
+          className="inline-flex items-center justify-center gap-2 rounded-full bg-lime px-5 py-2.5 text-xs sm:text-sm font-bold !text-ink !no-underline shadow-sm transition hover:bg-lime hover:!text-ink hover:scale-105 active:scale-95 shrink-0 cursor-pointer"
         >
-          <span>Ask ChatGPT for a summary</span>
-          <ArrowRight className="h-4 w-4" />
+          <span className="!text-ink">Ask ChatGPT for a summary</span>
+          <ArrowRight className="h-4 w-4 !text-ink" />
         </a>
-      </div>
-
-      {/* Copy prompt fallback */}
-      <div className="mt-4 pt-3.5 border-t border-border/60 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs">
-        <span className="font-mono text-[11px] text-muted-foreground truncate max-w-xl">
-          Prompt: &ldquo;{promptText}&rdquo;
-        </span>
-        <button
-          type="button"
-          onClick={handleCopyPrompt}
-          className="inline-flex items-center gap-1 text-[11px] font-semibold text-blue-600 dark:text-blue-400 hover:underline shrink-0 cursor-pointer"
-        >
-          {copied ? (
-            <>
-              <Check className="h-3 w-3 text-emerald-600" />
-              <span>Copied prompt!</span>
-            </>
-          ) : (
-            <>
-              <Copy className="h-3 w-3" />
-              <span>Copy prompt</span>
-            </>
-          )}
-        </button>
       </div>
     </div>
   );
