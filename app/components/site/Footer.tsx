@@ -33,8 +33,8 @@ export function Footer({ privacyHref = "/privacy" }: FooterProps) {
             </div>
             <ul className="mt-4 space-y-2 text-sm">
               <li>
-                <a href="#work" className="underline-grow">
-                  Work
+                <a href="/case-studies" className="underline-grow">
+                  Client Stories
                 </a>
               </li>
               <li>

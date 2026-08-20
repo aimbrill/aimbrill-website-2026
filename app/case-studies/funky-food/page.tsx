@@ -3,12 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { GuidePageShell, type GuideTocItem } from "@/components/content/GuidePageShell";
 import { GuideFaqAccordion, GuideFaqItem } from "@/components/content/GuideFaqAccordion";
-import { ChatGptSummaryCard } from "@/components/work/ChatGptSummaryCard";
-import { ImageSlot } from "@/components/work/ImageSlot";
+import { ChatGptSummaryCard } from "@/components/case-studies/ChatGptSummaryCard";
+import { ImageSlot } from "@/components/case-studies/ImageSlot";
 import { Footer } from "@/components/site/Footer";
 
 const SITE = "https://aimbrill.com";
-const CANONICAL = "/work/funky-food";
+const CANONICAL = "/case-studies/funky-food";
 const PUBLISHED_ISO = "2026-05-18";
 const MODIFIED_ISO = "2026-08-20";
 const PUBLISHED_DISPLAY = "May 18, 2026 (Updated Aug 20, 2026)";
@@ -273,7 +273,7 @@ export default function FunkyFoodCaseStudyPage() {
 
           {/* Image 1: Homepage hero */}
           <CaseStudyImage
-            src="/images/work/funky-food/homepage-hero.png"
+            src="/images/case-studies/funky-food/homepage-hero.png"
             alt="Funky Food Shopify homepage with suburb entry and box builder CTA"
             caption="Funky Food Shopify homepage featuring upfront suburb eligibility entry and box builder CTA."
             priority
@@ -326,7 +326,7 @@ export default function FunkyFoodCaseStudyPage() {
           </p>
           {/* Image 2: Suburb check */}
           <CaseStudyImage
-            src="/images/work/funky-food/suburb-gate.png"
+            src="/images/case-studies/funky-food/suburb-gate.png"
             alt="Funky Food suburb eligibility check before checkout"
             caption="Step 1: Upfront suburb & postcode autocomplete check that halts out-of-zone orders before customisation."
           />
@@ -339,7 +339,7 @@ export default function FunkyFoodCaseStudyPage() {
           </p>
           {/* Image 4: Household size */}
           <CaseStudyImage
-            src="/images/work/funky-food/household-size.png"
+            src="/images/case-studies/funky-food/household-size.png"
             alt="Funky Food household size selector for box recommendation"
             caption="Step 2: Interactive household counters (Adults & Children) recommending the ideal box size."
           />
@@ -352,13 +352,13 @@ export default function FunkyFoodCaseStudyPage() {
           </p>
           {/* Image 5: Weekly order box size */}
           <CaseStudyImage
-            src="/images/work/funky-food/weekly-order-box.png"
+            src="/images/case-studies/funky-food/weekly-order-box.png"
             alt="Funky Food weekly box size selector with savings badge"
             caption="Step 3: Weekly produce overview with box size toggles (XSmall, Small, Medium, Big) and dynamic supermarket savings badge."
           />
           {/* Image 6: Weekly box customiser drawer */}
           <CaseStudyImage
-            src="/images/work/funky-food/box-customiser-drawer.png"
+            src="/images/case-studies/funky-food/box-customiser-drawer.png"
             alt="Funky Food weekly box customiser with swap and exclusion options"
             caption="Step 3 (Customiser Drawer): Interactive item swapping and exclusion controls for upcoming weekly produce."
           />
@@ -372,7 +372,7 @@ export default function FunkyFoodCaseStudyPage() {
           </p>
           {/* Image 7: Rescued add-ons grid */}
           <CaseStudyImage
-            src="/images/work/funky-food/rescued-addons.png"
+            src="/images/case-studies/funky-food/rescued-addons.png"
             alt="Funky Food rescued add-ons with savings badges"
             caption="Step 4: Rescued add-ons shop grid with category filters, 'Rescued' badges, and comparison savings percentages."
           />
@@ -385,7 +385,7 @@ export default function FunkyFoodCaseStudyPage() {
           </p>
           {/* Image 8: Cart drawer */}
           <CaseStudyImage
-            src="/images/work/funky-food/cart-drawer.png"
+            src="/images/case-studies/funky-food/cart-drawer.png"
             alt="Funky Food cart showing delivery frequency and savings progress"
             caption="Step 5: Unified slide-out cart showing suburb validation, delivery schedule, free-delivery progress bar, and calculated supermarket savings."
           />
@@ -399,7 +399,7 @@ export default function FunkyFoodCaseStudyPage() {
           </p>
           {/* Image 9: Checkout flow */}
           <CaseStudyImage
-            src="/images/work/funky-food/checkout-flow.png"
+            src="/images/case-studies/funky-food/checkout-flow.png"
             alt="Funky Food Shopify checkout with delivery details and box contents"
             caption="Step 6: Native Shopify Plus checkout displaying clear recurring subscription subtotal, itemized box contents, Channel 7 badge, and Trustpilot reviews."
           />
@@ -424,7 +424,7 @@ export default function FunkyFoodCaseStudyPage() {
           </p>
 
           <CaseStudyImage
-            src="/images/work/funky-food/architecture-diagram.png"
+            src="/images/case-studies/funky-food/architecture-diagram.png"
             alt="Aimbrill Custom Shopify App architecture diagram for Funky Food"
             caption="System Architecture: One connected system uniting ZIP Validation, Box Builder, Subscriptions, Selling Plans API, and Shopify Checkout Extensibility in real-time."
           />

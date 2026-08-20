@@ -12,7 +12,7 @@ import { useEffect, useRef, useState } from "react";
 const CALENDLY_URL = "https://calendly.com/weupsell-experts/ai-campaign-popup";
 
 const links = [
-  { href: "/#work", label: "Work" },
+  { href: "/case-studies", label: "Client Stories" },
   { href: "/#apps", label: "Apps", isApps: true },
   { href: "/ai-tools", label: "AI Tools", isAiTools: true },
   { href: "/blog", label: "Blog" },
@@ -39,6 +39,9 @@ function NavLinkLabel({ label, active }: { label: string; active: boolean }) {
 }
 
 function navItemActive(pathname: string, hash: string, href: string) {
+  if (href === "/case-studies") {
+    return pathname === "/case-studies" || pathname.startsWith("/case-studies/");
+  }
   if (href === "/blog") {
     return pathname === "/blog" || pathname.startsWith("/blog/");
   }

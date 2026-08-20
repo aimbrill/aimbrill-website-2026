@@ -16,11 +16,11 @@ const tags = [
 export function CaseStudy() {
   const ref = useReveal<HTMLElement>();
   return (
-    <section id="work" ref={ref} className="relative py-12 md:py-10">
+    <section id="case-studies" ref={ref} className="relative py-12 md:py-10">
       <div className="mx-auto max-w-7xl px-4">
         <div className="reveal">
           <SectionHeader
-            label="Featured Work"
+            label="Featured Case Study"
             title={
               <>
                 How we helped a meal subscription brand
@@ -44,7 +44,7 @@ export function CaseStudy() {
                 className="h-full w-full object-cover"
               />
               <Link
-                href="/work/funky-food"
+                href="/case-studies/funky-food"
                 className="absolute inset-x-6 bottom-6 flex items-center gap-3 rounded-2xl border border-border bg-background/95 p-4 backdrop-blur shadow-soft transition hover:border-lime"
               >
                 <span className="grid h-12 w-12 place-items-center rounded-xl bg-ink text-xl font-bold text-background">
@@ -99,7 +99,7 @@ export function CaseStudy() {
 
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <Link
-                  href="/work/funky-food"
+                  href="/case-studies/funky-food"
                   className="inline-flex items-center gap-2 rounded-full bg-lime px-6 py-3.5 text-sm font-bold text-ink shadow-sm transition hover:scale-105 active:scale-95"
                 >
                   <span>Read Full Case Study</span>

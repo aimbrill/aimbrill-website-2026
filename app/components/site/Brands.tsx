@@ -116,7 +116,7 @@ export function Brands() {
                 } else if (i === 4) {
                   variant = "col-span-2 bg-card";
                 }
-                const href = b.slug === "funky-food" ? "/work/funky-food" : "/work";
+                const href = b.slug === "funky-food" ? "/case-studies/funky-food" : "/case-studies";
                 return (
                   <Link
                     key={b.name}
