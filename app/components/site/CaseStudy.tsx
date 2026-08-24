@@ -7,10 +7,10 @@ import { useReveal } from "@/hooks/use-reveal";
 const CALENDLY_URL = "https://calendly.com/weupsell-experts/ai-campaign-popup";
 
 const tags = [
-  "Shopify App Development",
-  "Flow Automation",
+  "Shopify Plus Development",
+  "Checkout Extensibility",
   "Subscription Integration",
-  "API Development",
+  "Box Builder & Flow Automation",
 ];
 
 export function CaseStudy() {
@@ -24,7 +24,7 @@ export function CaseStudy() {
             title={
               <>
                 How we helped a meal subscription brand
-                <span className="block">automate their entire Shopify flow</span>
+                <span className="block">automate their entire Shopify Plus flow</span>
               </>
             }
           />
@@ -36,7 +36,7 @@ export function CaseStudy() {
             <div className="relative lg:col-span-5 border-b border-border lg:border-b-0 lg:border-r">
               <Image
                 src={mealImg}
-                alt="Funky Food meal subscription"
+                alt="Funky Food Shopify Plus meal subscription"
                 placeholder="blur"
                 sizes="(max-width: 1024px) 100vw, 42vw"
                 width={1280}
@@ -55,7 +55,7 @@ export function CaseStudy() {
                     Funky Food Australia
                   </div>
                   <div className="text-xs text-muted-foreground">
-                    Meal subscription · Food delivery →
+                    Shopify Plus Meal Subscription · Food Delivery →
                   </div>
                 </div>
               </Link>
@@ -71,18 +71,20 @@ export function CaseStudy() {
 
               <div className="mt-2">
                 <Block n="01" title="The problem">
-                  Funky Food were managing their meal subscription flow manually — ZIP code
-                  restrictions, box customisation, and delivery sync all required constant manual
-                  work. It was slowing down their operations and creating errors in orders.
+                  Funky Food were managing their Shopify Plus meal subscription flow manually — ZIP
+                  code restrictions, box customisation, and delivery sync all required constant
+                  manual work. It was slowing down their operations and creating errors in orders.
                 </Block>
                 <Block n="02" title="What we built">
-                  We built a custom Shopify flow automation app that handled everything end-to-end:
-                  ZIP code validation at checkout, a drag-and-drop box builder for customers, and
-                  direct sync with their subscription and delivery systems.
+                  We built a custom Shopify Plus flow automation app that handled everything
+                  end-to-end: ZIP code validation at checkout via checkout extensibility, a dynamic
+                  box builder for customers, and direct sync with native Shopify selling plans and
+                  delivery systems.
                 </Block>
                 <Block n="03" title="The result">
-                  A fully automated meal subscription flow — zero manual intervention, fewer order
-                  errors, and a smoother experience for their customers from cart to doorstep.
+                  A fully automated meal subscription flow on Shopify Plus — zero manual
+                  intervention, fewer order errors, and a smoother experience for their customers
+                  from cart to doorstep.
                 </Block>
               </div>
 

@@ -50,7 +50,7 @@ export default function CaseStudiesIndexPage() {
           </h1>
 
           <p className="mt-5 text-base sm:text-lg md:text-xl leading-relaxed text-muted-foreground">
-            Explore how we build custom Shopify applications, flow automations, and recurring
+            Explore how we build custom Shopify Plus applications, flow automations, and recurring
             subscription engines that transform e-commerce operations.
           </p>
         </div>
@@ -61,7 +61,7 @@ export default function CaseStudiesIndexPage() {
             <div className="relative lg:col-span-6 overflow-hidden border-b border-border lg:border-b-0 lg:border-r">
               <Image
                 src="/images/case-studies/funky-food/funky-food-flow-overview.jpg"
-                alt="Funky Food 5-step Shopify order flow: ZIP Check, Build Box, Subscribe, Checkout, Order Confirmed"
+                alt="Funky Food 6-step Shopify Plus order flow: Suburb Check, Household Size, Box Customizer, Add-ons, Cart, Checkout"
                 width={1000}
                 height={850}
                 className="h-full w-full object-cover object-center"
@@ -78,13 +78,13 @@ export default function CaseStudiesIndexPage() {
                 </div>
 
                 <h2 className="mt-4 font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold text-ink leading-[1.2]">
-                  How We Automated Funky Food&apos;s Meal Subscription on Shopify
+                  How Strategic Automation Unlocked Millions for Funky Food on Shopify Plus
                 </h2>
 
                 <p className="mt-4 text-sm sm:text-base text-muted-foreground leading-relaxed">
                   Turned a high-friction manual process of ZIP codes, box customizations, and
                   spreadsheet packing lists into a seamless 6-step customer flow from suburb gate to
-                  recurring checkout.
+                  recurring checkout on Shopify Plus.
                 </p>
               </div>
 

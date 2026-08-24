@@ -14,20 +14,20 @@ const MODIFIED_ISO = "2026-08-20";
 const PUBLISHED_DISPLAY = "May 18, 2026 (Updated Aug 20, 2026)";
 const CALENDLY_URL = "https://calendly.com/weupsell-experts/ai-campaign-popup";
 const PAGE_URL = `${SITE}${CANONICAL}`;
-const ARTICLE_TITLE = "Funky Food: How We Automated a Meal Subscription Brand's Entire Order Flow";
+const ARTICLE_TITLE =
+  "Funky Food: How Strategic Flow Automation Unlocked Millions in Subscription Revenue";
 const ARTICLE_LEAD =
-  "How Aimbrill built a connected Shopify Plus subscription flow for Funky Food Australia — automating delivery eligibility, dynamic box building, and native checkout validation end-to-end.";
+  "How Aimbrill built a connected subscription flow for Funky Food — automating delivery eligibility, dynamic box building, and native checkout validation end-to-end.";
 
 export const metadata: Metadata = {
-  title: "Funky Food: Shopify Plus Meal Subscription Case Study | Aimbrill",
+  title: "Funky Food: How Strategic Automation Unlocked Millions | Aimbrill Case Study",
   description:
-    "How Aimbrill built a Shopify Plus subscription flow for Funky Food — automated eligibility, box building, and checkout validation end-to-end.",
+    "How Aimbrill built an automated subscription flow for Funky Food — automating delivery eligibility, box building, and checkout validation to unlock millions in revenue.",
   alternates: { canonical: CANONICAL },
   keywords: [
     "Shopify Plus subscription case study",
-    "Shopify Plus checkout extensibility example",
-    "Shopify meal subscription build",
-    "Shopify Plus agency case study",
+    "Shopify checkout extensibility example",
+    "meal subscription box builder",
     "custom Shopify subscription app",
     "Shopify box builder development",
   ],
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Funky Food: Shopify Plus Meal Subscription Case Study",
+    title: "Funky Food: How Strategic Automation Unlocked Millions in Revenue",
     description: ARTICLE_LEAD,
     url: PAGE_URL,
     type: "article",
@@ -51,16 +51,16 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Funky Food: Shopify Plus Meal Subscription Case Study",
+    title: "Funky Food: How Strategic Automation Unlocked Millions in Revenue",
     description: ARTICLE_LEAD,
   },
 };
 
 const faqs = [
   {
-    question: "Is Funky Food's flow a public Shopify app or a custom build?",
+    question: "Is Funky Food's flow a public app or a custom build?",
     answer:
-      "It is a custom-engineered Shopify Plus app integrated directly with native checkout extensions and selling plan APIs, built specifically around Funky Food's custom delivery routes, box rules, and warehouse fulfillment workflows.",
+      "It is a custom-engineered app built on Shopify Plus, integrated directly with native checkout extensibility and selling plan APIs, tailored specifically to Funky Food's delivery zones, produce box rules, and warehouse workflows.",
   },
   {
     question: "What was actually broken before this build?",
@@ -70,7 +70,7 @@ const faqs = [
   {
     question: "What does the customer experience now, compared to before?",
     answer:
-      "A guided six-step flow: suburb check, household-size-based box recommendation, a customisable weekly box with swaps and exclusions, rescued add-ons in the same cart, and a checkout that clearly shows the recurring weekly total before payment.",
+      "A guided six-step flow: upfront suburb check, household-size box recommendation, a customisable weekly box with swaps and exclusions, rescued add-ons in the same cart, and a checkout that clearly displays the recurring weekly total before payment.",
   },
   {
     question: "Can another subscription or meal-box brand use a similar system?",
@@ -80,7 +80,7 @@ const faqs = [
   {
     question: "Is Funky Food on Shopify Plus?",
     answer:
-      "Yes — Funky Food runs on Shopify Plus, and the checkout-level validation in this build uses Shopify's checkout extensibility to enforce postcode and box-content rules inside native checkout itself, immediately before an order is created.",
+      "Yes — Funky Food runs on Shopify Plus, and the checkout-level validation uses Shopify's native checkout extensibility to enforce postcode and box-content rules inside checkout before an order is placed.",
   },
 ];
 
@@ -118,7 +118,7 @@ const faqJsonLd = {
 };
 
 const TOC: GuideTocItem[] = [
-  { id: "snapshot", label: "Snapshot" },
+  { id: "about-funky-food", label: "About Funky Food" },
   { id: "the-problem", label: "The Problem" },
   { id: "customer-journey", label: "Customer Journey (6 Steps)" },
   { id: "the-build", label: "The Build Behind the Flow" },
@@ -233,49 +233,33 @@ export default function FunkyFoodCaseStudyPage() {
 
           <ChatGptSummaryCard pageUrl={PAGE_URL} title={ARTICLE_TITLE} />
 
-          <h2 id="snapshot">Snapshot</h2>
-          <div className="guide-table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Manual Ops</th>
-                  <th>Order Errors</th>
-                  <th>Flow</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <strong>0%</strong> — no spreadsheet ZIP/swap fixes
-                  </td>
-                  <td>
-                    <strong>Near 0</strong> — invalid orders blocked before checkout
-                  </td>
-                  <td>
-                    <strong>End-to-end</strong> — suburb check through to weekly delivery
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
+          <h2 id="about-funky-food">About Funky Food: The Brand & Mission</h2>
           <p>
-            Funky Food delivers weekly rescued fruit and vegetable boxes across Australia. Funky
-            Food runs on <strong>Shopify Plus</strong>, but the store itself was still being run
-            manually — postcode checks, box customisation, and packing lists all lived in
-            spreadsheets and support tickets instead of in Shopify.
+            <strong>Funky Food</strong> is an Australian sustainable produce and weekly meal
+            subscription brand operating on Shopify Plus. Every week, millions of kilograms of
+            perfectly delicious, farm-fresh fruits and vegetables are discarded or rejected by major
+            supermarkets simply because they don&apos;t meet rigid cosmetic standards for size,
+            shape, or appearance.
           </p>
           <p>
-            Aimbrill replaced that manual layer with one connected flow, using{" "}
-            <strong>Shopify Plus checkout extensibility</strong> to enforce eligibility and order
-            rules directly inside native checkout rather than bolting logic on top of it.
+            Funky Food partners directly with local Australian farmers and growers to rescue this
+            surplus and &ldquo;quirky&rdquo; produce, packing it into customizable weekly fresh
+            boxes (from XSmall to Big) alongside rescued pantry essentials and cold-pressed juices.
+            By delivering farm-to-door directly to households, Funky Food helps families save up to{" "}
+            <strong>40% compared to supermarket prices</strong> while preventing food waste at the
+            source.
+          </p>
+          <p>
+            As order volume grew, managing postcode delivery zones, box customizations, and
+            recurring subscriptions manually was creating operational bottlenecks. Aimbrill stepped
+            in to automate their entire customer journey into one seamless, connected flow.
           </p>
 
           {/* Image 1: Homepage hero */}
           <CaseStudyImage
             src="/images/case-studies/funky-food/homepage-hero.png"
-            alt="Funky Food Shopify homepage with suburb entry and box builder CTA"
-            caption="Funky Food Shopify homepage featuring upfront suburb eligibility entry and box builder CTA."
+            alt="Funky Food homepage with suburb entry and box builder CTA"
+            caption="Funky Food homepage featuring upfront suburb eligibility entry and box builder CTA."
             priority
           />
 
@@ -400,8 +384,8 @@ export default function FunkyFoodCaseStudyPage() {
           {/* Image 9: Checkout flow */}
           <CaseStudyImage
             src="/images/case-studies/funky-food/checkout-flow.png"
-            alt="Funky Food Shopify checkout with delivery details and box contents"
-            caption="Step 6: Native Shopify Plus checkout displaying clear recurring subscription subtotal, itemized box contents, Channel 7 badge, and Trustpilot reviews."
+            alt="Funky Food checkout with delivery details and box contents"
+            caption="Step 6: Native checkout displaying clear recurring subscription subtotal, itemized box contents, Channel 7 badge, and Trustpilot reviews."
           />
 
           <div className="not-prose my-6 rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-5">
@@ -419,22 +403,22 @@ export default function FunkyFoodCaseStudyPage() {
           <p>
             Rather than stacking multiple apps that each partially own ZIP rules, subscriptions, or
             bundling — a common failure pattern that causes checkout conflicts — Aimbrill built one
-            custom system on Funky Food&apos;s <strong>Shopify Plus</strong> store that owns the
-            entire flow.
+            custom system that owns the entire flow end-to-end.
           </p>
 
           <CaseStudyImage
             src="/images/case-studies/funky-food/architecture-diagram.png"
-            alt="Aimbrill Custom Shopify App architecture diagram for Funky Food"
-            caption="System Architecture: One connected system uniting ZIP Validation, Box Builder, Subscriptions, Selling Plans API, and Shopify Checkout Extensibility in real-time."
+            alt="Aimbrill Custom App architecture diagram for Funky Food"
+            caption="System Architecture: One connected system uniting ZIP Validation, Box Builder, Subscriptions, Selling Plans API, and Checkout Extensibility in real-time."
           />
 
-          <h3 id="build-app">One custom Shopify app</h3>
+          <h3 id="build-app">One custom app</h3>
           <p>
-            ZIP validation, box configuration, and recurring order logic all run inside a single app
-            instead of competing storefront scripts. The same rule set is applied twice — once when
-            the customer starts the journey, and again immediately before the order is actually
-            created — so nothing valid at step 1 can become invalid by checkout.
+            ZIP validation, box configuration, and recurring order logic all run inside a single
+            custom app instead of competing storefront scripts. The same rule set is applied twice —
+            once when the customer starts the journey, and again immediately before the order is
+            actually created at native checkout — so nothing valid at step 1 can become invalid by
+            checkout.
           </p>
 
           <h3 id="build-line-items">Line-item properties</h3>
@@ -444,29 +428,29 @@ export default function FunkyFoodCaseStudyPage() {
             closing the gap between what was ordered and what got packed.
           </p>
 
-          <h3 id="build-selling-plans">Native Shopify selling plans</h3>
+          <h3 id="build-selling-plans">Native selling plans</h3>
           <p>
-            The weekly box runs on Shopify&apos;s own selling plan infrastructure rather than a
-            bolted-on subscription app. Checkout natively displays a recurring subtotal, and
-            customers can skip or pause deliveries later through Shopify&apos;s standard customer
-            portal — no custom account system required.
+            The weekly box runs on Shopify&apos;s native selling plan infrastructure rather than a
+            bolted-on third-party subscription widget. Checkout natively displays a recurring
+            subtotal, and customers can skip or pause deliveries later through Shopify&apos;s
+            standard customer portal — no complex custom account system required.
           </p>
 
           <h3 id="build-checkout-extensibility">Checkout extensibility</h3>
           <p>
             Postcode and box contents are re-verified inside Shopify&apos;s native checkout
             extension framework immediately before the order is created. This enforces custom
-            business rules inside checkout itself, not just in the front-end UI, so a bad ZIP code
-            or an incomplete box cannot reach payment.
+            business rules inside checkout itself, not just in the front-end UI, so an out-of-zone
+            suburb or an incomplete box cannot reach payment.
           </p>
 
           <blockquote>
             <p>
               <strong>Why this matters for a brand evaluating an agency:</strong> this is the
-              difference between installing apps and building a system. Apps that do not share data
-              create exactly the kind of conflict Funky Food had before — a subscription app that
-              does not know about a bundling app&apos;s rules. A custom build on Shopify Plus means
-              every rule is enforced consistently, at every stage, by one source of truth.
+              difference between installing separate apps and building a cohesive system. Apps that
+              do not share data create exactly the kind of conflict Funky Food had before — a
+              subscription app that does not know about a bundling app&apos;s rules. A custom build
+              means every rule is enforced consistently, at every stage, by one source of truth.
             </p>
           </blockquote>
 
@@ -585,7 +569,7 @@ export default function FunkyFoodCaseStudyPage() {
             </table>
           </div>
 
-          <h2 id="is-this-relevant">Is This Relevant to Your Shopify Plus Brand?</h2>
+          <h2 id="is-this-relevant">Is This Relevant to Your Brand?</h2>
           <p>
             This project is a useful reference point because it was not a simple storefront build —
             it required eligibility logic, dynamic product configuration, native subscription
