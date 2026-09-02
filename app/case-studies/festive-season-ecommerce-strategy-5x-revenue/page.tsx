@@ -175,18 +175,18 @@ function CaseStudyImage({
   priority?: boolean;
 }) {
   return (
-    <figure className="not-prose my-8 overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
-      <div className="relative w-full overflow-hidden bg-surface/50 p-2 sm:p-4">
+    <figure className="not-prose my-6 sm:my-8 mx-auto max-w-2xl overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
+      <div className="relative w-full overflow-hidden bg-surface/40 flex items-center justify-center p-2 sm:p-4">
         <Image
           src={src}
           alt={alt}
-          width={1200}
-          height={675}
-          sizes="(max-width: 768px) 100vw, 720px"
-          quality={85}
+          width={1024}
+          height={819}
+          sizes="(max-width: 768px) 100vw, 680px"
+          quality={90}
           priority={priority}
           loading={priority ? undefined : "lazy"}
-          className="h-auto w-full rounded-xl border border-border/70 object-contain shadow-sm"
+          className="h-auto w-full max-h-[380px] sm:max-h-[460px] rounded-xl object-contain"
         />
       </div>
       <figcaption className="border-t border-border/60 bg-surface/30 px-4 py-2.5 text-center text-xs font-medium text-muted-foreground">
@@ -351,6 +351,12 @@ export default function RakhiByDiorinCaseStudyPage() {
             This gave them a solid store. But having a good-looking store isn&apos;t the same as
             having a store that sells.
           </p>
+
+          <CaseStudyImage
+            src="/images/case-studies/rakhi-by-diorin/festive-presence-ecosystem.jpg"
+            alt="Rakhi By Diorin festive presence ecosystem: Instagram engagement, Shopify storefront, and festive product range"
+            caption="The Festive Presence Ecosystem: Connecting social ad engagement, curated rakhi collections, and a seamless Shopify storefront experience."
+          />
 
           <h2 id="what-we-noticed">What We Noticed</h2>
           <p>
@@ -573,7 +579,25 @@ export default function RakhiByDiorinCaseStudyPage() {
                 Analytics & Research
               </div>
               <div className="mt-1 font-display text-base font-bold text-ink">
-                Microsoft Clarity + Google Analytics
+                <a
+                  href="https://clarity.microsoft.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 hover:underline text-ink"
+                >
+                  <span>Microsoft Clarity</span>
+                  <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground" />
+                </a>{" "}
+                +{" "}
+                <a
+                  href="https://marketingplatform.google.com/about/analytics/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 hover:underline text-ink"
+                >
+                  <span>Google Analytics</span>
+                  <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground" />
+                </a>
               </div>
               <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
                 The backbone of the entire research process — tracked session-level behavior,
@@ -586,7 +610,17 @@ export default function RakhiByDiorinCaseStudyPage() {
               <div className="text-xs font-bold uppercase tracking-wider text-lime-700 dark:text-lime-400">
                 AI Upsells & Order Value
               </div>
-              <div className="mt-1 font-display text-base font-bold text-ink">WeUpsell</div>
+              <div className="mt-1 font-display text-base font-bold text-ink">
+                <a
+                  href="https://apps.shopify.com/ai-upsell-cross-sell-by-weupsell"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 hover:underline text-ink"
+                >
+                  <span>WeUpsell</span>
+                  <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground" />
+                </a>
+              </div>
               <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
                 Used AI-powered recommendations to increase order value, showing the right
                 cross-sell and upsell offers at the right moment in the shopping journey.
@@ -597,7 +631,17 @@ export default function RakhiByDiorinCaseStudyPage() {
               <div className="text-xs font-bold uppercase tracking-wider text-lime-700 dark:text-lime-400">
                 1-Click Checkout
               </div>
-              <div className="mt-1 font-display text-base font-bold text-ink">Shiprocket</div>
+              <div className="mt-1 font-display text-base font-bold text-ink">
+                <a
+                  href="https://apps.shopify.com/shiprocket"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 hover:underline text-ink"
+                >
+                  <span>Shiprocket</span>
+                  <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground" />
+                </a>
+              </div>
               <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
                 Simplified the checkout process by reducing the number of steps between cart and
                 completed order.
@@ -608,7 +652,17 @@ export default function RakhiByDiorinCaseStudyPage() {
               <div className="text-xs font-bold uppercase tracking-wider text-lime-700 dark:text-lime-400">
                 Social Proof & Trust
               </div>
-              <div className="mt-1 font-display text-base font-bold text-ink">Judge.me</div>
+              <div className="mt-1 font-display text-base font-bold text-ink">
+                <a
+                  href="https://apps.shopify.com/judgeme"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 hover:underline text-ink"
+                >
+                  <span>Judge.me</span>
+                  <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground" />
+                </a>
+              </div>
               <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
                 Collected and displayed customer reviews to build trust with new visitors who had no
                 prior experience with the store.
@@ -628,7 +682,25 @@ export default function RakhiByDiorinCaseStudyPage() {
               <tbody className="divide-y divide-border/60">
                 <tr>
                   <td className="px-5 py-4 font-semibold text-ink whitespace-nowrap">
-                    Microsoft Clarity + Google Analytics
+                    <a
+                      href="https://clarity.microsoft.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 hover:underline text-ink"
+                    >
+                      <span>Microsoft Clarity</span>
+                      <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground" />
+                    </a>{" "}
+                    +{" "}
+                    <a
+                      href="https://marketingplatform.google.com/about/analytics/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 hover:underline text-ink"
+                    >
+                      <span>Google Analytics</span>
+                      <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground" />
+                    </a>
                   </td>
                   <td className="px-5 py-4 text-muted-foreground leading-relaxed">
                     The backbone of the entire research process — tracked session-level behavior,
@@ -637,21 +709,51 @@ export default function RakhiByDiorinCaseStudyPage() {
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-5 py-4 font-semibold text-ink whitespace-nowrap">WeUpsell</td>
+                  <td className="px-5 py-4 font-semibold text-ink whitespace-nowrap">
+                    <a
+                      href="https://apps.shopify.com/ai-upsell-cross-sell-by-weupsell"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 hover:underline text-ink"
+                    >
+                      <span>WeUpsell</span>
+                      <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground" />
+                    </a>
+                  </td>
                   <td className="px-5 py-4 text-muted-foreground leading-relaxed">
                     Used AI-powered recommendations to increase order value, showing the right
                     cross-sell and upsell offers at the right moment in the shopping journey.
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-5 py-4 font-semibold text-ink whitespace-nowrap">Shiprocket</td>
+                  <td className="px-5 py-4 font-semibold text-ink whitespace-nowrap">
+                    <a
+                      href="https://apps.shopify.com/shiprocket"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 hover:underline text-ink"
+                    >
+                      <span>Shiprocket</span>
+                      <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground" />
+                    </a>
+                  </td>
                   <td className="px-5 py-4 text-muted-foreground leading-relaxed">
                     Simplified the checkout process by reducing the number of steps between cart and
                     completed order.
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-5 py-4 font-semibold text-ink whitespace-nowrap">Judge.me</td>
+                  <td className="px-5 py-4 font-semibold text-ink whitespace-nowrap">
+                    <a
+                      href="https://apps.shopify.com/judgeme"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 hover:underline text-ink"
+                    >
+                      <span>Judge.me</span>
+                      <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground" />
+                    </a>
+                  </td>
                   <td className="px-5 py-4 text-muted-foreground leading-relaxed">
                     Collected and displayed customer reviews to build trust with new visitors who
                     had no prior experience with the store.
@@ -664,7 +766,7 @@ export default function RakhiByDiorinCaseStudyPage() {
           <h2 id="the-results">The Results</h2>
           <p>Across a 3-week campaign window, this process delivered:</p>
           <div className="not-prose my-6 space-y-3">
-            <div className="flex items-start gap-3 rounded-xl border border-lime-400/60 bg-card p-4">
+            <div className="flex items-start gap-3 rounded-xl border border-border bg-card p-4">
               <CheckCircle2 className="h-5 w-5 shrink-0 text-lime-700 dark:text-lime-400 mt-0.5" />
               <div className="text-sm">
                 <strong className="text-ink">₹50 Lakh in Overall Revenue:</strong> Generated over a
