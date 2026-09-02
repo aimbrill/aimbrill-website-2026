@@ -100,6 +100,7 @@ export const site = {
     },
     { path: "/case-studies", changeFrequency: "weekly" as const, priority: 0.9 },
     { path: "/case-studies/funky-food", changeFrequency: "monthly" as const, priority: 0.8 },
+    { path: "/case-studies/rakhi-by-diorin", changeFrequency: "monthly" as const, priority: 0.8 },
     { path: "/seo-dashboard", changeFrequency: "weekly" as const, priority: 0.8 },
     {
       path: "/recomai-ai-chatbot-convert-visitors-to-buyers",
