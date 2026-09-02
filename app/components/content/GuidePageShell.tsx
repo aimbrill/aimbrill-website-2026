@@ -105,21 +105,23 @@ export function GuidePageShell({
     <>
       <Navbar />
 
-      <div className="guide-hero border-b border-border bg-card pt-24 md:pt-28">
-        <div className="mx-auto max-w-5xl px-4 py-10 text-center md:px-6 md:py-14">
+      <div className="guide-hero border-b border-border bg-card pt-16 sm:pt-20 md:pt-28">
+        <div className="mx-auto max-w-5xl px-4 py-6 text-center sm:py-8 md:px-6 md:py-14">
           <div className="flex flex-wrap items-center justify-center gap-2">
             <span className="guide-tag guide-tag-warm">{category}</span>
             {secondaryTag ? (
               <span className="guide-tag guide-tag-muted">{secondaryTag}</span>
             ) : null}
           </div>
-          <h1 className="mx-auto mt-4 max-w-3xl font-display text-3xl font-bold leading-[1.15] tracking-tight text-ink md:text-4xl lg:text-[2.5rem]">
+          <h1 className="mx-auto mt-3 max-w-3xl font-display text-2xl font-bold leading-[1.15] tracking-tight text-ink sm:mt-4 sm:text-3xl md:text-4xl lg:text-[2.5rem]">
             {title}
           </h1>
           {lead ? (
-            <p className="guide-hero-lead mx-auto mt-4 max-w-2xl text-center">{lead}</p>
+            <p className="guide-hero-lead mx-auto mt-2.5 max-w-2xl text-center text-xs sm:mt-4 sm:text-sm md:text-base">
+              {lead}
+            </p>
           ) : null}
-          <div className="mt-5 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-xs text-muted-foreground sm:mt-7 sm:gap-x-3.5 sm:text-sm md:gap-x-5">
+          <div className="mt-3.5 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-xs text-muted-foreground sm:mt-6 sm:gap-x-3.5 sm:text-sm md:gap-x-5">
             <span className="inline-flex items-center gap-1.5 sm:gap-2">
               {authorAvatar ? (
                 <Image
@@ -158,7 +160,7 @@ export function GuidePageShell({
         </div>
       </div>
 
-      <div className={`${layoutClasses} mx-auto px-4 py-10 md:px-6 md:py-12`}>
+      <div className={`${layoutClasses} mx-auto px-4 py-5 sm:py-8 md:px-6 md:py-12`}>
         <aside className="toc-sidebar guide-sidebar hidden lg:block" aria-label="Table of contents">
           <div className="toc-panel">
             <nav className="toc" aria-label="On this page">

@@ -284,43 +284,57 @@ export default function RakhiByDiorinCaseStudyPage() {
           <ChatGptSummaryCard pageUrl={PAGE_URL} title={ARTICLE_TITLE} />
 
           {/* Key Metrics Highlight Grid */}
-          <div className="not-prose my-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
-            <div className="rounded-2xl border border-lime-400/60 bg-card p-4 shadow-sm">
-              <div className="flex items-center gap-1.5 text-xs font-semibold text-lime-700 dark:text-lime-400">
-                <TrendingUp className="h-3.5 w-3.5" />
-                <span>Overall Revenue</span>
+          <div className="not-prose my-3.5 grid grid-cols-2 gap-2 sm:my-8 sm:grid-cols-4 sm:gap-3">
+            <div className="flex flex-col justify-between rounded-xl border border-border bg-card p-2.5 shadow-sm sm:rounded-2xl sm:p-4">
+              <div className="flex items-center gap-1.5 text-[11px] font-semibold text-muted-foreground sm:text-xs">
+                <TrendingUp className="h-3 w-3 shrink-0 sm:h-3.5 sm:w-3.5" />
+                <span className="truncate">Overall Revenue</span>
               </div>
-              <div className="mt-2 font-display text-2xl font-extrabold text-ink">₹50 Lakh</div>
-              <div className="mt-0.5 text-[11px] text-muted-foreground">Generated in 3 weeks</div>
+              <div className="mt-1 font-display text-base font-extrabold text-ink sm:mt-2 sm:text-2xl">
+                ₹50 Lakh
+              </div>
+              <div className="mt-0.5 text-[10px] leading-tight text-muted-foreground sm:text-[11px]">
+                Generated in 3 weeks
+              </div>
             </div>
 
-            <div className="rounded-2xl border border-border bg-card p-4 shadow-sm">
-              <div className="flex items-center gap-1.5 text-xs font-semibold text-muted-foreground">
-                <Repeat className="h-3.5 w-3.5" />
-                <span>Research Cycles</span>
+            <div className="flex flex-col justify-between rounded-xl border border-border bg-card p-2.5 shadow-sm sm:rounded-2xl sm:p-4">
+              <div className="flex items-center gap-1.5 text-[11px] font-semibold text-muted-foreground sm:text-xs">
+                <Repeat className="h-3 w-3 shrink-0 sm:h-3.5 sm:w-3.5" />
+                <span className="truncate">Research Cycles</span>
               </div>
-              <div className="mt-2 font-display text-2xl font-extrabold text-ink">3 Cycles</div>
-              <div className="mt-0.5 text-[11px] text-muted-foreground">
+              <div className="mt-1 font-display text-base font-extrabold text-ink sm:mt-2 sm:text-2xl">
+                3 Cycles
+              </div>
+              <div className="mt-0.5 text-[10px] leading-tight text-muted-foreground sm:text-[11px]">
                 Continuous test & learn
               </div>
             </div>
 
-            <div className="rounded-2xl border border-border bg-card p-4 shadow-sm">
-              <div className="flex items-center gap-1.5 text-xs font-semibold text-muted-foreground">
-                <Zap className="h-3.5 w-3.5" />
-                <span>Ad Sprint Window</span>
+            <div className="flex flex-col justify-between rounded-xl border border-border bg-card p-2.5 shadow-sm sm:rounded-2xl sm:p-4">
+              <div className="flex items-center gap-1.5 text-[11px] font-semibold text-muted-foreground sm:text-xs">
+                <Zap className="h-3 w-3 shrink-0 sm:h-3.5 sm:w-3.5" />
+                <span className="truncate">Ad Sprint Window</span>
               </div>
-              <div className="mt-2 font-display text-2xl font-extrabold text-ink">3 Days</div>
-              <div className="mt-0.5 text-[11px] text-muted-foreground">Per research phase</div>
+              <div className="mt-1 font-display text-base font-extrabold text-ink sm:mt-2 sm:text-2xl">
+                3 Days
+              </div>
+              <div className="mt-0.5 text-[10px] leading-tight text-muted-foreground sm:text-[11px]">
+                Per research phase
+              </div>
             </div>
 
-            <div className="rounded-2xl border border-border bg-card p-4 shadow-sm">
-              <div className="flex items-center gap-1.5 text-xs font-semibold text-muted-foreground">
-                <ShieldCheck className="h-3.5 w-3.5" />
-                <span>Connected Stack</span>
+            <div className="flex flex-col justify-between rounded-xl border border-border bg-card p-2.5 shadow-sm sm:rounded-2xl sm:p-4">
+              <div className="flex items-center gap-1.5 text-[11px] font-semibold text-muted-foreground sm:text-xs">
+                <ShieldCheck className="h-3 w-3 shrink-0 sm:h-3.5 sm:w-3.5" />
+                <span className="truncate">Connected Stack</span>
               </div>
-              <div className="mt-2 font-display text-2xl font-extrabold text-ink">4 Tools</div>
-              <div className="mt-0.5 text-[11px] text-muted-foreground">Full funnel synergy</div>
+              <div className="mt-1 font-display text-base font-extrabold text-ink sm:mt-2 sm:text-2xl">
+                4 Tools
+              </div>
+              <div className="mt-0.5 text-[10px] leading-tight text-muted-foreground sm:text-[11px]">
+                Full funnel synergy
+              </div>
             </div>
           </div>
 
@@ -563,11 +577,62 @@ export default function RakhiByDiorinCaseStudyPage() {
           <h2 id="tools-we-used">Tools We Used</h2>
           <p>Each tool in this project had one clear, specific job:</p>
 
-          <div className="not-prose my-6 overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
+          {/* Mobile Tool Cards (Visible on Mobile) */}
+          <div className="not-prose my-6 space-y-3 sm:hidden">
+            <div className="rounded-2xl border border-border bg-card p-4 shadow-sm">
+              <div className="text-xs font-bold uppercase tracking-wider text-lime-700 dark:text-lime-400">
+                Analytics & Research
+              </div>
+              <div className="mt-1 font-display text-base font-bold text-ink">
+                Microsoft Clarity + Google Analytics
+              </div>
+              <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                The backbone of the entire research process — tracked session-level behavior,
+                drop-off points, and overall traffic. Every planning decision came from what these
+                tools showed.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-border bg-card p-4 shadow-sm">
+              <div className="text-xs font-bold uppercase tracking-wider text-lime-700 dark:text-lime-400">
+                AI Upsells & Order Value
+              </div>
+              <div className="mt-1 font-display text-base font-bold text-ink">WeUpsell</div>
+              <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                Used AI-powered recommendations to increase order value, showing the right
+                cross-sell and upsell offers at the right moment in the shopping journey.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-border bg-card p-4 shadow-sm">
+              <div className="text-xs font-bold uppercase tracking-wider text-lime-700 dark:text-lime-400">
+                1-Click Checkout
+              </div>
+              <div className="mt-1 font-display text-base font-bold text-ink">Shiprocket</div>
+              <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                Simplified the checkout process by reducing the number of steps between cart and
+                completed order.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-border bg-card p-4 shadow-sm">
+              <div className="text-xs font-bold uppercase tracking-wider text-lime-700 dark:text-lime-400">
+                Social Proof & Trust
+              </div>
+              <div className="mt-1 font-display text-base font-bold text-ink">Judge.me</div>
+              <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                Collected and displayed customer reviews to build trust with new visitors who had no
+                prior experience with the store.
+              </p>
+            </div>
+          </div>
+
+          {/* Desktop & Tablet Table */}
+          <div className="not-prose my-6 hidden overflow-hidden rounded-2xl border border-border bg-card shadow-sm sm:block">
             <table className="w-full text-left text-sm">
               <thead className="border-b border-border bg-surface text-xs font-bold uppercase tracking-wider text-muted-foreground">
                 <tr>
-                  <th className="px-5 py-3.5">Tool</th>
+                  <th className="px-5 py-3.5 w-1/3">Tool</th>
                   <th className="px-5 py-3.5">What It Did</th>
                 </tr>
               </thead>

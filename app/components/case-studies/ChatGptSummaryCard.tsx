@@ -17,7 +17,7 @@ export function ChatGptSummaryCard({ pageUrl, title }: ChatGptSummaryCardProps) 
   const summaryUrl = chatgptSummaryUrl(pageUrl, title);
 
   return (
-    <div className="not-prose my-8 overflow-hidden rounded-3xl border border-lime-400/60 bg-card p-5 sm:p-6 shadow-soft">
+    <div className="not-prose my-3.5 overflow-hidden rounded-2xl border border-lime-400/60 bg-card p-3.5 shadow-soft sm:my-8 sm:rounded-3xl sm:p-6">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div className="flex items-start gap-3.5">
           <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-lime text-ink shadow-sm">
