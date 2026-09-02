@@ -175,18 +175,18 @@ function CaseStudyImage({
   priority?: boolean;
 }) {
   return (
-    <figure className="not-prose my-6 sm:my-8 mx-auto max-w-2xl overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
-      <div className="relative w-full overflow-hidden bg-surface/40 flex items-center justify-center p-2 sm:p-4">
+    <figure className="not-prose my-6 sm:my-8 mx-auto w-full max-w-[480px] overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
+      <div className="relative w-full overflow-hidden bg-surface/30">
         <Image
           src={src}
           alt={alt}
           width={1024}
-          height={819}
-          sizes="(max-width: 768px) 100vw, 680px"
+          height={1024}
+          sizes="(max-width: 768px) 100vw, 480px"
           quality={90}
           priority={priority}
           loading={priority ? undefined : "lazy"}
-          className="h-auto w-full max-h-[380px] sm:max-h-[460px] rounded-xl object-contain"
+          className="h-auto w-full object-contain"
         />
       </div>
       <figcaption className="border-t border-border/60 bg-surface/30 px-4 py-2.5 text-center text-xs font-medium text-muted-foreground">
