@@ -29,14 +29,14 @@ const MODIFIED_ISO = "2026-09-02";
 const PUBLISHED_DISPLAY = "September 2, 2026";
 const CALENDLY_URL = "https://calendly.com/weupsell-experts/ai-campaign-popup";
 const PAGE_URL = `${SITE}${CANONICAL}`;
-const ARTICLE_TITLE = "Case Study: Rakhi By Diorin — From a Slow Start to ₹50 Lakh in Sales";
+const ARTICLE_TITLE = "Turning Festive Traffic Into ₹50 Lakh: The Rakhi By Diorin Story";
 const ARTICLE_LEAD =
-  "A simple, honest look at what we noticed, what we did about it, and every tool we used to turn a new festive store into real revenue.";
+  "The store was ready. The traffic was coming in. But the sales weren't. So we stopped guessing, started listening to shoppers, and changed the store one step at a time.";
 
 export const metadata: Metadata = {
-  title: "Rakhi By Diorin: From Slow Start to ₹50 Lakh in Sales | Aimbrill Case Study",
+  title: "Turning Festive Traffic Into ₹50 Lakh: The Rakhi By Diorin Story | Aimbrill",
   description:
-    "How Rakhi By Diorin generated ₹50 Lakh in festive sales across a 3-week campaign using a 3-cycle research loop, Microsoft Clarity, Google Analytics, WeUpsell AI, Shiprocket, and Judge.me.",
+    "The store was ready. The traffic was coming in. But the sales weren't. How Rakhi By Diorin scaled to ₹50 Lakh in festive sales in 3 weeks using a 3-cycle research loop.",
   alternates: { canonical: CANONICAL },
   keywords: [
     "Shopify festive case study",

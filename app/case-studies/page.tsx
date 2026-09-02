@@ -69,13 +69,13 @@ export default function CaseStudiesIndexPage() {
                   </div>
 
                   <h2 className="mt-3 font-display text-xl sm:text-2xl lg:text-3xl font-extrabold text-ink leading-[1.2]">
-                    From a Slow Start to ₹50 Lakh in Sales: The 3-Cycle Festive Playbook
+                    Turning Festive Traffic Into ₹50 Lakh: The Rakhi By Diorin Story
                   </h2>
 
                   <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                    A simple, honest look at what we noticed, what we did about it, and every tool
-                    we used — Microsoft Clarity, Google Analytics, WeUpsell, Shiprocket, and
-                    Judge.me — to turn a new festive store into ₹50 Lakh in revenue.
+                    The store was ready. The traffic was coming in. But the sales weren&apos;t. So
+                    we stopped guessing, started listening to shoppers, and changed the store one
+                    step at a time.
                   </p>
 
                   <div className="mt-5 grid grid-cols-3 gap-3 border-t border-border/60 pt-3.5">
