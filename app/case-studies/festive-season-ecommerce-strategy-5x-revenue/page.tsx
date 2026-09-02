@@ -238,14 +238,10 @@ export default function RakhiByDiorinCaseStudyPage() {
               <tbody>
                 <tr className="border-b border-border/50 px-5 py-3">
                   <td className="py-2.5 pl-5 pr-4 font-semibold text-muted-foreground">Client</td>
-                  <td className="py-2.5 text-ink font-medium">
-                    Rakhi By Diorin (Festive Gifting Division of Diorin Jewellery)
-                  </td>
+                  <td className="py-2.5 text-ink font-medium">Rakhi By Diorin</td>
                 </tr>
                 <tr className="border-b border-border/50 px-5 py-3">
-                  <td className="py-2.5 pl-5 pr-4 font-semibold text-muted-foreground">
-                    Store URL
-                  </td>
+                  <td className="py-2.5 pl-5 pr-4 font-semibold text-muted-foreground">Store</td>
                   <td className="py-2.5">
                     <a
                       href="https://rakhibydiorin.com"
@@ -259,23 +255,16 @@ export default function RakhiByDiorinCaseStudyPage() {
                   </td>
                 </tr>
                 <tr className="border-b border-border/50 px-5 py-3">
-                  <td className="py-2.5 pl-5 pr-4 font-semibold text-muted-foreground">Platform</td>
-                  <td className="py-2.5 text-ink">Shopify Online Store 2.0</td>
+                  <td className="py-2.5 pl-5 pr-4 font-semibold text-muted-foreground">Timeline</td>
+                  <td className="py-2.5 text-ink">3 Weeks (Raksha Bandhan Campaign)</td>
                 </tr>
                 <tr className="border-b border-border/50 px-5 py-3">
-                  <td className="py-2.5 pl-5 pr-4 font-semibold text-muted-foreground">
-                    Campaign Window
-                  </td>
-                  <td className="py-2.5 text-ink">3-Week Raksha Bandhan Festive Window</td>
+                  <td className="py-2.5 pl-5 pr-4 font-semibold text-muted-foreground">Strategy</td>
+                  <td className="py-2.5 text-ink">3-Cycle Behavioral Research & Rapid CRO</td>
                 </tr>
                 <tr className="px-5 py-3">
-                  <td className="py-2.5 pl-5 pr-4 font-semibold text-muted-foreground">
-                    Key Architecture
-                  </td>
-                  <td className="py-2.5 text-ink">
-                    3-Cycle Research & Optimization Loop · Microsoft Clarity · Google Analytics ·
-                    WeUpsell AI · Shiprocket · Judge.me
-                  </td>
+                  <td className="py-2.5 pl-5 pr-4 font-semibold text-muted-foreground">Revenue</td>
+                  <td className="py-2.5 font-bold text-ink">₹50 Lakh Generated</td>
                 </tr>
               </tbody>
             </table>
