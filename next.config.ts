@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
     // Image sizes for srcset generation
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     // Quality values used throughout the site
-    qualities: [75, 80, 85, 90],
+    qualities: [75, 80, 85, 90, 95],
     // Optimize SVG as well
     disableStaticImages: false,
     remotePatterns: [

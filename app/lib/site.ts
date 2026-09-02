@@ -107,6 +107,11 @@ export const site = {
       changeFrequency: "monthly" as const,
       priority: 0.7,
     },
+    {
+      path: "/cro-speed-optimization-shopify",
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
   ],
 } as const;
 

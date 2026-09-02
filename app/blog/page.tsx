@@ -53,6 +53,8 @@ async function getBlogCards(): Promise<BlogCard[]> {
           coverImage = "/images/shopify/blogs/main%20image/macola.png";
         } else if (slug === "recomai-ai-chatbot-convert-visitors-to-buyers") {
           coverImage = "/images/shopify/blogs/main%20image/Recomi.png";
+        } else if (slug === "cro-speed-optimization-shopify") {
+          coverImage = "/images/shopify/blogs/main%20image/cro-speed.png";
         }
 
         return {
