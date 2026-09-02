@@ -119,53 +119,47 @@ export function GuidePageShell({
           {lead ? (
             <p className="guide-hero-lead mx-auto mt-4 max-w-2xl text-center">{lead}</p>
           ) : null}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 md:gap-x-10">
-            <span className="inline-flex items-center gap-3">
+          <div className="mt-5 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-xs text-muted-foreground sm:mt-7 sm:gap-x-3.5 sm:text-sm md:gap-x-5">
+            <span className="inline-flex items-center gap-1.5 sm:gap-2">
               {authorAvatar ? (
                 <Image
                   src={authorAvatar}
                   alt={authorAvatarAlt ?? author}
-                  width={48}
-                  height={48}
-                  className="h-12 w-12 shrink-0 rounded-full object-cover"
-                  sizes="48px"
+                  width={36}
+                  height={36}
+                  className="h-7 w-7 shrink-0 rounded-full object-cover sm:h-8 sm:w-8"
+                  sizes="36px"
                 />
               ) : (
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white ring-1 ring-border/50">
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white ring-1 ring-border/50 sm:h-8 sm:w-8">
                   <Image
                     src="/images/Icon.png"
                     alt="Aimbrill"
-                    width={40}
-                    height={40}
-                    className="h-10 w-10 object-contain"
-                    sizes="48px"
+                    width={32}
+                    height={32}
+                    className="h-6 w-6 object-contain sm:h-7 sm:w-7"
+                    sizes="36px"
                   />
                 </span>
               )}
-              <span className="font-display text-lg font-bold tracking-tight text-ink md:text-xl">
-                {author}
-              </span>
+              <span className="font-semibold tracking-tight text-ink">{author}</span>
             </span>
             {publishedAt && publishedAtIso ? (
-              <span className="inline-flex items-center gap-1.5 text-sm font-normal text-muted-foreground">
-                <CalendarGlyph className="shrink-0 opacity-80" />
+              <span className="inline-flex items-center gap-1">
+                <CalendarGlyph className="h-3.5 w-3.5 shrink-0 opacity-70 sm:h-4 sm:w-4" />
                 <time dateTime={publishedAtIso}>{publishedAt}</time>
               </span>
             ) : null}
-            {readingMinutes != null ? (
-              <span className="text-sm text-muted-foreground">· {readingMinutes} min read</span>
-            ) : null}
+            {readingMinutes != null ? <span>· {readingMinutes} min read</span> : null}
             {topicTags?.map((tag) => (
-              <span key={tag} className="text-sm text-muted-foreground">
-                · {tag}
-              </span>
+              <span key={tag}>· {tag}</span>
             ))}
           </div>
         </div>
       </div>
 
       <div className={`${layoutClasses} mx-auto px-4 py-10 md:px-6 md:py-12`}>
-        <aside className="toc-sidebar guide-sidebar" aria-label="Table of contents">
+        <aside className="toc-sidebar guide-sidebar hidden lg:block" aria-label="Table of contents">
           <div className="toc-panel">
             <nav className="toc" aria-label="On this page">
               <p className="toc-title font-display text-xs font-semibold uppercase tracking-widest text-muted-foreground">

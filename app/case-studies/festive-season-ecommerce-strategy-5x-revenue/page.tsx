@@ -228,7 +228,7 @@ export default function RakhiByDiorinCaseStudyPage() {
           }}
         >
           {/* Client Overview Table */}
-          <div className="not-prose my-6 overflow-hidden rounded-2xl border border-border bg-card">
+          <div className="not-prose my-6 hidden overflow-hidden rounded-2xl border border-border bg-card sm:block">
             <div className="border-b border-border bg-surface px-5 py-3">
               <span className="font-mono text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                 Campaign Overview
