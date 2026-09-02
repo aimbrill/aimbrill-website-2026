@@ -20,6 +20,12 @@ export const aiToolsList: AiToolItem[] = [
     badge: "New",
     icon: "seo",
   },
+  {
+    name: "Brand Assets",
+    desc: "Official Aimbrill logo assets, brand guidelines, color palettes, and press typography.",
+    href: "/aimbrill-brand-assets",
+    icon: "brand",
+  },
 ];
 
 export function AiToolIcon({ icon }: { icon: AiToolItem["icon"] }) {

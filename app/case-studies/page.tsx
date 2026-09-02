@@ -65,43 +65,42 @@ export default function CaseStudiesIndexPage() {
                   <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-wider text-lime-700 dark:text-lime-400">
                     <span>Rakhi By Diorin</span>
                     <span className="text-muted-foreground/60">•</span>
-                    <span className="text-muted-foreground">Shopify Rebrand & WeUpsell AI</span>
+                    <span className="text-muted-foreground">Festive Growth & CRO Research</span>
                   </div>
 
                   <h2 className="mt-3 font-display text-xl sm:text-2xl lg:text-3xl font-extrabold text-ink leading-[1.2]">
-                    How a Shopify Rebrand + AI Upsell Generated ₹12.29L in 2 Months
+                    From a Slow Start to ₹50 Lakh in Sales: The 3-Cycle Festive Playbook
                   </h2>
 
                   <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                    Rakhi By Diorin had the products and demand, but needed a storefront built to
-                    scale. A complete navigation and homepage rebrand paired with WeUpsell&apos;s AI
-                    recommendation engine delivered ₹12.29L in AI-influenced revenue across 4,073
-                    orders.
+                    A simple, honest look at what we noticed, what we did about it, and every tool
+                    we used — Microsoft Clarity, Google Analytics, WeUpsell, Shiprocket, and
+                    Judge.me — to turn a new festive store into ₹50 Lakh in revenue.
                   </p>
 
                   <div className="mt-5 grid grid-cols-3 gap-3 border-t border-border/60 pt-3.5">
                     <div>
                       <div className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
-                        AI Revenue
+                        Total Revenue
                       </div>
                       <div className="mt-0.5 font-display text-base sm:text-lg font-bold text-ink">
-                        ₹12.29L
+                        ₹50 Lakh
                       </div>
                     </div>
                     <div>
                       <div className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
-                        Orders
+                        Research
                       </div>
                       <div className="mt-0.5 font-display text-base sm:text-lg font-bold text-ink">
-                        4,073
+                        3 Cycles
                       </div>
                     </div>
                     <div>
                       <div className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
-                        Cart CVR
+                        Timeframe
                       </div>
                       <div className="mt-0.5 font-display text-base sm:text-lg font-bold text-ink">
-                        11.85%
+                        3 Weeks
                       </div>
                     </div>
                   </div>
@@ -109,7 +108,7 @@ export default function CaseStudiesIndexPage() {
 
                 <div className="mt-6 flex items-center">
                   <Link
-                    href="/case-studies/rakhi-by-diorin"
+                    href="/case-studies/festive-season-ecommerce-strategy-5x-revenue"
                     className="inline-flex items-center justify-center gap-2 rounded-full bg-lime px-6 py-3 text-sm font-bold text-ink shadow-sm transition hover:scale-105 active:scale-95"
                   >
                     <span>Read Full Case Study</span>

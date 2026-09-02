@@ -8,8 +8,8 @@ export function Footer({ privacyHref = "/privacy" }: FooterProps) {
   return (
     <footer className="relative border-t border-border bg-surface py-8">
       <div className="mx-auto max-w-7xl px-8 md:px-0">
-        <div className="grid gap-6 md:gap-10 md:grid-cols-12">
-          <div className="md:col-span-4">
+        <div className="grid gap-6 md:gap-5 lg:gap-6 md:grid-cols-12">
+          <div className="md:col-span-3">
             <div className="relative h-16 w-[170px] overflow-hidden md:h-20 md:w-[210px]">
               <Image
                 src="/images/aimbrill-wordmark-transparent.png"
@@ -47,12 +47,24 @@ export function Footer({ privacyHref = "/privacy" }: FooterProps) {
                   Blog
                 </a>
               </li>
+            </ul>
+          </div>
+
+          <div className="md:col-span-2">
+            <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+              AI Tools
+            </div>
+            <ul className="mt-4 space-y-2 text-sm">
+              <li>
+                <a href="/seo-dashboard" className="underline-grow">
+                  SEO Dashboard
+                </a>
+              </li>
               <li>
                 <a href="/aimbrill-brand-assets" className="underline-grow">
                   Brand Assets
                 </a>
               </li>
-              {/* Contact removed per update */}
             </ul>
           </div>
 
@@ -94,7 +106,7 @@ export function Footer({ privacyHref = "/privacy" }: FooterProps) {
             </ul>
           </div>
 
-          <div className="md:col-span-3">
+          <div className="md:col-span-2">
             <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
               Social
             </div>

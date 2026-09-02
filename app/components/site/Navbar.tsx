@@ -47,7 +47,9 @@ function navItemActive(pathname: string, hash: string, href: string) {
   }
   if (href === "/ai-tools") {
     return (
-      pathname.startsWith("/seo-dashboard") || pathname.startsWith("/ai-quiz-and-recommendations")
+      pathname.startsWith("/seo-dashboard") ||
+      pathname.startsWith("/ai-quiz-and-recommendations") ||
+      pathname.startsWith("/aimbrill-brand-assets")
     );
   }
   if (href.startsWith("/#")) {
