@@ -1,26 +1,8 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 import { GuidePageShell, type GuideTocItem } from "@/components/content/GuidePageShell";
 import { GuideFaqAccordion, GuideFaqItem } from "@/components/content/GuideFaqAccordion";
 import { Footer } from "@/components/site/Footer";
-import {
-  TrendingUp,
-  CheckCircle2,
-  AlertTriangle,
-  ArrowRight,
-  Sparkles,
-  ShieldCheck,
-  Zap,
-  Smartphone,
-  Search,
-  ShoppingCart,
-  Clock,
-  Flame,
-  MousePointerClick,
-  Layers,
-  HelpCircle,
-} from "lucide-react";
+import { CheckCircle2, Sparkles, Zap, Smartphone, Search } from "lucide-react";
 
 const SITE = "https://aimbrill.com";
 const CANONICAL = "/top-10-cro-techniques-for-shopify-brands";
@@ -65,7 +47,7 @@ export const metadata: Metadata = {
     siteName: "Aimbrill",
     images: [
       {
-        url: "/images/shopify/blogs/main%20image/top-10-cro.jpg",
+        url: "/images/shopify/blogs/main%20image/top-10-cro.png",
         width: 1200,
         height: 675,
         alt: ARTICLE_TITLE,
@@ -76,7 +58,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: ARTICLE_TITLE,
     description: ARTICLE_LEAD,
-    images: ["/images/shopify/blogs/main%20image/top-10-cro.jpg"],
+    images: ["/images/shopify/blogs/main%20image/top-10-cro.png"],
   },
 };
 
@@ -121,7 +103,7 @@ const articleJsonLd = {
   datePublished: PUBLISHED_ISO,
   dateModified: PUBLISHED_ISO,
   mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE}${CANONICAL}` },
-  image: `${SITE}/images/shopify/blogs/main%20image/top-10-cro.jpg`,
+  image: `${SITE}/images/shopify/blogs/main%20image/top-10-cro.png`,
 };
 
 const faqJsonLd = {
@@ -163,45 +145,6 @@ const TOC: GuideTocItem[] = [
   { id: "faq", label: "FAQ" },
 ];
 
-function BlogFigure({
-  src,
-  alt,
-  caption,
-  width = 1200,
-  height = 675,
-  priority = false,
-}: {
-  src: string;
-  alt: string;
-  caption?: string;
-  width?: number;
-  height?: number;
-  priority?: boolean;
-}) {
-  return (
-    <figure className="not-prose my-8 overflow-hidden rounded-2xl border border-border/80 bg-card shadow-sm">
-      <div className="relative w-full overflow-hidden bg-surface/30 flex items-center justify-center p-2 sm:p-4">
-        <Image
-          src={src}
-          alt={alt}
-          width={width}
-          height={height}
-          sizes="(max-width: 768px) 100vw, 760px"
-          quality={95}
-          priority={priority}
-          loading={priority ? undefined : "lazy"}
-          className="h-auto w-full max-h-[440px] rounded-xl object-contain"
-        />
-      </div>
-      {caption && (
-        <figcaption className="border-t border-border/60 bg-surface/50 px-4 py-2.5 text-center text-xs font-medium text-muted-foreground">
-          {caption}
-        </figcaption>
-      )}
-    </figure>
-  );
-}
-
 export default function Top10CroTechniquesPage() {
   return (
     <>
@@ -233,13 +176,6 @@ export default function Top10CroTechniquesPage() {
             external: true,
           }}
         >
-          <BlogFigure
-            src="/images/shopify/blogs/main%20image/top-10-cro.jpg"
-            alt="Top 10 CRO Techniques for Shopify Brands infographic and conversion funnel illustration"
-            caption="Transform existing store traffic into revenue with proven, compounding Conversion Rate Optimization techniques."
-            priority
-          />
-
           <p>
             If you run a Shopify store, getting traffic is only half the job. The real growth lever
             most brands leave on the table is <strong>conversion rate optimization (CRO)</strong> —
