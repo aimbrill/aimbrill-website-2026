@@ -116,6 +116,11 @@ export const site = {
       changeFrequency: "monthly" as const,
       priority: 0.8,
     },
+    {
+      path: "/top-10-cro-techniques-for-shopify-brands",
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
   ],
 } as const;
 

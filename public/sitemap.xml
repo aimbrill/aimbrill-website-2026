@@ -128,7 +128,14 @@
 
   <url>
     <loc>https://aimbrill.com/cro-speed-optimization-shopify</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://aimbrill.com/top-10-cro-techniques-for-shopify-brands</loc>
+    <lastmod>2026-09-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
