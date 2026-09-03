@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { GuidePageShell, type GuideTocItem } from "@/components/content/GuidePageShell";
 import { GuideFaqAccordion, GuideFaqItem } from "@/components/content/GuideFaqAccordion";
 import { Footer } from "@/components/site/Footer";
@@ -407,6 +408,26 @@ export default function Top10CroTechniquesPage() {
                 </span>
               </li>
             </ul>
+
+            {/* Visual Example: Confusing vs Clear Product Page */}
+            <figure className="mt-5 overflow-hidden rounded-xl border border-border/80 bg-surface/30">
+              <div className="relative w-full overflow-hidden p-2 sm:p-3 flex items-center justify-center">
+                <Image
+                  src="/images/shopify/blogs/top-10-cro/product-page-before-after.png"
+                  alt="Before and After product page comparison: Confusing vs Clear & Focused CRO layout"
+                  width={1024}
+                  height={682}
+                  sizes="(max-width: 768px) 100vw, 760px"
+                  quality={95}
+                  loading="lazy"
+                  className="h-auto w-full rounded-lg object-contain"
+                />
+              </div>
+              <figcaption className="border-t border-border/60 bg-surface/50 px-4 py-2 text-center text-xs font-medium text-muted-foreground">
+                Before vs. After: Removing visual clutter, elevating social proof, and clarifying
+                CTA placement increases product page conversion rates.
+              </figcaption>
+            </figure>
           </div>
 
           {/* Technique 2 */}
@@ -455,6 +476,26 @@ export default function Top10CroTechniquesPage() {
                 </span>
               </li>
             </ul>
+
+            {/* Visual Example: Friction-Filled vs Frictionless Checkout */}
+            <figure className="mt-5 overflow-hidden rounded-xl border border-border/80 bg-surface/30">
+              <div className="relative w-full overflow-hidden p-2 sm:p-3 flex items-center justify-center">
+                <Image
+                  src="/images/shopify/blogs/top-10-cro/checkout-before-after.png"
+                  alt="Before and After checkout comparison: Friction-filled vs Frictionless checkout with 1-tap payment and upfront shipping"
+                  width={1024}
+                  height={682}
+                  sizes="(max-width: 768px) 100vw, 760px"
+                  quality={95}
+                  loading="lazy"
+                  className="h-auto w-full rounded-lg object-contain"
+                />
+              </div>
+              <figcaption className="border-t border-border/60 bg-surface/50 px-4 py-2 text-center text-xs font-medium text-muted-foreground">
+                Before vs. After Checkout: 1-tap express buttons (Shop Pay, Apple Pay), fewer form
+                fields, clear step progress, and upfront shipping eliminate drop-offs.
+              </figcaption>
+            </figure>
           </div>
 
           {/* Technique 3 */}
@@ -503,6 +544,26 @@ export default function Top10CroTechniquesPage() {
                 </span>
               </li>
             </ul>
+
+            {/* Visual Example: Social Proof & Validation */}
+            <figure className="mt-5 overflow-hidden rounded-xl border border-border/80 bg-surface/30">
+              <div className="relative w-full overflow-hidden p-2 sm:p-3 flex items-center justify-center">
+                <Image
+                  src="/images/shopify/blogs/top-10-cro/social-proof-elements.png"
+                  alt="High-converting social proof on a Shopify product page: star ratings, real-time activity notifications, user reviews, and media trust badges"
+                  width={1024}
+                  height={682}
+                  sizes="(max-width: 768px) 100vw, 760px"
+                  quality={95}
+                  loading="lazy"
+                  className="h-auto w-full rounded-lg object-contain"
+                />
+              </div>
+              <figcaption className="border-t border-border/60 bg-surface/50 px-4 py-2 text-center text-xs font-medium text-muted-foreground">
+                Social Proof in Action: Star ratings near CTA, real-time order notifications,
+                customer photo reviews, and press endorsements build instant buyer confidence.
+              </figcaption>
+            </figure>
           </div>
 
           {/* Technique 4 */}
@@ -543,6 +604,26 @@ export default function Top10CroTechniquesPage() {
                 </span>
               </li>
             </ul>
+
+            {/* Visual Example: Timed Value-First Exit-Intent Popup */}
+            <figure className="mt-5 overflow-hidden rounded-xl border border-border/80 bg-surface/30">
+              <div className="relative w-full overflow-hidden p-2 sm:p-3 flex items-center justify-center">
+                <Image
+                  src="/images/shopify/blogs/top-10-cro/exit-intent-popup.jpg"
+                  alt="High-converting exit-intent popup mockup offering an instant discount code with clear dismiss option"
+                  width={1024}
+                  height={768}
+                  sizes="(max-width: 768px) 100vw, 760px"
+                  quality={95}
+                  loading="lazy"
+                  className="h-auto w-full rounded-lg object-contain"
+                />
+              </div>
+              <figcaption className="border-t border-border/60 bg-surface/50 px-4 py-2 text-center text-xs font-medium text-muted-foreground">
+                Exit-Intent Optimization: Triggering a high-value discount or free shipping offer
+                when a shopper moves to exit recovers abandoned sessions.
+              </figcaption>
+            </figure>
           </div>
 
           {/* Technique 5 */}
@@ -583,6 +664,26 @@ export default function Top10CroTechniquesPage() {
                 </span>
               </li>
             </ul>
+
+            {/* Visual Example: Speed Optimization */}
+            <figure className="mt-5 overflow-hidden rounded-xl border border-border/80 bg-surface/30">
+              <div className="relative w-full overflow-hidden p-2 sm:p-3 flex items-center justify-center">
+                <Image
+                  src="/images/shopify/blogs/top-10-cro/site-speed-optimization.png"
+                  alt="Shopify site speed optimization illustration showing fast page load times and performance gains"
+                  width={1024}
+                  height={682}
+                  sizes="(max-width: 768px) 100vw, 760px"
+                  quality={95}
+                  loading="lazy"
+                  className="h-auto w-full rounded-lg object-contain"
+                />
+              </div>
+              <figcaption className="border-t border-border/60 bg-surface/50 px-4 py-2 text-center text-xs font-medium text-muted-foreground">
+                Speed Optimization: Faster server response, compressed media, and clean theme
+                scripts prevent bounce rates and preserve buyer momentum.
+              </figcaption>
+            </figure>
           </div>
 
           {/* Technique 6 */}
@@ -623,6 +724,26 @@ export default function Top10CroTechniquesPage() {
                 </span>
               </li>
             </ul>
+
+            {/* Visual Example: Personalized E-Commerce Experience */}
+            <figure className="mt-5 overflow-hidden rounded-xl border border-border/80 bg-surface/30">
+              <div className="relative w-full overflow-hidden p-2 sm:p-3 flex items-center justify-center">
+                <Image
+                  src="/images/shopify/blogs/top-10-cro/personalized-experience.png"
+                  alt="Personalized mobile e-commerce interface with AI recommendations, personalized greeting, and local currency pricing"
+                  width={1024}
+                  height={682}
+                  sizes="(max-width: 768px) 100vw, 760px"
+                  quality={95}
+                  loading="lazy"
+                  className="h-auto w-full rounded-lg object-contain"
+                />
+              </div>
+              <figcaption className="border-t border-border/60 bg-surface/50 px-4 py-2 text-center text-xs font-medium text-muted-foreground">
+                Personalization in Action: AI recommendations, customized returning-customer
+                greetings, and localized currency convert browse intent into sales.
+              </figcaption>
+            </figure>
           </div>
 
           {/* Technique 7 */}
