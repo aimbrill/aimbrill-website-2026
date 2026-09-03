@@ -68,7 +68,7 @@ export const metadata: Metadata = {
       {
         url: "/images/case-studies/rakhi-by-diorin/diorin-rebrand-hero-laptop-mockup.jpg",
         width: 1024,
-        height: 819,
+        height: 787,
         alt: ARTICLE_TITLE,
       },
     ],
@@ -168,22 +168,26 @@ function CaseStudyImage({
   alt,
   caption,
   priority = false,
+  maxWidth = "max-w-[480px]",
 }: {
   src: string;
   alt: string;
   caption: string;
   priority?: boolean;
+  maxWidth?: string;
 }) {
   return (
-    <figure className="not-prose my-6 sm:my-8 mx-auto w-full max-w-[480px] overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
+    <figure
+      className={`not-prose my-6 sm:my-8 mx-auto w-full ${maxWidth} overflow-hidden rounded-2xl border border-border bg-card shadow-sm`}
+    >
       <div className="relative w-full overflow-hidden bg-surface/30">
         <Image
           src={src}
           alt={alt}
-          width={1024}
-          height={1024}
-          sizes="(max-width: 768px) 100vw, 480px"
-          quality={90}
+          width={1200}
+          height={800}
+          sizes="(max-width: 768px) 100vw, 800px"
+          quality={95}
           priority={priority}
           loading={priority ? undefined : "lazy"}
           className="h-auto w-full object-contain"
@@ -395,6 +399,13 @@ export default function RakhiByDiorinCaseStudyPage() {
             Instead of redesigning the store based on assumptions, the team built a short,
             repeatable research process — and ran it three full times across the campaign.
           </p>
+
+          <CaseStudyImage
+            src="/images/case-studies/rakhi-by-diorin/the-3-cycle-research-process.png"
+            alt="The 3-Cycle Research Process: 01 Observe, 02 Improve, 03 Refine - A short, repeatable process run 3 times with real data for smarter decisions"
+            caption="The 3-Cycle Research Process: A short, repeatable loop of observation, data-driven improvement, and rapid refinement across 3 testing cycles."
+            maxWidth="max-w-3xl"
+          />
 
           {/* Step by Step Breakdown Cards */}
           <div className="not-prose my-8 space-y-4">
