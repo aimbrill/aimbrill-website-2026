@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { GuidePageShell, type GuideTocItem } from "@/components/content/GuidePageShell";
 import { GuideFaqAccordion, GuideFaqItem } from "@/components/content/GuideFaqAccordion";
 import { Footer } from "@/components/site/Footer";
-import { CheckCircle2, Sparkles, Zap, Smartphone, Search } from "lucide-react";
+import { CheckCircle2, Sparkles, Zap, Smartphone, Search, ExternalLink } from "lucide-react";
 
 const SITE = "https://aimbrill.com";
 const CANONICAL = "/top-10-cro-techniques-for-shopify-brands";
@@ -13,12 +14,12 @@ const CALENDLY_URL = "https://calendly.com/weupsell-experts/ai-campaign-popup";
 const ARTICLE_TITLE =
   "Top 10 Conversion Rate Optimization (CRO) Techniques for Shopify Brands (2026 Guide)";
 const ARTICLE_LEAD =
-  "Traffic without conversion is expensive. Learn the 10 proven CRO techniques for Shopify stores to turn your existing visitors into paying customers without spending more on ads.";
+  "Getting traffic to your Shopify store is only half the battle. If people are visiting your site but not buying, spending more on ads won't fix that — it'll just waste more money. The real fix is Conversion Rate Optimization (CRO): making the visitors you already have more likely to buy.";
 
 export const metadata: Metadata = {
   title: "Top 10 CRO Techniques for Shopify Brands (2026 Guide) | Aimbrill",
   description:
-    "Master Conversion Rate Optimization (CRO) for your Shopify store. 10 proven, actionable techniques with real examples, the PIE framework, and industry benchmarks.",
+    "Learn the top 10 conversion rate optimization (CRO) techniques for Shopify stores in 2026. Plain language, real examples, PIE framework, benchmarks, and actionable fixes.",
   alternates: { canonical: CANONICAL },
   keywords: [
     "Shopify CRO techniques",
@@ -28,7 +29,8 @@ export const metadata: Metadata = {
     "ecommerce conversion optimization",
     "PIE framework ecommerce",
     "Shopify checkout optimization",
-    "ecommerce social proof",
+    "Shopify social proof",
+    "Shopify mobile CRO",
   ],
   robots: {
     index: true,
@@ -68,25 +70,25 @@ const faqs = [
     id: "good-conversion-rate",
     question: "What is a good conversion rate for a Shopify store?",
     answer:
-      "Anything above roughly 3% is considered strong for most categories, though it varies by niche — food and beverage brands often see 5–6%, beauty brands around 4%, while luxury or fine jewellery brands may sit under 1%.",
+      "It depends on your industry — anywhere from under 1% (luxury/jewelry) to 5–6% (food & beverage) can be considered healthy. Compare yourself to your category, not to a random number online.",
   },
   {
     id: "results-timeline",
     question: "How long does it take to see results from CRO?",
     answer:
-      "Small fixes like CTA wording or sticky add-to-cart bars can show measurable results within a couple of weeks. Bigger structural changes, like a checkout flow redesign or product page rebuild, usually need 4–12 weeks of testing to produce statistically reliable data.",
+      "Small fixes (like checkout friction or page speed) can show results within weeks. Bigger changes, like personalization or ongoing A/B testing, take longer to fully pay off — usually a few months of consistent effort.",
   },
   {
     id: "small-stores-benefit",
     question: "Do small Shopify stores really benefit from CRO?",
     answer:
-      "Yes — arguably more than large stores. CRO lets smaller brands maximize revenue from their existing organic and paid traffic rather than overspending on customer acquisition costs (CAC).",
+      "Yes — arguably more than large stores, since small stores often can't afford to keep spending more on ads. Improving conversion rate is usually the cheapest way to grow revenue.",
   },
   {
     id: "one-time-project",
     question: "Is CRO a one-time project?",
     answer:
-      "No. CRO is an ongoing habit of testing, measuring, and refining. Customer behavior, product offerings, and market trends continually evolve, so continuous optimization keeps your store performing at its peak.",
+      "No. Customer behavior, trends, and your product catalog keep changing, so CRO works best as an ongoing habit — test, learn, improve, repeat.",
   },
 ];
 
@@ -123,27 +125,27 @@ const faqJsonLd = {
 const TOC: GuideTocItem[] = [
   { id: "what-is-cro", label: "What Is CRO, Really?" },
   { id: "step-1-know-your-rate", label: "Step 1: Know Your Current Rate" },
-  { id: "step-2-pie-framework", label: "Step 2: The PIE Prioritization Framework" },
+  { id: "step-2-pie-framework", label: "Step 2: The PIE Framework" },
   {
     id: "top-10-techniques",
     label: "Top 10 CRO Techniques",
     children: [
       { id: "tech-1-product-pages", label: "1. Clear Product Pages" },
-      { id: "tech-2-checkout-friction", label: "2. Frictionless Checkout" },
+      { id: "tech-2-checkout-friction", label: "2. Shopify Checkout Friction" },
       { id: "tech-3-social-proof", label: "3. Social Proof" },
-      { id: "tech-4-exit-intent", label: "4. Smart Exit-Intent" },
+      { id: "tech-4-popups", label: "4. Popups Done Right" },
       { id: "tech-5-site-speed", label: "5. Fast Site Speed" },
       { id: "tech-6-personalization", label: "6. Personalization" },
       { id: "tech-7-mobile-first", label: "7. Mobile-First Design" },
-      { id: "tech-8-honest-urgency", label: "8. Honest Urgency" },
-      { id: "tech-9-continuous-testing", label: "9. Continuous Testing" },
-      { id: "tech-10-easy-discovery", label: "10. Frictionless Discovery" },
+      { id: "tech-8-announcement-bar", label: "8. Honest Announcement Bar" },
+      { id: "tech-9-simplify-ctas", label: "9. Simplify CTAs & A/B Test" },
+      { id: "tech-10-easy-discovery", label: "10. Seamless Product Discovery" },
     ],
   },
-  { id: "tools-overview", label: "Essential CRO Tools" },
+  { id: "tools-overview", label: "Quick Note on CRO Tools" },
   { id: "cro-and-seo", label: "CRO & SEO Work Together" },
-  { id: "final-thoughts", label: "Final Thoughts & Recap" },
-  { id: "faq", label: "FAQ" },
+  { id: "final-thoughts", label: "Final Thoughts & Quick Recap" },
+  { id: "faq", label: "Frequently Asked Questions" },
 ];
 
 export default function Top10CroTechniquesPage() {
@@ -177,83 +179,71 @@ export default function Top10CroTechniquesPage() {
             external: true,
           }}
         >
+          <h2 id="what-is-cro">What Is CRO, Really?</h2>
           <p>
-            If you run a Shopify store, getting traffic is only half the job. The real growth lever
-            most brands leave on the table is <strong>conversion rate optimization (CRO)</strong> —
-            turning more of the visitors you already have into paying customers, without spending an
-            extra rupee or dollar on ads.
+            In simple words: <strong>CRO</strong> means making more of your visitors do what you
+            want them to do — usually, complete a purchase.
           </p>
           <p>
-            This guide walks through everything a Shopify merchant needs to actually understand and
-            apply CRO: what it means, how to measure it, how to decide what to fix first, and ten
-            proven techniques you can start using today — explained simply, with real examples, so
-            anyone reading it (not just marketers) can follow along.
-          </p>
-
-          <h2 id="what-is-cro">What Is Conversion Rate Optimization, Really?</h2>
-          <p>
-            In plain terms: <strong>CRO</strong> is the process of making more of your website
-            visitors do the thing you want them to do — usually, buy something.
-          </p>
-          <p>
-            It&apos;s <strong>not</strong> about slapping on a bigger &ldquo;Buy Now&rdquo; button
-            and hoping for the best. Real CRO looks at the entire customer journey — from the moment
-            someone lands on your homepage to the second they hit &ldquo;Place Order&rdquo; — and
-            removes friction at every step along the way.
+            It&apos;s not about changing the color of your &ldquo;Buy Now&rdquo; button and hoping
+            for magic. Real CRO looks at the entire journey a customer takes — from landing on your
+            homepage to clicking &ldquo;Place Order&rdquo; — and removes anything that slows them
+            down, confuses them, or makes them doubt their decision.
           </p>
 
           <div className="not-prose my-6 rounded-2xl border border-border bg-surface p-5 space-y-3">
             <h3 className="text-sm font-bold uppercase tracking-wider text-ink flex items-center gap-2">
-              <Sparkles className="h-4 w-4 text-lime-600 dark:text-lime-400" />
-              Common CRO Myths Cleared Up
+              <Sparkles className="h-4 w-4 text-lime-600 dark:text-lime-400" />A Few Myths to Clear
+              Up First
             </h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li className="flex items-start gap-2">
-                <span className="font-bold text-red-500">✕</span>
+                <span className="font-bold text-red-500 shrink-0">✕</span>
                 <span>
-                  <strong>CRO isn&apos;t just A/B testing:</strong> A/B testing (comparing two
-                  versions of a page) is one <em>tool</em> inside CRO, not the whole strategy.
+                  <strong>CRO is not just A/B testing:</strong> Testing two versions of a page is
+                  one tool inside CRO — not the whole strategy.
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="font-bold text-red-500">✕</span>
+                <span className="font-bold text-red-500 shrink-0">✕</span>
                 <span>
-                  <strong>CRO isn&apos;t only about the checkout page:</strong> Product pages,
-                  navigation, search, blog content, and your homepage all influence whether someone
-                  buys.
+                  <strong>CRO is not only about checkout:</strong> Your product pages, search bar,
+                  navigation, and even your blog content all affect whether someone buys.
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="font-bold text-red-500">✕</span>
+                <span className="font-bold text-red-500 shrink-0">✕</span>
                 <span>
-                  <strong>CRO isn&apos;t about tricking people into converting:</strong> Fake
-                  urgency or hidden fees might spike short-term numbers, but they destroy trust and
-                  kill repeat purchases.
+                  <strong>CRO is not about tricking people:</strong> Fake countdown timers or hidden
+                  fees might boost sales for a week, but they destroy trust — and trust is what
+                  brings customers back.
                 </span>
               </li>
             </ul>
           </div>
 
           <h2 id="step-1-know-your-rate">Step 1: Know Your Current Conversion Rate</h2>
-          <p>You can&apos;t improve what you don&apos;t measure. The formula is simple:</p>
+          <p>
+            You can&apos;t improve something you&apos;re not measuring. Here&apos;s the formula:
+          </p>
 
           <div className="not-prose my-6 rounded-2xl border border-border bg-card p-5 text-center shadow-sm">
             <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
               Core Calculation
             </div>
             <div className="mt-2 font-mono text-base sm:text-xl font-bold text-ink">
-              Conversion Rate (%) = (Total Orders ÷ Total Sessions) × 100
+              Conversion Rate (%) = (Total Orders ÷ Total Website Visits) × 100
             </div>
             <p className="mt-2 text-xs text-muted-foreground">
-              <em>Example:</em> If your store had 40 orders from 2,000 visits last month, your
-              conversion rate is <strong>2.0%</strong>.
+              <strong>Example:</strong> If your store got 2,000 visitors last month and 40 of them
+              placed an order, your conversion rate is: (40 ÷ 2,000) × 100 = <strong>2.0%</strong>.
             </p>
           </div>
 
-          <h3>What&apos;s a &ldquo;good&rdquo; conversion rate?</h3>
+          <h3>What counts as a &ldquo;good&rdquo; rate?</h3>
           <p>
-            It depends heavily on your product category, so don&apos;t compare yourself to a random
-            number you saw online. Rough industry benchmarks look like this:
+            It depends on what you sell — comparing a jewelry store to a snack brand doesn&apos;t
+            make sense. Rough benchmarks:
           </p>
 
           {/* Industry Benchmarks Table */}
@@ -261,14 +251,14 @@ export default function Top10CroTechniquesPage() {
             <table className="w-full text-left text-sm">
               <thead className="border-b border-border bg-surface text-xs font-bold uppercase tracking-wider text-muted-foreground">
                 <tr>
-                  <th className="px-5 py-3.5">Industry / Category</th>
+                  <th className="px-5 py-3.5">Industry</th>
                   <th className="px-5 py-3.5">Typical Conversion Rate</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-border/60">
                 <tr>
                   <td className="px-5 py-3 font-semibold text-ink">Food & beverage</td>
-                  <td className="px-5 py-3 font-medium text-lime-700 dark:text-lime-400">~5–6%</td>
+                  <td className="px-5 py-3 font-medium text-lime-700 dark:text-lime-400">5–6%</td>
                 </tr>
                 <tr>
                   <td className="px-5 py-3 font-semibold text-ink">Beauty & personal care</td>
@@ -276,14 +266,12 @@ export default function Top10CroTechniquesPage() {
                 </tr>
                 <tr>
                   <td className="px-5 py-3 font-semibold text-ink">Fashion & apparel</td>
-                  <td className="px-5 py-3 font-medium text-lime-700 dark:text-lime-400">
-                    ~2.5–3%
-                  </td>
+                  <td className="px-5 py-3 font-medium text-lime-700 dark:text-lime-400">2.5–3%</td>
                 </tr>
                 <tr>
                   <td className="px-5 py-3 font-semibold text-ink">Home & furniture</td>
                   <td className="px-5 py-3 font-medium text-amber-600 dark:text-amber-400">
-                    ~1–1.5%
+                    1–1.5%
                   </td>
                 </tr>
                 <tr>
@@ -295,15 +283,14 @@ export default function Top10CroTechniquesPage() {
           </div>
 
           <p>
-            If you&apos;re sitting above your category average, you&apos;re already doing well. If
-            you&apos;re below it, that&apos;s exactly where CRO effort pays off fastest.
+            If you&apos;re above your category&apos;s average, you&apos;re doing well. If
+            you&apos;re below it, that&apos;s exactly where fixing things will pay off fastest.
           </p>
 
           <h2 id="step-2-pie-framework">Step 2: Decide What to Fix First (The PIE Framework)</h2>
           <p>
-            Every team has opinions about what to change — a simple scoring system keeps decisions
-            objective instead of based on whoever argues loudest. Score each idea from 1–10 on three
-            factors:
+            Every team has opinions about what should change first. Instead of going with whoever
+            argues the loudest, score each idea from 1–10 on three things:
           </p>
 
           <div className="not-prose my-6 grid gap-4 sm:grid-cols-3">
@@ -315,7 +302,7 @@ export default function Top10CroTechniquesPage() {
                 Potential
               </div>
               <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-                How much room for improvement is there on this specific page or step?
+                How much room for improvement is there here?
               </p>
             </div>
 
@@ -327,7 +314,7 @@ export default function Top10CroTechniquesPage() {
                 Importance
               </div>
               <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-                How much valuable traffic or high-intent revenue passes through this page?
+                How much traffic or revenue actually passes through this page?
               </p>
             </div>
 
@@ -339,22 +326,18 @@ export default function Top10CroTechniquesPage() {
                 Ease
               </div>
               <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-                How quickly, cheaply, and reliably can you actually implement and test the fix?
+                How quickly and cheaply can you actually build and test this fix?
               </p>
             </div>
           </div>
 
           <p>
-            Average the three scores per idea and tackle the highest scorers first. A quick,
-            high-traffic checkout fix will almost always beat a full homepage redesign in terms of
-            return on effort.
+            Average the three scores and tackle the highest-scoring ideas first. A small fix on your
+            checkout page (which every buyer sees) will usually beat a full homepage redesign in
+            terms of results per hour spent.
           </p>
 
-          <h2 id="top-10-techniques">Top 10 Proven CRO Techniques for Shopify Brands</h2>
-          <p>
-            With that foundation in place, here are the ten techniques that move the needle most for
-            Shopify stores:
-          </p>
+          <h2 id="top-10-techniques">The Top 10 CRO Techniques for Shopify Stores</h2>
 
           {/* Technique 1 */}
           <div className="not-prose my-6 rounded-2xl border border-border bg-card p-6 shadow-sm">
@@ -368,46 +351,72 @@ export default function Top10CroTechniquesPage() {
               Make Your Product Pages Impossible to Misunderstand
             </h3>
             <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-              Your product page (PDP) is where the buying decision actually happens. If a visitor
-              has to guess anything important, they will bounce instead of asking questions.
+              Your product page is where the buying decision actually happens. If a visitor has to
+              guess anything — the size, the price, whether it&apos;s good quality — they&apos;ll
+              leave instead of asking.
             </p>
-            <ul className="mt-3 space-y-1.5 text-sm text-ink font-medium">
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
-                <span>
-                  <strong>High-quality photos:</strong> Include multiple angles, zoom capability,
-                  and real lifestyle shots alongside clean studio images.
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
-                <span>
-                  <strong>Benefit-first descriptions:</strong> Focus on what the product does for
-                  the buyer rather than dry technical specifications alone.
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
-                <span>
-                  <strong>Clear, upfront pricing:</strong> Show original vs. discounted price
-                  plainly without confusing calculations.
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
-                <span>
-                  <strong>Visible trust signals:</strong> Place badges for secure checkout, easy
-                  returns, warranty, and certifications right near the CTA.
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
-                <span>
-                  <strong>Size charts & comparison tables:</strong> Eliminate sizing doubts before
-                  they lead to cart abandonment.
-                </span>
-              </li>
-            </ul>
+
+            <div className="mt-4">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-ink mb-2">
+                What to fix:
+              </h4>
+              <ul className="space-y-2 text-sm text-ink font-medium">
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
+                  <span>
+                    <strong>Photos:</strong> Show multiple angles, allow zoom, and mix clean studio
+                    shots with real &ldquo;in-use&rdquo; lifestyle photos.
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
+                  <span>
+                    <strong>Descriptions:</strong> Write about what the product does for the
+                    customer, not just its specs. Instead of &ldquo;100% cotton, 180 GSM,&rdquo; try
+                    &ldquo;Soft, breathable cotton that feels great even in summer heat.&rdquo;
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
+                  <span>
+                    <strong>Pricing:</strong> Show the original price and discounted price clearly —
+                    don&apos;t make people do math.
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
+                  <span>
+                    <strong>Trust badges:</strong> Put &ldquo;secure checkout,&rdquo; &ldquo;easy
+                    7-day returns,&rdquo; or &ldquo;1-year warranty&rdquo; near the Buy button, not
+                    buried in the footer.
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
+                  <span>
+                    <strong>Size charts:</strong> If sizing confusion exists, add a clear chart so
+                    people don&apos;t abandon the page out of doubt.
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="mt-4 rounded-xl border border-border/80 bg-surface/60 p-3.5 text-xs text-muted-foreground leading-relaxed">
+              <strong className="text-ink">Example:</strong> A clothing brand that added a size
+              chart with body measurements (not just S/M/L) saw fewer returns and more first-time
+              buyers, because customers stopped guessing. You can set this up in minutes without any
+              coding using an app like{" "}
+              <a
+                href="https://apps.shopify.com/kiwi-sizing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-0.5 font-semibold text-ink underline decoration-lime-500/60 hover:text-lime-600 dark:hover:text-lime-400"
+              >
+                Kiwi Size Chart & Recommender
+                <ExternalLink className="h-3 w-3 inline" />
+              </a>
+              , which builds clean, customizable size charts with automatic unit conversion.
+            </div>
 
             {/* Visual Example: Confusing vs Clear Product Page */}
             <figure className="mt-5 overflow-hidden rounded-xl border border-border/80 bg-surface/30">
@@ -439,43 +448,136 @@ export default function Top10CroTechniquesPage() {
               <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-lime text-ink font-extrabold text-sm">
                 2
               </span>
-              Remove Every Bit of Friction from Checkout
+              Use Shopify Checkout to Remove Every Bit of Friction
             </h3>
             <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-              Cart abandonment usually comes down to one thing: checkout feels slow, confusing, or
-              untrustworthy. Speed and certainty matter most at the exact moment someone is deciding
-              to pay.
+              Most cart abandonment happens because checkout feels slow or confusing right at the
+              moment someone was ready to pay — the longer they linger, the more likely they are to
+              have second thoughts.
             </p>
-            <ul className="mt-3 space-y-1.5 text-sm text-ink font-medium">
+            <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+              <a
+                href="https://www.shopify.com/checkout"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-ink underline decoration-lime-500/60 hover:text-lime-600 dark:hover:text-lime-400 inline-flex items-center gap-0.5"
+              >
+                Shopify Checkout
+                <ExternalLink className="h-3 w-3 inline" />
+              </a>{" "}
+              is already built to reduce this friction:
+            </p>
+
+            <ul className="mt-3 space-y-2 text-sm text-ink font-medium">
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
                 <span>
-                  <strong>Enable Accelerated Checkouts:</strong> Activate Shop Pay, Apple Pay, and
-                  Google Pay so returning shoppers can buy in a single tap.
+                  <strong>Custom branding:</strong> Match the checkout&apos;s look to your store, so
+                  it never feels like a redirect.
                 </span>
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
                 <span>
-                  <strong>Cut unnecessary form fields:</strong> Remove superfluous inputs like
-                  company name or secondary address lines unless strictly required.
+                  <strong>Multiple payment methods:</strong> Cards, gift cards, local options, and
+                  installments in eligible markets.
                 </span>
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
                 <span>
-                  <strong>Show a clear progress indicator:</strong> Keep shoppers confident about
-                  how many steps remain until order completion.
+                  <strong>One-click checkout:</strong> Once a customer has used Shop Pay before,
+                  their address and card details are remembered and autofilled automatically — no
+                  retyping needed. For Indian D2C brands specifically, apps like{" "}
+                  <a
+                    href="https://apps.shopify.com/kwikcheckout"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-semibold text-ink underline decoration-lime-500/60 hover:text-lime-600 dark:hover:text-lime-400 inline-flex items-center gap-0.5"
+                  >
+                    GoKwik (Kwik COD & Checkout)
+                    <ExternalLink className="h-3 w-3 inline" />
+                  </a>{" "}
+                  and{" "}
+                  <a
+                    href="https://apps.shopify.com/shiprocket-smart-address"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-semibold text-ink underline decoration-lime-500/60 hover:text-lime-600 dark:hover:text-lime-400 inline-flex items-center gap-0.5"
+                  >
+                    Shiprocket Address Prefill
+                    <ExternalLink className="h-3 w-3 inline" />
+                  </a>{" "}
+                  offer similar OTP-based one-click checkout with address autofill, and{" "}
+                  <a
+                    href="https://ai.weupsell.com/login"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-semibold text-ink underline decoration-lime-500/60 hover:text-lime-600 dark:hover:text-lime-400 inline-flex items-center gap-0.5"
+                  >
+                    WeUpsell
+                    <ExternalLink className="h-3 w-3 inline" />
+                  </a>{" "}
+                  also provides one-click checkout while layering relevant upsells right at that
+                  same fast-checkout moment.
                 </span>
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
                 <span>
-                  <strong>Display shipping costs early:</strong> Never shock a customer with
-                  unexpected shipping or handling fees on the final step.
+                  <strong>Flexible fulfillment:</strong> Delivery, shipping, or pickup, based on
+                  what suits the buyer.
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
+                <span>
+                  <strong>Abandoned checkout tracking:</strong> See exactly where people drop off
+                  and follow up with recovery emails.
                 </span>
               </li>
             </ul>
+
+            <div className="mt-4">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-ink mb-2">
+                A few extra fixes that help too:
+              </h4>
+              <ul className="space-y-1.5 text-sm text-muted-foreground">
+                <li className="flex items-start gap-2">
+                  <span className="text-lime-600 dark:text-lime-400 font-bold">•</span>
+                  <span>
+                    Remove unnecessary form fields (does anyone really need &ldquo;Company
+                    Name&rdquo;?).
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-lime-600 dark:text-lime-400 font-bold">•</span>
+                  <span>Show a simple progress indicator like &ldquo;Step 2 of 3.&rdquo;</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-lime-600 dark:text-lime-400 font-bold">•</span>
+                  <span>
+                    Display shipping costs early instead of surprising people at the last step.
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="mt-4 rounded-xl border border-border/80 bg-surface/60 p-3.5 text-xs text-muted-foreground leading-relaxed">
+              <strong className="text-ink">Example:</strong>{" "}
+              <a
+                href="https://kotn.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-ink underline decoration-lime-500/60 hover:text-lime-600 dark:hover:text-lime-400 inline-flex items-center gap-0.5"
+              >
+                Kotn
+                <ExternalLink className="h-3 w-3 inline" />
+              </a>{" "}
+              found that most customers were discovering products on mobile — and a long checkout
+              form meant lost sales. Turning on Shop Pay made checkout a one-tap experience even for
+              first-time buyers, since autofill removed the need to type in an address at all.
+            </div>
 
             {/* Visual Example: Friction-Filled vs Frictionless Checkout */}
             <figure className="mt-5 overflow-hidden rounded-xl border border-border/80 bg-surface/30">
@@ -510,40 +612,92 @@ export default function Top10CroTechniquesPage() {
               Let Other Customers Do the Convincing (Social Proof)
             </h3>
             <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-              Shoppers trust authentic reviews far more than polished marketing claims. This is
-              especially critical in beauty, skincare, fashion, and wellness where buyers look for
-              social validation.
+              People trust other buyers more than they trust your marketing copy. This matters even
+              more for beauty, skincare, fashion, and wellness products, where shoppers actively
+              look for proof before buying.
             </p>
-            <ul className="mt-3 space-y-1.5 text-sm text-ink font-medium">
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
-                <span>
-                  <strong>Star ratings & reviews near CTA:</strong> Place aggregated star ratings
-                  right under the product title and review highlights beside the buy button.
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
-                <span>
-                  <strong>User-generated photos & videos (UGC):</strong> Real customer photos
-                  provide instant authenticity.
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
-                <span>
-                  <strong>Real-time activity indicators:</strong> Subtle notifications such as
-                  &ldquo;18 shoppers bought this in the last 24h&rdquo;.
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
-                <span>
-                  <strong>Press & influencer mentions:</strong> Showcase credible media logos or
-                  expert endorsements.
-                </span>
-              </li>
-            </ul>
+
+            <div className="mt-4">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-ink mb-2">
+                What to add:
+              </h4>
+              <ul className="space-y-1.5 text-sm text-ink font-medium">
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
+                  <span>
+                    Star ratings near the Buy button — not just on a separate reviews tab.
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
+                  <span>
+                    Photos and videos from real customers (UGC) — these feel far more authentic than
+                    studio shots.
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
+                  <span>
+                    Real-time activity notices, like &ldquo;12 people bought this in the last 24
+                    hours&rdquo; — but only if it&apos;s true.
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
+                  <span>Press or influencer mentions, if you have them.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="mt-4 rounded-xl border border-border/80 bg-surface/60 p-3.5 text-xs text-muted-foreground leading-relaxed space-y-1.5">
+              <p>
+                <strong className="text-ink">Example:</strong> A skincare brand that added real
+                customer photos next to written reviews saw people scroll longer and add to cart
+                more often — seeing someone else&apos;s skin results built more confidence than any
+                product description could.
+              </p>
+              <p>
+                Apps like{" "}
+                <a
+                  href="https://apps.shopify.com/judgeme"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-ink underline decoration-lime-500/60 hover:text-lime-600 dark:hover:text-lime-400"
+                >
+                  Judge.me
+                </a>{" "}
+                and{" "}
+                <a
+                  href="https://apps.shopify.com/loox"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-ink underline decoration-lime-500/60 hover:text-lime-600 dark:hover:text-lime-400"
+                >
+                  Loox
+                </a>{" "}
+                make it easy to collect and display unlimited photo and video reviews right on your
+                product page, while{" "}
+                <a
+                  href="https://apps.shopify.com/yotpo-social-reviews"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-ink underline decoration-lime-500/60 hover:text-lime-600 dark:hover:text-lime-400"
+                >
+                  Yotpo
+                </a>{" "}
+                adds loyalty and referral tools on top of reviews, and{" "}
+                <a
+                  href="https://apps.shopify.com/notify"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-ink underline decoration-lime-500/60 hover:text-lime-600 dark:hover:text-lime-400"
+                >
+                  Fomo
+                </a>{" "}
+                shows real-time purchase notifications like &ldquo;Someone in Mumbai just bought
+                this&rdquo; for a gentle sense of urgency alongside the proof.
+              </p>
+            </div>
 
             {/* Visual Example: Social Proof & Validation */}
             <figure className="mt-5 overflow-hidden rounded-xl border border-border/80 bg-surface/30">
@@ -569,41 +723,103 @@ export default function Top10CroTechniquesPage() {
           {/* Technique 4 */}
           <div className="not-prose my-6 rounded-2xl border border-border bg-card p-6 shadow-sm">
             <h3
-              id="tech-4-exit-intent"
+              id="tech-4-popups"
               className="font-display text-lg font-bold text-ink flex items-center gap-2"
             >
               <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-lime text-ink font-extrabold text-sm">
                 4
               </span>
-              Use Exit-Intent Pop-Ups the Right Way
+              Use Popups the Right Way
             </h3>
             <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-              A pop-up that appears just as someone is about to abandon your site can recover
-              otherwise lost revenue — provided it delivers real value instead of generic annoyance.
+              A popup is a small box that appears on top of your page to grab a visitor&apos;s
+              attention — usually to highlight a discount code, a giveaway, or something
+              time-sensitive. Used well, popups can turn a browsing visitor into a buyer or at least
+              capture their email so you can follow up later. Used badly, they just feel annoying
+              and push people away.
             </p>
-            <ul className="mt-3 space-y-1.5 text-sm text-ink font-medium">
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
-                <span>
-                  <strong>Trigger on genuine exit behavior:</strong> Never fire popups immediately
-                  on page load; wait until mouse movement indicates intent to close or switch tabs.
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
-                <span>
-                  <strong>Offer genuine value:</strong> Provide an instant discount code, free
-                  shipping threshold, or gift rather than a generic &ldquo;Wait!&rdquo; banner.
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
-                <span>
-                  <strong>Mobile-optimized dismiss controls:</strong> Ensure the close button is
-                  large and effortless to tap on smartphones.
-                </span>
-              </li>
-            </ul>
+
+            <div className="mt-4">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-ink mb-2">
+                How to do it right:
+              </h4>
+              <ul className="space-y-2 text-sm text-ink font-medium">
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
+                  <span>
+                    <strong>Trigger on behavior:</strong> Don&apos;t fire it the instant the page
+                    loads. Trigger it based on real visitor behavior — for example, after
+                    they&apos;ve scrolled a bit, spent some time on the page, or show signs of
+                    leaving — not the moment they arrive.
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
+                  <span>
+                    <strong>Offer something valuable:</strong> A discount code, free shipping, or
+                    entry into a giveaway — not just &ldquo;Wait! Don&apos;t leave!&rdquo;
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
+                  <span>
+                    <strong>Make it easy to close on mobile:</strong> Include a large, obvious
+                    &ldquo;X&rdquo; button so it doesn&apos;t feel like a trap.
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
+                  <span>
+                    <strong>Use it to build your list:</strong> A popup offering a discount in
+                    exchange for an email address is one of the simplest ways to build your
+                    marketing audience.
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="mt-4 rounded-xl border border-border/80 bg-surface/60 p-3.5 text-xs text-muted-foreground leading-relaxed space-y-1.5">
+              <p>
+                <strong className="text-ink">Example:</strong> Instead of a generic
+                &ldquo;Don&apos;t go!&rdquo; message, a store offering &ldquo;Get 10% off if you
+                complete your order in the next 10 minutes&rdquo; converts far more visitors,
+                because it gives them a real reason to act rather than just guilt-tripping them into
+                staying.
+              </p>
+              <p>
+                Apps like{" "}
+                <a
+                  href="https://apps.shopify.com/privy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-ink underline decoration-lime-500/60 hover:text-lime-600 dark:hover:text-lime-400"
+                >
+                  Privy
+                </a>{" "}
+                and{" "}
+                <a
+                  href="https://apps.shopify.com/powr-popup"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-ink underline decoration-lime-500/60 hover:text-lime-600 dark:hover:text-lime-400"
+                >
+                  POWR Popup
+                </a>{" "}
+                make it simple to build these kinds of offer-based, easy-to-close popups, and{" "}
+                <a
+                  href="https://www.weupsell.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-ink underline decoration-lime-500/60 hover:text-lime-600 dark:hover:text-lime-400 inline-flex items-center gap-0.5"
+                >
+                  WeUpsell
+                  <ExternalLink className="h-3 w-3 inline" />
+                </a>{" "}
+                takes it a step further by pairing the popup or cart-drawer offer with a smart
+                upsell, so the discount you show at the right moment also nudges the customer toward
+                a bigger order.
+              </p>
+            </div>
 
             {/* Visual Example: Timed Value-First Exit-Intent Popup */}
             <figure className="mt-5 overflow-hidden rounded-xl border border-border/80 bg-surface/30">
@@ -638,32 +854,63 @@ export default function Top10CroTechniquesPage() {
               Speed Up Your Site
             </h3>
             <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-              Every extra second of load time directly chips away at your conversion rate.
-              Fast-loading pages build confidence and keep impatient shoppers engaged.
+              Every extra second your site takes to load quietly chips away at your conversion rate.
+              A slow site feels untrustworthy, even if the products are great.
             </p>
-            <ul className="mt-3 space-y-1.5 text-sm text-ink font-medium">
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
-                <span>
-                  <strong>Compress images:</strong> Use modern formats (WebP/AVIF) and compress hero
-                  banners before uploading.
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
-                <span>
-                  <strong>Audit unused apps:</strong> Uninstall inactive Shopify apps that inject
-                  render-blocking JavaScript.
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
-                <span>
-                  <strong>Enable lazy loading:</strong> Ensure images and video embeds below the
-                  fold only load when scrolled into view.
-                </span>
-              </li>
-            </ul>
+
+            <div className="mt-4">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-ink mb-2">
+                What to fix:
+              </h4>
+              <ul className="space-y-1.5 text-sm text-ink font-medium">
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
+                  <span>
+                    <strong>Compress images:</strong> Use WebP or AVIF formats instead of large PNGs
+                    or JPEGs.
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
+                  <span>
+                    <strong>Remove unused apps:</strong> Old Shopify apps you&apos;re not using can
+                    still be loading scripts in the background, slowing everything down.
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
+                  <span>
+                    <strong>Turn on lazy loading:</strong> Images and videos below the fold should
+                    only load once someone scrolls to them.
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="mt-4 rounded-xl border border-border/80 bg-surface/60 p-3.5 text-xs text-muted-foreground leading-relaxed">
+              <strong className="text-ink">Example:</strong> A store that compressed its homepage
+              banner images from 4MB to under 300KB saw noticeably faster load times and fewer
+              people bouncing before the page even finished loading. Free tools like{" "}
+              <a
+                href="https://developers.google.com/speed/pagespeed/insights/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-ink underline decoration-lime-500/60 hover:text-lime-600 dark:hover:text-lime-400"
+              >
+                Google PageSpeed Insights
+              </a>{" "}
+              and{" "}
+              <a
+                href="https://developer.chrome.com/docs/lighthouse/overview/?hl=en"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-ink underline decoration-lime-500/60 hover:text-lime-600 dark:hover:text-lime-400"
+              >
+                Google Lighthouse
+              </a>{" "}
+              (built into Chrome DevTools) will score your page speed and tell you exactly
+              what&apos;s slowing things down.
+            </div>
 
             {/* Visual Example: Speed Optimization */}
             <figure className="mt-5 overflow-hidden rounded-xl border border-border/80 bg-surface/30">
@@ -698,32 +945,68 @@ export default function Top10CroTechniquesPage() {
               Personalize the Shopping Experience
             </h3>
             <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-              A generic storefront converts poorly compared to one that adapts to individual
-              customer preferences.
+              A store that feels the same to every visitor converts worse than one that adapts based
+              on who&apos;s browsing.
             </p>
-            <ul className="mt-3 space-y-1.5 text-sm text-ink font-medium">
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
-                <span>
-                  <strong>AI recommendations:</strong> Display &ldquo;Frequently Bought
-                  Together&rdquo; or tailored product bundles on product and cart drawer pages.
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
-                <span>
-                  <strong>Returning vs. new visitor dynamic content:</strong> Greet returning
-                  customers with recently viewed items or saved cart items.
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
-                <span>
-                  <strong>Multi-currency & localized pricing:</strong> Automatically display local
-                  currencies for international shoppers.
-                </span>
-              </li>
-            </ul>
+
+            <div className="mt-4">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-ink mb-2">
+                What to add:
+              </h4>
+              <ul className="space-y-1.5 text-sm text-ink font-medium">
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
+                  <span>
+                    &ldquo;Frequently bought together&rdquo; suggestions on product and cart pages.
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
+                  <span>
+                    Different content for returning visitors, like showing their recently viewed
+                    items.
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
+                  <span>
+                    Local currency and pricing for international shoppers, so they don&apos;t have
+                    to convert prices in their head.
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="mt-4 rounded-xl border border-border/80 bg-surface/60 p-3.5 text-xs text-muted-foreground leading-relaxed space-y-1.5">
+              <p>
+                <strong className="text-ink">Example:</strong> A store showing &ldquo;Customers who
+                bought this also bought...&rdquo; on the cart page increased average order value,
+                because it suggested relevant add-ons at exactly the right moment.
+              </p>
+              <p>
+                An app like{" "}
+                <a
+                  href="https://apps.shopify.com/reconvert-upsell-cross-sell"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-ink underline decoration-lime-500/60 hover:text-lime-600 dark:hover:text-lime-400"
+                >
+                  ReConvert Upsell & Cross Sell
+                </a>{" "}
+                can show these personalized upsells on the cart, checkout, and thank-you pages
+                automatically, while{" "}
+                <a
+                  href="https://apps.shopify.com/klaviyo-email-marketing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-ink underline decoration-lime-500/60 hover:text-lime-600 dark:hover:text-lime-400"
+                >
+                  Klaviyo
+                </a>{" "}
+                lets you send personalized emails and SMS based on what a customer browsed or
+                bought, including recently-viewed and abandoned-cart follow-ups.
+              </p>
+            </div>
 
             {/* Visual Example: Personalized E-Commerce Experience */}
             <figure className="mt-5 overflow-hidden rounded-xl border border-border/80 bg-surface/30">
@@ -755,115 +1038,299 @@ export default function Top10CroTechniquesPage() {
               <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-lime text-ink font-extrabold text-sm">
                 7
               </span>
-              Design Mobile-First, Not Mobile-Friendly
+              Design Mobile-First, Not Just Mobile-Friendly
             </h3>
             <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-              Mobile accounts for 65–75% of e-commerce traffic for Shopify stores. Mobile can no
-              longer be an afterthought or scaled-down desktop view.
+              More than 62% of global web traffic now comes from smartphones and tablets, which
+              means a mobile-friendly website isn&apos;t a nice-to-have anymore — it&apos;s a must.
+              For most Shopify stores, mobile traffic is even higher than that. This means mobile
+              shouldn&apos;t be an afterthought — it should be the main design you build for, with
+              the desktop version treated as the secondary layout.
             </p>
-            <ul className="mt-3 space-y-1.5 text-sm text-ink font-medium">
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
-                <span>
-                  <strong>Large tap targets:</strong> Make all buttons, quantity selectors, and
-                  filters at least 44x44px for thumb-friendly navigation.
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
-                <span>
-                  <strong>Sticky Add to Cart bar:</strong> Keep the CTA persistently docked at the
-                  bottom of the screen as the visitor reads reviews and details.
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
-                <span>
-                  <strong>Test on real 4G/5G mobile networks:</strong> Never evaluate mobile
-                  performance solely on high-speed desktop emulators.
-                </span>
-              </li>
-            </ul>
+            <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+              The good news: every Shopify theme is automatically optimized for display on any
+              device, so you&apos;re starting from a solid base. But there&apos;s still more you can
+              do:
+            </p>
+
+            <div className="mt-4">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-ink mb-2">
+                What to fix:
+              </h4>
+              <ul className="space-y-2 text-sm text-ink font-medium">
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
+                  <span>
+                    <strong>Bigger buttons:</strong> Make sure buttons, filters, and quantity
+                    selectors are large enough to tap comfortably with a thumb — no need to zoom in
+                    or miss-tap.
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
+                  <span>
+                    <strong>Sticky &ldquo;Add to Cart&rdquo; bar:</strong> Keep the buy button
+                    visible at the bottom of the screen while people scroll through reviews and
+                    details.
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
+                  <span>
+                    <strong>Simplify navigation:</strong> Try simplifying your site navigation,
+                    making buttons larger and easier to press, and reducing the amount of text on
+                    each page to avoid overwhelming small screens.
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
+                  <span>
+                    <strong>Check your actual load speed and responsiveness:</strong> Use
+                    Google&apos;s Lighthouse, an automated tool for improving web page quality, and
+                    Google&apos;s PageSpeed Insights for a detailed page-speed report. Slow,
+                    unresponsive pages drive mobile shoppers away faster than almost anything else —
+                    and page speed is also one of the factors Google uses when ranking sites.
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="mt-4 rounded-xl border border-border/80 bg-surface/60 p-3.5 text-xs text-muted-foreground leading-relaxed space-y-1">
+              <p>
+                <strong className="text-ink">Example:</strong> A brand that added a sticky
+                &ldquo;Add to Cart&rdquo; bar on mobile saw more people convert directly from the
+                product page, since they no longer had to scroll all the way back up to buy.
+              </p>
+              <p className="text-[11px] text-muted-foreground">
+                (This section draws on{" "}
+                <a
+                  href="https://www.shopify.com/in/blog/120261189-conversion-rate-optimization"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-ink underline decoration-lime-500/60 hover:text-lime-600 dark:hover:text-lime-400"
+                >
+                  Shopify&apos;s own CRO guide
+                </a>
+                , which confirms mobile traffic and page speed are two of the biggest conversion
+                levers today.)
+              </p>
+            </div>
+
+            {/* Visual Example: Mobile-First CRO Design */}
+            <figure className="mt-5 overflow-hidden rounded-xl border border-border/80 bg-surface/30">
+              <div className="relative w-full overflow-hidden p-2 sm:p-3 flex items-center justify-center">
+                <Image
+                  src="/images/shopify/blogs/top-10-cro/mobile-first-cro.png"
+                  alt="Mobile-first CRO comparison: Cluttered layout vs Clean mobile-first design with larger tap areas, faster loading, simpler navigation, and sticky Add to Cart bar"
+                  width={1024}
+                  height={682}
+                  sizes="(max-width: 768px) 100vw, 760px"
+                  quality={95}
+                  loading="lazy"
+                  className="h-auto w-full rounded-lg object-contain"
+                />
+              </div>
+              <figcaption className="border-t border-border/60 bg-surface/50 px-4 py-2 text-center text-xs font-medium text-muted-foreground">
+                Mobile-First Design in Action: Bigger tap targets, streamlined navigation, and a
+                sticky Add to Cart bar capture over 62% of mobile shoppers.
+              </figcaption>
+            </figure>
           </div>
 
           {/* Technique 8 */}
           <div className="not-prose my-6 rounded-2xl border border-border bg-card p-6 shadow-sm">
             <h3
-              id="tech-8-honest-urgency"
+              id="tech-8-announcement-bar"
               className="font-display text-lg font-bold text-ink flex items-center gap-2"
             >
               <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-lime text-ink font-extrabold text-sm">
                 8
               </span>
-              Use Urgency and Scarcity — Honestly
+              Use an Announcement Bar (Honest Urgency & Scarcity)
             </h3>
             <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-              Urgency triggers prompt action, but only when customers know it reflects reality. Fake
-              countdowns that reset on refresh erode brand integrity.
+              An announcement bar — sometimes also called a &ldquo;hello bar&rdquo; or
+              &ldquo;welcome bar&rdquo; — is that thin strip that sits at the very top of a website.
+              Unlike a popup, it doesn&apos;t cover the page and can&apos;t be dismissed, so
+              it&apos;s a fast, non-intrusive way to tell every visitor something important the
+              moment they land on your site: a sale, a free-shipping threshold, a new launch, or a
+              genuine deadline.
             </p>
-            <ul className="mt-3 space-y-1.5 text-sm text-ink font-medium">
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
-                <span>
-                  <strong>Authentic inventory thresholds:</strong> Dynamic notices like &ldquo;Only
-                  3 items left in stock&rdquo; when inventory actually hits a low limit.
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
-                <span>
-                  <strong>Legitimate order cut-off countdowns:</strong> &ldquo;Order within 2 hrs 14
-                  mins for dispatch today&rdquo;.
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
-                <span>
-                  <strong>Seasonal campaign limits:</strong> Real promotional end-dates that expire
-                  on schedule.
-                </span>
-              </li>
-            </ul>
+            <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+              Urgency can genuinely push people to act — but only if it&apos;s real. Fake countdown
+              timers that reset when you refresh the page destroy trust fast, and savvy shoppers
+              notice.
+            </p>
+
+            <div className="mt-4">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-ink mb-2">
+                What to put in it (only when true):
+              </h4>
+              <ul className="space-y-1.5 text-sm text-ink font-medium">
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
+                  <span>
+                    <strong>Real stock levels:</strong> &ldquo;Only 3 left in stock&rdquo; — when
+                    that&apos;s actually accurate.
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
+                  <span>
+                    <strong>Real order deadlines:</strong> &ldquo;Order in the next 2 hours for
+                    same-day dispatch.&rdquo;
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
+                  <span>
+                    <strong>Real sale end dates:</strong> A discount that actually ends when it says
+                    it will.
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
+                  <span>
+                    <strong>Free shipping thresholds:</strong> &ldquo;Free shipping on orders over
+                    ₹999&rdquo; is one of the most effective, always-honest things to put in an
+                    announcement bar.
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="mt-4 rounded-xl border border-border/80 bg-surface/60 p-3.5 text-xs text-muted-foreground leading-relaxed">
+              <strong className="text-ink">Example:</strong> A store that showed genuine low-stock
+              warnings (pulled directly from actual inventory data) saw people convert faster on
+              those products — because shoppers trusted the message was real. An app like{" "}
+              <a
+                href="https://apps.shopify.com/promo-bar"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-ink underline decoration-lime-500/60 hover:text-lime-600 dark:hover:text-lime-400"
+              >
+                Zotabox Promo Bar
+              </a>{" "}
+              makes it easy to add a simple, non-intrusive announcement bar to share sales,
+              deadlines, or shipping offers at the top of every page.
+            </div>
+
+            {/* Visual Example: Announcement Bar */}
+            <figure className="mt-5 overflow-hidden rounded-xl border border-border/80 bg-surface/30">
+              <div className="relative w-full overflow-hidden p-2 sm:p-3 flex items-center justify-center">
+                <Image
+                  src="/images/shopify/blogs/top-10-cro/announcement-bar-cro.png"
+                  alt="Shopify store top announcement bar displaying social proof and trust messaging"
+                  width={1024}
+                  height={280}
+                  sizes="(max-width: 768px) 100vw, 760px"
+                  quality={95}
+                  loading="lazy"
+                  className="h-auto w-full rounded-lg object-contain"
+                />
+              </div>
+              <figcaption className="border-t border-border/60 bg-surface/50 px-4 py-2 text-center text-xs font-medium text-muted-foreground">
+                Announcement Bar Optimization: Delivering immediate social proof, genuine deadlines,
+                and shipping thresholds at the top of the viewport.
+              </figcaption>
+            </figure>
           </div>
 
           {/* Technique 9 */}
           <div className="not-prose my-6 rounded-2xl border border-border bg-card p-6 shadow-sm">
             <h3
-              id="tech-9-continuous-testing"
+              id="tech-9-simplify-ctas"
               className="font-display text-lg font-bold text-ink flex items-center gap-2"
             >
               <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-lime text-ink font-extrabold text-sm">
                 9
               </span>
-              Test Continuously — Don&apos;t Guess
+              Simplify Your CTA Buttons and Test Continuously (A/B Testing)
             </h3>
             <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-              CRO is an iterative discipline. Small, validated optimizations compound into massive
-              margin improvements over quarters.
+              Your call-to-action (CTA) is the button or link that tells a visitor exactly what to
+              do next — &ldquo;Add to Cart,&rdquo; &ldquo;Buy Now,&rdquo; &ldquo;Get Yours
+              Now.&rdquo; It takes a visitor only a fraction of a second to form a first impression
+              of your page, so your CTA needs to be simple, obvious, and placed where people will
+              actually see it — ideally without needing to scroll.
             </p>
-            <ul className="mt-3 space-y-1.5 text-sm text-ink font-medium">
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
-                <span>
-                  <strong>Headline & CTA copy tests:</strong> Compare &ldquo;Add to Bag&rdquo; vs.
-                  &ldquo;Get Yours Now&rdquo;.
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
-                <span>
-                  <strong>Pricing & bundle display:</strong> Test tiered bundle discounts against
-                  volume unit savings.
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
-                <span>
-                  <strong>Statistical rigor:</strong> Ensure tests gather enough conversions to
-                  reach at least 95% statistical confidence before declaring a winner.
-                </span>
-              </li>
-            </ul>
+            <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+              But you shouldn&apos;t just guess at what works best. CRO is an ongoing, iterative
+              habit: you form a hypothesis, test it against the original with real traffic, and let
+              the data — not opinions — decide the winner. This is called A/B testing.
+            </p>
+
+            <div className="mt-4">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-ink mb-2">
+                What to test:
+              </h4>
+              <ul className="space-y-1.5 text-sm text-ink font-medium">
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
+                  <span>
+                    <strong>Button text:</strong> &ldquo;Add to Bag&rdquo; vs. &ldquo;Get Yours
+                    Now&rdquo; — small wording changes can shift click rates.
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
+                  <span>
+                    <strong>Button placement:</strong> Above the fold vs. further down the page.
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
+                  <span>
+                    <strong>Pricing display:</strong> Bundle discounts vs. showing savings per unit.
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
+                  <span>
+                    <strong>Give it enough time:</strong> Don&apos;t declare a &ldquo;winner&rdquo;
+                    after just a day or two — wait until you have enough orders for the result to be
+                    statistically meaningful, not just random luck.
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="mt-4 rounded-xl border border-border/80 bg-surface/60 p-3.5 text-xs text-muted-foreground leading-relaxed">
+              <strong className="text-ink">Example:</strong> Changing a single button from
+              &ldquo;Add to Cart&rdquo; to &ldquo;Add to Bag — Free Shipping&rdquo; might sound
+              small, but testing it properly (with real traffic and enough time) is how you find out
+              if it actually moves the needle for your specific customers. An app like{" "}
+              <a
+                href="https://apps.shopify.com/intelligems"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-ink underline decoration-lime-500/60 hover:text-lime-600 dark:hover:text-lime-400"
+              >
+                Intelligems
+              </a>{" "}
+              lets you A/B test CTAs, prices, discounts, and page content, and shows you which
+              version actually drives more profit, not just more clicks.
+            </div>
+
+            {/* Visual Example: CTA A/B Testing */}
+            <figure className="mt-5 overflow-hidden rounded-xl border border-border/80 bg-surface/30">
+              <div className="relative w-full overflow-hidden p-2 sm:p-3 flex items-center justify-center">
+                <Image
+                  src="/images/shopify/blogs/top-10-cro/cta-ab-testing-cro.png"
+                  alt="A/B testing CTA comparison: Add to Cart vs Add to Bag with Free Shipping driving a +33% increase in conversion rate"
+                  width={1024}
+                  height={512}
+                  sizes="(max-width: 768px) 100vw, 760px"
+                  quality={95}
+                  loading="lazy"
+                  className="h-auto w-full rounded-lg object-contain"
+                />
+              </div>
+              <figcaption className="border-t border-border/60 bg-surface/50 px-4 py-2 text-center text-xs font-medium text-muted-foreground">
+                A/B Testing in Action: Small changes like testing &ldquo;Add to Bag — Free
+                Shipping&rdquo; against generic copy can drive double-digit conversion lift.
+              </figcaption>
+            </figure>
           </div>
 
           {/* Technique 10 */}
@@ -875,41 +1342,84 @@ export default function Top10CroTechniquesPage() {
               <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-lime text-ink font-extrabold text-sm">
                 10
               </span>
-              Make Products Easy to Find (Discovery & Navigation)
+              Make Products Easy to Find
             </h3>
             <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-              If visitors cannot quickly pinpoint the exact product matching their intent, they
-              leave. Reducing discovery friction directly accelerates checkout completion.
+              If a visitor can&apos;t quickly find what they&apos;re looking for, they&apos;ll leave
+              — even if you have exactly what they want somewhere on your site.
             </p>
-            <ul className="mt-3 space-y-1.5 text-sm text-ink font-medium">
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
-                <span>
-                  <strong>Predictive search & auto-complete:</strong> Provide instant product
-                  previews with prices and thumbnails directly inside the search bar.
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
-                <span>
-                  <strong>Intuitive collection filters:</strong> Filter by price, size, color,
-                  in-stock status, and customer rating.
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
-                <span>
-                  <strong>Clear breadcrumb navigation:</strong> Enable shoppers to easily hop back
-                  and forth between parent collections and specific items.
-                </span>
-              </li>
-            </ul>
+
+            <div className="mt-4">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-ink mb-2">
+                What to fix:
+              </h4>
+              <ul className="space-y-1.5 text-sm text-ink font-medium">
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
+                  <span>
+                    <strong>Smart search:</strong> Show product thumbnails and prices directly
+                    inside the search bar as people type.
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
+                  <span>
+                    <strong>Useful filters:</strong> Let people filter by price, size, color,
+                    rating, and in-stock status.
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-lime-600 dark:text-lime-400 shrink-0 mt-0.5" />
+                  <span>
+                    <strong>Clear breadcrumbs:</strong> Let shoppers easily go back to a category
+                    page without hitting the browser&apos;s back button.
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="mt-4 rounded-xl border border-border/80 bg-surface/60 p-3.5 text-xs text-muted-foreground leading-relaxed">
+              <strong className="text-ink">Example:</strong> A store that upgraded its search bar to
+              show live product suggestions (instead of just a plain text box) saw shoppers find and
+              buy relevant products faster, especially on mobile where scrolling through categories
+              is slower.{" "}
+              <a
+                href="https://apps.shopify.com/search-and-discovery"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-ink underline decoration-lime-500/60 hover:text-lime-600 dark:hover:text-lime-400"
+              >
+                Shopify Search & Discovery
+              </a>
+              , built and maintained directly by Shopify, adds this kind of typo-tolerant,
+              predictive search along with custom filtering for your collection pages.
+            </div>
+
+            {/* Visual Example: Seamless Product Discovery */}
+            <figure className="mt-5 overflow-hidden rounded-xl border border-border/80 bg-surface/30">
+              <div className="relative w-full overflow-hidden p-2 sm:p-3 flex items-center justify-center">
+                <Image
+                  src="/images/shopify/blogs/top-10-cro/product-discovery-cro.png"
+                  alt="Smart search and collection discovery: Live search bar with thumbnail previews, intuitive filter facets, and clear breadcrumb navigation"
+                  width={1024}
+                  height={682}
+                  sizes="(max-width: 768px) 100vw, 760px"
+                  quality={95}
+                  loading="lazy"
+                  className="h-auto w-full rounded-lg object-contain"
+                />
+              </div>
+              <figcaption className="border-t border-border/60 bg-surface/50 px-4 py-2 text-center text-xs font-medium text-muted-foreground">
+                Frictionless Product Discovery: Predictive visual search, multi-faceted filtering,
+                and clear breadcrumbs guide shoppers directly to checkout.
+              </figcaption>
+            </figure>
           </div>
 
-          <h2 id="tools-overview">A Quick Note on Essential CRO Tools</h2>
+          <h2 id="tools-overview">A Quick Note on CRO Tools</h2>
           <p>
-            You do not need a huge budget to start optimizing. Select one or two best-in-class tools
-            per functional area rather than overloading your Shopify store with competing apps:
+            You don&apos;t need a huge budget to start. Pick one solid tool per category instead of
+            overloading your store with competing apps:
           </p>
 
           {/* Tools Table */}
@@ -917,9 +1427,9 @@ export default function Top10CroTechniquesPage() {
             <table className="w-full text-left text-sm">
               <thead className="border-b border-border bg-surface text-xs font-bold uppercase tracking-wider text-muted-foreground">
                 <tr>
-                  <th className="px-5 py-3.5">Optimization Focus</th>
-                  <th className="px-5 py-3.5">Recommended Tools</th>
-                  <th className="px-5 py-3.5">Primary Function</th>
+                  <th className="px-5 py-3.5">Focus Area</th>
+                  <th className="px-5 py-3.5">Tools to Consider</th>
+                  <th className="px-5 py-3.5">What It Does</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-border/60">
@@ -929,36 +1439,50 @@ export default function Top10CroTechniquesPage() {
                     Shopify Analytics, Hotjar, Microsoft Clarity
                   </td>
                   <td className="px-5 py-3.5 text-xs text-muted-foreground">
-                    Track drop-offs, user sessions, and scroll heatmaps
+                    Shows where visitors drop off and how they scroll
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-5 py-3.5 font-semibold text-ink">Social Proof & Reviews</td>
+                  <td className="px-5 py-3.5 font-semibold text-ink">Reviews & Social Proof</td>
                   <td className="px-5 py-3.5 text-muted-foreground font-medium">
                     Judge.me, Yotpo, Loox
                   </td>
                   <td className="px-5 py-3.5 text-xs text-muted-foreground">
-                    Automate photo reviews and star rating rich snippets
+                    Collects and displays photo reviews and ratings
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-5 py-3.5 font-semibold text-ink">
-                    AI Upsell & Recommendations
-                  </td>
+                  <td className="px-5 py-3.5 font-semibold text-ink">Upsells & Recommendations</td>
                   <td className="px-5 py-3.5 text-muted-foreground font-medium">
-                    WeUpsell, AI Quiz by Aimbrill
+                    <a
+                      href="https://www.weupsell.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-medium text-ink underline decoration-lime-500/60 hover:text-lime-600 dark:hover:text-lime-400"
+                    >
+                      WeUpsell
+                    </a>
+                    ,{" "}
+                    <a
+                      href="https://apps.shopify.com/reconvert-upsell-cross-sell"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-medium text-ink underline decoration-lime-500/60 hover:text-lime-600 dark:hover:text-lime-400"
+                    >
+                      ReConvert
+                    </a>
                   </td>
                   <td className="px-5 py-3.5 text-xs text-muted-foreground">
-                    Dynamic cart drawer upsells and guided buyer quizzes
+                    Suggests relevant add-ons and bundles
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-5 py-3.5 font-semibold text-ink">Cart & Browse Recovery</td>
+                  <td className="px-5 py-3.5 font-semibold text-ink">Cart Recovery</td>
                   <td className="px-5 py-3.5 text-muted-foreground font-medium">
                     Klaviyo, Omnisend
                   </td>
                   <td className="px-5 py-3.5 text-xs text-muted-foreground">
-                    Automated email and SMS recovery sequences
+                    Sends automated emails/SMS to recover abandoned carts
                   </td>
                 </tr>
                 <tr>
@@ -967,95 +1491,99 @@ export default function Top10CroTechniquesPage() {
                     Shopify Search & Discovery
                   </td>
                   <td className="px-5 py-3.5 text-xs text-muted-foreground">
-                    Typo-tolerant instant search and custom collection filters
+                    Adds typo-tolerant instant search and filters
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-          <h2 id="cro-and-seo">CRO and SEO Aren&apos;t Separate Jobs</h2>
+          <h2 id="cro-and-seo">CRO and SEO Work Together</h2>
           <p>
-            It&apos;s tempting to treat &ldquo;getting traffic&rdquo; (SEO) and &ldquo;converting
-            traffic&rdquo; (CRO) as two different disciplines. In reality, they reinforce each other
-            constantly:
+            It&apos;s easy to think of &ldquo;getting traffic&rdquo; (SEO) and &ldquo;converting
+            traffic&rdquo; (CRO) as separate jobs. They&apos;re actually connected:
           </p>
 
           <div className="not-prose my-6 grid gap-4 sm:grid-cols-3">
             <div className="rounded-2xl border border-border bg-surface p-4">
               <div className="font-display text-sm font-bold text-ink flex items-center gap-2">
                 <Zap className="h-4 w-4 text-lime-600 dark:text-lime-400" />
-                Site Speed Synergy
+                Speed helps both
               </div>
               <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-                Faster loading directly improves Google Core Web Vitals rankings while stopping
-                shoppers from abandoning slow pages.
+                A faster site ranks better on Google and keeps shoppers from leaving out of
+                impatience.
               </p>
             </div>
 
             <div className="rounded-2xl border border-border bg-surface p-4">
               <div className="font-display text-sm font-bold text-ink flex items-center gap-2">
                 <Smartphone className="h-4 w-4 text-lime-600 dark:text-lime-400" />
-                Mobile Usability
+                Mobile helps both
               </div>
               <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-                Google uses mobile-first indexing to rank sites, while frictionless mobile checkout
-                locks in completed orders.
+                Google ranks mobile-friendly sites higher, and a smooth mobile checkout means more
+                of that traffic actually converts.
               </p>
             </div>
 
             <div className="rounded-2xl border border-border bg-surface p-4">
               <div className="font-display text-sm font-bold text-ink flex items-center gap-2">
                 <Search className="h-4 w-4 text-lime-600 dark:text-lime-400" />
-                Search Intent Alignment
+                Clear content helps both
               </div>
               <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-                A product page answering buyer questions accurately satisfies search algorithms and
-                converts visitors faster.
+                A product page that clearly answers buyer questions satisfies search engines and
+                shoppers at the same time.
               </p>
             </div>
           </div>
 
-          <h2 id="final-thoughts">Final Thoughts & Quick Recap</h2>
+          <h2 id="final-thoughts">Final Thoughts</h2>
           <p>
-            CRO isn&apos;t about one massive risky redesign — it&apos;s about steadily removing
-            friction and building genuine buyer trust at every step of the customer journey.
+            CRO isn&apos;t about one big, risky redesign. It&apos;s about steadily removing friction
+            and building genuine trust at every step of the customer&apos;s journey — one small,
+            tested improvement at a time.
           </p>
 
           <div className="not-prose my-6 rounded-2xl border border-border bg-card p-6 shadow-sm">
             <h3 className="font-display text-base font-bold text-ink mb-3">
-              Summary: Top 10 CRO Techniques for Shopify Brands
+              Quick Recap: The 10 Techniques
             </h3>
             <ol className="grid gap-2 sm:grid-cols-2 text-sm text-muted-foreground">
               <li className="flex items-center gap-2">
                 <span className="font-bold text-ink">1.</span> Make product pages crystal clear
               </li>
               <li className="flex items-center gap-2">
-                <span className="font-bold text-ink">2.</span> Remove checkout friction
+                <span className="font-bold text-ink">2.</span> Use Shopify Checkout to remove
+                friction (one-click, autofill)
               </li>
               <li className="flex items-center gap-2">
-                <span className="font-bold text-ink">3.</span> Let social proof convince shoppers
+                <span className="font-bold text-ink">3.</span> Let social proof do the convincing
               </li>
               <li className="flex items-center gap-2">
-                <span className="font-bold text-ink">4.</span> Use smart exit-intent popups
+                <span className="font-bold text-ink">4.</span> Use popups the right way
               </li>
               <li className="flex items-center gap-2">
-                <span className="font-bold text-ink">5.</span> Accelerate site loading speeds
+                <span className="font-bold text-ink">5.</span> Speed up your site
               </li>
               <li className="flex items-center gap-2">
-                <span className="font-bold text-ink">6.</span> Personalize product recommendations
+                <span className="font-bold text-ink">6.</span> Personalize the shopping experience
               </li>
               <li className="flex items-center gap-2">
-                <span className="font-bold text-ink">7.</span> Build true mobile-first layouts
+                <span className="font-bold text-ink">7.</span> Design mobile-first, not
+                mobile-friendly
               </li>
               <li className="flex items-center gap-2">
-                <span className="font-bold text-ink">8.</span> Deploy honest scarcity & urgency
+                <span className="font-bold text-ink">8.</span> Use an honest announcement bar
               </li>
               <li className="flex items-center gap-2">
-                <span className="font-bold text-ink">9.</span> Run disciplined continuous tests
+                <span className="font-bold text-ink">9.</span> Simplify your CTAs and test
+                continuously
               </li>
               <li className="flex items-center gap-2">
-                <span className="font-bold text-ink">10.</span> Make discovery & navigation seamless
+                <span className="font-bold text-ink">10.</span> Make discovery and navigation
+                seamless
               </li>
             </ol>
           </div>
