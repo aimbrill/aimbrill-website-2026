@@ -11,13 +11,12 @@ const CANONICAL = "/top-10-cro-techniques-for-shopify-brands";
 const PUBLISHED_ISO = "2026-09-03";
 const PUBLISHED_DISPLAY = "September 3, 2026";
 const CALENDLY_URL = "https://calendly.com/weupsell-experts/ai-campaign-popup";
-const ARTICLE_TITLE =
-  "Top 10 Conversion Rate Optimization (CRO) Techniques for Shopify Brands (2026 Guide)";
+const ARTICLE_TITLE = "Top 10 Conversion Rate Optimization (CRO) Techniques for Shopify Brands";
 const ARTICLE_LEAD =
   "Getting traffic to your Shopify store is only half the battle. If people are visiting your site but not buying, spending more on ads won't fix that — it'll just waste more money. The real fix is Conversion Rate Optimization (CRO): making the visitors you already have more likely to buy.";
 
 export const metadata: Metadata = {
-  title: "Top 10 CRO Techniques for Shopify Brands (2026 Guide) | Aimbrill",
+  title: "Top 10 CRO Techniques for Shopify Brands | Aimbrill",
   description:
     "Learn the top 10 conversion rate optimization (CRO) techniques for Shopify stores in 2026. Plain language, real examples, PIE framework, benchmarks, and actionable fixes.",
   alternates: { canonical: CANONICAL },
@@ -148,6 +147,98 @@ const TOC: GuideTocItem[] = [
   { id: "faq", label: "Frequently Asked Questions" },
 ];
 
+const croToolsDirectory = [
+  {
+    focusArea: "Analytics & Heatmaps",
+    tools: [
+      { name: "Google Analytics", href: "https://analytics.google.com/" },
+      { name: "Hotjar", href: "https://apps.shopify.com/hotjar" },
+      { name: "Microsoft Clarity", href: "https://clarity.microsoft.com/" },
+    ],
+    whatItDoes: "Shows where visitors drop off and how they scroll through pages",
+  },
+  {
+    focusArea: "Reviews & Social Proof",
+    tools: [
+      { name: "Judge.me Product Reviews", href: "https://apps.shopify.com/judgeme" },
+      { name: "Loox Product Reviews & Photos", href: "https://apps.shopify.com/loox" },
+      { name: "Yotpo Product Reviews", href: "https://apps.shopify.com/yotpo-social-reviews" },
+    ],
+    whatItDoes: "Collects and displays verified customer reviews, photo ratings, and UGC",
+  },
+  {
+    focusArea: "Upsells & Recommendations",
+    tools: [
+      { name: "WeUpsell", href: "https://www.weupsell.com/", highlight: true },
+      {
+        name: "ReConvert Post Purchase Upsell",
+        href: "https://apps.shopify.com/reconvert-upsell-cross-sell",
+      },
+    ],
+    whatItDoes:
+      "Suggests relevant add-ons and bundles across popups, cart drawers, and post-purchase",
+  },
+  {
+    focusArea: "Exit-Intent & Popups",
+    tools: [
+      { name: "WeUpsell", href: "https://www.weupsell.com/", highlight: true },
+      { name: "Privy (Popups & Email)", href: "https://apps.shopify.com/privy" },
+      { name: "POWR Popup", href: "https://apps.shopify.com/powr-popup" },
+    ],
+    whatItDoes: "Captures abandoning visitors with timed, high-converting discount offers",
+  },
+  {
+    focusArea: "Fast Checkout & Address Autofill",
+    tools: [
+      { name: "WeUpsell", href: "https://ai.weupsell.com/login", highlight: true },
+      { name: "GoKwik (Kwik COD & Checkout)", href: "https://apps.shopify.com/kwikcheckout" },
+      {
+        name: "Shiprocket Address Prefill",
+        href: "https://apps.shopify.com/shiprocket-smart-address",
+      },
+    ],
+    whatItDoes: "Removes checkout friction with OTP-based one-click ordering and address autofill",
+  },
+  {
+    focusArea: "Cart Recovery & Email/SMS",
+    tools: [
+      { name: "Klaviyo Email & SMS", href: "https://apps.shopify.com/klaviyo-email-marketing" },
+      { name: "Omnisend", href: "https://apps.shopify.com/omnisend" },
+    ],
+    whatItDoes: "Sends automated emails/SMS to recover abandoned carts and browse abandonment",
+  },
+  {
+    focusArea: "A/B Testing & Pricing",
+    tools: [
+      {
+        name: "Intelligems (Profit Optimization)",
+        href: "https://apps.shopify.com/intelligems",
+      },
+    ],
+    whatItDoes: "A/B tests product pricing, shipping thresholds, and volume discounts",
+  },
+  {
+    focusArea: "Search & Product Discovery",
+    tools: [
+      {
+        name: "Shopify Search & Discovery",
+        href: "https://apps.shopify.com/search-and-discovery",
+      },
+    ],
+    whatItDoes: "Adds typo-tolerant instant search, visual filters, and custom recommendations",
+  },
+  {
+    focusArea: "Sizing & Return Reduction",
+    tools: [
+      {
+        name: "Kiwi Size Chart & Recommender",
+        href: "https://apps.shopify.com/kiwi-sizing",
+      },
+    ],
+    whatItDoes: "Builds clean, customizable size charts with automatic unit conversion",
+  },
+];
+
 export default function Top10CroTechniquesPage() {
   return (
     <>
@@ -247,8 +338,8 @@ export default function Top10CroTechniquesPage() {
           </p>
 
           {/* Industry Benchmarks Table */}
-          <div className="not-prose my-6 overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
-            <table className="w-full text-left text-sm">
+          <div className="not-prose my-6 overflow-x-auto rounded-2xl border border-border bg-card shadow-sm">
+            <table className="w-full min-w-[300px] text-left text-sm">
               <thead className="border-b border-border bg-surface text-xs font-bold uppercase tracking-wider text-muted-foreground">
                 <tr>
                   <th className="px-5 py-3.5">Industry</th>
@@ -258,25 +349,37 @@ export default function Top10CroTechniquesPage() {
               <tbody className="divide-y divide-border/60">
                 <tr>
                   <td className="px-5 py-3 font-semibold text-ink">Food & beverage</td>
-                  <td className="px-5 py-3 font-medium text-lime-700 dark:text-lime-400">5–6%</td>
+                  <td className="px-5 py-3 font-medium text-lime-700 dark:text-lime-400">4.58%</td>
                 </tr>
                 <tr>
                   <td className="px-5 py-3 font-semibold text-ink">Beauty & personal care</td>
-                  <td className="px-5 py-3 font-medium text-lime-700 dark:text-lime-400">~4%</td>
+                  <td className="px-5 py-3 font-medium text-lime-700 dark:text-lime-400">5.32%</td>
                 </tr>
                 <tr>
-                  <td className="px-5 py-3 font-semibold text-ink">Fashion & apparel</td>
-                  <td className="px-5 py-3 font-medium text-lime-700 dark:text-lime-400">2.5–3%</td>
+                  <td className="px-5 py-3 font-semibold text-ink">Pet care & vet services</td>
+                  <td className="px-5 py-3 font-medium text-lime-700 dark:text-lime-400">5.7%</td>
+                </tr>
+                <tr>
+                  <td className="px-5 py-3 font-semibold text-ink">
+                    Fashion, accessories & apparel
+                  </td>
+                  <td className="px-5 py-3 font-medium text-lime-700 dark:text-lime-400">2.77%</td>
                 </tr>
                 <tr>
                   <td className="px-5 py-3 font-semibold text-ink">Home & furniture</td>
                   <td className="px-5 py-3 font-medium text-amber-600 dark:text-amber-400">
-                    1–1.5%
+                    1.29%
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-5 py-3 font-semibold text-ink">Luxury & jewellery</td>
-                  <td className="px-5 py-3 font-medium text-muted-foreground">Under 1%</td>
+                  <td className="px-5 py-3 font-semibold text-ink">Consumer goods</td>
+                  <td className="px-5 py-3 font-medium text-amber-600 dark:text-amber-400">
+                    1.76%
+                  </td>
+                </tr>
+                <tr>
+                  <td className="px-5 py-3 font-semibold text-ink">Luxury & jewelry</td>
+                  <td className="px-5 py-3 font-medium text-muted-foreground">0.63%</td>
                 </tr>
               </tbody>
             </table>
@@ -284,7 +387,25 @@ export default function Top10CroTechniquesPage() {
 
           <p>
             If you&apos;re above your category&apos;s average, you&apos;re doing well. If
-            you&apos;re below it, that&apos;s exactly where fixing things will pay off fastest.
+            you&apos;re below it, that&apos;s exactly where fixing things will pay off fastest.{" "}
+            <a
+              href="https://www.shopify.com/blog/ecommerce-conversion-rate"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-full border border-border/80 bg-surface px-2.5 py-0.5 text-xs font-medium text-ink transition-colors hover:border-lime-500/60 hover:text-lime-600 dark:bg-surface-elevated dark:hover:text-lime-400 align-middle shadow-xs"
+            >
+              <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#96bf48]/20 text-[#96bf48]">
+                <svg
+                  className="h-2.5 w-2.5 fill-current"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path d="M15.34 3.52a.45.45 0 0 0-.34-.1c-.13.02-3.8 1.13-3.8 1.13s-.84-.85-1.28-1.29a2.72 2.72 0 0 0-2.79-.57c-.95.39-1.57 1.34-1.57 2.37 0 .39.09.77.26 1.12L3.64 7.21a1.05 1.05 0 0 0-.68.99c0 .1.02.2.05.3l3.22 13.88c.11.47.53.82 1.02.82h9.61c.49 0 .91-.35 1.02-.82l3.22-13.88c.03-.1.05-.2.05-.3 0-.45-.29-.85-.73-.99l-5.02-1.58zM8.33 5.06c.01-.52.33-.99.8-1.18.47-.19 1.02-.08 1.39.29.23.23.51.52.79.81l-2.82.88c-.1-.26-.16-.53-.16-.8zm-3.4 3.01 2.09-.66 2.05 13.59H7.02L4.93 8.07zm14.15 0-2.09 12.93h-2.05L17.03 7.41l2.05.66z" />
+                </svg>
+              </span>
+              <span>shopify.com</span>
+            </a>
           </p>
 
           <h2 id="step-2-pie-framework">Step 2: Decide What to Fix First (The PIE Framework)</h2>
@@ -422,8 +543,8 @@ export default function Top10CroTechniquesPage() {
             <figure className="mt-5 overflow-hidden rounded-xl border border-border/80 bg-surface/30">
               <div className="relative w-full overflow-hidden p-2 sm:p-3 flex items-center justify-center">
                 <Image
-                  src="/images/shopify/blogs/top-10-cro/product-page-before-after.png"
-                  alt="Before and After product page comparison: Confusing vs Clear & Focused CRO layout"
+                  src="/images/shopify/blogs/top-10-cro/product-page-cro-comparison.png"
+                  alt="Before vs After product page comparison: Cluttered and Confusing vs Clean, Helpful and Conversion Focused"
                   width={1024}
                   height={682}
                   sizes="(max-width: 768px) 100vw, 760px"
@@ -433,8 +554,8 @@ export default function Top10CroTechniquesPage() {
                 />
               </div>
               <figcaption className="border-t border-border/60 bg-surface/50 px-4 py-2 text-center text-xs font-medium text-muted-foreground">
-                Before vs. After: Removing visual clutter, elevating social proof, and clarifying
-                CTA placement increases product page conversion rates.
+                Before vs. After: Adding multiple photos/videos, clear reviews, interactive size
+                guides, and trust badges creates a higher-converting shopping experience.
               </figcaption>
             </figure>
           </div>
@@ -490,6 +611,17 @@ export default function Top10CroTechniquesPage() {
                   their address and card details are remembered and autofilled automatically — no
                   retyping needed. For Indian D2C brands specifically, apps like{" "}
                   <a
+                    href="https://ai.weupsell.com/login"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-semibold text-ink underline decoration-lime-500/60 hover:text-lime-600 dark:hover:text-lime-400 inline-flex items-center gap-0.5"
+                  >
+                    WeUpsell
+                    <ExternalLink className="h-3 w-3 inline" />
+                  </a>{" "}
+                  provide one-click checkout while layering relevant upsells right at that same
+                  fast-checkout moment, while solutions like{" "}
+                  <a
                     href="https://apps.shopify.com/kwikcheckout"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -508,18 +640,7 @@ export default function Top10CroTechniquesPage() {
                     Shiprocket Address Prefill
                     <ExternalLink className="h-3 w-3 inline" />
                   </a>{" "}
-                  offer similar OTP-based one-click checkout with address autofill, and{" "}
-                  <a
-                    href="https://ai.weupsell.com/login"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-semibold text-ink underline decoration-lime-500/60 hover:text-lime-600 dark:hover:text-lime-400 inline-flex items-center gap-0.5"
-                  >
-                    WeUpsell
-                    <ExternalLink className="h-3 w-3 inline" />
-                  </a>{" "}
-                  also provides one-click checkout while layering relevant upsells right at that
-                  same fast-checkout moment.
+                  offer similar OTP-based fast checkout with address autofill.
                 </span>
               </li>
               <li className="flex items-start gap-2">
@@ -789,6 +910,18 @@ export default function Top10CroTechniquesPage() {
               <p>
                 Apps like{" "}
                 <a
+                  href="https://www.weupsell.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-ink underline decoration-lime-500/60 hover:text-lime-600 dark:hover:text-lime-400 inline-flex items-center gap-0.5"
+                >
+                  WeUpsell
+                  <ExternalLink className="h-3 w-3 inline" />
+                </a>{" "}
+                take it a step further by pairing the popup or cart-drawer offer with a smart upsell
+                — so the discount you show at the right moment also nudges the customer toward a
+                bigger order — while tools like{" "}
+                <a
                   href="https://apps.shopify.com/privy"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -805,19 +938,7 @@ export default function Top10CroTechniquesPage() {
                 >
                   POWR Popup
                 </a>{" "}
-                make it simple to build these kinds of offer-based, easy-to-close popups, and{" "}
-                <a
-                  href="https://www.weupsell.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-semibold text-ink underline decoration-lime-500/60 hover:text-lime-600 dark:hover:text-lime-400 inline-flex items-center gap-0.5"
-                >
-                  WeUpsell
-                  <ExternalLink className="h-3 w-3 inline" />
-                </a>{" "}
-                takes it a step further by pairing the popup or cart-drawer offer with a smart
-                upsell, so the discount you show at the right moment also nudges the customer toward
-                a bigger order.
+                make it simple to build straightforward offer-based, easy-to-close popups.
               </p>
             </div>
 
@@ -917,7 +1038,7 @@ export default function Top10CroTechniquesPage() {
               <div className="relative w-full overflow-hidden p-2 sm:p-3 flex items-center justify-center">
                 <Image
                   src="/images/shopify/blogs/top-10-cro/site-speed-optimization.png"
-                  alt="Shopify site speed optimization illustration showing fast page load times and performance gains"
+                  alt="Before and After PageSpeed Insights comparison showing load time reduction from 6.0s to 1.2s and performance score jump from 28 to 92"
                   width={1024}
                   height={682}
                   sizes="(max-width: 768px) 100vw, 760px"
@@ -927,8 +1048,8 @@ export default function Top10CroTechniquesPage() {
                 />
               </div>
               <figcaption className="border-t border-border/60 bg-surface/50 px-4 py-2 text-center text-xs font-medium text-muted-foreground">
-                Speed Optimization: Faster server response, compressed media, and clean theme
-                scripts prevent bounce rates and preserve buyer momentum.
+                Before vs. After: Image compression and lazy loading slash load times from 6.0s to
+                1.2s, taking PageSpeed scores from 28 to 92.
               </figcaption>
             </figure>
           </div>
@@ -984,7 +1105,17 @@ export default function Top10CroTechniquesPage() {
                 because it suggested relevant add-ons at exactly the right moment.
               </p>
               <p>
-                An app like{" "}
+                Apps like{" "}
+                <a
+                  href="https://www.weupsell.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-ink underline decoration-lime-500/60 hover:text-lime-600 dark:hover:text-lime-400 inline-flex items-center gap-0.5"
+                >
+                  WeUpsell
+                  <ExternalLink className="h-3 w-3 inline" />
+                </a>{" "}
+                and{" "}
                 <a
                   href="https://apps.shopify.com/reconvert-upsell-cross-sell"
                   target="_blank"
@@ -1422,80 +1553,88 @@ export default function Top10CroTechniquesPage() {
             overloading your store with competing apps:
           </p>
 
-          {/* Tools Table */}
-          <div className="not-prose my-6 overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
+          {/* Desktop/Tablet Table */}
+          <div className="not-prose my-6 hidden overflow-x-auto rounded-2xl border border-border bg-card shadow-sm md:block">
             <table className="w-full text-left text-sm">
               <thead className="border-b border-border bg-surface text-xs font-bold uppercase tracking-wider text-muted-foreground">
                 <tr>
-                  <th className="px-5 py-3.5">Focus Area</th>
-                  <th className="px-5 py-3.5">Tools to Consider</th>
-                  <th className="px-5 py-3.5">What It Does</th>
+                  <th className="px-5 py-3.5 w-1/4">Focus Area</th>
+                  <th className="px-5 py-3.5 w-2/5">Recommended Tools</th>
+                  <th className="px-5 py-3.5 w-1/3">What It Does</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-border/60">
-                <tr>
-                  <td className="px-5 py-3.5 font-semibold text-ink">Analytics & Heatmaps</td>
-                  <td className="px-5 py-3.5 text-muted-foreground font-medium">
-                    Shopify Analytics, Hotjar, Microsoft Clarity
-                  </td>
-                  <td className="px-5 py-3.5 text-xs text-muted-foreground">
-                    Shows where visitors drop off and how they scroll
-                  </td>
-                </tr>
-                <tr>
-                  <td className="px-5 py-3.5 font-semibold text-ink">Reviews & Social Proof</td>
-                  <td className="px-5 py-3.5 text-muted-foreground font-medium">
-                    Judge.me, Yotpo, Loox
-                  </td>
-                  <td className="px-5 py-3.5 text-xs text-muted-foreground">
-                    Collects and displays photo reviews and ratings
-                  </td>
-                </tr>
-                <tr>
-                  <td className="px-5 py-3.5 font-semibold text-ink">Upsells & Recommendations</td>
-                  <td className="px-5 py-3.5 text-muted-foreground font-medium">
-                    <a
-                      href="https://www.weupsell.com/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="font-medium text-ink underline decoration-lime-500/60 hover:text-lime-600 dark:hover:text-lime-400"
-                    >
-                      WeUpsell
-                    </a>
-                    ,{" "}
-                    <a
-                      href="https://apps.shopify.com/reconvert-upsell-cross-sell"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="font-medium text-ink underline decoration-lime-500/60 hover:text-lime-600 dark:hover:text-lime-400"
-                    >
-                      ReConvert
-                    </a>
-                  </td>
-                  <td className="px-5 py-3.5 text-xs text-muted-foreground">
-                    Suggests relevant add-ons and bundles
-                  </td>
-                </tr>
-                <tr>
-                  <td className="px-5 py-3.5 font-semibold text-ink">Cart Recovery</td>
-                  <td className="px-5 py-3.5 text-muted-foreground font-medium">
-                    Klaviyo, Omnisend
-                  </td>
-                  <td className="px-5 py-3.5 text-xs text-muted-foreground">
-                    Sends automated emails/SMS to recover abandoned carts
-                  </td>
-                </tr>
-                <tr>
-                  <td className="px-5 py-3.5 font-semibold text-ink">Search & Filtering</td>
-                  <td className="px-5 py-3.5 text-muted-foreground font-medium">
-                    Shopify Search & Discovery
-                  </td>
-                  <td className="px-5 py-3.5 text-xs text-muted-foreground">
-                    Adds typo-tolerant instant search and filters
-                  </td>
-                </tr>
+                {croToolsDirectory.map((item) => (
+                  <tr key={item.focusArea} className="hover:bg-surface/40 transition-colors">
+                    <td className="px-5 py-3.5 font-semibold text-ink align-top">
+                      {item.focusArea}
+                    </td>
+                    <td className="px-5 py-3.5 text-muted-foreground font-medium align-top">
+                      {item.tools.map((tool, idx) => (
+                        <span key={tool.name}>
+                          {idx > 0 && ", "}
+                          <a
+                            href={tool.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={
+                              tool.highlight
+                                ? "font-semibold text-ink underline decoration-lime-500/60 hover:text-lime-600 dark:hover:text-lime-400"
+                                : "text-ink underline decoration-lime-500/60 hover:text-lime-600 dark:hover:text-lime-400"
+                            }
+                          >
+                            {tool.name}
+                          </a>
+                        </span>
+                      ))}
+                    </td>
+                    <td className="px-5 py-3.5 text-xs text-muted-foreground align-top">
+                      {item.whatItDoes}
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
+          </div>
+
+          {/* Mobile Card List */}
+          <div className="not-prose my-6 space-y-3 md:hidden">
+            {croToolsDirectory.map((item) => (
+              <div
+                key={item.focusArea}
+                className="rounded-xl border border-border bg-card p-4 shadow-xs space-y-2.5"
+              >
+                <div className="font-semibold text-sm text-ink border-b border-border/60 pb-2">
+                  {item.focusArea}
+                </div>
+                <div className="space-y-1">
+                  <div className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">
+                    Recommended Tools
+                  </div>
+                  <div className="flex flex-wrap gap-1.5 pt-0.5">
+                    {item.tools.map((tool) => (
+                      <a
+                        key={tool.name}
+                        href={tool.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={
+                          tool.highlight
+                            ? "inline-flex items-center gap-1 rounded-lg border border-lime-500/40 bg-lime/10 px-2.5 py-1 text-xs font-semibold text-lime-800 dark:text-lime-300 hover:border-lime-500 hover:bg-lime/20"
+                            : "inline-flex items-center gap-1 rounded-lg border border-border bg-surface px-2.5 py-1 text-xs font-medium text-ink hover:border-lime-500/60 hover:text-lime-600 dark:hover:text-lime-400"
+                        }
+                      >
+                        {tool.name}
+                        <ExternalLink className="h-3 w-3 shrink-0 opacity-70" />
+                      </a>
+                    ))}
+                  </div>
+                </div>
+                <div className="pt-2 border-t border-border/40 text-xs text-muted-foreground leading-relaxed">
+                  {item.whatItDoes}
+                </div>
+              </div>
+            ))}
           </div>
 
           <h2 id="cro-and-seo">CRO and SEO Work Together</h2>
