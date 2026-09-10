@@ -62,47 +62,50 @@ export function CaseStudy() {
             </div>
 
             {/* Content */}
-            <div className="p-8 md:p-10 lg:col-span-7">
-              <div className="grid grid-cols-3 gap-4 border-b border-border pb-6">
-                <Stat k="Manual ops" v="0%" />
-                <Stat k="Order errors" v="↓ near 0" />
-                <Stat k="Flow" v="End-to-end" />
+            <div className="p-6 sm:p-8 lg:p-8 lg:col-span-7 flex flex-col justify-between">
+              <div>
+                <div className="grid grid-cols-3 gap-4 border-b border-border pb-4">
+                  <Stat k="Manual ops" v="0%" />
+                  <Stat k="Order errors" v="↓ near 0" />
+                  <Stat k="Flow" v="End-to-end" />
+                </div>
+
+                <div className="mt-1">
+                  <Block n="01" title="The problem">
+                    Funky Food were managing their Shopify Plus meal subscription flow manually —
+                    ZIP code restrictions, box customisation, and delivery sync all required
+                    constant manual work. It was slowing down their operations and creating errors
+                    in orders.
+                  </Block>
+                  <Block n="02" title="What we built">
+                    We built a custom Shopify Plus flow automation app that handled everything
+                    end-to-end: ZIP code validation at checkout via checkout extensibility, a
+                    dynamic box builder for customers, and direct sync with native Shopify selling
+                    plans and delivery systems.
+                  </Block>
+                  <Block n="03" title="The result">
+                    A fully automated meal subscription flow on Shopify Plus — zero manual
+                    intervention, fewer order errors, and a smoother experience for their customers
+                    from cart to doorstep.
+                  </Block>
+                </div>
+
+                <div className="mt-4 flex flex-wrap gap-1.5">
+                  {tags.map((t) => (
+                    <span
+                      key={t}
+                      className="rounded-full border border-border bg-surface px-2.5 py-1 text-xs text-muted-foreground"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
               </div>
 
-              <div className="mt-2">
-                <Block n="01" title="The problem">
-                  Funky Food were managing their Shopify Plus meal subscription flow manually — ZIP
-                  code restrictions, box customisation, and delivery sync all required constant
-                  manual work. It was slowing down their operations and creating errors in orders.
-                </Block>
-                <Block n="02" title="What we built">
-                  We built a custom Shopify Plus flow automation app that handled everything
-                  end-to-end: ZIP code validation at checkout via checkout extensibility, a dynamic
-                  box builder for customers, and direct sync with native Shopify selling plans and
-                  delivery systems.
-                </Block>
-                <Block n="03" title="The result">
-                  A fully automated meal subscription flow on Shopify Plus — zero manual
-                  intervention, fewer order errors, and a smoother experience for their customers
-                  from cart to doorstep.
-                </Block>
-              </div>
-
-              <div className="mt-8 flex flex-wrap gap-2">
-                {tags.map((t) => (
-                  <span
-                    key={t}
-                    className="rounded-full border border-border bg-surface px-3 py-1.5 text-xs text-muted-foreground"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-
-              <div className="mt-8 flex flex-wrap items-center gap-3">
+              <div className="mt-5 flex flex-wrap items-center gap-3">
                 <Link
                   href="/case-studies/funky-food"
-                  className="inline-flex items-center gap-2 rounded-full bg-lime px-6 py-3.5 text-sm font-bold text-ink shadow-sm transition hover:scale-105 active:scale-95"
+                  className="inline-flex items-center gap-2 rounded-full bg-lime px-5 py-2.5 text-sm font-bold text-ink shadow-sm transition hover:scale-105 active:scale-95"
                 >
                   <span>Read Full Case Study</span>
                   <span>→</span>
@@ -111,7 +114,7 @@ export function CaseStudy() {
                   href={CALENDLY_URL}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-5 py-3.5 text-sm font-semibold text-ink transition hover:bg-surface-2"
+                  className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-2.5 text-sm font-semibold text-ink transition hover:bg-surface-2"
                 >
                   <span>Have a similar challenge? Let&apos;s talk</span>
                 </a>
@@ -130,19 +133,19 @@ function Stat({ k, v }: { k: string; v: string }) {
       <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
         {k}
       </div>
-      <div className="mt-1 font-display text-xl font-semibold md:text-2xl">{v}</div>
+      <div className="mt-0.5 font-display text-lg font-semibold md:text-xl">{v}</div>
     </div>
   );
 }
 
 function Block({ n, title, children }: { n: string; title: string; children: React.ReactNode }) {
   return (
-    <div className="border-b border-border py-6 last:border-b-0">
-      <div className="flex items-baseline gap-4">
+    <div className="border-b border-border py-3.5 last:border-b-0">
+      <div className="flex items-baseline gap-3">
         <span className="font-mono text-xs text-muted-foreground">{n}</span>
-        <h4 className="font-display text-xl font-semibold">{title}</h4>
+        <h4 className="font-display text-base sm:text-lg font-semibold">{title}</h4>
       </div>
-      <p className="mt-3 pl-10 text-sm leading-relaxed text-muted-foreground md:text-base">
+      <p className="mt-1 pl-7 sm:pl-8 text-xs sm:text-sm leading-relaxed text-muted-foreground">
         {children}
       </p>
     </div>
