@@ -5,6 +5,7 @@ import { Hero } from "@/components/site/Hero";
 import { Marquee } from "@/components/site/Marquee";
 import { Services } from "@/components/site/Services";
 import { Apps } from "@/components/site/Apps";
+import { BrandStories } from "@/components/site/BrandStories";
 import { CaseStudy } from "@/components/site/CaseStudy";
 import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
@@ -21,6 +22,7 @@ export default function HomePage() {
       <Brands />
       <Services />
       <Apps />
+      <BrandStories />
       <CaseStudy />
       <Testimonials />
       <Contact />

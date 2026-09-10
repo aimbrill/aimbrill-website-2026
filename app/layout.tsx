@@ -1,10 +1,17 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { DM_Sans, JetBrains_Mono, Space_Grotesk } from "next/font/google";
+import { Caveat, DM_Sans, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import "./styles.css";
 import GoogleAnalytics from "./components/site/GoogleAnalytics";
 import { buildSiteJsonLdGraph } from "../lib/seo";
 import { site } from "../lib/site";
+
+const caveat = Caveat({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  display: "swap",
+  variable: "--font-caveat",
+});
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -76,7 +83,7 @@ export const metadata: Metadata = {
 
 const structuredData = buildSiteJsonLdGraph();
 
-const fontVariables = `${spaceGrotesk.variable} ${dmSans.variable} ${jetbrainsMono.variable}`;
+const fontVariables = `${spaceGrotesk.variable} ${dmSans.variable} ${jetbrainsMono.variable} ${caveat.variable}`;
 
 export default function RootLayout({
   children,
