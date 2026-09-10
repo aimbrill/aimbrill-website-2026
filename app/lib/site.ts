@@ -31,7 +31,7 @@ export const site = {
       headline: "AI Popup & Upsell Widgets",
       description:
         "AI-powered popups and upsell widgets that show the right offer to the right customer at the right time.",
-      pagePath: "/weupsell-ai-popup-upsell",
+      pagePath: "https://www.weupsell.com",
       shopifyHref: "https://apps.shopify.com/ai-upsell-cross-sell-by-weupsell",
     },
     {
@@ -74,7 +74,16 @@ export const site = {
     { path: "/terms", changeFrequency: "yearly" as const, priority: 0.5 },
     { path: "/aimbrill-brand-assets", changeFrequency: "yearly" as const, priority: 0.4 },
     { path: "/ai-quiz-and-recommendations", changeFrequency: "monthly" as const, priority: 0.7 },
-    { path: "/weupsell-ai-popup-upsell", changeFrequency: "monthly" as const, priority: 0.8 },
+    {
+      path: "/ai-quiz-and-recommendations/try-demo",
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    },
+    {
+      path: "/ai-quiz-and-recommendations/privacy",
+      changeFrequency: "yearly" as const,
+      priority: 0.5,
+    },
     { path: "/meal-bundle-builder", changeFrequency: "monthly" as const, priority: 0.7 },
     {
       path: "/macola-shopify-integration-pulse-ecommerce",
@@ -90,6 +99,11 @@ export const site = {
       path: "/meal-bundle-builder/try-meal-flow",
       changeFrequency: "monthly" as const,
       priority: 0.7,
+    },
+    {
+      path: "/meal-bundle-builder/privacy",
+      changeFrequency: "yearly" as const,
+      priority: 0.5,
     },
     { path: "/blog", changeFrequency: "weekly" as const, priority: 0.8 },
     { path: "/klaviyo-for-ecommerce", changeFrequency: "monthly" as const, priority: 0.7 },
@@ -113,6 +127,11 @@ export const site = {
     },
     {
       path: "/cro-speed-optimization-shopify",
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+    {
+      path: "/top-10-cro-techniques-for-shopify-brands",
       changeFrequency: "monthly" as const,
       priority: 0.8,
     },

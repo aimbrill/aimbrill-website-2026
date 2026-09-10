@@ -20,7 +20,7 @@ const lines = [
   "Live apps and products:",
   ...site.apps.map(
     (app) =>
-      `- ${app.name} (${app.headline}): ${app.description} | ${site.url}${app.pagePath} | ${app.shopifyHref}`,
+      `- ${app.name} (${app.headline}): ${app.description} | ${app.pagePath.startsWith("http") ? app.pagePath : `${site.url}${app.pagePath}`} | ${app.shopifyHref}`,
   ),
   "",
   "Current live services from the website:",

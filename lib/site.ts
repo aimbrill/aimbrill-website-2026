@@ -31,7 +31,7 @@ export const site = {
       headline: "AI Popup & Upsell Widgets",
       description:
         "AI-powered popups and upsell widgets that show the right offer to the right customer at the right time.",
-      pagePath: "/weupsell-ai-popup-upsell",
+      pagePath: "https://www.weupsell.com",
       shopifyHref: "https://apps.shopify.com/ai-upsell-cross-sell-by-weupsell",
     },
     {
@@ -84,7 +84,6 @@ export const site = {
       changeFrequency: "yearly" as const,
       priority: 0.5,
     },
-    { path: "/weupsell-ai-popup-upsell", changeFrequency: "monthly" as const, priority: 0.8 },
     { path: "/meal-bundle-builder", changeFrequency: "monthly" as const, priority: 0.7 },
     {
       path: "/macola-shopify-integration-pulse-ecommerce",

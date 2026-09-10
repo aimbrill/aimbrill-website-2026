@@ -630,9 +630,14 @@ export default function CroSpeedOptimizationShopifyPage() {
               <div className="text-sm">
                 <strong className="text-ink">Deploy AI Upsell Intelligence:</strong> Implement
                 personalized recommendation widgets using{" "}
-                <Link href="/weupsell-ai-popup-upsell" className="font-semibold text-ink underline">
+                <a
+                  href="https://www.weupsell.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="font-semibold text-ink underline"
+                >
                   WeUpsell AI
-                </Link>{" "}
+                </a>{" "}
                 to lift average order value without clutter.
               </div>
             </div>
