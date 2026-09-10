@@ -98,6 +98,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
+        {/* Chatbot script
         <Script
           id="chatbot-key"
           strategy="afterInteractive"
@@ -109,6 +110,7 @@ export default function RootLayout({
           src="https://ai-chatbot-preview.s3.ap-south-1.amazonaws.com/destinova-aibot.js"
           strategy="afterInteractive"
         />
+        */}
       </head>
       <body suppressHydrationWarning>{children}</body>
     </html>
