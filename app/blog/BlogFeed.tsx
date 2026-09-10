@@ -3,7 +3,7 @@
 import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Search, X } from "lucide-react";
+import { Search } from "lucide-react";
 
 export type BlogCard = {
   slug: string;
@@ -60,18 +60,8 @@ export function BlogFeed({ cards }: BlogFeedProps) {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search guides, strategies & topics..."
-            className="w-full rounded-full border border-border bg-background/80 py-3 pl-11 pr-10 text-sm text-foreground placeholder:text-muted-foreground shadow-xs backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-lime"
+            className="w-full rounded-full border border-border bg-background/80 py-3 pl-11 pr-4 text-sm text-foreground placeholder:text-muted-foreground shadow-xs backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-lime"
           />
-          {searchQuery ? (
-            <button
-              type="button"
-              onClick={() => setSearchQuery("")}
-              className="absolute right-3.5 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-ink p-1 cursor-pointer"
-              aria-label="Clear search"
-            >
-              <X className="h-4 w-4" />
-            </button>
-          ) : null}
         </div>
       </div>
 
