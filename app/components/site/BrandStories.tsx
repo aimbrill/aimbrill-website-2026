@@ -88,7 +88,7 @@ const metaAdCreatives = [
 
 export function BrandStories() {
   const ref = useReveal<HTMLElement>();
-  const [activeTab, setActiveTab] = useState<"storytelling" | "meta-ads">("meta-ads");
+  const [activeTab, setActiveTab] = useState<"storytelling" | "meta-ads">("storytelling");
   const scrollRef = useRef<HTMLDivElement>(null);
   const creativesScrollRef = useRef<HTMLDivElement>(null);
   const [activeModalVideo, setActiveModalVideo] = useState<ReelStory | null>(null);
@@ -195,8 +195,16 @@ export function BrandStories() {
             <div className="min-w-0 w-full lg:col-span-5 flex flex-col justify-between">
               <div>
                 {/* Heading */}
-                <h2 className="font-display text-2xl sm:text-3xl lg:text-[46px] font-extrabold tracking-tight text-ink leading-[1.18]">
-                  Turn Your Brand Story Into Content People Remember.
+                <h2 className="font-display tracking-tight leading-[1.05]">
+                  <span className="block text-3xl sm:text-4xl lg:text-[46px] font-extrabold text-ink">
+                    Turn Your Brand Story
+                  </span>
+                  <span className="block text-3xl sm:text-4xl lg:text-[46px] font-extrabold text-ink">
+                    Into Content
+                  </span>
+                  <span className="block text-lg sm:text-xl lg:text-2xl font-serif italic text-muted-foreground mt-1 sm:mt-1.5">
+                    In a way so people remember.
+                  </span>
                 </h2>
 
                 {/* Subheading */}
@@ -421,8 +429,16 @@ export function BrandStories() {
             <div className="min-w-0 w-full lg:col-span-5 flex flex-col justify-between pt-2">
               <div>
                 {/* Heading */}
-                <h2 className="font-display text-2xl sm:text-3xl lg:text-[46px] font-extrabold tracking-tight text-ink leading-[1.14]">
-                  Grow Your Business With Smarter Meta Ads.
+                <h2 className="font-display tracking-tight leading-[1.05]">
+                  <span className="block text-3xl sm:text-4xl lg:text-[46px] font-extrabold text-ink">
+                    Grow Your Business
+                  </span>
+                  <span className="block text-3xl sm:text-4xl lg:text-[46px] font-extrabold text-ink">
+                    With Smarter
+                  </span>
+                  <span className="block text-lg sm:text-xl lg:text-2xl font-serif italic text-muted-foreground mt-1 sm:mt-1.5">
+                    Meta Ads.
+                  </span>
                 </h2>
 
                 {/* Subheading */}

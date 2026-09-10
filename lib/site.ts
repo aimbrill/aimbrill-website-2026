@@ -28,7 +28,7 @@ export const site = {
   apps: [
     {
       name: "WeUpsell",
-      headline: "AI Popup & Upsell Widgets",
+      headline: "AI Upsell & Cross Sell",
       description:
         "AI-powered popups and upsell widgets that show the right offer to the right customer at the right time.",
       pagePath: "https://www.weupsell.com",

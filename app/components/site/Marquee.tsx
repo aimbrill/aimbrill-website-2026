@@ -1,4 +1,6 @@
 const items = [
+  "Brand Storytelling & Reels",
+  "Meta Ads Management",
   "Shopify App Development",
   "AI Automation",
   "★ 5.0 on Shopify App Store",
@@ -6,7 +8,6 @@ const items = [
   "Subscription Flows",
   "API Integrations",
   "Conversion Optimisation",
-  "AI Chatbots",
 ];
 
 export function Marquee() {

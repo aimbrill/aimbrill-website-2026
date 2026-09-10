@@ -102,7 +102,7 @@ export const themeStyles: Record<
 export const apps: AppConfig[] = [
   {
     name: "WeUpsell",
-    headline: "AI Popup & Upsell Widgets",
+    headline: "AI Upsell & Cross Sell",
     theme: "green",
     status: "live",
     statusLabel: "Live on Shopify App Store",
