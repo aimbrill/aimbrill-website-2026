@@ -1,6 +1,20 @@
+import type { Metadata } from "next";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 import { mealFlowLinks } from "../lib/links";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy | Meal Flow Box",
+  description:
+    "Privacy Policy for Meal Flow Box by Aimbrill — how we collect, use, and protect merchant and customer data in your Shopify store.",
+  alternates: {
+    canonical: "/meal-bundle-builder/privacy",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 const intro = `The App (referred to as "the App", "we", "us", or "our") provides merchants with tools to create and sell customizable product bundles, enable location-based availability (such as pincode validation), allow delivery scheduling (including date selection), and offer subscription-based purchasing experiences (collectively, the "Service") to merchants who use Shopify to power their stores.`;
 

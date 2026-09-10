@@ -74,6 +74,16 @@ export const site = {
     { path: "/terms", changeFrequency: "yearly" as const, priority: 0.5 },
     { path: "/aimbrill-brand-assets", changeFrequency: "yearly" as const, priority: 0.4 },
     { path: "/ai-quiz-and-recommendations", changeFrequency: "monthly" as const, priority: 0.7 },
+    {
+      path: "/ai-quiz-and-recommendations/try-demo",
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    },
+    {
+      path: "/ai-quiz-and-recommendations/privacy",
+      changeFrequency: "yearly" as const,
+      priority: 0.5,
+    },
     { path: "/weupsell-ai-popup-upsell", changeFrequency: "monthly" as const, priority: 0.8 },
     { path: "/meal-bundle-builder", changeFrequency: "monthly" as const, priority: 0.7 },
     {
@@ -90,6 +100,11 @@ export const site = {
       path: "/meal-bundle-builder/try-meal-flow",
       changeFrequency: "monthly" as const,
       priority: 0.7,
+    },
+    {
+      path: "/meal-bundle-builder/privacy",
+      changeFrequency: "yearly" as const,
+      priority: 0.5,
     },
     { path: "/blog", changeFrequency: "weekly" as const, priority: 0.8 },
     { path: "/klaviyo-for-ecommerce", changeFrequency: "monthly" as const, priority: 0.7 },
