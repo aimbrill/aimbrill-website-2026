@@ -134,6 +134,8 @@ export function Brands() {
                       alt={b.name}
                       width={b.width}
                       height={b.height}
+                      sizes="(max-width: 640px) 130px, (max-width: 1024px) 180px, 240px"
+                      loading="lazy"
                       className={`relative z-10 object-contain ${b.logoClass}`}
                     />
                   </Link>
