@@ -3,7 +3,7 @@
 import React, { useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, Play, Instagram } from "lucide-react";
+import { ChevronLeft, ChevronRight, Play, Instagram, Maximize2, X } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
 
 export interface ReelStory {
@@ -13,26 +13,40 @@ export interface ReelStory {
   views: string;
   poster: string;
   videoSrc?: string;
+  instagramUrl?: string;
+  embedUrl?: string;
 }
 
 const reelStories: ReelStory[] = [
   {
-    id: "reel-1",
-    title: "Unbox 📦",
-    subtitle: "The Experience",
-    views: "124K",
+    id: "the-loffy",
+    title: "The Loffy",
+    subtitle: "From Chikki to Protein Snack",
+    views: "104K",
     poster:
-      "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=600&q=80",
-    videoSrc: "",
+      "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=600&q=80",
+    instagramUrl: "https://www.instagram.com/reel/DZFcZivoWza/?stkn=MTd4N3kxeXhqZTFoZA==",
+    embedUrl: "https://www.instagram.com/reel/DZFcZivoWza/embed/?autoplay=1",
   },
   {
-    id: "reel-2",
-    title: "Tradition",
-    subtitle: "Meets Today",
-    views: "86K",
+    id: "alpino",
+    title: "Alpino",
+    subtitle: "Surat Startup to ₹100Cr Brand",
+    views: "151K",
     poster:
-      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80",
-    videoSrc: "",
+      "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=600&q=80",
+    instagramUrl: "https://www.instagram.com/reel/DZO7p2sPgxe/?stkn=ejBjaHV1bzljZndn",
+    embedUrl: "https://www.instagram.com/reel/DZO7p2sPgxe/embed/?autoplay=1",
+  },
+  {
+    id: "sleepy-owl",
+    title: "Sleepy Owl",
+    subtitle: "Delhi Kitchen to ₹44Cr Brand",
+    views: "189K",
+    poster:
+      "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80",
+    instagramUrl: "https://www.instagram.com/reel/DZpnLA4iWmU/?stkn=dmVoZmNlNmdpcHox",
+    embedUrl: "https://www.instagram.com/reel/DZpnLA4iWmU/embed/?autoplay=1",
   },
   {
     id: "reel-3",
@@ -41,29 +55,28 @@ const reelStories: ReelStory[] = [
     views: "212K",
     poster:
       "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=600&q=80",
-    videoSrc: "",
+    instagramUrl: "https://www.instagram.com/aimbrill?igsh=NTBrOXNmdXZjYWx2",
   },
   {
-    id: "reel-4",
-    title: "More",
-    subtitle: "Than Fashion",
-    views: "98K",
+    id: "reel-1",
+    title: "Unbox 📦",
+    subtitle: "The Experience",
+    views: "124K",
     poster:
-      "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=600&q=80",
-    videoSrc: "",
-  },
-  {
-    id: "reel-5",
-    title: "A Story",
-    subtitle: "In Every Detail",
-    views: "76K",
-    poster:
-      "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=600&q=80",
-    videoSrc: "",
+      "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=600&q=80",
+    instagramUrl: "https://www.instagram.com/aimbrill?igsh=NTBrOXNmdXZjYWx2",
   },
 ];
 
 const metaAdCreatives = [
+  {
+    title: "The Loffy Peanut Chikki",
+    image: "/images/the-loffy-ad-creative.jpg",
+  },
+  {
+    title: "Diorin Raksha Bandhan",
+    image: "/images/case-studies/rakhi-by-diorin/diorin-raksha-bandhan-ad.jpg",
+  },
   {
     title: "Festive Elegance",
     image:
@@ -79,11 +92,6 @@ const metaAdCreatives = [
     image:
       "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=400&q=80",
   },
-  {
-    title: "Made With Love",
-    image:
-      "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80",
-  },
 ];
 
 export function BrandStories() {
@@ -92,6 +100,9 @@ export function BrandStories() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const creativesScrollRef = useRef<HTMLDivElement>(null);
   const [activeModalVideo, setActiveModalVideo] = useState<ReelStory | null>(null);
+  const [activeModalImage, setActiveModalImage] = useState<{ title: string; image: string } | null>(
+    null,
+  );
 
   const [currentReelIndex, setCurrentReelIndex] = useState(0);
   const [currentCreativeIndex, setCurrentCreativeIndex] = useState(0);
@@ -335,22 +346,47 @@ export function BrandStories() {
                         <span>{reel.views}</span>
                       </div>
 
-                      {/* Top Right Share Icon */}
-                      <div className="absolute right-3.5 top-3.5 z-10 flex h-7 w-7 items-center justify-center rounded-full bg-black/30 text-white backdrop-blur-md border border-white/10">
-                        <svg
-                          className="h-3.5 w-3.5"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2.2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
+                      {/* Top Right Share / Open on Instagram Icon */}
+                      {reel.instagramUrl ? (
+                        <a
+                          href={reel.instagramUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          aria-label={`Open ${reel.title} on Instagram`}
+                          className="absolute right-3.5 top-3.5 z-20 flex h-7 w-7 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-md border border-white/10 hover:bg-[color:var(--lime)] hover:text-ink transition hover:scale-110"
                         >
-                          <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
-                          <polyline points="16 6 12 2 8 6" />
-                          <line x1="12" y1="2" x2="12" y2="15" />
-                        </svg>
-                      </div>
+                          <svg
+                            className="h-3.5 w-3.5"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2.2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
+                            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
+                            <polyline points="16 6 12 2 8 6" />
+                            <line x1="12" y1="2" x2="12" y2="15" />
+                          </svg>
+                        </a>
+                      ) : (
+                        <div className="absolute right-3.5 top-3.5 z-10 flex h-7 w-7 items-center justify-center rounded-full bg-black/30 text-white backdrop-blur-md border border-white/10">
+                          <svg
+                            className="h-3.5 w-3.5"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2.2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
+                            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
+                            <polyline points="16 6 12 2 8 6" />
+                            <line x1="12" y1="2" x2="12" y2="15" />
+                          </svg>
+                        </div>
+                      )}
 
                       {/* Center Play Button */}
                       <div className="absolute inset-0 z-10 flex items-center justify-center">
@@ -520,7 +556,8 @@ export function BrandStories() {
                     {metaAdCreatives.map((creative, index) => (
                       <div
                         key={index}
-                        className="creative-card group/creative relative h-[310px] w-[215px] sm:h-[300px] sm:w-[200px] md:h-[320px] md:w-[210px] shrink-0 snap-start overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition-all duration-300 hover:scale-[1.02] hover:shadow-md"
+                        onClick={() => setActiveModalImage(creative)}
+                        className="creative-card group/creative relative h-[310px] w-[215px] sm:h-[300px] sm:w-[200px] md:h-[320px] md:w-[210px] shrink-0 snap-start overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition-all duration-300 hover:scale-[1.02] hover:shadow-md cursor-pointer"
                       >
                         <Image
                           src={creative.image}
@@ -531,13 +568,15 @@ export function BrandStories() {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
 
+                        {/* Top-right Expand icon on hover */}
+                        <div className="absolute right-3 top-3 z-10 flex h-7 w-7 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-md border border-white/20 opacity-0 transition-all duration-300 group-hover/creative:opacity-100 group-hover/creative:scale-105">
+                          <Maximize2 className="h-3.5 w-3.5" />
+                        </div>
+
                         <div className="absolute inset-x-0 bottom-0 z-10 p-3.5 sm:p-4 text-white">
-                          <p className="font-serif italic text-sm sm:text-base font-semibold leading-tight drop-shadow-sm mb-2.5">
+                          <p className="font-serif italic text-sm sm:text-base font-semibold leading-tight drop-shadow-sm">
                             {creative.title}
                           </p>
-                          <span className="inline-block rounded-lg bg-black/60 px-3 py-1 text-xs font-bold text-white backdrop-blur-sm border border-white/20">
-                            Shop Now
-                          </span>
                         </div>
                       </div>
                     ))}
@@ -617,22 +656,43 @@ export function BrandStories() {
         )}
       </div>
 
-      {/* Video Modal Player (if user clicks on a reel) */}
+      {/* Video / Reel Modal Player */}
       {activeModalVideo ? (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-md animate-in fade-in duration-200"
           onClick={() => setActiveModalVideo(null)}
         >
+          {/* Floating Close Button */}
+          <button
+            type="button"
+            onClick={() => setActiveModalVideo(null)}
+            aria-label="Close video preview"
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md border border-white/20 hover:bg-white/25 transition cursor-pointer"
+          >
+            <X className="h-5 w-5" />
+          </button>
+
           <div
-            className="relative w-full max-w-sm rounded-3xl overflow-hidden border border-white/20 bg-card shadow-2xl"
+            className="relative w-full max-w-[380px] sm:max-w-[400px] rounded-3xl overflow-hidden border border-white/20 bg-card shadow-2xl flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative aspect-[9/16] w-full bg-black">
-              {activeModalVideo.videoSrc ? (
+            <div className="relative aspect-[9/16] w-full bg-black flex items-center justify-center overflow-hidden">
+              {activeModalVideo.embedUrl ? (
+                <iframe
+                  src={activeModalVideo.embedUrl}
+                  title={`${activeModalVideo.title} Instagram Reel`}
+                  scrolling="no"
+                  style={{ overflow: "hidden", border: 0 }}
+                  className="h-full w-full border-0 overflow-hidden no-scrollbar"
+                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              ) : activeModalVideo.videoSrc ? (
                 <video
                   src={activeModalVideo.videoSrc}
                   controls
                   autoPlay
+                  playsInline
                   className="h-full w-full object-cover"
                 />
               ) : (
@@ -641,31 +701,66 @@ export function BrandStories() {
                     src={activeModalVideo.poster}
                     alt={activeModalVideo.title}
                     fill
+                    sizes="380px"
                     className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center p-6 text-center text-white">
-                    <Play className="h-12 w-12 mb-3 text-lime" />
-                    <h3 className="font-display text-xl font-bold">
-                      {activeModalVideo.title} {activeModalVideo.subtitle}
-                    </h3>
-                    <p className="mt-2 text-xs text-white/80">
-                      Video file placeholder. You can drop your real reel video file here anytime!
-                    </p>
+                  <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center p-6 text-center text-white">
+                    <Instagram className="h-12 w-12 mb-3 text-[color:var(--lime)]" />
+                    <h3 className="font-display text-xl font-bold">{activeModalVideo.title}</h3>
+                    {activeModalVideo.subtitle && (
+                      <p className="mt-1 text-sm text-white/90 font-serif italic">
+                        {activeModalVideo.subtitle}
+                      </p>
+                    )}
+                    {activeModalVideo.instagramUrl && (
+                      <a
+                        href={activeModalVideo.instagramUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="mt-5 inline-flex items-center gap-2 rounded-full bg-[color:var(--lime)] px-5 py-2.5 text-xs font-bold text-ink shadow-lg transition hover:scale-105 active:scale-95"
+                      >
+                        <Instagram className="h-4 w-4" />
+                        <span>Watch on Instagram</span>
+                        <span>↗</span>
+                      </a>
+                    )}
                   </div>
                 </div>
               )}
             </div>
-            <div className="p-4 flex items-center justify-between bg-surface border-t border-border">
-              <span className="text-xs font-bold text-ink">
-                {activeModalVideo.title} {activeModalVideo.subtitle}
-              </span>
-              <button
-                type="button"
-                onClick={() => setActiveModalVideo(null)}
-                className="rounded-full bg-surface-2 px-3 py-1 text-xs font-semibold text-ink hover:bg-border"
-              >
-                Close
-              </button>
+          </div>
+        </div>
+      ) : null}
+
+      {/* Meta Ad Image Popup Lightbox Modal */}
+      {activeModalImage ? (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-md animate-in fade-in duration-200"
+          onClick={() => setActiveModalImage(null)}
+        >
+          {/* Floating Close Button */}
+          <button
+            type="button"
+            onClick={() => setActiveModalImage(null)}
+            aria-label="Close image preview"
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md border border-white/20 hover:bg-white/25 transition cursor-pointer"
+          >
+            <X className="h-5 w-5" />
+          </button>
+
+          <div
+            className="relative w-full max-w-[390px] sm:max-w-[430px] rounded-3xl overflow-hidden shadow-2xl flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="relative aspect-[9/16] w-full flex items-center justify-center overflow-hidden rounded-3xl border border-white/15">
+              <Image
+                src={activeModalImage.image}
+                alt={activeModalImage.title}
+                fill
+                sizes="(max-width: 640px) 100vw, 430px"
+                className="object-contain"
+                priority
+              />
             </div>
           </div>
         </div>
