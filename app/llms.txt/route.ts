@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { site } from "../../lib/site";
+import { site } from "@/lib/site";
 
 const lines = [
   `${site.name} live site index`,
