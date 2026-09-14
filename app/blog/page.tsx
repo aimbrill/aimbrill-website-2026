@@ -45,6 +45,8 @@ async function getBlogCards(): Promise<BlogCard[]> {
           coverImage = "/images/shopify/blogs/main%20image/cro-speed.png";
         } else if (slug === "top-10-cro-techniques-for-shopify-brands") {
           coverImage = "/images/shopify/blogs/main%20image/top-10-cro.png";
+        } else if (slug === "best-free-shopify-apps") {
+          coverImage = "/images/shopify/blogs/main%20image/shopify-apps.png";
         }
 
         return {

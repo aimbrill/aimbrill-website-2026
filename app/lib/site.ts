@@ -135,6 +135,11 @@ export const site = {
       changeFrequency: "monthly" as const,
       priority: 0.8,
     },
+    {
+      path: "/best-free-shopify-apps",
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
   ],
 } as const;
 

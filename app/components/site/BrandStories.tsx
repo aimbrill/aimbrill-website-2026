@@ -659,34 +659,36 @@ export function BrandStories() {
       {/* Video / Reel Modal Player */}
       {activeModalVideo ? (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-md animate-in fade-in duration-200"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-3 pt-14 pb-4 sm:p-6 backdrop-blur-md animate-in fade-in duration-200"
           onClick={() => setActiveModalVideo(null)}
         >
-          {/* Floating Close Button */}
+          {/* Floating Close Button - Placed outside modal content zone */}
           <button
             type="button"
             onClick={() => setActiveModalVideo(null)}
             aria-label="Close video preview"
-            className="absolute top-4 right-4 sm:top-6 sm:right-6 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md border border-white/20 hover:bg-white/25 transition cursor-pointer"
+            className="fixed top-3 right-3 sm:top-5 sm:right-5 z-50 flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-full bg-black/70 text-white backdrop-blur-md border border-white/25 hover:bg-black/90 transition hover:scale-105 active:scale-95 cursor-pointer shadow-xl"
           >
             <X className="h-5 w-5" />
           </button>
 
           <div
-            className="relative w-full max-w-[380px] sm:max-w-[400px] rounded-3xl overflow-hidden border border-white/20 bg-card shadow-2xl flex flex-col"
+            className="relative w-full max-w-[340px] sm:max-w-[380px] aspect-[9/16] max-h-[82vh] rounded-3xl overflow-hidden border border-white/20 bg-black shadow-2xl flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative aspect-[9/16] w-full bg-black flex items-center justify-center overflow-hidden">
+            <div className="relative h-full w-full bg-black flex items-center justify-center overflow-hidden rounded-3xl">
               {activeModalVideo.embedUrl ? (
-                <iframe
-                  src={activeModalVideo.embedUrl}
-                  title={`${activeModalVideo.title} Instagram Reel`}
-                  scrolling="no"
-                  style={{ overflow: "hidden", border: 0 }}
-                  className="h-full w-full border-0 overflow-hidden no-scrollbar"
-                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                  allowFullScreen
-                />
+                <div className="relative h-full w-full overflow-hidden flex items-center justify-center bg-black">
+                  <iframe
+                    src={activeModalVideo.embedUrl}
+                    title={`${activeModalVideo.title} Instagram Reel`}
+                    scrolling="no"
+                    style={{ overflow: "hidden", border: 0 }}
+                    className="absolute -top-[12%] -left-[16%] w-[132%] h-[175%] border-0 overflow-hidden no-scrollbar pointer-events-auto"
+                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                    allowFullScreen
+                  />
+                </div>
               ) : activeModalVideo.videoSrc ? (
                 <video
                   src={activeModalVideo.videoSrc}
@@ -735,7 +737,7 @@ export function BrandStories() {
       {/* Meta Ad Image Popup Lightbox Modal */}
       {activeModalImage ? (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-md animate-in fade-in duration-200"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-3 pt-14 pb-4 sm:p-6 backdrop-blur-md animate-in fade-in duration-200"
           onClick={() => setActiveModalImage(null)}
         >
           {/* Floating Close Button */}
@@ -743,21 +745,21 @@ export function BrandStories() {
             type="button"
             onClick={() => setActiveModalImage(null)}
             aria-label="Close image preview"
-            className="absolute top-4 right-4 sm:top-6 sm:right-6 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md border border-white/20 hover:bg-white/25 transition cursor-pointer"
+            className="fixed top-3 right-3 sm:top-5 sm:right-5 z-50 flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-full bg-black/70 text-white backdrop-blur-md border border-white/25 hover:bg-black/90 transition hover:scale-105 active:scale-95 cursor-pointer shadow-xl"
           >
             <X className="h-5 w-5" />
           </button>
 
           <div
-            className="relative w-full max-w-[390px] sm:max-w-[430px] rounded-3xl overflow-hidden shadow-2xl flex flex-col"
+            className="relative w-full max-w-[340px] sm:max-w-[400px] h-[560px] sm:h-[620px] max-h-[82vh] rounded-3xl overflow-hidden shadow-2xl flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative aspect-[9/16] w-full flex items-center justify-center overflow-hidden rounded-3xl border border-white/15">
+            <div className="relative h-full w-full flex items-center justify-center overflow-hidden rounded-3xl border border-white/15 bg-black">
               <Image
                 src={activeModalImage.image}
                 alt={activeModalImage.title}
                 fill
-                sizes="(max-width: 640px) 100vw, 430px"
+                sizes="(max-width: 640px) 100vw, 400px"
                 className="object-contain"
                 priority
               />
