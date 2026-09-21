@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, Play, Instagram, Maximize2, X } from "lucide-react";
@@ -107,10 +107,28 @@ export function BrandStories() {
   const [currentReelIndex, setCurrentReelIndex] = useState(0);
   const [currentCreativeIndex, setCurrentCreativeIndex] = useState(0);
 
+  const reelCardWidthRef = useRef<number>(276);
+  const creativeCardWidthRef = useRef<number>(236);
+
+  useEffect(() => {
+    const updateWidths = () => {
+      if (scrollRef.current) {
+        const card = scrollRef.current.querySelector<HTMLElement>(".reel-card");
+        if (card && card.offsetWidth) reelCardWidthRef.current = card.offsetWidth + 16;
+      }
+      if (creativesScrollRef.current) {
+        const card = creativesScrollRef.current.querySelector<HTMLElement>(".creative-card");
+        if (card && card.offsetWidth) creativeCardWidthRef.current = card.offsetWidth + 16;
+      }
+    };
+    updateWidths();
+    window.addEventListener("resize", updateWidths, { passive: true });
+    return () => window.removeEventListener("resize", updateWidths);
+  }, []);
+
   const scrollReels = (direction: "left" | "right") => {
     if (scrollRef.current) {
-      const card = scrollRef.current.querySelector<HTMLElement>(".reel-card");
-      const scrollAmount = card ? card.offsetWidth + 16 : 260;
+      const scrollAmount = reelCardWidthRef.current;
       scrollRef.current.scrollBy({
         left: direction === "left" ? -scrollAmount : scrollAmount,
         behavior: "smooth",
@@ -120,8 +138,7 @@ export function BrandStories() {
 
   const scrollCreatives = (direction: "left" | "right") => {
     if (creativesScrollRef.current) {
-      const card = creativesScrollRef.current.querySelector<HTMLElement>(".creative-card");
-      const scrollAmount = card ? card.offsetWidth + 16 : 220;
+      const scrollAmount = creativeCardWidthRef.current;
       creativesScrollRef.current.scrollBy({
         left: direction === "left" ? -scrollAmount : scrollAmount,
         behavior: "smooth",
@@ -131,8 +148,7 @@ export function BrandStories() {
 
   const handleReelScroll = (e: React.UIEvent<HTMLDivElement>) => {
     const el = e.currentTarget;
-    const card = el.querySelector<HTMLElement>(".reel-card");
-    const cardWidth = card ? card.offsetWidth + 16 : 260;
+    const cardWidth = reelCardWidthRef.current;
     const index = Math.min(
       Math.max(0, Math.round(el.scrollLeft / cardWidth)),
       reelStories.length - 1,
@@ -144,8 +160,7 @@ export function BrandStories() {
 
   const handleCreativeScroll = (e: React.UIEvent<HTMLDivElement>) => {
     const el = e.currentTarget;
-    const card = el.querySelector<HTMLElement>(".creative-card");
-    const cardWidth = card ? card.offsetWidth + 16 : 220;
+    const cardWidth = creativeCardWidthRef.current;
     const index = Math.min(
       Math.max(0, Math.round(el.scrollLeft / cardWidth)),
       metaAdCreatives.length - 1,

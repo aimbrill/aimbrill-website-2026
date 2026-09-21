@@ -1,3 +1,5 @@
+"use client";
+
 import type { ReactNode } from "react";
 import Image from "next/image";
 import aiImg from "@/assets/ai-automation.jpg";

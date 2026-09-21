@@ -8,16 +8,19 @@ import { site } from "@/lib/site";
 
 const caveat = Caveat({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["600"],
   display: "swap",
   variable: "--font-caveat",
+  preload: false,
 });
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["500", "600", "700"],
   display: "swap",
   variable: "--font-space-grotesk",
+  preload: true,
+  adjustFontFallback: true,
 });
 
 const dmSans = DM_Sans({
@@ -25,6 +28,8 @@ const dmSans = DM_Sans({
   weight: ["400", "500", "600", "700"],
   display: "swap",
   variable: "--font-dm-sans",
+  preload: true,
+  adjustFontFallback: true,
 });
 
 const jetbrainsMono = JetBrains_Mono({
@@ -32,6 +37,8 @@ const jetbrainsMono = JetBrains_Mono({
   weight: ["400", "500"],
   display: "swap",
   variable: "--font-jetbrains-mono",
+  preload: false,
+  adjustFontFallback: true,
 });
 
 export const metadata: Metadata = {
@@ -93,7 +100,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={fontVariables} suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <GoogleAnalytics />
         <script

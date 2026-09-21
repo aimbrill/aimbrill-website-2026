@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { SectionHeader } from "./Services";
 import { useReveal } from "@/hooks/use-reveal";

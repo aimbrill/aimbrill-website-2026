@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { useReveal } from "@/hooks/use-reveal";
@@ -84,7 +86,7 @@ export function Brands() {
       <div className="mx-auto max-w-7xl px-4">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
           {/* Heading */}
-          <div className="reveal lg:col-span-5">
+          <div className="lg:col-span-5">
             <h2 className="font-display text-[40px] font-semibold leading-[1.02] tracking-tight md:text-[56px]">
               <span className="font-serif italic text-ink">Brands</span> that{" "}
               <span className="relative inline-block">
