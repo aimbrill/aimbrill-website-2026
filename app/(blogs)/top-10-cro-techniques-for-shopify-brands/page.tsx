@@ -4,7 +4,15 @@ import Link from "next/link";
 import { GuidePageShell, type GuideTocItem } from "@/components/content/GuidePageShell";
 import { GuideFaqAccordion, GuideFaqItem } from "@/components/content/GuideFaqAccordion";
 import { Footer } from "@/components/site/Footer";
-import { CheckCircle2, Sparkles, Zap, Smartphone, Search, ExternalLink } from "lucide-react";
+import {
+  CheckCircle2,
+  Sparkles,
+  Zap,
+  Smartphone,
+  Search,
+  ExternalLink,
+  ArrowRight,
+} from "lucide-react";
 
 const SITE = "https://aimbrill.com";
 const CANONICAL = "/top-10-cro-techniques-for-shopify-brands";
@@ -1725,6 +1733,31 @@ export default function Top10CroTechniquesPage() {
                 seamless
               </li>
             </ol>
+          </div>
+
+          {/* Related Guide Feature Callout */}
+          <div className="not-prose my-8 rounded-2xl border border-border/80 bg-surface p-5 sm:p-6 transition hover:border-lime-500/50">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div>
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-lime-500/10 px-2.5 py-0.5 text-xs font-semibold text-lime-800 dark:text-lime-300 mb-2">
+                  Recommended Reading · App Stack 2026
+                </span>
+                <h3 className="font-display text-base sm:text-lg font-bold text-ink">
+                  10 Shopify Marketing Apps to Grow Your Store in 2026
+                </h3>
+                <p className="mt-1 text-xs sm:text-sm text-muted-foreground max-w-xl">
+                  Pair your CRO techniques with the right app stack. Compare 10 verified Shopify
+                  marketing apps grouped by traffic, conversion, and customer retention.
+                </p>
+              </div>
+              <Link
+                href="/shopify-marketing-apps-2026"
+                className="shrink-0 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-xs font-semibold text-background hover:bg-lime hover:text-ink transition-colors"
+              >
+                <span>Read Guide</span>
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
           </div>
 
           <h2 id="faq">Frequently Asked Questions</h2>

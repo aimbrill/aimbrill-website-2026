@@ -21,6 +21,7 @@ import {
   ExternalLink,
   ShieldCheck,
   Layers,
+  ArrowRight,
 } from "lucide-react";
 
 const SITE = "https://aimbrill.com";
@@ -1344,6 +1345,32 @@ export default function FreeShopifyApps2026Page() {
           <p className="text-base font-semibold text-ink sm:text-lg">
             The goal is simple: have the right apps doing the right jobs for your brand.
           </p>
+
+          {/* Related Guide Feature Callout */}
+          <div className="not-prose my-8 rounded-2xl border border-border/80 bg-surface p-5 sm:p-6 transition hover:border-lime-500/50">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div>
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-lime-500/10 px-2.5 py-0.5 text-xs font-semibold text-lime-800 dark:text-lime-300 mb-2">
+                  Next Step · Marketing &amp; Retention
+                </span>
+                <h3 className="font-display text-base sm:text-lg font-bold text-ink">
+                  10 Shopify Marketing Apps to Grow Your Store in 2026
+                </h3>
+                <p className="mt-1 text-xs sm:text-sm text-muted-foreground max-w-xl">
+                  Ready to go beyond free essentials with targeted traffic, advanced retargeting,
+                  and SMS automation? Explore our breakdown of 10 marketing apps grouped by traffic,
+                  conversion, and retention.
+                </p>
+              </div>
+              <Link
+                href="/shopify-marketing-apps-2026"
+                className="shrink-0 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-xs font-semibold text-background hover:bg-lime hover:text-ink transition-colors"
+              >
+                <span>Read Full Guide</span>
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
+          </div>
 
           {/* Calendly Banner */}
           <div className="not-prose my-10 rounded-3xl border border-border bg-gradient-to-br from-surface via-card to-surface p-6 sm:p-8 text-center">

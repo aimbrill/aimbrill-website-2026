@@ -13,6 +13,7 @@ export type BlogCard = {
   category: string;
   author?: string;
   publishedAt?: string;
+  publishedAtIso?: string;
   coverImage?: string;
 };
 

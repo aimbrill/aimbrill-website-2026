@@ -31,6 +31,7 @@ async function getBlogCards(): Promise<BlogCard[]> {
         const category = cleanQuoted(source.match(/category="([^"]+)"/)?.[1]) ?? "Guide";
         const author = cleanQuoted(source.match(/author="([^"]+)"/)?.[1]);
         const publishedAt = cleanQuoted(source.match(/const PUBLISHED_DISPLAY = "([^"]+)"/)?.[1]);
+        const publishedAtIso = cleanQuoted(source.match(/const PUBLISHED_ISO = "([^"]+)"/)?.[1]);
         let coverImage: string | undefined;
 
         if (slug === "klaviyo-for-ecommerce") {
@@ -59,13 +60,18 @@ async function getBlogCards(): Promise<BlogCard[]> {
           category,
           author,
           publishedAt,
+          publishedAtIso,
           coverImage,
         } satisfies BlogCard;
       }),
   );
 
   const validCards = cards.filter((card): card is BlogCard => card !== null);
-  return validCards.sort((a, b) => a.slug.localeCompare(b.slug));
+  return validCards.sort(
+    (a, b) =>
+      (b.publishedAtIso ?? "").localeCompare(a.publishedAtIso ?? "") ||
+      a.slug.localeCompare(b.slug),
+  );
 }
 
 export const metadata: Metadata = {

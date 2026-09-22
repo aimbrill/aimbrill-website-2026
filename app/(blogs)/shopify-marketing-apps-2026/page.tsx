@@ -211,6 +211,7 @@ const TOC: GuideTocItem[] = [
   { id: "decision-guide", label: "Which App to Choose?" },
   { id: "putting-it-together", label: "Recommended Stack" },
   { id: "faq", label: "Frequently Asked Questions" },
+  { id: "related-guides", label: "Related Guides" },
 ];
 
 export default function ShopifyMarketingApps2026Page() {
@@ -2022,19 +2023,6 @@ export default function ShopifyMarketingApps2026Page() {
             </div>
           </div>
 
-          {/* Pricing Verification Notice */}
-          <div className="not-prose my-6 rounded-2xl border border-border bg-surface p-4 text-xs text-muted-foreground flex items-center justify-between gap-4">
-            <div className="flex items-center gap-2">
-              <Info className="h-4 w-4 text-muted-foreground shrink-0" />
-              <span>
-                Pricing verified directly from each app&apos;s official Shopify App Store listing as
-                of <strong className="text-ink">September 22, 2026</strong>. Apps update pricing
-                periodically, so it is recommended to make a final check on the App Store before
-                installation.
-              </span>
-            </div>
-          </div>
-
           {/* FAQs Section */}
           <h2 id="faq">Frequently Asked Questions</h2>
           <GuideFaqAccordion>
@@ -2046,6 +2034,112 @@ export default function ShopifyMarketingApps2026Page() {
               </GuideFaqItem>
             ))}
           </GuideFaqAccordion>
+
+          {/* Consultation / Audit Banner */}
+          <div className="not-prose my-10 rounded-3xl border border-border bg-gradient-to-br from-surface via-card to-surface p-6 sm:p-8 text-center">
+            <h3 className="font-display text-xl font-bold text-ink sm:text-2xl">
+              Need Help Choosing &amp; Configuring Your Shopify Apps?
+            </h3>
+            <p className="mx-auto mt-2 max-w-xl text-xs sm:text-sm text-muted-foreground">
+              Aimbrill helps ambitious D2C brands audit app performance, eliminate bloated script
+              tags, and architect high-converting acquisition and retention funnels.
+            </p>
+            <div className="mt-6 flex flex-wrap justify-center gap-3">
+              <a
+                href={CALENDLY_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-lime px-6 py-3 text-xs sm:text-sm font-bold text-ink shadow-soft transition hover:scale-105 active:scale-95"
+              >
+                <span>Book a Free Strategy Call</span>
+                <ExternalLink className="h-4 w-4" />
+              </a>
+              <Link
+                href="/blog"
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-xs sm:text-sm font-semibold text-ink transition hover:bg-surface"
+              >
+                <span>Explore All Guides</span>
+              </Link>
+            </div>
+          </div>
+
+          {/* Related Guides Section */}
+          <h2 id="related-guides">Related Guides &amp; Further Reading</h2>
+          <p>
+            Dive deeper into store optimization, conversion tactics, and e-commerce marketing
+            automations with our practical Shopify guides:
+          </p>
+
+          <div className="not-prose my-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <Link
+              href="/best-free-shopify-apps"
+              className="group flex flex-col justify-between rounded-2xl border border-border bg-surface p-5 transition-all duration-200 hover:-translate-y-1 hover:border-lime-500/60 hover:shadow-soft"
+            >
+              <div>
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-lime-500/10 px-2.5 py-0.5 text-xs font-semibold text-lime-800 dark:text-lime-300 mb-3">
+                  <ShoppingBag className="h-3 w-3" />
+                  Free App Stack
+                </span>
+                <h3 className="font-display text-base font-bold text-ink group-hover:text-lime-600 dark:group-hover:text-lime-400 transition-colors">
+                  10 Free Shopify Apps Every Brand Should Try in 2026
+                </h3>
+                <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
+                  Zero-cost tools across social proof reviews, automated SEO, email collection, and
+                  AI upselling to bootstrap store growth.
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-border/60 flex items-center justify-between text-xs font-semibold text-ink group-hover:text-lime-600 dark:group-hover:text-lime-400">
+                <span>Read Guide</span>
+                <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+              </div>
+            </Link>
+
+            <Link
+              href="/top-10-cro-techniques-for-shopify-brands"
+              className="group flex flex-col justify-between rounded-2xl border border-border bg-surface p-5 transition-all duration-200 hover:-translate-y-1 hover:border-lime-500/60 hover:shadow-soft"
+            >
+              <div>
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-lime-500/10 px-2.5 py-0.5 text-xs font-semibold text-lime-800 dark:text-lime-300 mb-3">
+                  <TrendingUp className="h-3 w-3" />
+                  Conversion Optimization
+                </span>
+                <h3 className="font-display text-base font-bold text-ink group-hover:text-lime-600 dark:group-hover:text-lime-400 transition-colors">
+                  Top 10 CRO Techniques for Shopify Brands
+                </h3>
+                <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
+                  Actionable techniques to convert more traffic into buyers, from sticky add-to-cart
+                  buttons to high-converting checkout UX.
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-border/60 flex items-center justify-between text-xs font-semibold text-ink group-hover:text-lime-600 dark:group-hover:text-lime-400">
+                <span>Read Guide</span>
+                <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+              </div>
+            </Link>
+
+            <Link
+              href="/klaviyo-for-ecommerce"
+              className="group flex flex-col justify-between rounded-2xl border border-border bg-surface p-5 transition-all duration-200 hover:-translate-y-1 hover:border-lime-500/60 hover:shadow-soft"
+            >
+              <div>
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-lime-500/10 px-2.5 py-0.5 text-xs font-semibold text-lime-800 dark:text-lime-300 mb-3">
+                  <Mail className="h-3 w-3" />
+                  Email &amp; Retention
+                </span>
+                <h3 className="font-display text-base font-bold text-ink group-hover:text-lime-600 dark:group-hover:text-lime-400 transition-colors">
+                  Klaviyo for E-Commerce: Strategy &amp; Automations
+                </h3>
+                <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
+                  Step-by-step setup for revenue-generating email &amp; SMS flows, smart list
+                  segmentation, and post-purchase retention.
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-border/60 flex items-center justify-between text-xs font-semibold text-ink group-hover:text-lime-600 dark:group-hover:text-lime-400">
+                <span>Read Guide</span>
+                <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+              </div>
+            </Link>
+          </div>
         </GuidePageShell>
       </main>
 

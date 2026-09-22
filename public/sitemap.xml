@@ -86,7 +86,7 @@
 
   <url>
     <loc>https://aimbrill.com/blog</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -150,6 +150,20 @@
   <url>
     <loc>https://aimbrill.com/top-10-cro-techniques-for-shopify-brands</loc>
     <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://aimbrill.com/best-free-shopify-apps</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://aimbrill.com/shopify-marketing-apps-2026</loc>
+    <lastmod>2026-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
