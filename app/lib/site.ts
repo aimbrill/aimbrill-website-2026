@@ -140,6 +140,11 @@ export const site = {
       changeFrequency: "monthly" as const,
       priority: 0.8,
     },
+    {
+      path: "/shopify-marketing-apps-2026",
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
   ],
 } as const;
 

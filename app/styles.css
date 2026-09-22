@@ -406,19 +406,22 @@
 @media (min-width: 1024px) {
   .toc-sidebar {
     position: sticky;
-    top: 7rem;
-    max-height: calc(100vh - 8rem);
-    overflow: hidden;
-    padding-right: 0.25rem;
+    top: 5.5rem;
+    max-height: calc(100vh - 6.5rem);
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 0.35rem;
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in oklab, var(--foreground) 15%, transparent) transparent;
   }
 }
 
 .toc-panel {
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.75rem;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border);
   background: var(--surface);
-  padding: 1.125rem;
+  padding: 0.75rem 0.85rem;
 }
 
 .blog-hero {
@@ -670,6 +673,10 @@
   border-top: none;
 }
 
+.guide-article.guide-prose > * + h2:first-of-type {
+  margin-top: 1.5rem;
+}
+
 .guide-prose-editorial h3 {
   font-size: 0.8125rem;
   font-weight: 600;
@@ -795,6 +802,18 @@
   font-size: 0.8125rem;
   color: var(--ink);
   background-color: var(--surface);
+}
+
+.guide-prose .not-prose table {
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 0;
+}
+
+.guide-prose .not-prose th,
+.guide-prose .not-prose td {
+  border: none;
+  background-color: transparent;
 }
 
 /* Long-form article structural blocks (theme tokens only) */
